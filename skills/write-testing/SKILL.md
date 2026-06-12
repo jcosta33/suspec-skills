@@ -8,7 +8,7 @@ description: >-
   writes a regression test, or hardens a suite. Never assert internals, bundle
   unrelated behaviors, chase a coverage percentage, ship an unflipped test, or
   edit production code to ease a test. Skip tests that ride inside feature/fix
-  work, and stabilizing an existing flaky test (fix-flaky-test).
+  work, and stabilizing an existing intermittently failing test.
 ---
 
 # Implement tests

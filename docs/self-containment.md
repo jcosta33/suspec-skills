@@ -49,12 +49,12 @@ directory, `README.md`, `AGENTS.md`) — never inside a `SKILL.md` body.
 
 ## Personas: the canonical worked example
 
-The persona discipline is where the self-containment principle does its loudest work. Every persona is a fully standalone skill — installing `write-audit` does not pull in `persona-auditor`.
+The persona discipline is where the self-containment principle does its loudest work. Every persona is a fully standalone skill — installing the starter kit's `write-audit` guide does not pull in `persona-auditor`, and installing the persona does not require the guide.
 
 ```mermaid
 flowchart TD
     UR[User: "audit the auth module"] --> AGT[Agent assesses task]
-    AGT -->|matches description| WA[write-audit loads]
+    AGT -->|matches description| WA["write-audit loads (starter kit)"]
     AGT -->|matches description| PA[persona-auditor loads]
     WA -.no link to.-> PA
     PA -.no link to.-> WA
@@ -68,7 +68,7 @@ flowchart TD
 | **No persona index / core / loader skill** | There is no `personas-core`, no `personas` monolith. Each persona is independently installable. |
 | **Personas are not referenced from any other skill** | `Grep` over `skills/` for `persona-` returns zero hits inside non-persona `SKILL.md` files and zero hits inside any `references/task-template.md`. The only matches are within the persona files themselves, where "personas" appears as a concept word ("do not blend personas"). |
 
-> A consumer who installs only `write-audit` and `persona-auditor` gets the same behaviour they'd get inside the full repo install — neither file mentions the other.
+> A consumer who installs only the kit's `write-audit` and this catalog's `persona-auditor` gets the same behaviour as one with everything installed — neither file mentions the other.
 
 ---
 
@@ -76,25 +76,29 @@ flowchart TD
 
 Skills are universal. The consuming repo holds project-specific values. Hardcoding `pnpm tsc --noEmit && pnpm lint` into a skill couples it to one stack and breaks every other consumer.
 
-The repo solves this with the [`AGENTS.md` contract](../templates/AGENTS.md) — a Markdown file the consuming project pastes at its own root. Skills reference its sections by name and degrade gracefully when an entry is missing.
+The repo solves this with the `AGENTS.md` contract — a Commands table in the consuming repo's
+`AGENTS.md` mapping abstract slot names to real commands (the
+[Swarm starter kit](https://github.com/jcosta33/swarm-starter-kit/blob/main/AGENTS.md) ships
+the template). Skills reference the slots by name and degrade gracefully when an entry is
+missing.
 
 ```mermaid
 flowchart LR
-    SK[skills/write-feature/SKILL.md] -->|"references AGENTS.md > Commands > Validation"| AC[(Consuming repo's AGENTS.md)]
+    SK[skills/write-feature/SKILL.md] -->|"references the cmdValidate slot"| AC[(Consuming repo's AGENTS.md Commands table)]
     AC -->|resolves to| CMD["pnpm tsc --noEmit && pnpm lint"]
     SK -. if missing or undefined .-> ASK[Skill asks user before declaring verification done]
 ```
 
-The [open `AGENTS.md` convention](https://agents.md) is adopted by Cursor, Codex, Claude Code, OpenCode, and others [\[19\]](./sources.md#19); the contract format used here extends it with an explicit `Commands` section.
+The [open `AGENTS.md` convention](https://agents.md) is adopted by Cursor, Codex, Claude Code, OpenCode, and others [\[19\]](./sources.md#19); the contract format used here extends it with an explicit Commands table.
 
 ### What the contract guarantees
 
-| Section | Required? | Read by |
-| --- | --- | --- |
-| `Commands > Validation` | Yes | Any skill whose discipline includes running typecheck + lint as part of self-review. |
-| `Commands > Test` | Yes | Any skill that runs the test suite (feature, fix, refactor, rewrite, migration, performance, testing, flaky-test stabilisation). |
-| `Commands > Format` | Yes | Documentation-authoring skills, plus any skill that closes a session by formatting touched files. |
-| `Stack`, `Architecture`, `Conventions` | Recommended | All skills, for orientation. |
+| Slot | Read by |
+| --- | --- |
+| `cmdValidate` (and `cmdTypecheck` / `cmdLint`) | Any skill whose discipline includes running typecheck + lint as part of self-review. |
+| `cmdTest` | Any skill that runs the test suite (feature, fix, refactor, rewrite, migration, performance, testing, flaky-test stabilisation). |
+| `cmdFormat` | Any skill that closes a session by formatting touched files. |
+| Project facts (stack, architecture rules, conventions) | All skills, for orientation. |
 
 ### What it deliberately doesn't cover
 

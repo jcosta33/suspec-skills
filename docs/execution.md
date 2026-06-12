@@ -46,18 +46,17 @@ The universal codification of the pattern. Rules 2 and 6 of [`empirical-proof`](
 
 Common evasions — and the response — are listed in [`skills/empirical-proof/references/evasions.md`](../skills/empirical-proof/references/evasions.md).
 
-### Test verification — `write-testing` rule 3
+### Test verification — `write-testing`
 
-The "flip the assertion" pattern. [`write-testing`](../skills/write-testing/SKILL.md) rule 3 makes it a per-test loop: after writing each test, flip its assertion (or comment out the production code path it exercises); run the test — it must fail; restore — it must pass; paste a representative sample of the failing-then-passing transition into the self-review.
+The "flip the assertion" pattern. [`write-testing`](../skills/write-testing/SKILL.md) rule 4 ("Flip every test to prove it means something") makes it a per-test loop: after writing each test, flip its assertion (or comment out the production code path it exercises); run the test — it must fail; restore — it must pass; paste a representative sample of the failing-then-passing transition into the self-review.
 
 Without the flip, *"the test passes"* is unfalsifiable from pasted output alone — the test could be tautological, or fail for a different reason, or simply never run. Flipping the assertion exposes whether the test is actually exercising the intended code path. Forced visible output applied to test authorship.
 
 ### Research verification — `write-research`
 
 From [`write-research`](https://github.com/jcosta33/swarm-starter-kit/blob/main/.agents/skills/write-research/SKILL.md) (starter kit): every `R-NNN` finding carries a non-empty
-evidence field and a confidence value, every claim that could not be verified is bracketed
-`[unconfirmed]`, and the visibility table recording all three is pasted into the task file
-before the note is deliverable.
+evidence field and a confidence value, and every claim that could not be verified is bracketed
+`[unconfirmed]` — the Before-you-finish checklist holds the note until all three read true.
 
 The forced output is the citation itself. *"It's well known that…"* with an empty evidence
 field is a missing-output signal; the rule pushes that signal into the document where the next
@@ -70,7 +69,7 @@ reviewer can see it.
 | Skill | Forced output | Failure mode it closes |
 | --- | --- | --- |
 | [`write-spec`](https://github.com/jcosta33/swarm-starter-kit/blob/main/.agents/skills/write-spec/SKILL.md) (starter kit) | Every requirement carries a `Verify with:` line; the open-question list is output before delivery. | Open-spec questions slipping into implementation. |
-| [`write-audit`](https://github.com/jcosta33/swarm-starter-kit/blob/main/.agents/skills/write-audit/SKILL.md) (starter kit) | The completeness table — evidence present, severity, firing condition per row — is pasted into the task file. | Findings that are observations dressed up as actions, with no anchor in the code. |
+| [`write-audit`](https://github.com/jcosta33/swarm-starter-kit/blob/main/.agents/skills/write-audit/SKILL.md) (starter kit) | Every observation cites `path:line` or pasted output, carries a severity, and every risk names its firing condition — the Before-you-finish checklist holds the audit until each box is checked. | Findings that are observations dressed up as actions, with no anchor in the code. |
 | [`write-bug-report`](https://github.com/jcosta33/swarm-starter-kit/blob/main/.agents/skills/write-bug-report/SKILL.md) (starter kit) | The failing reproduction output is pasted verbatim before the report is final. | Bug reports asserting "the bug fires" without proof. |
 | [`distillation-discipline`](https://github.com/Frontify/skills) rule 4 (upstream library) | A four-test result table is written into the deliverable. | Distillation collapsing into paraphrase without measurable compression. |
 

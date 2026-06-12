@@ -89,8 +89,8 @@ not soften a constraint under pressure to get to done.
 When several agents implement at once, each takes a task packet whose affected areas are disjoint
 from every other running task — two tasks that touch the same file run in sequence, not together.
 Each agent verifies its own scope independently and leaves its own summary; the green is only as
-trustworthy as the pasted evidence behind it. Coordination conventions live in this library's
-[README](../README.md).
+trustworthy as the pasted evidence behind it. The disjoint-areas rule is the coordination
+convention: a task names its affected areas, and overlapping tasks run in sequence.
 
 ## Specialized kinds
 

@@ -48,7 +48,7 @@ Each branch maps to one design rule. The rest of this document walks each rule i
 | [\[2\]](./sources.md#2) | Bare ALL-CAPS MUST/NEVER imperatives are flagged as a yellow signal in Anthropic's `skill-creator`; pairing each rule with a one-line rationale gives the model a rubric for unanticipated cases. |
 | [\[8\]](./sources.md#8) Pattern 6 ("Explain-the-Why") | The rationale is what lets a model extend the rule to a case the author didn't anticipate. |
 
-**Applied in this repo:** every body uses `### 1. <Rule>` … `### N. <Rule>` with one or two sentences of justification per rule. Examples worth opening:
+**Applied in this repo:** every body pairs each rule with one or two sentences of justification — numbered `### N. <Rule>` headings or a numbered list under `## Rules` for the work guides, hard-constraint bullets for the personas. Examples worth opening:
 
 - [`empirical-proof`](../skills/empirical-proof/SKILL.md) — rules 2–6 each pair the directive with the failure mode it prevents.
 - [`write-research`](https://github.com/jcosta33/swarm-starter-kit/blob/main/.agents/skills/write-research/SKILL.md) (starter kit) — the rules alternate the directive with its evidentiary rationale.
@@ -65,7 +65,7 @@ Each branch maps to one design rule. The rest of this document walks each rule i
 | [\[8\]](./sources.md#8) Pattern 9 ("Known Gotchas") | Documenting failure modes seen in real runs — *"the most valuable content of a mature skill"*. |
 | [\[6\]](./sources.md#6) Skill-creation anti-pattern catalogue | Negative-example coverage is consistently load-bearing across analysed skills. |
 
-**Applied in this repo:** every shipped skill ships an `## Anti-patterns` section. Many also include a `## What does not belong` section that names content that should live elsewhere — the negative-space sibling.
+**Applied in this repo:** every shipped skill carries its negative examples — an `## Anti-patterns` section, a `## Refuses` / red-flags table, or both. Many also include a `## What does not belong` section that names content that should live elsewhere — the negative-space sibling.
 
 > Without negative examples, an agent has no prior for the edge cases that don't fit the happy path; it invents a fix, often wrong.
 
@@ -115,7 +115,7 @@ The persona discipline is the canonical example: each `persona-<name>/SKILL.md` 
 
 ## What a well-shaped body looks like
 
-A consolidated reference. Every shipped skill follows this skeleton; new contributions should match.
+A consolidated reference. The canonical skeleton (`empirical-proof` is the cleanest instance); shipped skills vary the carrier — numbered `## Rules` lists, `## Refuses` tables, hard-constraint bullets — while keeping the same parts. New contributions should match the parts, not necessarily the headings.
 
 ```text
 ---

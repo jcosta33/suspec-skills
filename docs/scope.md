@@ -14,9 +14,7 @@ Most repos define themselves by what they contain. This one is also defined by w
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Code authoring**           | Workflow skills for implementing features, fixing bugs, refactoring, rewriting, migrating, optimising performance, improving test coverage, and writing user-facing documentation. |
 | **Conditioning (stances)**   | Cognitive postures loaded alongside a work guide — architect, auditor, documentarian, researcher, skeptic, surveyor — plus the standalone evidence discipline (`empirical-proof`). |
-| **Specialised work**         | Single-purpose skills like explaining code faithfully and stabilising flaky tests.                                                                                                 |
-| **Quality gates**            | Cross-cutting disciplines like empirical proof (paste-output), adversarial review, and distillation discipline (drop-vs-keep accountability when summarising).                     |
-| **Conditioning**             | Standalone `persona-<name>` skills — one per role-shaped task type (builder, skeptic, architect, researcher, auditor, …). Each is independently installable.                       |
+| **Specialised work**         | Single-purpose skills like stabilising a flaky test (`fix-flaky-test`) and running a Swarm task packet long-form (`implement-task`).                                               |
 
 Every skill answers the question _"how should an agent shape its work for tasks of this type?"_ — not _"what should an engineer know about this domain?"_.
 

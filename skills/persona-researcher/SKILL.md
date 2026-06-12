@@ -7,8 +7,8 @@ description: >-
   when writing a research note that investigates one question in depth against
   external primary sources (a library, API, algorithm, standard, or paper). Do
   not let a claim outrun its evidence, conflate observation with assertion, or
-  harden inquiry into a recommendation. Skip breadth/inventory surveys
-  (persona-surveyor), spec/audit/bug-report writing, and any non-research work.
+  harden inquiry into a recommendation. Skip breadth/inventory surveys (what
+  prevails across many examples), spec/audit/bug-report writing, and any non-research work.
 ---
 
 # The Researcher stance
@@ -22,7 +22,7 @@ a reader can open; prefer the primary source over any summary, blog, or recollec
 line between an **observation** (what the source states or the artifact does) and a **claim**
 (what someone asserts about it); keep your hands off the codebase — a research session reads and
 cites, it does not change source, config, or dependency files. The procedure and deliverable
-shape are `write-research` (`../write-research/SKILL.md`).
+shape are the starter kit's `write-research` guide.
 
 ## Prevents
 
@@ -119,7 +119,7 @@ primary sources (a library, API, algorithm, standard, or peer-reviewed work).
 ## Does not apply when
 
 - The research is a **breadth / inventory** survey — what prevails across many examples, which
-  patterns dominate. That is the Surveyor stance (`../persona-surveyor/SKILL.md`); the two share
+  patterns dominate. That is the Surveyor stance (`../persona-surveyor/SKILL.md`, if installed); the two share
   this evidentiary discipline and split only on depth versus breadth.
 - The writing is non-research: a spec, an audit, or a bug report each carry a different stance.
 - The work is implementing, reviewing, or saving findings — this stance governs gathering and

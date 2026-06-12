@@ -65,7 +65,7 @@
 **[17] Extend Claude with skills.** Claude Code docs. Skill loading model in Claude Code specifically. <https://docs.anthropic.com/en/docs/claude-code/skills>
 
 <a id="19"></a>
-**[19] agents.md.** The open `AGENTS.md` convention adopted by Cursor, Codex, Claude Code, OpenCode, and others; basis for this repo's [`templates/AGENTS.md`](../templates/AGENTS.md) contract. <https://agents.md>
+**[19] agents.md.** The open `AGENTS.md` convention adopted by Cursor, Codex, Claude Code, OpenCode, and others; basis for the [Swarm starter kit's](https://github.com/jcosta33/swarm-starter-kit/blob/main/AGENTS.md) `AGENTS.md` contract. <https://agents.md>
 
 <a id="20"></a>
 **[20] Effective context engineering for AI agents.** Anthropic Engineering, Sep 29 2025. Official Anthropic guidance on context as a finite resource. Defines the **canonical three-file note-taking pattern**: `task_plan.md` for the plan, `progress_log.md` for the running session log, `decisions.md` for durable design choices. The discipline behind this repo's task-template sections. <https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents>

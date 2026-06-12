@@ -50,8 +50,8 @@ The most authoritative single source is Anthropic's own engineering guidance [\[
 
 | Anthropic file    | Purpose                                                 | Maps to our task-template section(s)                   |
 | ----------------- | ------------------------------------------------------- | ------------------------------------------------------ |
-| `task_plan.md`    | The plan — what we're trying to do, in order            | `## Objective` + `## Plan` + `## Progress checklist`   |
-| `progress_log.md` | Running session log — what was tried, what was observed | `## Findings` (with `[pending]` / `[confirmed]` flags) |
+| `task_plan.md`    | The plan — what we're trying to do, in order            | `## Scope` + `## Progress checklist` (+ `## Plan`, where the workflow carries one) |
+| `progress_log.md` | Running session log — what was tried, what was observed | `## Evidence` (pasted output) + `## Findings`          |
 | `decisions.md`    | Durable design choices and their rationale              | `## Decisions`                                         |
 
 Our templates collapse the three files into one. The trade-off is deliberate:
@@ -70,7 +70,7 @@ Task files are **the dev's personal working memory, not a team artefact**. They 
 
 | | Task file | Deliverable |
 | --- | --- | --- |
-| **What it is** | The agent's scratchpad: plan, progress, decisions, hypothesis tracker, paste-output verifications, distillation-loss notes | The artefact the work produces: spec, audit, bug-report, ADR, code change + regression test |
+| **What it is** | The agent's scratchpad: plan, progress, decisions, hypothesis tracker, paste-output verifications | The artefact the work produces: spec, audit, bug-report, ADR, code change + regression test |
 | **Where it lives** | A gitignored local folder (`.tasks/<slug>.md` by convention) | The project's docs / source tree (`<your-specs-dir>/<slug>.md`, `<your-audits-dir>/<slug>.md`, the source files themselves) |
 | **Lifetime** | Until the deliverable lands; then discarded (no archival value) | As long as the project itself |
 | **Visible in PRs** | No | Yes |
@@ -94,19 +94,19 @@ If the task file were committed instead, the repo would accumulate thousands of 
 
 [\[25\]](./sources.md#25) Wang et al., _Plan-and-Solve Prompting_ (ACL 2023). Devise an explicit plan before executing, then carry out subtasks. Outperforms vanilla zero-shot CoT across arithmetic, commonsense, and symbolic reasoning benchmarks.
 
-The `## Plan` and `## Progress checklist` sections in every task template are the externalised version of the same discipline.
+The `## Progress checklist` section in every task template (plus `## Plan`, where the workflow carries one) is the externalised version of the same discipline.
 
 ### Multi-path search outperforms linear chains
 
 [\[26\]](./sources.md#26) Yao et al., _Tree of Thoughts_ (NeurIPS 2023). On Game of 24, GPT-4 jumps from 4 % (CoT) to **74 % (ToT)** when allowed to explore, evaluate, and backtrack across reasoning paths.
 
-Templates capture this pattern where it matters: `write-bug-report` and `fix-flaky-test` both ship a `## Hypothesis tracker` so competing explanations are tracked, evaluated, and pruned in writing rather than implicitly.
+Templates capture this pattern where it matters: `fix-flaky-test` ships a `## Hypothesis tracker` and `write-fix` a `## Hypothesis trail`, so competing explanations are tracked, evaluated, and pruned in writing rather than implicitly.
 
 ### Verbal reflection beats no reflection
 
 [\[27\]](./sources.md#27) Shinn et al., _Reflexion_ (NeurIPS 2023). Verbal self-reflection between trials, stored as text and re-read on the next attempt, drives **91 % pass@1 on HumanEval (vs 80 % GPT-4 baseline, +11 pp)**.
 
-The repo's `## Self-review` discipline is the per-task version of this pattern. For iterative skills (`write-fix`, `fix-flaky-test`), the per-trial version lives in the `## Iteration trail` and `## Hypothesis tracker` sections — what was tried, what failed, what to try next.
+The repo's `## Self-review` discipline is the per-task version of this pattern. For iterative skills (`write-fix`, `fix-flaky-test`), the per-trial version lives in the `## Hypothesis trail` and `## Hypothesis tracker` sections — what was tried, what failed, what each rejection teaches.
 
 ### Removing the file destroys performance
 
@@ -147,13 +147,15 @@ A skill warrants a `task-template.md` **iff at least three of the six criteria h
 
 ### Skills that ship a template
 
-Every multi-stage `write-*` skill, plus `fix-flaky-test` and `adversarial-review`, ships a `references/task-template.md`. All score ≥3 on the MIHPSG rubric. The shape of the score predicts the shape of the template:
+Nine code-authoring skills ship a `references/task-template.md`, each scoring ≥3 on the MIHPSG rubric. The shape of the score predicts the shape of the template:
 
 | Score profile                                                                                                                                                                          | Examples                                                                                | What ships                                                                                                                                                                  |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Full house (M·I·H·P·S·G ≈ 6/6)** — multi-session, iterative, hypothesis search, multi-stage plan, state separate from deliverable, paste-output gates                                | `write-bug-report`, `fix-flaky-test`, `write-fix`                                       | Full template with `## Hypothesis tracker` (or `## Iteration trail` for `write-fix`), paste-output `## Verification outputs`, `## Self-review`, `## Findings` / `## Decisions` |
-| **Plan + state + gates (M·P·S·G ≈ 5/6)** — multi-session, multi-stage, state separate, paste-output gates; no formal hypothesis tracking                                              | `write-feature`, `write-refactor`, `write-rewrite`, `write-migration`, `write-testing`, `write-performance` | Same plan / progress / verification scaffold without a hypothesis tracker; `write-performance` carries a single `## Hypothesis` field rather than a multi-row tracker         |
-| **Authorial — plan + decisions, light gates (≈ 3–4/6)** — multi-stage authoring with state separate from the final document, but the deliverable itself is the proof of correctness | `write-spec`, `write-research`, `write-audit`, `write-documentation`, `adversarial-review` | Plan + decisions + findings + self-review; lighter paste-output gates because the deliverable itself is the proof                                                            |
+| **Full house (M·I·H·P·S·G ≈ 6/6)** — multi-session, iterative, hypothesis search, multi-stage plan, state separate from deliverable, paste-output gates                                | `fix-flaky-test`, `write-fix`                                                           | Full scaffold with a hypothesis section (`## Hypothesis tracker` / `## Hypothesis trail`), paste-output `## Evidence` gates, `## Self-review`, `## Findings` / `## Decisions` |
+| **Plan + state + gates (M·P·S·G ≈ 5/6)** — multi-session, multi-stage, state separate, paste-output gates; no formal hypothesis tracking                                              | `write-feature`, `write-refactor`, `write-rewrite`, `write-migration`, `write-testing`, `write-performance` | The same scope / progress / evidence scaffold without a multi-row tracker; `write-performance` carries a single `## Hypothesis` field                                         |
+| **Authorial — plan + decisions, light gates (≈ 3–4/6)** — multi-stage authoring with state separate from the final document, but the deliverable itself is the proof of correctness | `write-documentation`                                                                    | Plan + decisions + findings + self-review; lighter paste-output gates (the verified examples are the proof)                                                                  |
+
+The [Swarm starter kit's](https://github.com/jcosta33/swarm-starter-kit) authoring guides (`write-spec`, `write-audit`, `write-research`, `write-bug-report`, …) sit in the same authorial band, but in the Swarm workflow their working state lives in the task packet itself, so they ship no separate template — `adversarial-review` is the kit's one exception (its hostile re-review frame ships as a `references/task-template.md`).
 
 ### Skills that deliberately ship none
 
@@ -162,9 +164,8 @@ The rubric exempts two structural categories: persona skills and cross-cutting q
 | Category                                     | Why                                                                                                                                                                                                                            |
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | All `persona-*` skills                       | Single-load mindset conditioning, not a workflow. The persona scopes _how_ the agent thinks during whichever workflow it accompanies; the working state belongs to the workflow's task file, not the persona's.               |
-| `empirical-proof`, `distillation-discipline` | Cross-cutting quality-gate skills whose discipline lives entirely in `SKILL.md` and surfaces inside whichever workflow's task file is in play (`## Self-review`, `## Distillation Loss Statement`). No scaffold of their own.   |
-
-> The same principle covers a third (currently empty) case: any future single-shot workflow skill whose deliverable doubles as the working state should ship no template — the deliverable file is the working state, and a parallel scaffold would just shadow it. If the deliverable and the working state are the same document, ship none.
+| `empirical-proof`                            | A cross-cutting quality gate whose discipline lives entirely in `SKILL.md` and surfaces inside whichever workflow's task file is in play (`## Self-review`). No scaffold of its own.                                          |
+| `implement-task`                             | The Swarm task packet **is** the working state — the guide fills the packet's own sections rather than shadowing it with a second file. If the deliverable and the working state are the same document, ship none.            |
 
 ---
 
@@ -187,10 +188,10 @@ The decision rubric above is the applied form of these constraints.
 
 | Property                                                      | How it's enforced                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Templates target <200 lines**                               | Most ship under 200 lines; the U-curve [\[5\]](./sources.md#5)[\[30\]](./sources.md#30) is the binding constraint. The state-heaviest template, [`fix-flaky-test`](../skills/fix-flaky-test/references/task-template.md), runs longer (Test under stabilisation · Flake category · Reproduction protocol · Reproduction evidence · Hypothesis tracker · Root cause · Plan · Fix evidence) — every section is load-bearing for that workflow. The 500-line hard cap [\[2\]](./sources.md#2) still applies. |
+| **Templates target <200 lines**                               | Most ship under 200 lines; the U-curve [\[5\]](./sources.md#5)[\[30\]](./sources.md#30) is the binding constraint. The state-heaviest template, [`fix-flaky-test`](../skills/fix-flaky-test/references/task-template.md), runs longer (Test under stabilization · Flake category · Reproduction protocol · Reproduction evidence · Hypothesis tracker · Root cause · Progress checklist · Fix evidence) — every section is load-bearing for that workflow. The 500-line hard cap [\[2\]](./sources.md#2) still applies. |
 | **No cross-skill references**                                 | Templates name the _concept_ (e.g., "the project's benchmark command"), not a sibling skill — see [Self-containment](./self-containment.md)                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **Section discipline maps to Anthropic's three-file pattern** | Plan + Progress = task_plan; Findings = progress_log; Decisions = decisions [\[20\]](./sources.md#20)                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| **Iterative skills carry an iteration trail**                 | [`write-fix`](../skills/write-fix/references/task-template.md) ships `## Iteration trail`; [`fix-flaky-test`](../skills/fix-flaky-test/references/task-template.md) augments `## Hypothesis tracker` with a `Next adjustment` column — both per Reflexion [\[27\]](./sources.md#27)'s verbal-feedback loop                                                                                                                                                                                                                                                     |
+| **Iterative skills carry a hypothesis trail**                 | [`write-fix`](../skills/write-fix/references/task-template.md) ships `## Hypothesis trail`; [`fix-flaky-test`](../skills/fix-flaky-test/references/task-template.md)'s `## Hypothesis tracker` records what each rejection teaches — both per Reflexion [\[27\]](./sources.md#27)'s verbal-feedback loop                                                                                                                                                                                                                                                       |
 | **No template ships without ≥3 of MIHPSG**                    | A handful of skills deliberately ship none on this basis                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | **No `## Domain skills` placeholder section**                 | Removed from all task templates — the section was an empty placeholder after the self-containment cleanup, costing tokens against the compliance ceiling [\[32\]](./sources.md#32) without doing measurable work                                                                                                                                                                                                                                                                                                                                               |
 

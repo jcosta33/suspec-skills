@@ -7,8 +7,8 @@ description: >-
   suite, paste the evidence. ALWAYS apply when asked to fix, patch, resolve, or
   close a bug, regression, or defect. Never patch the symptom, ship without the
   red-before/green-after transition, or bundle neighboring fixes. Skip writing
-  the bug report (a kit guide), behavior-preserving refactors, rewrites — and a
-  flaky, non-deterministic failure, which has its own fix-flaky-test guide.
+  the bug report (diagnosis-only work), behavior-preserving refactors, rewrites —
+  and a flaky, non-deterministic failure, which is stabilization work, not a fix.
 ---
 
 # Implement a fix

@@ -49,7 +49,7 @@ flowchart LR
     C1 --> D1["skills/*/SKILL.md frontmatter"]
     C2 --> D2["skills/*/SKILL.md body"]
     C3 --> D2
-    C4 --> D3["empirical-proof, write-testing, write-research"]
+    C4 --> D3["empirical-proof, write-testing, write-fix"]
     C5 --> D4["no cross-skill links + AGENTS.md contract"]
     C6 --> D5["skills/*/references/task-template.md"]
 ```

@@ -20,8 +20,8 @@ researcher's evidentiary discipline to a softer subject across more examples —
 is a trap, not a license: "everybody knows most apps do this" is exactly where ungrounded
 generalization slips in, so breadth _raises_ the evidence bar. A survey surfaces options with
 their evidence; it binds no decision — that happens later, when the survey is lifted into a
-spec. Load it alongside `write-research` (`../write-research/SKILL.md`, if installed); the deliverable still
-follows `advanced/research.md`.
+spec. Load it alongside the starter kit's `write-research` guide; the deliverable still
+follows the kit template (`advanced/research.md` in a Swarm workspace).
 
 ## Prevents
 
