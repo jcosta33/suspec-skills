@@ -46,7 +46,7 @@ Skip this skill for <out-of-scope task type 1> or <out-of-scope task type 2>.
 
 Description length isn't only about token cost — it's about *compliance*. The ETH Zurich `AGENTS.md` study [\[32\]](./sources.md#32) measured what happens when context files balloon: LLM-generated `AGENTS.md` files cost **+20 %** in tokens while *reducing* task-success rate by **3 %**. Tool-specific imperatives, by contrast, were the highest-value content — agents called explicit tools **2.5 times when mentioned vs 0.05 times when not** (~50× lift).
 
-The same shape applies to descriptions. A description that names three concrete triggers is more reliably acted on than one that lists ten. The 350–600-character target is the empirical sweet spot: long enough to carry the four required clauses, short enough that every clause earns its place.
+The same shape applies to descriptions. A description that names three concrete triggers is more reliably acted on than one that lists ten — joint instruction-following falls off multiplicatively as instructions multiply ([\[36\]](./sources.md#36) Harada et al., *Curse of Instructions*, ICLR 2025: at ten simultaneous instructions a frontier model satisfies all of them only ~15 % of the time). The 350–600-character target is the empirical sweet spot: long enough to carry the four required clauses, short enough that every clause earns its place.
 
 | Length | Behaviour |
 | --- | --- |

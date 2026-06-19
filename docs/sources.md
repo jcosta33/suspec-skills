@@ -45,6 +45,24 @@
 <a id="33"></a>
 **[33] On the Impact of AGENTS.md Files on the Efficiency of AI Coding Agents.** Lulla, Mohsenimofidi, Galster, Zhang, Baltes, Treude, Jan 2026. Paired same-task / same-repository study over 124 pull requests across 10 repositories. Presence of `AGENTS.md` is associated with **lower median wall-clock runtime (≈28.6 %)** and **reduced output token consumption (≈16.6 %)** while task-completion behaviour stays comparable. Companion to [\[32\]](#32) — efficiency gains without performance regression. <https://arxiv.org/abs/2601.20404>
 
+<a id="36"></a>
+**[36] Curse of Instructions: Large Language Models Cannot Follow Multiple Instructions at Once.** Harada et al., ICLR 2025. ManyIFEval (up to ten verifiable instructions) across GPT-4o, Claude-3.5-Sonnet, Gemini-1.5, Gemma2, and Llama3.1: the probability of satisfying *all* instructions is closely predicted by the per-instruction success rate raised to the instruction count — joint compliance collapses multiplicatively. At ten simultaneous instructions GPT-4o satisfies all of them only **~15 %** of the time (31 % with instruction-level chain-of-thought); Claude-3.5-Sonnet **~44 %** (58 %). The peer-reviewed grounding for lean bodies and few, well-separated rules. <https://openreview.net/forum?id=R6q67CDBCH>
+
+<a id="37"></a>
+**[37] Large Language Models Cannot Self-Correct Reasoning Yet.** Huang, Chen, Mishra, et al. (Google DeepMind), ICLR 2024. Without external feedback, intrinsic self-correction degrades reasoning accuracy — GPT-4 on GSM8K falls **95.5 % → 91.5 % → 89.0 %** across rounds, driven by *answer-flipping* (a model changes correct answers to incorrect more often than the reverse, because it cannot judge its own reasoning); prior reported gains depended on oracle labels. The basis for grounding [`persona-challenger`](../skills/persona-challenger/SKILL.md) externally rather than in unaided second-guessing. <https://arxiv.org/abs/2310.01798>
+
+<a id="38"></a>
+**[38] CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing.** Gou, Shao, Gong, et al., ICLR 2024. Self-correction works when the critique is grounded in external tools (interpreter, search); ablations show the gains vanish or go negative once the external feedback is removed. Pairs with [\[37\]](#37) and [\[27\]](#27) to draw the help/hurt boundary for adversarial critique. <https://arxiv.org/abs/2305.11738>
+
+<a id="39"></a>
+**[39] Self-Refine: Iterative Refinement with Self-Feedback.** Madaan, Tandon, Gupta, et al., NeurIPS 2023. A single model iteratively critiques and refines its own output; ~20 % average gain across seven tasks — but the average is dominated by preference metrics and is ~0 on the one objectively verifiable task (GSM8K), consistent with [\[37\]](#37). <https://arxiv.org/abs/2303.17651>
+
+<a id="40"></a>
+**[40] Towards Understanding Sycophancy in Language Models.** Sharma, Tong, Korbak, et al. (Anthropic), ICLR 2024. Five SOTA assistants from three organisations consistently match a user's stated belief over the truth, a behaviour partly induced by human-preference training. A failure mode the challenger stance must defend against. <https://arxiv.org/abs/2310.13548>
+
+<a id="41"></a>
+**[41] Self-Preference Bias in LLM-as-a-Judge.** Wataoka, Takahashi, Ri, NeurIPS 2024. An LLM scoring outputs favours its own generations; GPT-4 shows the highest self-preference of the eight models measured. With [\[40\]](#40), the reason a challenge carries weight only from a voice separate from the proposer. <https://arxiv.org/abs/2410.21819>
+
 ---
 
 ## Specifications and official guidance

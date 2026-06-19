@@ -26,6 +26,11 @@ this guide is the execution half. Numbers, not vibes: nothing is faster until a 
 final figure, under the identical protocol, say so. No number and no protocol is tinkering, not
 optimizing — get the target before you start.
 
+Open [`references/task-template.md`](./references/task-template.md) as your working file before you
+start: it scaffolds the baseline block, the target and ceiling, the hypothesis, the measurement
+protocol, the per-change ledger, and the self-review, filled as you go. The task packet itself uses
+the kit's task template.
+
 ## Rules
 
 1. **Measure the baseline before you change any code.** Run the benchmark in your worktree and
@@ -100,6 +105,6 @@ rules above apply unchanged; the Skip list still excludes net-new feature work.
 
 ## Bundled resources
 
-- `references/task-template.md` — a working-notes scaffold for the run (baseline block, target and
+- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (baseline block, target and
   ceiling, hypothesis, measurement protocol, per-change ledger, pasted evidence, self-review). The
   task packet itself uses the kit's task template.

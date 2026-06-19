@@ -23,6 +23,10 @@ This guide is for docs humans read. Agent-facing material (guides, templates, wo
 different audience with different conventions, and code-changing work belongs to the other guides
 in this library.
 
+Open [`references/task-template.md`](./references/task-template.md) as your working file before you
+start: it scaffolds the frame, audience, and reader's question, the examples-to-verify table, pasted
+evidence, and the self-review, filled as you go. The task packet itself uses the kit's task template.
+
 ## Rules
 
 1. **Fix the frame, the audience, and the question before writing a word.** Exactly one frame:
@@ -83,6 +87,6 @@ Before declaring the task done:
 
 ## Bundled resources
 
-- `references/task-template.md` — a working-notes scaffold for the run (frame, audience, reader's
+- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (frame, audience, reader's
   question; examples-to-verify table; pasted evidence; self-review). The task packet itself uses
   the kit's task template.

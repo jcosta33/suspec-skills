@@ -26,6 +26,11 @@ this guide is the execution half. If your task moves _no_ observable behavior, i
 only the implementation API moves while behavior holds, it is a migration; if it adds capability
 that did not exist, it is a feature. Relabel rather than proceed under the wrong discipline.
 
+Open [`references/task-template.md`](./references/task-template.md) as your working file before you
+start: it scaffolds the delta table consumed from the sources, the preservation ACs, the caller
+inventory, pasted evidence, and the self-review, filled as you go. The task packet itself uses the
+kit's task template.
+
 ## Rules
 
 1. **The behavior delta is recorded before any code is written.** The task's sources (the spec and
@@ -88,6 +93,6 @@ Before declaring the task done:
 
 ## Bundled resources
 
-- `references/task-template.md` — a working-notes scaffold for the run (the delta table as consumed
+- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (the delta table as consumed
   from the sources, preservation ACs, caller inventory, pasted evidence, self-review). The task
   packet itself uses the kit's task template.

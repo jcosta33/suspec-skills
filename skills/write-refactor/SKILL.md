@@ -25,6 +25,11 @@ this guide is the execution half. The defining test: if any observable behavior 
 no longer a refactor — it is a rewrite (behavior changes on purpose) or a migration (API A → B).
 Stop and say so; do not proceed under the wrong label.
 
+Open [`references/task-template.md`](./references/task-template.md) as your working file before you
+start: it scaffolds the equivalence check, batch checkpoints, the shim table, the deletion-safety
+searches, and the self-review, filled as you go. The task packet itself uses the kit's task template;
+the baseline, batch plan, and rollback live in the change plan.
+
 ## Rules
 
 1. **Prove preservation with an equivalence check that would fail if behavior changed** — not with
@@ -90,6 +95,6 @@ Before declaring the task done:
 
 ## Bundled resources
 
-- `references/task-template.md` — a working-notes scaffold for the run (equivalence check, batch
+- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (equivalence check, batch
   checkpoints, shim table, deletion-safety searches, self-review). The task packet itself uses the
   kit's task template; the baseline, batch plan, and rollback live in the change plan.

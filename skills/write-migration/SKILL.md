@@ -28,6 +28,11 @@ this guide is the execution half. One discipline covers both kinds: an internal 
 a framework/language/library upgrade differ only in trigger, not method. If the new API is _meant_
 to behave differently, that is a rewrite — relabel before proceeding.
 
+Open [`references/task-template.md`](./references/task-template.md) as your working file before you
+start: it scaffolds the callsite tracker, the shim table, per-wave evidence slots, the beyond-the-grep
+audit, and the self-review, filled as you go. The task packet itself uses the kit's task template; the
+wave plan itself lives in the change plan.
+
 ## Rules
 
 1. **Behavior is preserved — prove it, don't assume it.** Use an equivalence check that would fail
@@ -91,6 +96,6 @@ Before declaring the task done:
 
 ## Bundled resources
 
-- `references/task-template.md` — a working-notes scaffold for the run (callsite tracker, shim
+- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (callsite tracker, shim
   table, per-wave evidence slots, beyond-the-grep audit, self-review). The task packet itself uses
   the kit's task template; the wave plan itself lives in the change plan.

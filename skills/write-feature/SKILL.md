@@ -24,6 +24,10 @@ A feature adds capability that did not exist. Repairing a defect, restructuring 
 change, deliberately changing existing behavior, moving between APIs, and tuning a bottleneck are
 different kinds with their own guides in this library.
 
+Open [`references/task-template.md`](./references/task-template.md) as your working file before you
+start: it scaffolds the AC-to-change map, batch checkpoints, pasted evidence, and the self-review,
+filled as you go. The task packet itself uses the kit's task template.
+
 ## Rules
 
 1. **Read the packet and its sources first.** The task packet fixes your scope — the AC list, the
@@ -84,6 +88,6 @@ Before declaring the task done:
 
 ## Bundled resources
 
-- `references/task-template.md` — a working-notes scaffold for the run (plan, progress, decisions,
+- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (plan, progress, decisions,
   pasted evidence, self-review). The task packet itself uses the kit's task template; this scaffold
   is where you keep state while working.

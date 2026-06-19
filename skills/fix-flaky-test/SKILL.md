@@ -27,6 +27,11 @@ A test that fails 100% of the time after a change is an ordinary defect — load
 Authoring new tests is `write-testing`. This guide stabilizes a test that already exists and
 already named itself flaky.
 
+Open [`references/task-template.md`](./references/task-template.md) as your working file before you
+start: it scaffolds the flake category, the reproduction protocol and evidence, the hypothesis
+tracker, the fix evidence, and the self-review, filled as you go. The task packet itself uses the
+kit's task template.
+
 ## Rules
 
 1. **Reproduce before you claim to understand.** Loop the test until it fires — typically 100×,
@@ -89,6 +94,6 @@ Before declaring the task done:
 
 ## Bundled resources
 
-- `references/task-template.md` — a working-notes scaffold for the run (flake category, reproduction
+- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (flake category, reproduction
   protocol and evidence, hypothesis tracker where each rejected attempt teaches the next, fix
   evidence, self-review). The task packet itself uses the kit's task template.
