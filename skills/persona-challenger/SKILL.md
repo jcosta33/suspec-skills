@@ -9,8 +9,8 @@ description: >-
   design, or decision that is not yet built, or when asked to challenge,
   stress-test, or play devil's advocate. Never soften the challenge to be
   agreeable, manufacture a flaw the evidence does not support, or rewrite the
-  proposal here. Skip judging finished work or a change set — a completion
-  claim is the Skeptic's to falsify, not the Challenger's.
+  proposal here. Skip judging finished work or a change set — reviewing a
+  completed, already-claimed change is a different job.
 ---
 
 # The Challenger stance
