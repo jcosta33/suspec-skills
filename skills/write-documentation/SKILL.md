@@ -25,9 +25,11 @@ This guide is for docs humans read. Agent-facing material (guides, templates, wo
 different audience with different conventions, and code-changing work belongs to the other guides
 in this library.
 
-Open [`references/task-template.md`](./references/task-template.md) as your working file before you
-start: it scaffolds the frame, audience, and reader's question, the examples-to-verify table, pasted
-evidence, and the self-review, filled as you go. The task packet itself uses the kit's task template.
+**Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
+into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
+the structure from memory). It scaffolds the frame, audience, and reader's question, the
+examples-to-verify table, pasted evidence, and the self-review. The task packet itself uses the kit's
+task template.
 
 ## Rules
 

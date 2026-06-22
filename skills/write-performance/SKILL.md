@@ -26,10 +26,11 @@ this guide is the execution half. Numbers, not vibes: nothing is faster until a 
 final figure, under the identical protocol, say so. No number and no protocol is tinkering, not
 optimizing — get the target before you start.
 
-Open [`references/task-template.md`](./references/task-template.md) as your working file before you
-start: it scaffolds the baseline block, the target and ceiling, the hypothesis, the measurement
-protocol, the per-change ledger, and the self-review, filled as you go. The task packet itself uses
-the kit's task template.
+**Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
+into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
+the structure from memory). It scaffolds the baseline block, the target and ceiling, the hypothesis,
+the measurement protocol, the per-change ledger, and the self-review. The task packet itself uses the
+kit's task template.
 
 ## Rules
 

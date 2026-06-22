@@ -24,10 +24,11 @@ Writing the bug _report_ is a different job with its own guide in the starter ki
 (`write-bug-report`) — this guide consumes a report and produces the fix. A test that fails
 _sometimes_ is a different oracle entirely: load `fix-flaky-test`, not this.
 
-Open [`references/task-template.md`](./references/task-template.md) as your working file before you
-start: it scaffolds the reproduction block, the hypothesis trail where each rejected attempt teaches
-the next, pasted evidence, and the self-review, filled as you go. The task packet itself uses the
-kit's task template.
+**Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
+into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
+the structure from memory). It scaffolds the reproduction block, the hypothesis trail where each
+rejected attempt teaches the next, pasted evidence, and the self-review. The task packet itself uses
+the kit's task template.
 
 ## Rules
 

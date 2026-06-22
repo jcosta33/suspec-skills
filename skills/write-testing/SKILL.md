@@ -25,9 +25,10 @@ This guide is for tests as the deliverable in their own right. Tests written _as
 or fix ride inside those guides; a test that already fails non-deterministically belongs to
 `fix-flaky-test`.
 
-Open [`references/task-template.md`](./references/task-template.md) as your working file before you
-start: it scaffolds the coverage gap, the test-case table keyed by behavior, the placement table, the
-flip evidence, and the self-review, filled as you go. The task packet itself uses the kit's task
+**Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
+into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
+the structure from memory). It scaffolds the coverage gap, the test-case table keyed by behavior, the
+placement table, the flip evidence, and the self-review. The task packet itself uses the kit's task
 template.
 
 ## Rules

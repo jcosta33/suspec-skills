@@ -24,9 +24,10 @@ A feature adds capability that did not exist. Repairing a defect, restructuring 
 change, deliberately changing existing behavior, moving between APIs, and tuning a bottleneck are
 different kinds with their own guides in this library.
 
-Open [`references/task-template.md`](./references/task-template.md) as your working file before you
-start: it scaffolds the AC-to-change map, batch checkpoints, pasted evidence, and the self-review,
-filled as you go. The task packet itself uses the kit's task template.
+**Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
+into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
+the structure from memory). It scaffolds the AC-to-change map, batch checkpoints, pasted evidence,
+and the self-review. The task packet itself uses the kit's task template.
 
 ## Rules
 
