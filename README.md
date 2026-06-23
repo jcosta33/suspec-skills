@@ -1,10 +1,10 @@
 # swarm-skills
 
-> The optional skills catalog for [Swarm](https://github.com/jcosta33/swarm) — conditioning stances and code-authoring depth in the open Agent Skills format, installable into any agent CLI.
+> The optional skills catalog for [Corpus](https://github.com/jcosta33/swarm) — conditioning stances and code-authoring depth in the open Agent Skills format, installable into any agent CLI.
 
 Each skill is a self-contained folder under [`skills/`](./skills/): one `SKILL.md` with a trigger description and the working rules, plus bundled `references/` where a skill ships a fillable session frame. No scripts, no runtime — markdown an agent loads when the work matches.
 
-The [Swarm starter kit](https://github.com/jcosta33/swarm-starter-kit) ships the guides the workflow itself requires — the core loop (`write-spec`, `implement-task`, `review-output`) and the workspace authoring guides (`write-audit`, `write-research`, `write-rfc`, `write-prd`, `write-bug-report`, `write-change-plan`, `write-inventory`, `spec-check`, `split-work`, `save-findings`, `adversarial-review`). Everything here is the optional layer on top: install only what your work calls for.
+The [Corpus starter kit](https://github.com/jcosta33/swarm-starter-kit) ships the guides the workflow itself requires — the core loop (`write-spec`, `implement-task`, `review-output`) and the workspace authoring guides (`write-audit`, `write-research`, `write-rfc`, `write-prd`, `write-bug-report`, `write-change-plan`, `write-inventory`, `spec-check`, `split-work`, `save-findings`, `adversarial-review`). Everything here is the optional layer on top: install only what your work calls for.
 
 ## Install
 
@@ -30,11 +30,11 @@ watch the [releases](https://github.com/jcosta33/swarm-skills/releases) and re-p
 
 ## The AGENTS.md contract
 
-Skills name abstract command slots — `cmdTest`, `cmdLint`, `cmdTypecheck`, `cmdValidate` — never concrete commands. The consuming repo's `AGENTS.md` Commands table supplies the implementations. That split is what makes a skill portable: the guide carries the discipline, your repo carries the toolchain. An empty slot means **ask** — a skill never invents a command. The [Swarm starter kit](https://github.com/jcosta33/swarm-starter-kit) sets this contract up for you.
+Skills name abstract command slots — `cmdTest`, `cmdLint`, `cmdTypecheck`, `cmdValidate` — never concrete commands. The consuming repo's `AGENTS.md` Commands table supplies the implementations. That split is what makes a skill portable: the guide carries the discipline, your repo carries the toolchain. An empty slot means **ask** — a skill never invents a command. The [Corpus starter kit](https://github.com/jcosta33/swarm-starter-kit) sets this contract up for you.
 
 ## Where to start
 
-You don't need any of these to run Swarm — the [starter kit](https://github.com/jcosta33/swarm-starter-kit)
+You don't need any of these to run Corpus — the [starter kit](https://github.com/jcosta33/swarm-starter-kit)
 already ships the core loop. Add skills only as a specific need shows up, in roughly this order:
 
 1. **Nothing.** Run the loop with the kit's core guides. Most changes never need more.
@@ -70,7 +70,7 @@ Cross-cutting cognitive postures loaded *alongside* a work guide — they tilt w
 
 | Skill | Use it when |
 |---|---|
-| `implement-task` | implementing a Swarm task packet, long form — supersedes the kit's core guide when you want the full session frame |
+| `implement-task` | implementing a Corpus task packet, long form — supersedes the kit's core guide when you want the full session frame |
 | `write-feature` | net-new behavior behind a defined surface |
 | `write-fix` | a reproduced defect with a root cause |
 | `write-refactor` | restructuring with behavior pinned by tests |
@@ -89,6 +89,6 @@ Cross-cutting cognitive postures loaded *alongside* a work guide — they tilt w
 
 Read a skill before installing it — a skill is instructions your agent will follow. Everything here is plain markdown: no scripts, no network calls, no executables. Pin to a commit if you need a stable install.
 
-## Relationship to the Swarm framework
+## Relationship to the Corpus framework
 
-These skills assume nothing about Swarm — each stands alone in any repo with an `AGENTS.md`. They pair naturally with the Swarm working discipline (specs with verifiable requirements, task packets with evidence-backed claims, review packets as the durable record); the framework and its docs live at [jcosta33/swarm](https://github.com/jcosta33/swarm), the copy-whole workspace at [jcosta33/swarm-starter-kit](https://github.com/jcosta33/swarm-starter-kit). This catalog is curated: skill content is edited here, and changes are planned and reviewed in the Swarm project's workspace.
+These skills assume nothing about Corpus — each stands alone in any repo with an `AGENTS.md`. They pair naturally with the Corpus working discipline (specs with verifiable requirements, task packets with evidence-backed claims, review packets as the durable record); the framework and its docs live at [jcosta33/swarm](https://github.com/jcosta33/swarm), the copy-whole workspace at [jcosta33/swarm-starter-kit](https://github.com/jcosta33/swarm-starter-kit). This catalog is curated: skill content is edited here, and changes are planned and reviewed in the Corpus project's workspace.

@@ -67,7 +67,7 @@ The before/after illustrates each clause carrying its weight.
 description: Use when implementing a feature from a spec. Encodes the discipline — read the spec in full, survey existing patterns, halt on ambiguity, no scope creep, validate after every batch, paste verification output.
 ```
 
-**After** (~100 % activation; illustrative — the shipped `write-feature` description applies the same clauses to the Swarm task-packet workflow):
+**After** (~100 % activation; illustrative — the shipped `write-feature` description applies the same clauses to the Corpus task-packet workflow):
 
 ```yaml
 description: Implement a feature from a spec. ALWAYS apply this skill when the user asks to implement, build, or add a feature, when a spec doc is referenced, or when an acceptance criterion is named — even if the user does not name the spec explicitly. Do not start writing feature code directly without first surveying patterns, mapping criteria to steps, and halting on ambiguity. Skip this skill for bug-fix work against an existing implementation, behaviour-preserving refactors, or behaviour-changing rewrites of existing modules.

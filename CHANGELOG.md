@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the Swarm skills catalog are recorded here. The format follows
+All notable changes to the Corpus skills catalog are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the catalog is versioned with
 [semantic versioning](https://semver.org/spec/v2.0.0.html): a **major** bump removes or
 renames a skill or breaks a skill's contract, **minor** adds a skill or non-breaking guidance,
@@ -22,7 +22,7 @@ and `implement-task`.
 
 This baseline reflects two recent decisions:
 
-- **[Swarm ADR-0093](https://github.com/jcosta33/swarm/blob/main/docs/adrs/0093-collapse-1to1-personas.md)** — the four 1:1 authoring personas (architect / auditor / researcher / documentarian) were
+- **[Corpus ADR-0093](https://github.com/jcosta33/swarm/blob/main/docs/adrs/0093-collapse-1to1-personas.md)** — the four 1:1 authoring personas (architect / auditor / researcher / documentarian) were
   collapsed into their work guides (single source); the catalog keeps only the cross-cutting trio
   plus `empirical-proof`, each rebuilt grounding-first (a stance's leverage is the external
   evidence it forces, not a role label).

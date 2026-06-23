@@ -21,7 +21,7 @@ is a trap, not a license: "everybody knows most apps do this" is exactly where u
 generalization slips in, so breadth _raises_ the evidence bar. A survey surfaces options with
 their evidence; it binds no decision — that happens later, when the survey is lifted into a
 spec. Load it alongside the starter kit's `write-research` guide; the deliverable still
-follows the kit template (`advanced/research.md` in a Swarm workspace).
+follows the kit template (`advanced/research.md` in a Corpus workspace).
 
 ## Prevents
 

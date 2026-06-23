@@ -84,7 +84,7 @@ Skills are universal. The consuming repo holds project-specific values. Hardcodi
 
 The repo solves this with the `AGENTS.md` contract — a Commands table in the consuming repo's
 `AGENTS.md` mapping abstract slot names to real commands (the
-[Swarm starter kit](https://github.com/jcosta33/swarm-starter-kit/blob/main/AGENTS.md) ships
+[Corpus starter kit](https://github.com/jcosta33/swarm-starter-kit/blob/main/AGENTS.md) ships
 the template). Skills reference the slots by name and degrade gracefully when an entry is
 missing.
 
