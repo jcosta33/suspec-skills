@@ -4,7 +4,7 @@ This repo is the optional-skills catalog for the Corpus framework: self-containe
 agent guides in the Agent Skills format, one folder per skill under `skills/`,
 with the evidence behind their design under `docs/`. It is a derived-content
 repo — it carries no Corpus workspace install; the work of changing it is
-planned and reviewed in the family workspace (the sibling `corpus-hq` repo).
+planned and reviewed in the family workspace (the sibling `corpus-works` repo).
 
 ## Editing rules
 
