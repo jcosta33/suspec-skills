@@ -10,7 +10,7 @@ The full catalogue of evasions the empirical-proof gate needs to defeat. The bod
 | "The CI will catch it."                                                      | The discipline is the agent's gate, not the CI's.                                 |
 | "It would slow down the session."                                            | The session's value is correctness, not speed.                                    |
 | "I'm reviewing in good faith — pasting is performative."                     | Treat trust as a vulnerability to remove, not a virtue.                           |
-| "The test command failed for environmental reasons unrelated to my changes." | Surface the env issue in `## Blockers`. Do not silently mark the task complete.   |
+| "The test command failed for environmental reasons unrelated to my changes." | Surface the env issue as a blocker. Do not silently mark the task complete.       |
 
 ## How to use this table
 

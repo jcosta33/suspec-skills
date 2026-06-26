@@ -1,19 +1,17 @@
-# Run notes: {{title}}
+# Flaky-test working notes: {{title}}
 
-- Task packet: `tasks/{{TASK-slug}}.md`
 - Test file: `{{path}}:{{test name}}`
 - Failing-run evidence that named it flaky (logs / CI links): `{{paths or URLs}}`
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 
-> **Flaky-test task** — reproduce before fixing. Name the category. Fix the cause, never the
+> **Flaky-test work** — reproduce before fixing. Name the category. Fix the cause, never the
 > assertion. Reject sleep-as-fix and quarantine-as-fix. Prove the fix with a loop run, not one
 > green tick.
 >
-> **Commands:** the test command resolves from the code repo's `AGENTS.md` Commands table. The
-> loop invocation (a repeat flag, a parallel matrix, a seed-pinned mode) is project-specific — ask
-> the user how the project loops a single test; a guessed loop is a false signal about
-> reproduction.
+> **Commands:** the loop invocation (a repeat flag, a parallel matrix, a seed-pinned mode) is
+> project-specific — find how this project loops a single test before reproducing; a guessed loop
+> is a false signal about reproduction.
 
 ## Test under stabilization
 
@@ -22,7 +20,7 @@
 
 ## Flake category
 
-Pick exactly one. A mixed-category flake splits into separate tasks — each category root-causes
+Pick exactly one. A mixed-category flake splits into separate fixes — each category root-causes
 differently.
 
 - [ ] Timing / ordering — a timeout, an unbounded poll, an operation-order assumption, an
@@ -77,8 +75,15 @@ The cause is never the assertion; symptom and cause must not be the same stateme
       quarantine
 - [ ] One-line note added at the cause site naming the failure mode
 - [ ] Fix loop run executed — same shape that reproduced the flake, every run passing, pasted
-- [ ] Production-side cause recorded as a finding with this test as its regression guard
+- [ ] A production-side cause is recorded with this test as its regression guard
 - [ ] Self-review answered
+
+## Fix (the change you made)
+
+Where the cause lives and what you changed to remove the nondeterminism — injected clock vs seeded
+RNG, isolated fixture, waited on a real contract, etc.
+
+-
 
 ## Fix evidence (paste verbatim)
 
@@ -90,16 +95,10 @@ The loop output after the fix — same conditions that reproduced it, every run 
 
 - Loop runs after fix: {{n}} · Failures: 0 · From {{%}} to 0
 
-## Decisions
+## Notes for downstream
 
-Choices made while stabilizing — e.g. mocking the clock vs seeding the RNG.
-
--
-
-## Findings
-
-A production-code race or leak (its fix is a separate task guarded by this test), a sibling test
-touching the same shared state — candidates for the workspace's `findings/` at Close.
+A production-code race or leak (its fix is separate work, guarded by this test), a sibling test
+touching the same shared state — worth carrying forward.
 
 -
 
@@ -114,7 +113,7 @@ conditions you cannot recreate are reported as Blocked, never as a silent pass.
 
 -
 
-## Self-review
+## Self-review gate
 
 Answer in writing, evidence pasted.
 
@@ -124,6 +123,6 @@ Answer in writing, evidence pasted.
 - **Cause vs symptom:** is the fix at the cause — not the assertion, not a sleep, not a swallow,
   not quarantine? If a wait was used, on which documented contract?
 - **Fix evidence:** the same loop shape passed with zero failures, output pasted?
-- **Handoff:** cause documented inline; production-side cause recorded as a finding?
-- **Honesty:** did you verify with a loop, or did one green tick end the session? No review result
-  issued on your own work.
+- **Handoff:** cause documented inline; a production-side cause carried forward?
+- **Honesty:** did you verify with a loop, or did one green tick end the session? You did not sign
+  off on your own fix as if a second reviewer had.

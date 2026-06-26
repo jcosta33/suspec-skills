@@ -19,19 +19,18 @@ fixed, and shipping the bug. A flaky test fails non-deterministically — green 
 sometimes, usually worse under CI load than locally. The flake is a **real signal** about the
 system: ordering, timing, shared state, or a leaking resource. The only acceptable resolution is to
 reproduce it, name the nondeterminism, fix the cause, and prove the fix by looping the _same_ test
-under the conditions in which it failed. This guide adds the flake discipline on top of the base
-`implement-task` rules. These are conventions the review packet inspects — nothing enforces them at
-edit time.
+under the conditions in which it failed. This guide is the flake-stabilization discipline; it works
+in any repo and any test runner. Treat its rules as a discipline you hold yourself to — nothing
+enforces them at edit time.
 
 A test that fails 100% of the time after a change is an ordinary defect — load `write-fix`.
 Authoring new tests is `write-testing`. This guide stabilizes a test that already exists and
 already named itself flaky.
 
-**Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
-into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
-the structure from memory). It scaffolds the flake category, the reproduction protocol and evidence,
-the hypothesis tracker, the fix evidence, and the self-review. The task packet itself uses the kit's
-task template.
+**Before you start, open [`references/notes.md`](./references/notes.md)** and copy it into a working
+notes file for this run — it is the session frame for this work; fill it in as you go (don't
+reconstruct the structure from memory). It scaffolds the flake category, the reproduction protocol
+and evidence, the hypothesis tracker, the fix evidence, and the self-review.
 
 ## Rules
 
@@ -62,9 +61,9 @@ task template.
 6. **Leave a one-liner at the cause site** naming the failure mode (e.g. "session id is seeded; do
    not draw it from a global RNG here") so the next reader recognizes it before reintroducing it.
 7. **Hand a production cause downstream.** If the root cause is a real production bug (a race, an
-   unhandled rejection, a leak), this task delivers the diagnosis and the now-stable test as its
-   regression guard; the production fix is its own task — record it as a finding candidate, do not
-   bundle it. And never write a review result on your own work.
+   unhandled rejection, a leak), this work delivers the diagnosis and the now-stable test as its
+   regression guard; the production fix is separate work — record it, don't bundle it. And don't sign
+   off on your own fix as if a second reviewer had — a self-approval isn't independent evidence.
 
 ## Refuses
 
@@ -89,12 +88,23 @@ Before declaring the task done:
 - [ ] The fix is at the cause in production code or test setup — not the assertion, not a sleep,
       not a timeout bump, not try/catch, not quarantine.
 - [ ] The fix loop output is pasted — the same test, same conditions, every run passing.
-- [ ] A one-line note marks the cause site; a production-side cause is recorded as a finding
-      candidate with this test as its regression guard.
-- [ ] You issued no review result on your own work.
+- [ ] A one-line note marks the cause site; a production-side cause is recorded with this test as
+      its regression guard.
+- [ ] You did not sign off on your own fix as if a second reviewer had.
+
+## Gotchas
+
+- **Hiding the nondeterminism instead of removing it.** Re-running to green, adding a sleep, bumping
+  a timeout, wrapping the call in try/catch, widening the assertion, or quarantining all make the
+  red go away while leaving the cause live — they suppress the signal, they don't fix it.
+- **Declaring it fixed after one green run.** A single pass only proves the failure rate is below
+  100%; only the full loop, every run passing, shows it is now zero.
+- **Mis-categorizing the nondeterminism.** Name the wrong category (call a shared-state leak a
+  timing flake) and the fix lands on the wrong line — the test goes quiet for a while, then flakes
+  again because the real cause was never touched.
 
 ## Bundled resources
 
-- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (flake category, reproduction
+- [`references/notes.md`](./references/notes.md) — a working-notes scaffold for the run (flake category, reproduction
   protocol and evidence, hypothesis tracker where each rejected attempt teaches the next, fix
-  evidence, self-review). The task packet itself uses the kit's task template.
+  evidence, self-review).

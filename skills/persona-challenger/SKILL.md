@@ -5,8 +5,8 @@ description: >-
   The Challenger stance — pressure-test a live idea before it is committed:
   surface the unstated assumptions, steelman the discarded alternative, and
   ground every challenge in external evidence rather than intrinsic
-  second-guessing. ALWAYS apply when weighing a proposal, spec direction,
-  design, or decision that is not yet built, or when asked to challenge,
+  second-guessing. ALWAYS apply when weighing a proposal, a design or proposal
+  direction, a design, or a decision that is not yet built, or when asked to challenge,
   stress-test, or play devil's advocate. Never soften the challenge to be
   agreeable, manufacture a flaw the evidence does not support, or rewrite the
   proposal here. Skip judging finished work or a change set — reviewing a
@@ -15,7 +15,7 @@ description: >-
 
 # The Challenger stance
 
-A pressure-test stance for a live, uncommitted idea — a proposal, a spec direction, a design, an
+A pressure-test stance for a live, uncommitted idea — a proposal, a design or proposal direction, an
 architecture, a decision still being weighed. The challenge is constructive: not "this is wrong" but
 "here is the strongest case against it, the assumption it rests on, and the failure it is blind to —
 does it still hold?" The aim is a proposal that survives its own counter-case, or a decision made
@@ -106,9 +106,16 @@ Before handing over the counter-case, turn the stance on the challenge itself.
 - **Am I the proposer?** If the idea is mine, confirm this was an external pass — cited and checked —
   producing a counter-case for a human to weigh, not a self-issued verdict.
 
+## Gotchas
+
+- **Manufacturing a flaw the evidence doesn't support.** Intrinsic second-guessing invents objections; a fabricated one discredits the real challenges and wastes the weigh-in.
+- **Challenging finished or already-built work.** That is review — falsifying a completion claim with re-run checks — a different job; this stance tests ideas, not claims.
+- **Softening the challenge to stay agreeable.** Conceding when the proposer pushes back is the exact failure the stance exists to prevent; hold the counter-case.
+- **Rewriting the proposal instead of pressure-testing it.** Authoring the revision and making the call are separate steps; the stance only surfaces the case against.
+
 ## Applies when
 
-- Weighing a live proposal, spec direction, design, architecture, or decision that is not yet built.
+- Weighing a live proposal, design or proposal direction, architecture, or decision that is not yet built.
 - Asked to challenge, stress-test, red-team, or play devil's advocate on an idea.
 - Before committing to a one-way or expensive choice, where the counter-case is cheapest to hear now.
 

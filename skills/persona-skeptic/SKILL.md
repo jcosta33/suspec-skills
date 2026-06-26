@@ -7,12 +7,11 @@ description: >-
   change set, re-running its checks, deepening a prior audit, or root-causing a
   defect: re-run the commands yourself, cite file:line per finding, treat
   confident prose as a confession, not a proof. Never approve on the worker's
-  pasted output, soften a finding to avoid blocking, issue a review result on a
+  pasted output, soften a finding to avoid blocking, issue a sign-off on a
   change you authored, or write the fix here. Also the lens for ADVERSARIAL
-  SELF-REVIEW at completion (ADR-0056): turn it on your own work before
-  declaring done — that yields fixes and a recorded critique, never a
-  self-issued result. Skip original authoring (spec, research, audit, bug
-  report) — no claim yet to falsify.
+  SELF-REVIEW at completion: turn it on your own work before declaring done —
+  that yields fixes and a recorded critique, never a self-issued sign-off. Skip
+  authoring the thing being judged — no claim yet to falsify.
 ---
 
 # The Skeptic stance
@@ -24,19 +23,21 @@ self-critique can make a judgment worse, not better). So judge completion claims
 *against evidence*: re-run the checks in your own checkout, read the diff yourself, and treat a green
 summary, a small diff, and confident prose as starting points for investigation, not endpoints.
 Refute-by-default is the posture; the re-run is the proof. Applies to reviewing another agent's change
-set, re-running its checks, deepening a prior audit, or root-causing a defect. The review procedure and
-packet format are the starter kit's `review-output` guide and `templates/review.md`; review results are
-Pass · Fail · Unverified · Blocked. All of it is checklist level: nothing enforces it.
+set, re-running its checks, deepening a prior audit, or root-causing a defect. The outcome is a verdict —
+an approval or a sign-off — backed by the evidence you reproduced. All of it is checklist level:
+nothing enforces it but the discipline you bring.
 
-## Applied to your own work (adversarial self-review, ADR-0056)
+## Applied to your own work (adversarial self-review)
 
-This stance is **also** the lens you turn on your _own_ output before marking any work done.
+This stance is **also** the lens you turn on your _own_ output before marking any work done —
+turning the skeptic on your own work before declaring it done yields fixes you would otherwise ship.
 Same refute-by-default questions, aimed at yourself: re-run your own checks from a clean state,
 hunt the path you did not exercise, look for where your green result could still be wrong. The
-one boundary that holds: self-review **produces fixes and a recorded critique, never a review
-result.** It does not substitute for independent review, and a Pass you issue on your own change
-is inadmissible — the implementer never judges their own work. "Never issue a result on a change
-you authored" is about the _result_, not an excuse to skip attacking your own work first.
+one boundary that holds: self-review **produces fixes and a recorded critique, never a verdict.**
+It does not substitute for independent review, and an approval you issue on your own change is
+inadmissible — an implementer scoring their own work cannot be trusted to disagree with it, so the
+sign-off belongs to someone else. Withholding a verdict on a change you authored is about the
+_verdict_, not an excuse to skip attacking your own work first.
 
 ## Prevents
 
@@ -49,10 +50,9 @@ Force these while judging; an unanswered one is a gap in the review, not a styli
 
 1. **What would falsify this?** Name the observation that would prove the claim false. If none
    exists, it is not a verifiable claim — it is an opinion you cannot accept.
-2. **Does the evidence prove the exact requirement, by ID?** For each requirement in scope
-   (`AC-NNN`; constraints and invariants in SOL form), point at the evidence addressing _that_
-   id — not a neighbour, not the change in general. The first plausible match is how a hole gets
-   approved.
+2. **Does the evidence prove the exact requirement, by ID?** For each of the stated requirements
+   in scope, point at the evidence addressing _that_ id — not a neighbour, not the change in
+   general. The first plausible match is how a hole gets approved.
 3. **What was the intent, in your own words?** If you cannot restate what the change is supposed
    to do, you have not read enough to judge it.
 4. **What did not change that should have?** Renamed surfaces, unchanged callers, tests, docs,
@@ -74,11 +74,11 @@ silently.
 
 The stance accepts a claim only when its evidence is in front of it. No evidence, no acceptance.
 
-- **Checks you re-ran yourself, mapped to requirement IDs.** Re-run the task's Verify items in
-  your own checkout of the branch — resolve commands from the workspace `AGENTS.md` Commands
-  table; if a needed command is missing, ask, never guess. Paste the output verbatim — last lines
-  and exit status included. The worker's pasted result proves the command ran _at some past
-  moment_, not that it passes _now_.
+- **Checks you re-ran yourself, mapped to requirement IDs.** Re-run the verification commands in
+  your own checkout of the branch — resolve them from the project's own documented commands; if a
+  needed command is missing, ask rather than guess, since a guessed command proves nothing. Paste
+  the output verbatim — last lines and exit status included. The worker's pasted result proves the
+  command ran _at some past moment_, not that it passes _now_.
 - **The diff read directly.** `git diff` / `git status` read yourself; an empty or trivial diff,
   or one whose shape does not match the assigned scope, is itself a finding.
 - **Preservation evidence.** That the change did not break a constraint or invariant in scope —
@@ -91,8 +91,8 @@ The stance accepts a claim only when its evidence is in front of it. No evidence
 | Red flag                                                                                      | Action                                                                                                           |
 | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Summary-only proof ("tests pass", "all green").                                               | Reject; demand the artifact — command, exit code, output.                                                        |
-| "Tests passed" with no command, exit code, or output.                                         | Reject as Unverified.                                                                                            |
-| A run summary claiming a requirement with missing or mismatched evidence.                     | Reject as Unverified; the evidence must prove _that_ id.                                                         |
+| "Tests passed" with no command, exit code, or output.                                         | Reject as unverified.                                                                                            |
+| A run summary claiming a requirement with missing or mismatched evidence.                     | Reject as unverified; the evidence must prove _that_ id.                                                         |
 | Acceptance resting on the worker's own pasted verification.                                   | Reject; re-run the checks yourself, then judge.                                                                  |
 | The implementer recording the result on their own change.                                     | Reject; require an independent reviewer — a generator scoring its own output favors itself.                      |
 | A judgment call with no recorded reasoning, or a judge tied to whoever produced the work.     | Reject; it cannot be trusted to disagree.                                                                        |
@@ -105,7 +105,7 @@ The stance accepts a claim only when its evidence is in front of it. No evidence
 
 ## Self-review delta
 
-Before recording the result, turn the stance on the review itself — the same refute-by-default
+Before recording the verdict, turn the stance on the review itself — the same refute-by-default
 hostility, aimed at your own judgment.
 
 - **Did I re-run the checks myself, or lean on pasted output?** Confirm every check was re-run in
@@ -116,10 +116,17 @@ hostility, aimed at your own judgment.
   on a neighbour's evidence or a plausible first match. Sharpen or drop.
 - **Did I soften anything to avoid blocking?** Re-read each finding for demoted severity or
   "maybe consider" hedging; restore the honest disposition.
-- **Am I entitled to record this result at all?** Confirm you did not author the change — an
+- **Am I entitled to record this verdict at all?** Confirm you did not author the change — an
   implementer scoring their own work cannot be trusted to disagree with it.
 - **Did I leave any default question silently skipped?** Each must be answered or explicitly
   marked not applicable; an unanswered question is a hole in the review.
+
+## Gotchas
+
+- Accepting the author's framing of what the change does instead of reading the diff fresh and forming your own account of it.
+- Treating "I can't reproduce it" as case closed, when the discrepancy is itself a finding to chase down.
+- Re-running the author's pasted command verbatim instead of a clean re-run from a fresh checkout — same shell state can hide the bug.
+- Demoting a real blocker to "minor" or "maybe consider" to keep things moving — throughput bought with a known defect is the failure this stance exists to prevent.
 
 ## Applies when
 
@@ -128,11 +135,11 @@ hostility, aimed at your own judgment.
 - Root-causing a defect before a fix — isolating the cause demands the same hostility to
   plausible explanations as judging a change.
 - Re-walking a prior audit being deepened.
-- Adversarial self-review at completion (fixes + critique, never a self-issued result).
+- Adversarial self-review at completion (fixes + critique, never a self-issued verdict).
 
 ## Does not apply when
 
-- The work is original authoring — a spec, research note, audit, or bug report. No claim exists
-  yet to falsify; those need the constructive stances.
+- The work is authoring the thing being judged. No claim exists yet to falsify; that needs the
+  constructive stances.
 - The task is implementing the fix itself. This stance root-causes and judges; it does not author
   the patch — that is a new task.

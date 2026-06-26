@@ -7,8 +7,8 @@ description: >-
   users expect). ALWAYS apply when writing such a survey, or when asking "what is common practice
   / the standard pattern here". Never assert a pattern from one example, conflate what users say
   with what they do, infer behavior from marketing, or close on a binding decision. Skip for
-  depth research on one question against primary sources (write-research alone), spec writing,
-  audits, or bug reports.
+  depth research on one question against primary sources, and for authoring the deliverable
+  itself — a design doc, an audit, or a bug report — rather than surveying the landscape.
 ---
 
 # The Surveyor stance
@@ -19,16 +19,16 @@ users expect, what competitors actually do, which design patterns recur). It app
 researcher's evidentiary discipline to a softer subject across more examples — and the softness
 is a trap, not a license: "everybody knows most apps do this" is exactly where ungrounded
 generalization slips in, so breadth _raises_ the evidence bar. A survey surfaces options with
-their evidence; it binds no decision — that happens later, when the survey is lifted into a
-spec. Load it alongside the starter kit's `write-research` guide; the deliverable still
-follows the kit template (`advanced/research.md` in a Corpus workspace).
+their evidence; it binds no decision — that happens later, in the design or decision doc the
+survey feeds. The deliverable is a survey note: a written record of the landscape and its
+evidence.
 
 ## Prevents
 
 A survey claim that outruns its evidence: a "pattern" or "common practice" generalized from one
 example, an "observed" user behavior that is really a claimed preference, a competitor capability
 inferred from marketing rather than the working product — and an inventory that quietly hardens
-into a recommendation no spec could transcribe.
+into a recommendation no downstream decision could have reached on its own.
 
 ## Default questions
 
@@ -48,10 +48,11 @@ into a recommendation no spec could transcribe.
    working product, or infer it from a landing page, screenshot, or feature list? _Why:_ marketing
    describes the aspiration; the product reveals the behavior, and they diverge.
 6. **About to bind a decision?** A survey surfaces options and trade-offs; am I closing on a
-   recommendation worded as a commitment? _Why:_ the commitment happens later, when the survey is
-   lifted into a spec.
-7. **Concrete enough to transcribe?** Does my closing recommendation name a behavior an implementer
-   could build to? _Why:_ advice too vague to transcribe into a spec does no work.
+   recommendation worded as a commitment? _Why:_ the commitment happens later, in the decision the
+   survey informs.
+7. **Concrete enough to act on?** Does my closing recommendation name a behavior an implementer
+   could build to? _Why:_ advice too vague to carry into a downstream design or decision doc does
+   no work.
 
 ## Required evidence
 
@@ -63,8 +64,8 @@ into a recommendation no spec could transcribe.
   from your own gloss; where none exists, an explicit note recommending it be run.
 - For each point where competitors disagree: an explicit side-by-side comparison and a stated
   choice with its reasoning.
-- A closing recommendation specific enough to survive transcription into a spec — a behavior an
-  implementer could build to, not generic advice.
+- A closing recommendation specific enough to survive into a downstream design or decision doc — a
+  behavior an implementer could build to, not generic advice.
 - Confirmation that no source, configuration, or dependency file changed during the session — a
   survey produces a write-up, not code.
 
@@ -78,8 +79,8 @@ into a recommendation no spec could transcribe.
 | "What users want" presented as "what users do" (or the reverse)       | Reject; separate claimed preference from observed behavior                              |
 | A competitor capability inferred from a landing page or feature list  | Reject; exercise the working product and cite what it actually does                     |
 | Competitors disagree and the survey silently picks one                | Reject; compare explicitly and state which to follow and why                            |
-| The survey closing on a binding recommendation or decision            | Reject; surface options and trade-offs — the decision is committed later, in a spec     |
-| A recommendation too vague for an implementer to build to             | Reject; make it a concrete behavior that survives transcription                         |
+| The survey closing on a binding recommendation or decision            | Reject; surface options and trade-offs — the decision is committed later, downstream    |
+| A recommendation too vague for an implementer to build to             | Reject; make it a concrete behavior that survives into the decision it informs          |
 | A claim with no citation, or cited to a source that cannot be checked | Reject; cite a checkable source or mark it `[unconfirmed]`                              |
 | A source or config file edited "to see how the competitor behaves"    | Reject; revert — the survey session is read-only on code                                |
 
@@ -97,9 +98,20 @@ With this stance active, additionally check:
 - [ ] Each point of competitor disagreement is compared side by side with a stated choice and
       reasoning.
 - [ ] The write-up binds no decision, and the closing recommendation is concrete enough to
-      survive transcription into a spec.
+      survive into a downstream design or decision doc.
 - [ ] Every claim is tied to a checkable source or marked `[unconfirmed]`; no source, config,
       or dependency file changed during the session.
+
+## Gotchas
+
+- **One example dressed as a pattern.** Asserting "common practice" from a single instance — a
+  prevailing pattern needs at least three named instances, or it stays "one example observed."
+- **Marketing read as behavior.** Citing what a product's landing page claims instead of what the
+  working product actually does — the two diverge, and only the second is evidence.
+- **Said versus did.** Conflating what users report wanting with what they observably do — a
+  stated preference is a different fact from an observed behavior.
+- **Closing when the job was to open.** Landing on a single recommendation when the task was to
+  surface the options and their trade-offs for a later decision.
 
 ## Applies when
 
@@ -109,9 +121,9 @@ which UX or design patterns recur, what users expect across a market.
 ## Does not apply when
 
 - The work is **depth research** — one question investigated against primary sources (a library,
-  API, algorithm, standard, or paper). That is `write-research` on its own; this stance is
-  breadth across many examples, not depth on one.
-- The work is non-research writing: a spec (forward-looking intent), an audit (present state),
-  or a bug report (one defect) — each has its own guide.
+  API, algorithm, standard, or paper). That is depth on one question; this stance is breadth
+  across many examples, not depth on one.
+- The work is authoring the thing itself — a design, a record of present state, or a defect
+  diagnosis — rather than surveying the landscape that informs it.
 - The work is implementing or reviewing code — this stance governs gathering and grounding
   survey evidence, not building or judging.

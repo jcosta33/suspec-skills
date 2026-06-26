@@ -1,7 +1,7 @@
 ---
 name: empirical-proof
 type: agent-guide
-description: Back every claim with verbatim pasted output. ALWAYS apply this skill on any task that writes code, runs validations, runs benchmarks, or makes verifiable claims about behaviour — every claim in `## Self-review` gets its own pasted command output. Do not paraphrase results, summarise with "✅ all passing", or trust upstream pasted output (re-run yourself when reviewing). Skip this skill only for tasks with no verifiable claims (rare for product-development work; surface as a blocker if you suspect this applies).
+description: Back every claim with verbatim pasted output. ALWAYS apply this skill on any task that writes code, runs validations, runs benchmarks, or makes verifiable claims about behaviour — each completion claim gets its own pasted command output. Do not paraphrase results, summarise with "✅ all passing", or trust upstream pasted output (re-run yourself when reviewing). Skip this skill only for tasks with no verifiable claims (rare for product-development work; surface as a blocker if you suspect this applies).
 ---
 
 # Skill: empirical-proof
@@ -10,35 +10,35 @@ description: Back every claim with verbatim pasted output. ALWAYS apply this ski
 
 Eliminate hallucinated completion. Coding agents are pattern-completers; the pattern of "successful task" includes confident-sounding completion language ("✅ all tests pass") that the agent will produce regardless of whether the underlying claim is true. Empirical proof is the structural defence: the agent cannot complete the pattern without first pasting evidence the pattern is true.
 
-## Project context (the AGENTS.md contract)
+## Resolving the project's commands
 
-Resolves project commands via the consuming repo's `AGENTS.md` — the `cmdValidate` and `cmdTest` slots in its Commands table, plus an optional dep-validation command (architectural-rules check) not in the standard contract; ask the user if the project uses one. If `AGENTS.md` is missing or an entry is undefined, ask the user which command to run before pasting any "verification output" — do not guess.
+Before pasting any "verification output", resolve the actual commands this project uses to validate and test — typically from the repo's contributor docs (e.g. an `AGENTS.md`, `CONTRIBUTING.md`, or the `scripts` block of a manifest). Some projects also run an extra check (dependency or architectural-rules validation) beyond build and test. If you can't find the command, or aren't sure which one a claim refers to, ask the user before running anything — guessing the command produces output that proves nothing.
 
 ## Core rules
 
-### 1. Never assume success
+### 1. Don't assume success
 
-Writing the code is 10% of the job. Verifying it works in *the current environment* is 90%. The agent does not get to assume the test command's output without running it.
+Writing the code is 10% of the job; verifying it works in *the current environment* is the other 90%. An unrun command's output is a guess, so run it before claiming what it says.
 
 ### 2. Verbatim pasting
 
-When filling out `## Self-review`, paste the *verbatim* output. No paraphrasing, no summarising, no "✅ passing". Use a fenced code block. Include the last two lines (or more if asked) — the runner's summary plus its timing/exit conditions.
+When recording your completion claims, paste the *verbatim* output. No paraphrasing, no summarising, no "✅ passing" — a summary is unfalsifiable, so it doesn't satisfy the gate. Use a fenced code block. Include the last two lines (or more if asked): the runner's summary plus its timing/exit conditions.
 
 ### 3. One verification per claim
 
-Each claim in the task — "the build passes", "the tests pass", "the linter is clean", "no architectural violations", "the migration covers all callsites" — gets its own pasted verification. Bundling claims into a single "all good" hides which check actually ran.
+Each claim you make about behavior — "the build passes", "the tests pass", "the linter is clean", "no architectural violations", "the migration covers all callsites" — gets its own pasted verification. Bundling claims into a single "all good" hides which check actually ran, so keep them separate.
 
 ### 4. Re-run after every change
 
-Verifications go stale fast. If the agent makes a change after the verification, the verification is invalid. Re-run and re-paste. This is especially load-bearing during refactor and migration tasks where the *every-N-files* validation rule fires repeatedly.
+Verifications go stale fast: if you make a change after a verification, that verification no longer describes the current code, so re-run and re-paste. This matters especially during refactors and migrations, where you validate repeatedly as you go.
 
 ### 5. Run yourself; do not trust upstream
 
-When reviewing another agent's branch, run the project's validation and test commands *yourself*, in your own worktree, with the worker's branch checked out. The worker's pasted output does not satisfy the review gate — only your *own* run does.
+When reviewing another agent's branch, run the project's validation and test commands *yourself*, in your own worktree, with the worker's branch checked out. The worker's pasted output is a claim you are reviewing, not evidence — only your own run satisfies the review gate.
 
 ### 6. Paste, don't quote
 
-Use raw fenced code blocks for output. Do not transform the output (no quoting, no Markdown styling, no annotation in the middle of the paste). Treat the output as data: copy it in, leave it alone.
+Use raw fenced code blocks for output. Don't transform the output (no quoting, no Markdown styling, no annotation in the middle of the paste) — transformed output is no longer the runner's own words. Treat the output as data: copy it in, leave it alone.
 
 ## What proof looks like
 
@@ -71,7 +71,7 @@ The paraphrase is *plausible*. It might even be *true*. But treat it as unverifi
 
 ## What does not belong
 
-- Self-review answers without supporting verification. Every claim about behaviour traces to a pasted output.
+- A completion claim without supporting verification. Every claim about behaviour traces to a pasted output.
 - "Should pass" / "expected to work" / "tests should be green" language. These are predictions, not proof.
 - A single "all good" entry covering multiple verifications. Each verification gets its own paste.
 
@@ -95,14 +95,21 @@ The three most frequent evasions are inline below. The full catalogue lives at [
 
 ## Type-specific applications
 
-The empirical-proof discipline is universal, but each task type emphasises different proofs:
+The empirical-proof discipline is universal, but each kind of work emphasises different proofs:
 
-- **Refactor:** per-checkpoint dependency-validation output (every 10 files).
+- **Refactor:** per-checkpoint validation output as you go.
 - **Migration:** per-wave validation and test output.
 - **Performance:** baseline + target benchmark output under the *same* protocol.
-- **Bug-report:** the bug actually firing (reproduction output).
+- **Bug report:** the bug actually firing (reproduction output).
 - **Testing:** test pass + assertion-flip proof.
 - **Documentation:** every code example actually run.
+
+## Gotchas
+
+- Pasting a pre-edit run as if it were current — re-run after the last edit, or the paste describes code that no longer exists.
+- Summarising "all green" instead of the verbatim tail — the summary is the one part nobody can check.
+- When reviewing, accepting the author's pasted output instead of re-running — their paste is the claim under review, not its proof.
+- Pasting output from a different command or scope than the claim (e.g. one test file's output behind a "full suite passes" claim) — the proof must cover exactly what the claim asserts.
 
 ## Bundled resources
 
