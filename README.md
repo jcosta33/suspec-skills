@@ -65,6 +65,7 @@ Cross-cutting cognitive postures loaded _alongside_ a work guide — they tilt w
 | `persona-challenger` | pressure-testing a live proposal before it's built — surface assumptions, steelman the alternative, ground the challenge in external evidence                       |
 | `persona-surveyor`   | breadth research — what prevails across many products, patterns, or users; three named instances per claimed pattern                                                |
 | `empirical-proof`    | any completion claim — bind it to verbatim pasted output, or it reads unverified                                                                                    |
+| `concise-output`     | you want terse, scannable, token-economical output — evidence-first, structure over prose, no filler; the strong dial above Corpus's output-economy convention (clarity still outranks brevity) |
 
 ### Code authoring
 
