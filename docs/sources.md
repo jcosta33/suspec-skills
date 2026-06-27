@@ -176,6 +176,56 @@
 
 ---
 
+## Best-of-breed implementations
+
+<a id="best-of-breed-implementations"></a>
+
+The code-lifecycle skills are framework-free distillations of the strongest public implementation of each
+fundamental, identified by a live adoption census (GitHub `gh api` metrics, 2026-06-27; see the Corpus
+workspace `RESEARCH-most-used-skills`). **Tier: tool/artifact** — these are real shipping repos, but
+star/fork counts are an _interest and maintenance_ proxy, **not** install or usage telemetry; they ground
+*which technique is most-adopted*, never a MUST-level empirical claim. Every URL below was `gh api`-verified
+live (two author-proposed slugs were 404 and corrected: `coleam00/raptor`→`gadievron/raptor`,
+`agamm/owasp`→`agamm/claude-code-owasp`).
+
+<a id="53"></a>
+**[53] oil-oil/codex-explore-skill** (★15). Delegate-recon + key-files-map-before-reading — grounds `codebase-exploration`. <https://github.com/oil-oil/codex-explore-skill>
+
+<a id="54"></a>
+**[54] shannonbay/setup-structure-index** (★15). Persisted lightweight structure index to skip cold-start — grounds `codebase-exploration` (optional step). <https://github.com/shannonbay/setup-structure-index>
+
+<a id="55"></a>
+**[55] obra/superpowers** (★239.7k). `systematic-debugging` (4-phase root cause) + `using-git-worktrees` — grounds `debugging` and `git-pr`. Star count is the whole bundle, not a per-skill figure. <https://github.com/obra/superpowers>
+
+<a id="56"></a>
+**[56] getsentry/skills** (★828). Ground debugging in observed live trace/runtime context — grounds `debugging`. <https://github.com/getsentry/skills>
+
+<a id="57"></a>
+**[57] anthropics/claude-code-security-review** (★5.4k). Semantic PR-diff analysis + tunable false-positive filtering — grounds `security-review`. <https://github.com/anthropics/claude-code-security-review>
+
+<a id="58"></a>
+**[58] agamm/claude-code-owasp** (★261). Per-language security quirks (OWASP Top 10:2025, ASVS 5.0, 20+ language footguns) — grounds `security-review` step 3 + `references/language-quirks.md`. <https://github.com/agamm/claude-code-owasp>
+
+<a id="59"></a>
+**[59] gadievron/raptor** (★3.1k). Agentic harness that orchestrates real security tools — grounds `security-review`'s drive-the-scanner-first section. <https://github.com/gadievron/raptor>
+
+<a id="60"></a>
+**[60] openai/skills** (★22.9k). `yeet` (stage→commit→push→PR), `gh-address-comments`, `gh-fix-ci` ship-lifecycle skills — grounds `git-pr`. <https://github.com/openai/skills>
+
+<a id="61"></a>
+**[61] github/spec-kit** (★115.7k). Plan-against-a-persistent-constitution pipeline — grounds `planning-spec`'s plan-vs-principles core. <https://github.com/github/spec-kit>
+
+<a id="62"></a>
+**[62] glittercowboy/get-shit-done** (★64.5k). Explicit out-of-scope / non-goals tracking — grounds `planning-spec` step 3. <https://github.com/glittercowboy/get-shit-done>
+
+<a id="63"></a>
+**[63] snarktank/ai-dev-tasks** (★7.8k). Human "go" checkpoint between plan and task breakdown — grounds `planning-spec` step 4. <https://github.com/snarktank/ai-dev-tasks>
+
+The false-positive-budget claim in `security-review` (drop low-signal classes or get muted) is grounded in
+the peer-reviewed entry [\[51\]](#51) (Sadowski et al., Google static-analysis study), not in the tool repos above.
+
+---
+
 ## Citation discipline for this directory
 
 - Primary sources are preferred. Where one is cited as primary, the original study, paper, or specification is the single source of truth.

@@ -36,9 +36,12 @@ down-rank a high-FP-risk flag rather than flooding noise.
 
 {{merge-worthy / block until the BLOCKERs close / needs author input}} — with the one-line reason.
 
-## Self-review gate
+## Self-review gate (refute your own judgment before recording it)
 
 - [ ] Re-ran the checks myself, from a clean checkout (not the author's pasted output)
 - [ ] Bound every finding to the stated intent or marked it out-of-scope
 - [ ] Read the callers of changed surfaces, not only the diff
 - [ ] Every finding has file:line + evidence + an FP-risk; no soft-language concerns left
+- [ ] Every accepted requirement maps to evidence for *that* requirement, not a neighbour's
+- [ ] Softened nothing to avoid blocking; every adversarial question answered or marked N/A
+- [ ] Did not author this change (no self-issued verdict)

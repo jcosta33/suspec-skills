@@ -1,6 +1,6 @@
 # corpus-skills
 
-> The optional skills catalog for [Corpus](https://github.com/jcosta33/corpus) — conditioning stances and code-authoring depth in the open Agent Skills format, installable into any agent CLI.
+> The optional skills catalog for [Corpus](https://github.com/jcosta33/corpus) — conditioning stances, code-lifecycle disciplines, and review/output style in the open Agent Skills format, installable into any agent CLI.
 
 Each skill is a self-contained folder under [`skills/`](./skills/): one `SKILL.md` with a trigger description and the working rules, plus bundled `references/` where a skill ships a fillable session frame. No scripts, no runtime — markdown an agent loads when the work matches.
 
@@ -15,14 +15,14 @@ With the [Vercel skills CLI](https://github.com/vercel-labs/skills) (works with 
 npx skills add jcosta33/corpus-skills --list
 
 # install one skill into the current repo
-npx skills add jcosta33/corpus-skills --skill persona-skeptic
+npx skills add jcosta33/corpus-skills --skill adversarial-review
 
 # install globally, or for a specific agent
-npx skills add jcosta33/corpus-skills --skill persona-skeptic -g
-npx skills add jcosta33/corpus-skills --skill persona-skeptic -a claude-code
+npx skills add jcosta33/corpus-skills --skill adversarial-review -g
+npx skills add jcosta33/corpus-skills --skill adversarial-review -a claude-code
 ```
 
-No CLI? Copy the folder: `cp -R skills/persona-skeptic <your-repo>/.agents/skills/` (point your tool's skills directory at the same folder — e.g. a `.claude/skills` symlink).
+No CLI? Copy the folder: `cp -R skills/adversarial-review <your-repo>/.agents/skills/` (point your tool's skills directory at the same folder — e.g. a `.claude/skills` symlink).
 
 Pin to a tag or commit for stability and re-run to re-fetch. The catalog is
 [semver](https://semver.org)-versioned ([`VERSION`](./VERSION), [`CHANGELOG.md`](./CHANGELOG.md));
@@ -38,14 +38,15 @@ You don't need any of these to run Corpus — the [starter kit](https://github.c
 already ships the core loop. Add skills only as a specific need shows up, in roughly this order:
 
 1. **Nothing.** Run the loop with the kit's core guides. Most changes never need more.
-2. **`persona-skeptic`** — the first one most teams want. Load it when an agent _judges another
-   agent's_ completion claims, so the review refutes by default and re-runs the checks rather than
-   trusting them.
+2. **`adversarial-review`** — the first one most teams want. Load it when an agent _judges another
+   agent's_ change (branch / PR / diff / audit / bug): it refutes by default, re-runs the checks
+   itself, and produces findings — not a merge sign-off. (It absorbs the old `persona-skeptic`
+   stance; that name now redirects here.)
 3. **`empirical-proof`** — pair it with any completion claim to force verbatim pasted output; the
    fastest cure for "done" that was never actually checked.
-4. **A code-authoring guide** matching the change shape — `write-fix` for a reproduced defect,
-   `write-refactor` for behavior-pinned restructuring, `write-migration` for an A→B move. Install
-   the one the task calls for, not the set.
+4. **A code-lifecycle skill** matching the work — `debugging` for a live defect, `security-review`
+   for a risk-bearing change, `codebase-exploration` for an unfamiliar repo, `planning-spec` before
+   you build, `git-pr` to ship. Install the one the task calls for, not the set.
 5. **A cross-cutting stance** when you need a posture _without_ its host guide —
    `persona-challenger` while pressure-testing a proposal before it's built, or `persona-surveyor`
    for a breadth survey. (The authoring stances — architect, auditor, researcher, documentarian —
@@ -65,9 +66,10 @@ Cross-cutting cognitive postures loaded _alongside_ the work — they tilt what 
 
 | Skill                | Use it when                                                                                                                                                         |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `persona-skeptic`    | judging another agent's completion claims, deepening an audit, or root-causing — refute by default; _the lever is the checks you re-run yourself_, not the attitude |
 | `persona-challenger` | pressure-testing a live proposal before it's built — surface assumptions, steelman the alternative, ground the challenge in external evidence                       |
 | `persona-surveyor`   | breadth research — what prevails across many products, patterns, or users; three named instances per claimed pattern                                                |
+
+> `persona-skeptic` is **retired** — its refute-by-default stance is now the spine of `adversarial-review`. The folder remains as a redirect.
 
 ### Disciplines
 
@@ -75,10 +77,22 @@ Framework-free practices that raise the floor on any task, in any repo.
 
 | Skill                | Use it when                                                                                                                                                         |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `adversarial-review` | reviewing a branch / PR / diff / audit / bug — refute by default, run the checks yourself, the three-lens panel; you produce findings, not the merge decision       |
+| `adversarial-review` | reviewing a branch / PR / diff / audit / bug — refute by default, run the checks yourself, the multi-lens panel; you produce findings, not the merge decision (absorbs the former `persona-skeptic`) |
 | `empirical-proof`    | any completion claim — bind it to verbatim pasted output, or it reads unverified                                                                                    |
 | `concise-output`     | you want terse, scannable, token-economical output — evidence-first, structure over prose, no filler (clarity still outranks brevity)                               |
 | `fix-flaky-test`     | a test that fails intermittently — reproduce by looping, fix the cause not the assertion, don't retry-loop                                                          |
+
+### Code-lifecycle
+
+The fundamental coding skills, re-baselined from a live adoption census ([best-of-breed sources](./docs/sources.md#best-of-breed-implementations)) — each a framework-free distillation of the strongest public implementation of that fundamental.
+
+| Skill                  | Use it when                                                                                                                                                       |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `codebase-exploration` | mapping an unfamiliar codebase — delegate read-only recon to subagents, build a key-files map before reading, keep the orchestrator's context clean              |
+| `debugging`            | a live defect — runtime-evidence-before-hypothesis: reproduce → isolate → identify → verify; refuse a root cause until execution data localizes it               |
+| `security-review`      | a risk-bearing change — semantic data-flow review + a tunable false-positive filter + per-language footguns; drive real scanners (Semgrep/CodeQL) when present    |
+| `git-pr`               | shipping — stage→commit→push→PR, address review comments, fix failing CI by reading logs, isolate parallel work in git worktrees                                  |
+| `planning-spec`        | before you build — plan against the project's durable principles, name what's out of scope, get an explicit human "go" before breaking the plan into steps        |
 
 ## The science
 
