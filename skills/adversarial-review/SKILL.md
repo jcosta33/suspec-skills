@@ -194,6 +194,10 @@ cannot be trusted to disagree with it (this is the boundary the self-review subs
   greens. A guessed check is negative evidence — ask instead.
 - **Self-review collapsing into a self-verdict.** You attack your own work, find nothing, and quietly
   declare it approved. Self-review yields fixes + a critique; the ship call still belongs to someone else.
+- **Refuting a checkable fact from memory.** A claim about a queryable metric — a count, a star/download
+  number, a version, whether a file or symbol exists — gets waved off as wrong or "no data" from recall.
+  Refute-by-default does not license dismissing a fact you can check: query the live source (the API, the
+  registry, the filesystem) first; "it's not there" is a finding only after the lookup actually failed.
 
 ## Pairs with
 

@@ -4,7 +4,7 @@
 
 Each skill is a self-contained folder under [`skills/`](./skills/): one `SKILL.md` with a trigger description and the working rules, plus bundled `references/` where a skill ships a fillable session frame. No scripts, no runtime — markdown an agent loads when the work matches.
 
-The [Corpus starter kit](https://github.com/jcosta33/corpus-starter-kit) ships every Corpus-coupled skill — the core loop (`write-spec`, `implement-task`, `review-output`), the workspace authoring guides (`write-audit`, `write-research`, `write-rfc`, `write-prd`, `write-bug-report`, `write-change-plan`, `write-inventory`, `spec-check`, `split-work`, `save-findings`), and the task-implementation depth (`write-feature`, `write-fix`, `write-refactor`, `write-rewrite`, `write-migration`, `write-performance`, `write-testing`, `write-documentation`). Everything **here** is the universal layer — stances, disciplines, review style, output economy — framework-free and installable in any repo; install only what your work calls for ([ADR-0112](https://github.com/jcosta33/corpus/blob/main/docs/adrs/0112-two-tier-skills.md)).
+The [Corpus starter kit](https://github.com/jcosta33/corpus-starter-kit) ships every Corpus-coupled skill — the core loop (`write-spec`, `implement-task`, `review-output`), the workspace authoring guides (`write-audit`, `write-research`, `write-rfc`, `write-prd`, `write-bug-report`, `write-change-plan`, `write-inventory`, `spec-check`, `split-work`, `save-findings`), and the task-implementation depth (`write-feature`, `write-fix`, `write-refactor`, `write-rewrite`, `write-migration`, `write-performance`, `write-testing`, `write-documentation`). Everything **here** is the universal layer — stances, disciplines, review style, output economy — framework-free and installable in any repo; install only what your work calls for.
 
 ## Install
 
@@ -58,11 +58,11 @@ Rule of thumb: install the fewest skills that name the discipline your current t
 
 Everything here is **universal** — framework-free, installable into any repo with zero Corpus knowledge.
 Corpus-coupled skills (the artifact builders + the `write-*` task-implementation depth) live in the
-[starter kit](https://github.com/jcosta33/corpus-starter-kit) instead, not here ([ADR-0112](https://github.com/jcosta33/corpus/blob/main/docs/adrs/0112-two-tier-skills.md)).
+[starter kit](https://github.com/jcosta33/corpus-starter-kit) instead, not here.
 
 ### Stances
 
-Cross-cutting cognitive postures loaded _alongside_ the work — they tilt what the agent looks for and refuses. The 1:1 authoring stances (architect/auditor/researcher/documentarian) are **not** here: they live folded into their work guide in the kit, their single source ([ADR-0093](https://github.com/jcosta33/corpus/blob/main/docs/adrs/0093-collapse-1to1-personas.md)).
+Cross-cutting cognitive postures loaded _alongside_ the work — they tilt what the agent looks for and refuses. The 1:1 authoring stances (architect/auditor/researcher/documentarian) are **not** here: they live folded into their work guide in the kit, their single source.
 
 | Skill                | Use it when                                                                                                                                                         |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

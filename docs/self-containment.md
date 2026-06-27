@@ -55,13 +55,13 @@ never inside a `SKILL.md` body.
 
 ## Cross-cutting stances: the canonical worked example
 
-The cross-cutting stances are where the self-containment principle does its loudest work. Each is a fully standalone skill — installing the starter kit's `review-output` guide does not pull in `persona-skeptic`, and installing the persona does not require the guide. (The stances that map 1:1 to one kind of work — architect, auditor, researcher, documentarian — are not shipped standalone at all; they live folded into their kit work guide, their single source, per [ADR-0093](https://github.com/jcosta33/corpus/blob/main/docs/adrs/0093-collapse-1to1-personas.md). Self-containment is exactly why that fold is clean: the guide already carries the whole discipline, with nothing to import.)
+The cross-cutting stances are where the self-containment principle does its loudest work. Each is a fully standalone skill — installing the starter kit's `review-output` guide does not pull in `adversarial-review`, and installing that skill does not require the guide. (The stances that map 1:1 to one kind of work — architect, auditor, researcher, documentarian — are not shipped standalone at all; they live folded into their kit work guide, their single source, per [ADR-0093](https://github.com/jcosta33/corpus/blob/main/docs/adrs/0093-collapse-1to1-personas.md). Self-containment is exactly why that fold is clean: the guide already carries the whole discipline, with nothing to import.)
 
 ```mermaid
 flowchart TD
     UR[User: "review this finished task"] --> AGT[Agent assesses task]
     AGT -->|matches description| RO["review-output loads (starter kit)"]
-    AGT -->|matches description| PS[persona-skeptic loads]
+    AGT -->|matches description| PS[adversarial-review loads]
     RO -.no link to.-> PS
     PS -.no link to.-> RO
     RO & PS --> CTX[(Both in context, neither depends on the other)]
@@ -69,12 +69,12 @@ flowchart TD
 
 | Property                                                                     | How it's enforced                                                                                                                                                                                             |
 | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Each stance is a separate skill folder**                                   | `skills/persona-skeptic/SKILL.md`, `skills/persona-challenger/SKILL.md`, `skills/persona-surveyor/SKILL.md` — one folder per cross-cutting stance, each self-contained.                                       |
-| **Each stance activates from task assessment, not from cross-skill mention** | Each `description` names the task type the stance is for, e.g. _"ALWAYS apply when judging another agent's change set"_. The agent loads it because the task matches, not because another skill mentioned it. |
+| **Each stance is a separate skill folder**                                   | `skills/persona-challenger/SKILL.md`, `skills/persona-surveyor/SKILL.md` — one folder per cross-cutting stance, each self-contained (the former `persona-skeptic` folded into the `adversarial-review` discipline).  |
+| **Each stance activates from task assessment, not from cross-skill mention** | Each `description` names the task type the stance is for, e.g. _"ALWAYS apply when weighing a proposal before it's built"_. The agent loads it because the task matches, not because another skill mentioned it. |
 | **No stance index / core / loader skill**                                    | There is no `personas-core`, no `personas` monolith. Each is independently installable.                                                                                                                       |
 | **Stances are not referenced from any other skill**                          | `Grep` over `skills/` for `persona-` returns zero hits inside non-stance `SKILL.md` files and zero hits inside any `references/task-template.md`. The only matches are within the stance files themselves.    |
 
-> A consumer who installs only the kit's `review-output` and this catalog's `persona-skeptic` gets the same behaviour as one with everything installed — neither file mentions the other.
+> A consumer who installs only the kit's `review-output` and this catalog's `adversarial-review` gets the same behaviour as one with everything installed — neither file mentions the other.
 
 ---
 
