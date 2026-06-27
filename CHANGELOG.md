@@ -12,6 +12,25 @@ a tag or commit for stability) and re-run to re-fetch. Watch the
 
 ## [Unreleased]
 
+### Changed
+
+- **Re-baselined the catalog to the universal set (7 → 11 skills), 2026-06-27.** The catalog is now
+  universal-only — skills that hold for any repo regardless of the Corpus workflow — per
+  **[Corpus ADR-0112](https://github.com/jcosta33/corpus/blob/main/docs/adrs/0112-two-tier-skills.md)**.
+  Added from a live adoption census: `codebase-exploration`, `concise-output`, `debugging`, `git-pr`,
+  `planning-spec`, `security-review`, and `adversarial-review` (which now carries both the
+  refute-by-default stance and the review procedure). The catalog ships **11 universal skills**:
+  `adversarial-review`, `codebase-exploration`, `concise-output`, `debugging`, `empirical-proof`,
+  `fix-flaky-test`, `git-pr`, `persona-challenger`, `persona-surveyor`, `planning-spec`,
+  `security-review` — plus `persona-skeptic` kept as a retired redirect to `adversarial-review`.
+
+### Moved
+
+- **The `write-*` depth guides and `implement-task` moved to the starter kit** (ADR-0112): the
+  Corpus-workflow guides — `write-feature`, `write-fix`, `write-refactor`, `write-rewrite`,
+  `write-migration`, `write-performance`, `write-testing`, `write-documentation`, and
+  `implement-task` — now live in `corpus-starter-kit` at `.agents/skills/`, not in this catalog.
+
 ## [1.0.0] - 2026-06-22
 
 First versioned release. The catalog ships **14 skills**: the cross-cutting conditioning stances
@@ -23,9 +42,9 @@ and `implement-task`.
 This baseline reflects two recent decisions:
 
 - **[Corpus ADR-0093](https://github.com/jcosta33/corpus/blob/main/docs/adrs/0093-collapse-1to1-personas.md)** — the four 1:1 authoring personas (architect / auditor / researcher / documentarian) were
-  collapsed into their work guides (single source); the catalog keeps only the cross-cutting trio
-  plus `empirical-proof`, each rebuilt grounding-first (a stance's leverage is the external
-  evidence it forces, not a role label).
+  collapsed into their work guides (single source); the catalog keeps only the cross-cutting trio plus
+  `empirical-proof`, each rebuilt grounding-first (a stance's leverage is the external evidence it
+  forces, not a role label).
 - **Reference-load wiring** — every guide that bundles a `references/` file now carries a Rule-0
   load directive (a point-of-need 1-hop link; top-of-body for the work guides), so the reference is
   actually loaded rather than merely listed.
