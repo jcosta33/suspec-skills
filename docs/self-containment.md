@@ -112,6 +112,27 @@ Some skills reference values _outside_ the standard contract — a benchmark com
 
 ---
 
+## Rule 3: no citations or external sourcing in `SKILL.md`
+
+A `SKILL.md` is a **product** — the instructions an agent runs — not a paper. Bibliography markers
+(`[\[48\]](../../docs/sources.md#48)`) and provenance ("the pattern from `oil-oil/codex-explore-skill`",
+a GitHub or DOI URL) do not belong in a skill body. Two reasons, the same ones behind Rule 1:
+
+- **It breaks standalone install.** A `../../docs/sources.md#48` link points _outside_ the skill folder;
+  `npx skills add --skill <name>` ships only that folder, so every such link 404s the moment the skill is
+  installed on its own — the "Reference Illusion" again, in citation form.
+- **It is a category error.** Sourcing is documentation. The evidence base lives in this `docs/` directory
+  (`sources.md` + the science pages — which _do_ cite freely; that is their whole job). The product states
+  the discipline; the _why it's true_ is a doc concern.
+
+**Applied:** a skill names the technique and its plain rationale ("agreement is not a correctness signal"),
+never the citation; external best-of-breed provenance is recorded in [`sources.md`](./sources.md), not in
+the skill. Tool names the agent actually **uses** (Semgrep, CodeQL, Diátaxis) are instructions, not
+sourcing, and stay. The gate: `grep -rniE 'sources\.md|github\.com|https?://|doi\.org|\[\\[[0-9]' skills/`
+returns nothing.
+
+---
+
 ## Why the cost is worth it
 
 | Benefit                       | Mechanism                                                                                                                                |
