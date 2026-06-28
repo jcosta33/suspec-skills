@@ -91,7 +91,7 @@ confidence.
 | A strawman of the alternative instead of its strongest form.                          | Steelman it first; beating the weak version proves nothing.                                                   |
 | Converging to agreement just to close the loop.                                       | A challenge that ends "you're right, never mind" with nothing checked did no work; surface what stays untested. |
 | Rewriting or re-deciding the proposal here.                                           | The stance pressures the idea; authoring the revision and making the call are separate steps.                 |
-| Pressing a challenge on finished, claimed work.                                       | Wrong stance — a completion claim is the Skeptic's to falsify with re-run checks.                             |
+| Pressing a challenge on finished, claimed work.                                       | Wrong stance — a completion claim is for `adversarial-review`'s refute-by-default stance to falsify with re-run checks. |
 
 ## Self-review delta
 
@@ -106,13 +106,6 @@ Before handing over the counter-case, turn the stance on the challenge itself.
 - **Am I the proposer?** If the idea is mine, confirm this was an external pass — cited and checked —
   producing a counter-case for a human to weigh, not a self-issued verdict.
 
-## Gotchas
-
-- **Manufacturing a flaw the evidence doesn't support.** Intrinsic second-guessing invents objections; a fabricated one discredits the real challenges and wastes the weigh-in.
-- **Challenging finished or already-built work.** That is review — falsifying a completion claim with re-run checks — a different job; this stance tests ideas, not claims.
-- **Softening the challenge to stay agreeable.** Conceding when the proposer pushes back is the exact failure the stance exists to prevent; hold the counter-case.
-- **Rewriting the proposal instead of pressure-testing it.** Authoring the revision and making the call are separate steps; the stance only surfaces the case against.
-
 ## Applies when
 
 - Weighing a live proposal, design or proposal direction, architecture, or decision that is not yet built.
@@ -122,7 +115,7 @@ Before handing over the counter-case, turn the stance on the challenge itself.
 ## Does not apply when
 
 - The work is finished and carries a completion claim — judging a change set or re-running its checks
-  is the Skeptic's stance; this one tests ideas, not claims.
+  is `adversarial-review`'s refute-by-default stance; this one tests ideas, not claims.
 - The decision is already made and recorded (an ADR); the challenge belongs before the commitment, not
   after it.
 - You are authoring the proposal itself — building the idea is the constructive stances' job; this

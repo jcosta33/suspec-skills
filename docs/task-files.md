@@ -177,7 +177,7 @@ The same body of research that justifies task files also bounds them. Externalis
 | -------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | [\[32\]](./sources.md#32) ETH Zurich, _Evaluating AGENTS.md_   | LLM-generated context files cost +20 % with -3 % success                | Don't auto-generate or pad templates; tool-specific commands are 50× more impactful than narrative content              |
 | [\[33\]](./sources.md#33) Lulla et al., _AGENTS.md efficiency_ | Efficiency gains plateau; redundancy penalises                          | Each section must earn its keep                                                                                         |
-| [\[31\]](./sources.md#31) ByteDance, _More with Less_          | Quadratic token cost with turns; 75th-percentile turn cap saves 24–68 % | Templates >200 lines push load-bearing content into the U-curve trough [\[5\]](./sources.md#5)[\[30\]](./sources.md#30) |
+| [\[31\]](./sources.md#31) Gao & Peng, _More with Less_ (ByteDance) | Quadratic token cost with turns; 75th-percentile turn cap saves 24–68 % | Templates >200 lines push load-bearing content into the U-curve trough [\[5\]](./sources.md#5)[\[30\]](./sources.md#30) |
 | [\[6\]](./sources.md#6) "Template Theatre" anti-pattern        | Templates that ship but rarely apply pollute the agent's prior          | Skills whose discipline lives entirely in `SKILL.md` (personas, cross-cutting quality gates) ship no per-task scaffold  |
 
 The decision rubric above is the applied form of these constraints.

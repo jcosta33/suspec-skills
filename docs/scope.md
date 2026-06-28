@@ -8,13 +8,13 @@ Most repos define themselves by what they contain. This one is also defined by w
 
 ## What this repo is
 
-`corpus-skills` ships **universal agent-workflow skills** — conditioning stances and code-authoring depth. Each skill is a self-contained discipline that an agent loads when the task matches its description. The guides for authoring [Corpus](https://github.com/jcosta33/corpus)'s own artifacts (specs, audits, research, RFCs, change plans) ship installed in the [starter kit](https://github.com/jcosta33/corpus-starter-kit), not here.
+`corpus-skills` ships **universal agent-workflow skills** — the 11 skills that hold for any repo regardless of the Corpus workflow ([ADR-0112](https://github.com/jcosta33/corpus/blob/main/docs/adrs/0112-two-tier-skills.md)). Each skill is a self-contained discipline that an agent loads when the task matches its description. The Corpus-coupled guides — the artifact builders (specs, audits, research, RFCs, change plans) and the `write-*` task-implementation depth (including `implement-task`) — ship installed in the [starter kit](https://github.com/jcosta33/corpus-starter-kit), not here.
 
-| Domain                     | Shape of skills shipped                                                                                                                                                            |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Code authoring**         | Workflow skills for implementing features, fixing bugs, refactoring, rewriting, migrating, optimising performance, improving test coverage, and writing user-facing documentation. |
-| **Conditioning (stances)** | Cognitive postures loaded alongside a work guide — architect, auditor, documentarian, researcher, skeptic, surveyor — plus the standalone evidence discipline (`empirical-proof`). |
-| **Specialised work**       | Single-purpose skills like stabilising a flaky test (`fix-flaky-test`) and running a Corpus task packet long-form (`implement-task`).                                              |
+| Domain                     | Shape of skills shipped                                                                                                                                                |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Conditioning (stances)** | Cross-cutting cognitive postures loaded alongside the work — `persona-challenger`, `persona-surveyor` — plus the standalone evidence discipline (`empirical-proof`).    |
+| **Disciplines**            | Framework-free practices that raise the floor on any task — `adversarial-review` (which absorbed the retired `persona-skeptic` stance), `concise-output`, `fix-flaky-test`. |
+| **Code-lifecycle**         | The fundamental coding skills — `codebase-exploration`, `debugging`, `security-review`, `git-pr`, `planning-spec`.                                                      |
 
 Every skill answers the question _"how should an agent shape its work for tasks of this type?"_ — not _"what should an engineer know about this domain?"_.
 

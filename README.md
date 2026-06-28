@@ -96,7 +96,7 @@ The fundamental coding skills, re-baselined from a live adoption census ([best-o
 
 ## The science
 
-[`docs/`](./docs/) documents the empirical evidence behind every structural choice in these skills — why descriptions are directive ([activation](./docs/activation.md)), why bodies stay under 200 lines ([body anatomy](./docs/body-anatomy.md)), why verification steps force visible output ([execution](./docs/execution.md)), why skills don't depend on each other ([self-containment](./docs/self-containment.md)), when a skill ships a task template ([task files](./docs/task-files.md)), and what deliberately stays out ([scope](./docs/scope.md)) — with the full bibliography in [sources](./docs/sources.md).
+[`docs/`](./docs/) documents the empirical evidence behind every structural choice in these skills — why descriptions are directive ([activation](./docs/activation.md)), why bodies target ~200 lines under a 500-line hard cap ([body anatomy](./docs/body-anatomy.md)), why verification steps force visible output ([execution](./docs/execution.md)), why skills don't depend on each other ([self-containment](./docs/self-containment.md)), when a skill ships a task template ([task files](./docs/task-files.md)), and what deliberately stays out ([scope](./docs/scope.md)) — with the full bibliography in [sources](./docs/sources.md).
 
 ## Security
 
@@ -104,4 +104,4 @@ Read a skill before installing it — a skill is instructions your agent will fo
 
 ## Relationship to the Corpus framework
 
-These skills assume nothing about Corpus — each stands alone in any repo with an `AGENTS.md`. They pair naturally with the Corpus working discipline (specs with verifiable requirements, task packets with evidence-backed claims, review packets as the durable record); the framework and its docs live at [jcosta33/corpus](https://github.com/jcosta33/corpus), the copy-whole workspace at [jcosta33/corpus-starter-kit](https://github.com/jcosta33/corpus-starter-kit). This catalog is curated: skill content is edited here, and changes are planned and reviewed in the Corpus project's workspace.
+These skills assume nothing about Corpus — each stands alone in any repo with an `AGENTS.md`. They pair naturally with the Corpus working discipline (specs with verifiable requirements, task packets with evidence-backed claims, review packets as the durable record); the framework and its docs live at [jcosta33/corpus](https://github.com/jcosta33/corpus), the copy-whole workspace at [jcosta33/corpus-starter-kit](https://github.com/jcosta33/corpus-starter-kit). Its sibling catalog [jcosta33/corpus-agents](https://github.com/jcosta33/corpus-agents) ships Claude-Code-first worker definitions for the Corpus roles — agent-neutral disciplines here, runner-specific agents there. This catalog is curated: skill content is edited here, and changes are planned and reviewed in the Corpus project's workspace.
