@@ -59,5 +59,5 @@ against the people and tools that parse them, so write those normally.
 
 ## Pairs with
 
-Suspec ships a baseline output-economy convention; this skill is a self-contained, stronger dial that
-needs no Suspec knowledge to apply. (Pointer, not a dependency.)
+This skill is a self-contained, stronger dial for output economy; it needs no framework knowledge to
+apply.
