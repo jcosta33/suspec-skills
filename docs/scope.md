@@ -12,7 +12,7 @@ Most repos define themselves by what they contain. This one is also defined by w
 
 | Domain                     | Shape of skills shipped                                                                                                                                                |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Market/review methods**  | Cross-cutting methods loaded alongside the work — `market-research`, `persona-challenger` — plus the standalone evidence discipline (`empirical-proof`). |
+| **Market/review methods**  | Cross-cutting methods loaded alongside the work — `market-research`, `persona-challenger`, `bulletproof`, `revolver-review` — plus the standalone evidence discipline (`empirical-proof`). |
 | **Disciplines**            | Framework-free practices that raise the floor on any task — `adversarial-review`, `concise-output`, `fix-flaky-test`.                           |
 | **Code-lifecycle**         | The fundamental coding skills — `codebase-exploration`, `debugging`, `security-review`, `git-pr`, `planning-spec`.                                                      |
 

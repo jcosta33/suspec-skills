@@ -10,7 +10,18 @@ The catalog is pull-updatable — you install it with `npx skills add jcosta33/s
 a tag or commit for stability) and re-run to re-fetch. Watch the
 [releases](https://github.com/jcosta33/suspec-skills/releases) and re-pull when a bump matters.
 
-## [Unreleased]
+## [1.1.0] - 2026-07-02
+
+### Added
+
+- **`bulletproof`** — a persona-free, evidence-gated critique protocol for hardening a claim,
+  decision, spec, or plan: expose unsupported claims, hidden assumptions, failure modes,
+  disconfirming tests, and kill criteria; the verdict gates on already-run evidence, never
+  confidence or consensus. Read-only, reconcile-only, manually invoked.
+- **`revolver-review`** — the bounded, lead-orchestrated multi-lens review strategy: a lead picks
+  a few distinct lenses from a menu by risk, runs them blind and isolated (draft-before-compare),
+  reconciles their candidate findings, and stops when marginal unique findings dry up. The
+  orchestration around `adversarial-review`; a human owns the verdict.
 
 ### Changed
 
@@ -19,10 +30,10 @@ a tag or commit for stability) and re-run to re-fetch. Watch the
   **[Suspec ADR-0112](https://github.com/jcosta33/suspec/blob/main/docs/adrs/0112-two-tier-skills.md)**.
   Added from a live adoption census: `codebase-exploration`, `concise-output`, `debugging`, `git-pr`,
   `planning-spec`, `security-review`, `market-research`, and `adversarial-review` (which now carries both the
-  refute-by-default stance and the review procedure). The catalog ships the universal skills:
-  `adversarial-review`, `codebase-exploration`, `concise-output`, `debugging`, `empirical-proof`,
-  `fix-flaky-test`, `git-pr`, `market-research`, `persona-challenger`, `planning-spec`,
-  `security-review`.
+  refute-by-default stance and the review procedure). As of 1.1.0 the catalog ships:
+  `adversarial-review`, `bulletproof`, `codebase-exploration`, `concise-output`, `debugging`,
+  `empirical-proof`, `fix-flaky-test`, `git-pr`, `market-research`, `persona-challenger`,
+  `planning-spec`, `revolver-review`, `security-review`.
 
 ### Moved
 
