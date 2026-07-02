@@ -4,7 +4,7 @@
 
 Each skill is a self-contained folder under [`skills/`](./skills/): one `SKILL.md` with a trigger description and the working rules, plus bundled `references/` where a skill ships a fillable session frame. No scripts, no runtime — markdown an agent loads when the work matches.
 
-The [Suspec starter kit](https://github.com/jcosta33/suspec-starter-kit) ships every Suspec-coupled skill — the core loop (`write-spec`, `implement-task`, `review-output`), the workspace authoring guides (`write-audit`, `write-research`, `write-rfc`, `write-prd`, `write-bug-report`, `write-change-plan`, `write-inventory`, `spec-check`, `split-work`, `save-findings`), and the task-implementation depth (`write-feature`, `write-fix`, `write-refactor`, `write-rewrite`, `write-migration`, `write-performance`, `write-testing`, `write-documentation`). Everything **here** is the universal layer — market/review methods, disciplines, output economy — framework-free and installable in any repo; install only what your work calls for.
+The [Suspec starter kit](https://github.com/jcosta33/suspec-starter-kit) ships every Suspec-coupled skill — the core loop guides (`write-spec`, `implement-task`, `review-output`), the workspace authoring guides, and the `write-*` task-implementation depth; its README is that inventory. Everything **here** is the universal layer — market/review methods, disciplines, output economy — framework-free and installable in any repo; install only what your work calls for.
 
 ## Install
 

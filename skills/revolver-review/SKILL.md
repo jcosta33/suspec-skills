@@ -16,7 +16,8 @@ lenses from a menu by the change's risk, runs them **blind and isolated**, recon
 findings into one report, and **stops when the marginal unique findings dry up**.
 
 It is the **strong form of the [`adversarial-review`](../adversarial-review/SKILL.md) panel, named and
-bounded** — each lens *is* an adversarial reviewer (refute-by-default, re-run the checks, cite `file:line`).
+bounded** — each lens *is* an adversarial reviewer (refute-by-default, evidence-gated, cite `file:line` —
+with one override: lenses reconcile already-run output rather than re-running commands; see below).
 Revolver is the orchestration *around* those reviewers. It **adds no new review authority**: lenses produce
 findings + evidence, the lead reconciles and dedups, and a **human owns the ship/merge verdict**. A lens
 reviewer never sets the verdict.
@@ -132,7 +133,8 @@ validated ahead of that measurement.
 ## Pairs with
 
 - [`adversarial-review`](../adversarial-review/SKILL.md) — the per-lens discipline each reviewer runs
-  (refute by default, re-run the checks, cite `file:line`). Revolver orchestrates a panel of these.
+  (refute by default, cite `file:line`; minus its re-run rule, which Revolver's reconcile-only boundary
+  overrides). Revolver orchestrates a panel of these.
 - [`bulletproof`](../bulletproof/SKILL.md) — for hardening a claim, decision, spec, or plan rather than
   reviewing a finished code change.
 - [`empirical-proof`](../empirical-proof/SKILL.md) — the verbatim-pasted-output discipline the
