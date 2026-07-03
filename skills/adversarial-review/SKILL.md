@@ -35,10 +35,12 @@ Two rules make a panel work:
 
 - **Draft before you compare.** Each lens drafts its findings _before_ seeing the others — independence
   first, comparison second. Revealing early collapses the panel into one correlated opinion.
-- **Vote, don't debate; refute first.** Resolve a disagreement by each reviewer **independently
-  re-checking** then **voting**, not by argument — debate propagates the shared error. On a contested
-  finding the reviewer writes the **refutation first** (why the claim is unproven); it survives only if
-  the refutation fails against fresh evidence.
+- **Re-check, don't debate; refute first — and a vote never filters findings.** The lead unions every
+  lens's findings and judges each on its evidence; agreement or vote-count never decides which survive
+  (consensus-style aggregation measurably drags a panel below its best member). A vote resolves only a
+  **contested rejection** of a specific finding: each reviewer **independently re-checks**, writes the
+  **refutation first** (why the claim is unproven), and the finding dies only if the refutation holds
+  against fresh evidence — never by argument, which propagates the shared error.
 
 ## Project commands
 
