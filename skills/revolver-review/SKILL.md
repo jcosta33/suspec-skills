@@ -124,8 +124,9 @@ validated ahead of that measurement.
   framing — one opinion in triplicate, not three. Keep stage one private.
 - **Adjudicated summary, not raw drafts, across rounds.** A later round receives the lead's reconciled
   summary, never another lens's raw output — reading a peer's raw draft induces conformity.
-- **Debate instead of re-check.** Resolving a conflict by argument propagates the shared error; resolve by
-  each reviewer independently re-checking, then voting, refutation first.
+- **Debate instead of re-check.** Resolving a contested rejection by argument propagates the shared
+  error; resolve by each reviewer independently re-checking, refutation first, then the vote — and
+  only there: a vote never decides which findings survive (see the flow's union rule).
 - **Consensus as proof.** Three similar reviewers agreeing is not evidence; it is correlated error. Keep
   the lenses distinct and gate acceptance on evidence, not on the count that agreed.
 - **Unbounded rotation.** Spinning up rounds while a budget remains, past the point unique findings dried
