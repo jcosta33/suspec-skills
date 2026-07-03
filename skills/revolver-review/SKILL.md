@@ -32,9 +32,12 @@ reviewer never sets the verdict.
 3. **Run blind and isolated — draft before compare.** Each same-round lens drafts its findings **before**
    seeing any other lens's raw output. Revealing early collapses the panel into one correlated opinion in
    triplicate. Only the lead sees all drafts.
-4. **Reconcile into one report.** The lead dedups and adjudicates each candidate finding (the vocabulary
-   below), resolves conflicts by **independent re-check and a vote — not debate** (debate propagates the
-   shared error), and writes the single report.
+4. **Reconcile into one report — union, never majority-filter.** Every lens finding enters the
+   reconcile; the lead dedups and adjudicates each candidate on its evidence (the vocabulary below).
+   Agreement or vote-count never selects which findings survive — consensus-style aggregation
+   measurably dilutes a panel below its best member. A vote applies only to a contested REJECTION of
+   a specific finding, resolved by **independent re-check, refutation-first — not debate** (debate
+   propagates the shared error). The lead writes the single report.
 5. **Stop on marginal unique yield.** Add a lens or a round only while it still surfaces **unique accepted**
    findings; stop when it does not, or when a hard round/budget cap is hit. **Never** stop on reviewer
    silence or agreement, and never continue just because a budget remains.
