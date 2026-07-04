@@ -10,6 +10,34 @@ The catalog is pull-updatable — you install it with `npx skills add jcosta33/s
 a tag or commit for stability) and re-run to re-fetch. Watch the
 [releases](https://github.com/jcosta33/suspec-skills/releases) and re-pull when a bump matters.
 
+## [2.0.0] - 2026-07-05
+
+### Removed
+
+- **`adversarial-review`** — removed as a standalone skill. Its refute-by-default stance and
+  adversarial procedure are now folded into `revolver-review` (Suspec ADR-0132), so there is no
+  longer a skill for one skill to depend on. This is the major-bump trigger: the catalog no longer
+  ships a skill it shipped in 1.1.0.
+
+### Changed
+
+- **`revolver-review` — rewritten to the rotating adversarial refine-loop** (Suspec
+  [ADR-0132](https://github.com/jcosta33/suspec/blob/main/docs/adrs/0132-revolver-rotating-refine-loop.md),
+  refined by [ADR-0133](https://github.com/jcosta33/suspec/blob/main/docs/adrs/0133-examine-dont-ruminate.md)).
+  It is no longer a bounded panel that picks a few lenses, runs them blind and isolated, and stops
+  when marginal findings dry up. It now cycles a pool of **at least 6 distinct stances one reviewer
+  at a time** on cheap, varied models; the orchestrator **fixes between rounds** and the next stance
+  reviews the **revised** change; up to 3 cycles per unit; it stops when a **full rotation surfaces
+  nothing new**. It absorbs the refute-by-default adversarial stance directly — a contract change,
+  not a wording tweak.
+- **Purged all skill-to-skill references** (Suspec
+  [ADR-0134](https://github.com/jcosta33/suspec/blob/main/docs/adrs/0134-self-contained-spine.md)):
+  no skill names or assumes another skill is installed. Every skill is now self-contained.
+
+As of 2.0.0 the catalog ships: `bulletproof`, `codebase-exploration`, `concise-output`, `debugging`,
+`empirical-proof`, `fix-flaky-test`, `git-pr`, `market-research`, `persona-challenger`,
+`planning-spec`, `revolver-review`, `security-review`.
+
 ## [1.1.0] - 2026-07-02
 
 ### Added

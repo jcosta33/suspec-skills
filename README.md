@@ -39,7 +39,7 @@ already ships the core loop. Add skills only as a specific need shows up, in rou
 
 1. **Nothing.** Run the loop with the kit's core guides. Most changes never need more.
 2. **`revolver-review`** — the first one most teams want. Load it when an agent _judges another
-   agent's_ substantial change: a rotating pool of distinct stances, fired a few at a time on cheap
+   agent's_ substantial change: a rotating pool of distinct stances, fired one reviewer at a time on cheap
    varied models, refutes by default, re-runs the checks itself, fixes between rounds, and re-reviews
    the revised code until it converges — driving the change to a clean state, not a merge sign-off.
 3. **`empirical-proof`** — pair it with any completion claim to force verbatim pasted output; the
