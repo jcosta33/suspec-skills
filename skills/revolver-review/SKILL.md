@@ -1,45 +1,50 @@
 ---
 name: revolver-review
 type: agent-guide
-description: "Run a rotating, self-converging adversarial review of a substantial change: a pool of 6-9 distinct review stances, fired 3 subagents at a time on cheaper, varied models; after each trio the orchestrator applies the legitimate fixes and the NEXT trio reviews the REVISED code, rotating one stance in and one out like a revolver cylinder; continue until one full rotation covers every stance, then repeat for up to 3 cycles, stopping when a cycle surfaces nothing new. Each subagent runs an EXTREMELY adversarial discipline — refute by default, re-run/reconcile the evidence itself, cite file:line, keep effective false positives low — injected into its prompt alongside its assigned stance. Self-contained: it depends on no other skill. ALWAYS apply when reviewing a substantial change and you want it driven to a clean state, not just a findings list. Skip for a tiny one-line change and for original authoring (nothing exists yet to refute)."
+description: "Run a rotating, self-converging adversarial review of a substantial change: a pool of at least 6 distinct review stances, fired ONE reviewer at a time on cheap, varied models; after each single review the orchestrator applies the legitimate fixes and the next stance reviews the REVISED code, rotating through the pool one stance per round so coverage stays even; continue until a full rotation covers every stance, then repeat for up to 3 cycles, stopping when a cycle surfaces nothing new. Each subagent runs an EXTREMELY adversarial discipline — refute by default, re-run/reconcile the evidence itself, cite file:line, keep effective false positives low — injected into its prompt alongside its stance. Self-contained: it depends on no other skill. ALWAYS apply when reviewing a substantial change and you want it driven to a clean state, not just a findings list. Skip for a tiny one-line change and for original authoring (nothing exists yet to refute)."
 ---
 
 # Skill: revolver-review
 
 ## Purpose
 
-A rotating multi-agent review fails in predictable ways: it fires everyone at once and drowns in
-duplicates, it reviews the *original* diff and never sees the bugs the fixes introduce, it loops
-forever with no stop rule, or it manufactures false consensus (similar reviewers agree and the
-agreement is mistaken for proof). Revolver bounds all of that. Think of the name literally: a cylinder
-of stances rotates, a few chambers fire each round, and **every shot lands on the current target** — the
-latest revised code, not the frozen original. The loop **converges the work to a clean state**; it does
-not just hand a human a list.
+A rotating multi-agent review fails in predictable ways: it reviews the *original* diff and never sees
+the bugs the fixes introduce, it loops forever with no stop rule, or it scrutinises some concerns far
+harder than others. Revolver bounds all of that. Think of the name literally: a cylinder of stances
+rotates, one chamber fires each round, and **every shot lands on the current target** — the latest
+revised code, not the frozen original. The loop **converges the work to a clean state**; it does not
+just hand a human a list.
 
 ## The revolver mechanism
 
-1. **Load the cylinder — 6 to 9 distinct stances.** Draw from the stance menu below plus whatever this
-   specific change warrants. Distinct stances are load-bearing: reviewers that share a blind spot
-   *rearrange* errors instead of removing them, so the pool must actually differ.
-2. **Fire 3 at a time — never more.** Each round spawns exactly **3 subagent reviewers**, each holding
-   one stance, each running the adversarial discipline below. They run **blind and isolated** — they
-   draft their findings before seeing anything but the code; only the orchestrator sees all three.
-3. **Fix between every round.** After a trio reports, the **orchestrator** collects the findings,
-   accepts the ones that carry concrete evidence, and **applies the legitimate fixes**. The reviewers
-   never edit; the orchestrator does.
-4. **Rotate one chamber.** The next trio drops the oldest stance and introduces the next one from the
-   pool (`{A,B,C}` → `{B,C,D}` → `{C,D,E}` …) — overlap two, swap one, cycling the circle.
-5. **Always review the latest state.** Each trio reviews the code **as it stands after the previous
-   round's fixes**, never the original diff. This is the whole point: it is the only structure that
-   catches the regressions a fix introduces.
-6. **One full rotation is the floor.** A rotation is done when every stance in the pool has fired once.
-   Then the orchestrator consolidates and applies any remaining legitimate fixes.
+1. **Load the cylinder — at least 6 distinct stances.** Draw from the stance menu below plus whatever
+   this change warrants. **No fixed upper limit**: use as many *genuinely distinct* stances as the
+   change's risk surface supports — but review perspectives **saturate**, so a stance that duplicates
+   another's blind spot adds cost and noise, not coverage. Distinctness is the real bound, not a number;
+   six is the floor for a change substantial enough to warrant the loop.
+2. **Fire one reviewer at a time.** Each round spawns **one** subagent holding the next stance, running
+   the adversarial discipline below, reviewing the code **as it stands now**.
+3. **Fix after every round.** The orchestrator collects that reviewer's findings, accepts the ones
+   carrying concrete evidence, and **applies the legitimate fixes**. The reviewer never edits; the
+   orchestrator does.
+4. **Rotate through the pool, one stance per round.** Go around the circle — each stance fires **exactly
+   once per rotation**, so every concern gets equal scrutiny (a one-in-one-out overlap would scrutinise
+   the middle of the pool harder than the edges; firing one at a time keeps coverage even by
+   construction).
+5. **Always review the latest state.** Each stance reviews the code after **all** prior rounds' fixes —
+   the finest-grained refinement, and the only structure that catches a regression a fix just introduced.
+6. **One full rotation is the floor.** A rotation is done when every stance has fired once.
 7. **Repeat up to 3 cycles; stop when a cycle goes quiet.** If the last full rotation still surfaced
-   real, new accepted findings, run another rotation — to a **maximum of 3 cycles**. Stop the moment a
-   full rotation surfaces no new accepted finding: the yield has dried up. Evidence on iterative repair
-   is blunt — the first one or two passes capture the bulk of reachable improvement and the curve
-   flattens fast, so the cap is where the value already is, and it stops the loop from churning the
-   code (and the token bill) for nothing.
+   real, new accepted findings, run another — to a **maximum of 3 cycles**. Stop the moment a rotation
+   surfaces no new accepted finding. Iterative gains plateau fast; the cap is where the value already is,
+   and it stops the loop from churning the code (and the token bill) for nothing.
+
+**Why one at a time, not a simultaneous panel.** One-at-a-time gives the finest feedback (each stance
+sees every prior fix), catches interacting fixes earliest, keeps coverage even, and is cheapest per step.
+A simultaneous panel would trade those for a decorrelated-ensemble effect on a single state — a benefit
+the evidence finds **contested**, not decisive. This is a **reasoned default**, not a proven optimum: the
+coverage-evenness is a matter of arithmetic, but the single-vs-panel choice is not settled by the
+literature and is worth measuring on real changes before it is treated as fact.
 
 ## The adversarial discipline every subagent adopts
 
@@ -68,7 +73,7 @@ holes through.
 - **Never issue the ship verdict, never edit the code.** A reviewer produces findings + evidence. The
   orchestrator fixes; a human owns the final call.
 
-## The stance menu — pick 6 to 9, distinct
+## The stance menu — at least 6, distinct
 
 **Base stances:** requirement/spec coverage · regression risk · security/privacy · architecture &
 boundaries · pattern/idiom fit · tests & evidence · performance/resources · API/migration/compatibility
@@ -77,50 +82,46 @@ boundaries · pattern/idiom fit · tests & evidence · performance/resources · 
 **Add by risk when the change touches the area:** accessibility/UX · observability/ops · dependency &
 supply chain · concurrency/idempotency · deployment/infra · data correctness.
 
-Order the rotation so the highest-risk stances for *this* change fire first and fire again if a second
-cycle runs.
+Order the rotation so the highest-risk stances for *this* change fire first — and, if a second cycle
+runs, fire again first.
 
 ## Models — cheap and varied, so the loop is affordable
 
 The reviewer subagents run on **lower-end models by default**, and on **different** models across the
-trio where the runner offers a choice. Two reasons, both load-bearing:
+rotation where the runner offers a choice. Two reasons, both load-bearing:
 
-- **Cost.** This is a loop that re-reviews the revised state every round across up to 3 cycles. On a
-  top-tier model that bankrupts the review and no one runs it. Cheaper reviewers keep it affordable
-  enough to actually use.
-- **Decorrelation.** Different models err in different ways; a varied trio surfaces coverage a uniform
-  one misses — the diversity the panel depends on, bought for free by not paying for uniformity.
+- **Cost.** This loop re-reviews the revised state every round across up to 3 cycles. On a top-tier model
+  it bankrupts the review and no one runs it. Cheaper reviewers keep it affordable enough to use.
+- **Decorrelation.** Different models err in different ways; varying the model across the rotation
+  surfaces coverage a uniform run misses — bought for free by not paying for uniformity.
 
-Escalating a specific reviewer to a stronger model is a deliberate opt-in for a genuinely high-risk
-stance (security, architecture) — never the default, and never for the whole panel. The orchestrator
-that reconciles and fixes may run stronger; the reviewer chambers stay cheap.
+Escalating a specific stance (security, architecture) or the reconciling orchestrator to a stronger model
+is a deliberate opt-in — never the default, never the whole rotation.
 
 ## Reconcile and fix — the orchestrator's round
 
-Between trios the orchestrator: **unions** every finding (never majority-filters — consensus
-aggregation drags a panel below its best member); moves each candidate to **accepted** (carries
-concrete evidence), **rejected** (refuted, with a reason), **duplicate**, or **unverified** (plausible,
-unproven — cannot gate on its own); and **applies the accepted fixes** to the code. A contested
-rejection is resolved by an independent re-check, refutation first — not by debate, which propagates
-the shared error. The revised code is what the next trio sees.
+After each single reviewer, the orchestrator: takes its findings; moves each to **accepted** (carries
+concrete evidence), **rejected** (refuted, with a reason), or **unverified** (plausible, unproven —
+cannot gate on its own); and **applies the accepted fixes**. The revised code is what the next stance
+sees. Aggregate findings **on evidence**, never on how confident the reviewer sounded.
 
 ## Independence — the gotchas that decide whether it works
 
-- **Fresh reviewers every round.** Spawn new subagents each trio; a reviewer that reviews its own prior
+- **Fresh reviewer every round.** Spawn a new subagent each round; a reviewer that reviews its own prior
   pass, or the fix it proposed, drifts into self-endorsement — the failure mode iterative review exists
-  to avoid. The party that applies the fix is **never** a reviewer of that fix; the next trio is.
-- **Blind within a round.** The three same-round reviewers never see each other's drafts before
-  drafting — early reveal collapses three opinions into one in triplicate.
-- **Union, not vote.** Agreement is not a correctness signal; evidence decides which findings survive,
-  never the count that agreed.
-- **Distinct stances, varied models.** If the chambers are near-duplicates, rotation just rearranges the
+  to avoid. The party that applied a fix is **never** the reviewer of that fix; the next stance is.
+- **The next round sees the fixed code, not the last reviewer's raw draft.** Carry forward the
+  orchestrator's revised state, never another reviewer's unadjudicated notes — reading a peer's raw draft
+  induces conformity.
+- **Distinct stances, varied models.** If the chambers are near-duplicates, rotation just re-hits the
   same blind spot. Keep them different.
 - **Respect the cap.** Past ~3 cycles the curve is flat; more rounds burn tokens and risk over-editing
   correct code. Stop when a rotation goes quiet.
 
 ## What does not belong
 
-An unbounded loop with no cycle cap; a whole panel fired at once instead of trios; reviewing the frozen
-original instead of the revised state; a reviewer that edits the code or issues the ship verdict;
-majority-voting findings instead of unioning them on evidence; running the reviewer chambers on an
-expensive model by default; a stance so vague it duplicates another chamber's blind spot.
+An unbounded loop with no cycle cap; firing several reviewers at once instead of one at a time (that is a
+different, unmeasured design); reviewing the frozen original instead of the revised state; a reviewer
+that edits the code or issues the ship verdict; running the reviewer chambers on an expensive model by
+default; a stance so vague it duplicates another chamber's blind spot; treating the pool size, the
+one-at-a-time cadence, or the 3-cycle cap as proven constants rather than reasoned defaults to measure.
