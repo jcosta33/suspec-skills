@@ -203,14 +203,6 @@ frontmatter as intent and set the enforcement where the runner enforces it.
 - **Self-pass.** Hardening your own target, finding nothing, and quietly accepting it. Run the procedure
   as a voice independent of the author, or mark the self-pass inadmissible.
 
-## Pairs with
-
-- [`empirical-proof`](../empirical-proof/SKILL.md) — the verbatim-pasted-output discipline the evidence
-  gate leans on (reconcile the real output, not a paraphrase).
-- [`concise-output`](../concise-output/SKILL.md) — the output-economy dial for the report you write.
-- [`revolver-review`](../revolver-review/SKILL.md) — the finished-code-change review lens Bulletproof
-  defers to when the target is a diff or PR.
-
 ## What does not belong
 
 - Presenting itself as a persona or personality; auto-triggering; writing the code or the fix; running

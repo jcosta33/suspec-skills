@@ -113,12 +113,3 @@ a reader can tell whether it predates recent changes.
 - A vague "explore the codebase" subagent with no single question — it returns a tour, not
   an answer, and re-pollutes your context.
 - Treating a stale map or index as ground truth after you've started editing.
-
-## Pairs with
-
-- [`revolver-review`](../revolver-review/SKILL.md) — its cross-module caller search
-  (grep callers, read the calling code) is the same blast-radius question this skill
-  delegates as a recon slice; use that map to scope a review.
-- [`concise-output`](../concise-output/SKILL.md) — the return-a-compact-table discipline
-  is the same economy applied to subagent output; the key-files map is concise-output for
-  recon.

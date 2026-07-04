@@ -105,13 +105,3 @@ the fix and passes after — that is the durable proof the bug is dead, not mere
   change killed *this* bug.
 - Diagnosing a flaky, non-deterministic failure here (no reliable repro to read) — that is
   stabilization, not debugging.
-
-## Pairs with
-
-- [`empirical-proof`](../empirical-proof/SKILL.md) — paste the verbatim repro output and the
-  post-fix run; this skill says *gather* the runtime evidence, that skill governs *how you record*
-  it.
-- [`fix-flaky-test`](../fix-flaky-test/SKILL.md) — the sibling discipline for the intermittent
-  case, where the first job is to *make* a repro reliable before any of the steps here apply.
-- [`revolver-review`](../revolver-review/SKILL.md) — its refute-by-default stance, turned on
-  your own diagnosis: assume your favorite cause is wrong until the runtime evidence forces it.

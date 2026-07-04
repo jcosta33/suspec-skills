@@ -126,17 +126,6 @@ cleanup discipline) is in [`references/worktrees.md`](./references/worktrees.md)
 - A PR with no how-to-verify; review comments addressed silently with no reply/resolve; a CI re-run
   with no code change behind it.
 
-## Pairs with
-
-- [`empirical-proof`](../empirical-proof/SKILL.md) — paste the verbatim test/CI output into the
-  commit/PR/review reply, rather than asserting "tests pass".
-- [`revolver-review`](../revolver-review/SKILL.md) — the receiving side: how the reviewer reads
-  your PR. Open the PR so that review is cheap.
-- [`fix-flaky-test`](../fix-flaky-test/SKILL.md) — when the red CI job is an intermittent failure,
-  not a deterministic one, stabilize it there instead of retrying.
-- [`concise-output`](../concise-output/SKILL.md) — for the status update around the ship; the commit
-  body and PR description themselves stay in their normal full prose.
-
 ## Bundled resources
 
 - [`references/worktrees.md`](./references/worktrees.md) — the full git-worktree workflow for

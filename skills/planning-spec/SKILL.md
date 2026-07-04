@@ -103,11 +103,3 @@ not forward into the wrong steps.
 - A plan with no out-of-scope line, or a plan that is only a task list with no stated approach.
 - The implementation itself — this skill ends at the approved, decomposed plan; carrying out the steps is
   separate work.
-
-## Pairs with
-
-- [`revolver-review`](../revolver-review/SKILL.md) — review binds findings to the *stated intent*;
-  a plan with an explicit approach and out-of-scope line is what gives that review something precise to
-  bind against.
-- [`concise-output`](../concise-output/SKILL.md) — present the plan at the "go" checkpoint lean and
-  scannable (intent · approach · out-of-scope), so the human can approve or redirect cheaply.
