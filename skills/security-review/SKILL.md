@@ -8,7 +8,7 @@ description: Security-review a change by reasoning about what it does to the sys
 
 ## Purpose
 
-A general-purpose code review (see [`adversarial-review`](../adversarial-review/SKILL.md)) hunts
+A general-purpose code review (see [`revolver-review`](../revolver-review/SKILL.md)) hunts
 correctness; it is not tuned for the attacker's-eye question of *what an adversary can now do*. Two
 failure modes show up when an agent does a security pass untuned:
 
@@ -123,7 +123,7 @@ the path so the reader can check it cheaply.
 
 ## Pairs with
 
-- [`adversarial-review`](../adversarial-review/SKILL.md) — the refute-by-default review *procedure* and
+- [`revolver-review`](../revolver-review/SKILL.md) — the refute-by-default review *procedure* and
   panel; run a security lens inside it, or this skill as the dedicated security pass.
 - [`empirical-proof`](../empirical-proof/SKILL.md) — paste the verbatim scanner output and the
   reproduction of any exploit path you claim; don't assert "Semgrep is clean" without the run.

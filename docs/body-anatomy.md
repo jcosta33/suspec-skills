@@ -36,7 +36,7 @@ Each branch maps to one design rule. The rest of this document walks each rule i
 | [\[2\]](./sources.md#2) Anthropic best practices                                   | 500-line hard cap on `SKILL.md` bodies.                                                                                                                                                                                                                                                                                    |
 | [\[8\]](./sources.md#8) Ibryam, "Skill Authoring Patterns"                         | Practical target ~200 lines; observation that beyond 200, instructions toward the bottom are read but not consistently acted on.                                                                                                                                                                                           |
 
-**Applied in this repo:** every shipped skill body sits well under the 500-line hard cap, and all but two hold to the ~200-line practical target — the catalogue clusters short. The two bodies just over 200 are [`adversarial-review`](../skills/adversarial-review/SKILL.md) and [`bulletproof`](../skills/bulletproof/SKILL.md) (each ~220 lines), each carrying a full posture plus its procedure. The cap is a rule in [`AGENTS.md`](../AGENTS.md) (the body-length rule) — a convention checked by review; nothing in this repo enforces it.
+**Applied in this repo:** every shipped skill body sits well under the 500-line hard cap, and all but one hold to the ~200-line practical target — the catalogue clusters short. The one body just over 200 is [`bulletproof`](../skills/bulletproof/SKILL.md) (~220 lines), carrying a full posture plus its procedure. The cap is a rule in [`AGENTS.md`](../AGENTS.md) (the body-length rule) — a convention checked by review; nothing in this repo enforces it.
 
 > The 500-line cap is non-negotiable; the 200-line target is a forcing function. If a skill grows past 200, the next question is "what should move to `references/`?", not "should I raise the limit?".
 
@@ -53,7 +53,7 @@ Each branch maps to one design rule. The rest of this document walks each rule i
 
 - [`empirical-proof`](../skills/empirical-proof/SKILL.md) — rules 2–6 each pair the directive with the failure mode it prevents.
 - [`write-research`](https://github.com/jcosta33/suspec-starter-kit/blob/main/.agents/skills/write-research/SKILL.md) (starter kit) — the rules alternate the directive with its evidentiary rationale.
-- [`adversarial-review`](../skills/adversarial-review/SKILL.md) — the rules pair the directive with the inheritance-failure-mode it counters.
+- [`revolver-review`](../skills/revolver-review/SKILL.md) — the adversarial-discipline rules pair each directive with the failure mode it counters.
 
 > Bare imperative without rationale is the structural equivalent of a magic constant: works for the cases the author imagined, falls apart on the next one.
 

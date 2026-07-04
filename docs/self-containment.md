@@ -55,13 +55,13 @@ never inside a `SKILL.md` body.
 
 ## Cross-cutting stances: the canonical worked example
 
-The cross-cutting stances are where the self-containment principle does its loudest work. Each is a fully standalone skill — installing the starter kit's `review-output` guide does not pull in `adversarial-review`, and installing that skill does not require the guide.
+The cross-cutting stances are where the self-containment principle does its loudest work. Each is a fully standalone skill — installing the starter kit's `review-output` guide does not pull in `revolver-review`, and installing that skill does not require the guide.
 
 ```mermaid
 flowchart TD
     UR[User: "review this finished task"] --> AGT[Agent assesses task]
     AGT -->|matches description| RO["review-output loads (starter kit)"]
-    AGT -->|matches description| PS[adversarial-review loads]
+    AGT -->|matches description| PS[revolver-review loads]
     RO -.no link to.-> PS
     PS -.no link to.-> RO
     RO & PS --> CTX[(Both in context, neither depends on the other)]
@@ -74,7 +74,7 @@ flowchart TD
 | **No method index / core / loader skill**                                    | There is no `methods-core`, no monolithic index skill. Each is independently installable.                                                                                                                       |
 | **Methods are not referenced from any other skill**                          | A method skill is loaded because its own description matches the task, not because another skill names it.                                                                                                      |
 
-> A consumer who installs only the kit's `review-output` and this catalog's `adversarial-review` gets the same behaviour as one with everything installed — neither file mentions the other.
+> A consumer who installs only the kit's `review-output` and this catalog's `revolver-review` gets the same behaviour as one with everything installed — neither file mentions the other.
 
 ---
 

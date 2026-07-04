@@ -106,7 +106,7 @@ not forward into the wrong steps.
 
 ## Pairs with
 
-- [`adversarial-review`](../adversarial-review/SKILL.md) — review binds findings to the *stated intent*;
+- [`revolver-review`](../revolver-review/SKILL.md) — review binds findings to the *stated intent*;
   a plan with an explicit approach and out-of-scope line is what gives that review something precise to
   bind against.
 - [`concise-output`](../concise-output/SKILL.md) — present the plan at the "go" checkpoint lean and

@@ -116,7 +116,7 @@ a reader can tell whether it predates recent changes.
 
 ## Pairs with
 
-- [`adversarial-review`](../adversarial-review/SKILL.md) — its cross-module caller search
+- [`revolver-review`](../revolver-review/SKILL.md) — its cross-module caller search
   (grep callers, read the calling code) is the same blast-radius question this skill
   delegates as a recon slice; use that map to scope a review.
 - [`concise-output`](../concise-output/SKILL.md) — the return-a-compact-table discipline

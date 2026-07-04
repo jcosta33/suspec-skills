@@ -130,7 +130,7 @@ cleanup discipline) is in [`references/worktrees.md`](./references/worktrees.md)
 
 - [`empirical-proof`](../empirical-proof/SKILL.md) — paste the verbatim test/CI output into the
   commit/PR/review reply, rather than asserting "tests pass".
-- [`adversarial-review`](../adversarial-review/SKILL.md) — the receiving side: how the reviewer reads
+- [`revolver-review`](../revolver-review/SKILL.md) — the receiving side: how the reviewer reads
   your PR. Open the PR so that review is cheap.
 - [`fix-flaky-test`](../fix-flaky-test/SKILL.md) — when the red CI job is an intermittent failure,
   not a deterministic one, stabilize it there instead of retrying.

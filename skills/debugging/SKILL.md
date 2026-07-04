@@ -113,5 +113,5 @@ the fix and passes after — that is the durable proof the bug is dead, not mere
   it.
 - [`fix-flaky-test`](../fix-flaky-test/SKILL.md) — the sibling discipline for the intermittent
   case, where the first job is to *make* a repro reliable before any of the steps here apply.
-- [`adversarial-review`](../adversarial-review/SKILL.md) — its refute-by-default stance, turned on
+- [`revolver-review`](../revolver-review/SKILL.md) — its refute-by-default stance, turned on
   your own diagnosis: assume your favorite cause is wrong until the runtime evidence forces it.

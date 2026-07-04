@@ -91,7 +91,7 @@ confidence.
 | A strawman of the alternative instead of its strongest form.                          | Steelman it first; beating the weak version proves nothing.                                                   |
 | Converging to agreement just to close the loop.                                       | A challenge that ends "you're right, never mind" with nothing checked did no work; surface what stays untested. |
 | Rewriting or re-deciding the proposal here.                                           | The stance pressures the idea; authoring the revision and making the call are separate steps.                 |
-| Pressing a challenge on finished, claimed work.                                       | Wrong stance — a completion claim is for `adversarial-review`'s refute-by-default stance to falsify with re-run checks. |
+| Pressing a challenge on finished, claimed work.                                       | Wrong stance — a completion claim is for `revolver-review`'s refute-by-default stance to falsify with re-run checks. |
 
 ## Self-review delta
 
@@ -115,7 +115,7 @@ Before handing over the counter-case, turn the stance on the challenge itself.
 ## Does not apply when
 
 - The work is finished and carries a completion claim — judging a change set or re-running its checks
-  is `adversarial-review`'s refute-by-default stance; this one tests ideas, not claims.
+  is `revolver-review`'s refute-by-default stance; this one tests ideas, not claims.
 - The decision is already made and recorded (an ADR); the challenge belongs before the commitment, not
   after it.
 - You are authoring the proposal itself — building the idea is the constructive stances' job; this

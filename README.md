@@ -15,14 +15,14 @@ With the [Vercel skills CLI](https://github.com/vercel-labs/skills) (works with 
 npx skills add jcosta33/suspec-skills --list
 
 # install one skill into the current repo
-npx skills add jcosta33/suspec-skills --skill adversarial-review
+npx skills add jcosta33/suspec-skills --skill revolver-review
 
 # install globally, or for a specific agent
-npx skills add jcosta33/suspec-skills --skill adversarial-review -g
-npx skills add jcosta33/suspec-skills --skill adversarial-review -a claude-code
+npx skills add jcosta33/suspec-skills --skill revolver-review -g
+npx skills add jcosta33/suspec-skills --skill revolver-review -a claude-code
 ```
 
-No CLI? Copy the folder: `cp -R skills/adversarial-review <your-repo>/.agents/skills/` (point your tool's skills directory at the same folder — e.g. a `.claude/skills` symlink).
+No CLI? Copy the folder: `cp -R skills/revolver-review <your-repo>/.agents/skills/` (point your tool's skills directory at the same folder — e.g. a `.claude/skills` symlink).
 
 Pin to a tag or commit for stability and re-run to re-fetch. The catalog is
 [semver](https://semver.org)-versioned ([`VERSION`](./VERSION), [`CHANGELOG.md`](./CHANGELOG.md));
@@ -38,9 +38,10 @@ You don't need any of these to run Suspec — the [starter kit](https://github.c
 already ships the core loop. Add skills only as a specific need shows up, in roughly this order:
 
 1. **Nothing.** Run the loop with the kit's core guides. Most changes never need more.
-2. **`adversarial-review`** — the first one most teams want. Load it when an agent _judges another
-   agent's_ change (branch / PR / diff / audit / bug): it refutes by default, re-runs the checks
-   itself, and produces findings — not a merge sign-off.
+2. **`revolver-review`** — the first one most teams want. Load it when an agent _judges another
+   agent's_ substantial change: a rotating pool of distinct stances, fired a few at a time on cheap
+   varied models, refutes by default, re-runs the checks itself, fixes between rounds, and re-reviews
+   the revised code until it converges — driving the change to a clean state, not a merge sign-off.
 3. **`empirical-proof`** — pair it with any completion claim to force verbatim pasted output; the
    fastest cure for "done" that was never actually checked.
 4. **A code-lifecycle skill** matching the work — `debugging` for a live defect, `security-review`
@@ -67,7 +68,7 @@ Cross-cutting methods loaded _alongside_ the work — they change what the agent
 | `persona-challenger` | pressure-testing a live proposal before it's built — surface assumptions, steelman the alternative, ground the challenge in external evidence                       |
 | `market-research`    | market, customer, competitor, or UX-pattern research — type claims, triangulate evidence, grade confidence, and preserve uncertainty                                |
 | `bulletproof`        | hardening an important claim, decision, spec, or plan before it ships — expose unsupported claims, hidden assumptions, and failure modes, then verdict on already-run evidence, not confidence |
-| `revolver-review`    | orchestrating several reviewers over one substantial change — a lead runs a few distinct lenses blind and isolated, reconciles their candidate findings, stops when marginal unique findings dry up |
+| `revolver-review`    | driving a substantial change to a clean state — a rotating pool of 6-9 distinct stances fired 3 at a time on cheap varied models, fixing between rounds and re-reviewing the revised code, one stance rotated per round, up to 3 cycles |
 
 ### Disciplines
 
@@ -75,7 +76,6 @@ Framework-free practices that raise the floor on any task, in any repo.
 
 | Skill                | Use it when                                                                                                                                                         |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `adversarial-review` | reviewing a branch / PR / diff / audit / bug — refute by default, run the checks yourself, the multi-lens panel; you produce findings, not the merge decision |
 | `empirical-proof`    | any completion claim — bind it to verbatim pasted output, or it reads unverified                                                                                    |
 | `concise-output`     | you want terse, scannable, token-economical output — evidence-first, structure over prose, no filler (clarity still outranks brevity)                               |
 | `fix-flaky-test`     | a test that fails intermittently — reproduce by looping, fix the cause not the assertion, don't retry-loop                                                          |

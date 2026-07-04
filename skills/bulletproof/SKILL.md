@@ -1,7 +1,7 @@
 ---
 name: bulletproof
 type: agent-guide
-description: "Harden an important target — a claim, decision, spec, plan, code diff, review, or finding — by making it survive hostile scrutiny: expose unsupported claims, hidden assumptions, failure modes, disconfirming tests, and kill criteria, then render a verdict gated on already-run evidence, not on confidence, consensus, or authority. ALWAYS apply when asked to bulletproof, stress-test, challenge, red-team, cross-examine, poke holes in, find flaws in, or harden something important before it is committed or shipped. Read-only and reconcile-only: it reads evidence and reasons, it never edits the target, and it never runs the project's build/test commands — it reconciles evidence already run. It produces a structured hardening report; a human owns the accept/ship call. Skip for routine friendly editing, for reviewing a finished code diff or PR against its stated intent (that is adversarial-review), and for writing the fix itself."
+description: "Harden an important target — a claim, decision, spec, plan, code diff, review, or finding — by making it survive hostile scrutiny: expose unsupported claims, hidden assumptions, failure modes, disconfirming tests, and kill criteria, then render a verdict gated on already-run evidence, not on confidence, consensus, or authority. ALWAYS apply when asked to bulletproof, stress-test, challenge, red-team, cross-examine, poke holes in, find flaws in, or harden something important before it is committed or shipped. Read-only and reconcile-only: it reads evidence and reasons, it never edits the target, and it never runs the project's build/test commands — it reconciles evidence already run. It produces a structured hardening report; a human owns the accept/ship call. Skip for routine friendly editing, for reviewing a finished code diff or PR against its stated intent (that is revolver-review), and for writing the fix itself."
 disable-model-invocation: true
 allowed-tools: Read Grep Glob
 ---
@@ -69,7 +69,7 @@ evidence reads *unsupported* — the ladder grades the evidence, the claim map g
 - **Plan** — an implementation, rollout, or orchestration plan. Focus: missing steps, unsafe sequencing,
   hidden dependencies, missing verification, stale assumptions, over-prescription.
 - **Code / diff** — for a *finished* code change reviewed against its intent, hand off to
-  `adversarial-review` (it re-runs the checks and refutes by default). Use this mode only to harden the
+  `revolver-review` (it re-runs the checks and refutes by default). Use this mode only to harden the
   *reasoning around* a change — the risk story, the untested path, the rollback.
 - **Review** — a review write-up or a set of reported issues. Focus: unsupported "pass" calls, duplicate
   or low-value items, severity inflation, missing evidence, conclusions beyond the evidence.
@@ -169,7 +169,7 @@ The default is to accept each of these at face value. Each is a red flag with a 
 
 ## Relationship to neighboring skills
 
-- **`adversarial-review`** — owns reviewing a **finished code diff or PR** against its stated intent,
+- **`revolver-review`** — owns reviewing a **finished code diff or PR** against its stated intent,
   refute-by-default, re-running the checks in a clean checkout. When the target is a code change, use
   that skill; Bulletproof is the broader hardening protocol for claims, decisions, specs, and plans, and
   hands code-diff review to it.
@@ -208,7 +208,7 @@ frontmatter as intent and set the enforcement where the runner enforces it.
 - [`empirical-proof`](../empirical-proof/SKILL.md) — the verbatim-pasted-output discipline the evidence
   gate leans on (reconcile the real output, not a paraphrase).
 - [`concise-output`](../concise-output/SKILL.md) — the output-economy dial for the report you write.
-- [`adversarial-review`](../adversarial-review/SKILL.md) — the finished-code-change review lens Bulletproof
+- [`revolver-review`](../revolver-review/SKILL.md) — the finished-code-change review lens Bulletproof
   defers to when the target is a diff or PR.
 
 ## What does not belong
