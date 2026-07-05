@@ -29,8 +29,8 @@ The rationale and evidence for each rule live in `docs/` (the rule names its pag
   that merely sends a different task elsewhere (`load fix-flaky-test, not this`)
   carries no dependency and needs no marker — the test is whether the skill
   still works when the named guide is absent. Kit templates and reference cards
-  are referenced by their workspace-root-relative path (`advanced/audit.md`,
-  `templates/spec.md` — these resolve in any Suspec-kit workspace). Anything
+  are referenced by their workspace-root-relative path (`templates/spec.md`,
+  `templates/review.md` — these resolve in any Suspec-kit workspace). Anything
   else goes to the Suspec repo by name, never by relative path.
 - Skills name abstract command slots (`cmdTest`, `cmdLint`, `cmdValidate`, …) —
   never a concrete toolchain command; the consuming repo's `AGENTS.md` supplies
