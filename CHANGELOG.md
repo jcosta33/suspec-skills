@@ -10,6 +10,39 @@ The catalog is pull-updatable — you install it with `npx skills add jcosta33/s
 a tag or commit for stability) and re-run to re-fetch. Watch the
 [releases](https://github.com/jcosta33/suspec-skills/releases) and re-pull when a bump matters.
 
+## [3.0.0] - 2026-07-09
+
+### Added
+
+- The **Suspec methodology group** — the full skill family that runs the Suspec loop, relocated
+  into this catalog from the starter kit so one global install carries the whole methodology:
+  `implement-task`, `review-output`, `spec-check`, `split-work`, `save-findings`, `write-spec`,
+  `write-prd`, `write-rfc`, `write-research`, `write-audit`, `write-inventory`,
+  `write-change-plan`, `write-bug-report`, `write-feature`, `write-fix`, `write-refactor`,
+  `write-rewrite`, `write-migration`, `write-performance`, `write-testing`,
+  `write-documentation` (21 skills).
+
+### Changed
+
+- **Suspec v2 artifact model** (ADR-0137) across the relocated skills: artifacts are transient
+  personal working files in the store (`~/.claude/state/<repo-name>/`), handed to agents by
+  absolute path in the launch prompt — the committed workspace, the board (`status.md`), the
+  flow folders (`specs/`, `tasks/`, `reviews/`, `findings/`, `intake/`), and the in-repo
+  `.suspec/` state dir are gone. Durability happens by promotion: decisions to ADRs, behavior
+  to tests, findings to GitHub issues (triaged at `suspec done`), the evidence digest to a PR
+  comment. Each skill's discipline (refute-by-default, evidence rules, scope rules) is
+  unchanged.
+- `save-findings` — findings are store artifacts triaged at `suspec done`
+  (promote / keep-with-expiry / discard); the board update is gone.
+- `review-output` — the review packet is a store artifact; reconcile against the spec; no board
+  row to close.
+- `implement-task` — the task packet and spec arrive by absolute store path in the launch
+  prompt; the spec-external `.suspec/` mode is gone.
+- README — two catalog groups (Suspec methodology / universal disciplines); global install
+  (`npx skills add jcosta33/suspec-skills -g`, or manual copy to `~/.claude/skills` +
+  `~/.agents/skills`) is the primary path; per-repo install stays for pinning; the zero-overlap
+  rule (global = methodology, in-repo = repo-specific guides) is stated.
+
 ## [2.0.0] - 2026-07-05
 
 ### Removed
