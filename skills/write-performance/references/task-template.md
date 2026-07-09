@@ -1,7 +1,7 @@
 # Run notes: {{title}}
 
-- Task packet: {{absolute store path — given in the launch prompt}}
-- Change plan (target, rollback ceiling): {{absolute store path — given in the launch prompt}}
+- Task packet: {{absolute store path — from the dispatch prompt, or `suspec show task <id|slug>`}}
+- Change plan (target, rollback ceiling): {{absolute store path — from the dispatch prompt}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 

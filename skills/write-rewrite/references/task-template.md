@@ -1,6 +1,6 @@
 # Run notes: {{title}}
 
-- Task packet: {{absolute store path — given in the launch prompt}}
+- Task packet: {{absolute store path — from the dispatch prompt, or `suspec show task <id|slug>`}}
 - Spec: {{absolute store path — given in the launch prompt}} · Change plan: {{absolute store path}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active

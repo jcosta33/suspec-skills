@@ -1,6 +1,6 @@
 # Run notes: {{title}}
 
-- Task packet: {{absolute store path — given in the launch prompt}}
+- Task packet: {{absolute store path — from the dispatch prompt, or `suspec show task <id|slug>`}}
 - Driving doc (spec / audit / bug report, if any): `{{path}}`
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
