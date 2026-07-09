@@ -52,7 +52,7 @@ watch the [releases](https://github.com/jcosta33/suspec-skills/releases) and re-
 
 ## The AGENTS.md contract
 
-Skills name abstract command slots — `cmdTest`, `cmdLint`, `cmdTypecheck`, `cmdValidate` — never concrete commands. The consuming repo's `AGENTS.md` Commands table supplies the implementations. That split is what makes a skill portable: the guide carries the discipline, your repo carries the toolchain. An empty slot means **ask** — a skill never invents a command. The [Suspec starter kit](https://github.com/jcosta33/suspec-starter-kit) seeds this contract in a repo for you.
+Skills name abstract command slots — `cmdTest`, `cmdLint`, `cmdTypecheck`, `cmdValidate` — never concrete commands. The consuming repo's `AGENTS.md` Commands table supplies the implementations. That split is what makes a skill portable: the guide carries the discipline, your repo carries the toolchain. An empty slot means **ask** — a skill never invents a command. `suspec init` (from [suspec-cli](https://github.com/jcosta33/suspec-cli)) seeds this contract in a repo for you.
 
 ## Catalog — the Suspec methodology
 
@@ -151,4 +151,4 @@ Read a skill before installing it — a skill is instructions your agent will fo
 
 ## Relationship to the Suspec framework
 
-The framework and its docs live at [jcosta33/suspec](https://github.com/jcosta33/suspec); the thin repo-seed (the `AGENTS.md` seed, artifact templates, and `suspec.config.json` conventions a repo adopts) is [jcosta33/suspec-starter-kit](https://github.com/jcosta33/suspec-starter-kit). The sibling catalog [jcosta33/suspec-agents](https://github.com/jcosta33/suspec-agents) ships Claude-Code-first worker definitions for the Suspec roles — agent-neutral disciplines here, runner-specific agents there. The universal group assumes nothing about Suspec — each of those skills stands alone in any repo with an `AGENTS.md`. This catalog is curated: skill content is edited here.
+The framework and its docs live at [jcosta33/suspec](https://github.com/jcosta33/suspec). A repo adopts it with `suspec init` (from [jcosta33/suspec-cli](https://github.com/jcosta33/suspec-cli)), which writes the `AGENTS.md` seed and `suspec.config.json`; the artifact shapes are built into the CLI, enforced by the checks contract, and documented in the Suspec repo's [`docs/reference/artifact-formats.md`](https://github.com/jcosta33/suspec/blob/main/docs/reference/artifact-formats.md). The sibling catalog [jcosta33/suspec-agents](https://github.com/jcosta33/suspec-agents) ships Claude-Code-first worker definitions for the Suspec roles — agent-neutral disciplines here, runner-specific agents there. The universal group assumes nothing about Suspec — each of those skills stands alone in any repo with an `AGENTS.md`. This catalog is curated: skill content is edited here.

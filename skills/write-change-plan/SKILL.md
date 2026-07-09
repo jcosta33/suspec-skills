@@ -17,8 +17,9 @@ change _safely_?" Write one when the work is primarily structural — it spans m
 preserve behavior while touching risky code, needs sequencing, or will land as a diff too
 large to interpret without a map. Skip it for an obvious bug fix or a small cleanup.
 
-Start from the change-plan template (shipped in the Suspec starter kit); the plan is a store
-artifact beside the spec it serves. The
+Start from the change-plan scaffold (`suspec new change-plan <slug>` creates it in the store;
+the shape is documented in the Suspec repo's `docs/reference/artifact-formats.md`); the plan
+is a store artifact beside the spec it serves. The
 frontmatter `kind` names the transformation: refactor · rewrite · migration ·
 dependency-upgrade · performance · test-infra · mechanical-cleanup · architecture-cleanup ·
 schema-change. The kind lives on the plan; the task packets keep one shape regardless.

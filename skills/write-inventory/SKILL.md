@@ -20,7 +20,8 @@ answers the audit doesn't carry: who calls this function? who subscribes to this
 callers actually rely on? An audit alone is not enough preparation for a rewrite or a major
 refactor — write the inventory first — a convention Suspec expects before rewrites; nothing enforces it.
 
-Start from the inventory template (shipped in the Suspec starter kit); the inventory is a
+Start from the inventory shape (documented in the Suspec repo's
+`docs/reference/artifact-formats.md`); the inventory is a
 store artifact beside the spec or change plan it serves. This guide is how to fill it well.
 
 ## The stance: map, don't judge

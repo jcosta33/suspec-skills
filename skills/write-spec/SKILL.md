@@ -16,8 +16,9 @@ description: >-
 A spec is the contract between whoever wants the change and whoever builds it.
 Done well, an implementer can build from it with no follow-up questions, and a
 reviewer can check every requirement against evidence. Start from the spec
-artifact scaffold (`suspec write spec` creates it in the store; the Suspec
-starter kit ships the template shape); this guide is how to fill it, not a
+artifact scaffold (`suspec write spec` creates it in the store; the shape is
+documented in the Suspec repo's `docs/reference/artifact-formats.md`); this
+guide is how to fill it, not a
 restatement of it. Everything below is a convention plus a review checklist —
 nothing enforces it at edit time.
 

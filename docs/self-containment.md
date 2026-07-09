@@ -83,9 +83,9 @@ flowchart TD
 Skills are universal. The consuming repo holds project-specific values. Hardcoding `pnpm tsc --noEmit && pnpm lint` into a skill couples it to one stack and breaks every other consumer.
 
 The repo solves this with the `AGENTS.md` contract — a Commands table in the consuming repo's
-`AGENTS.md` mapping abstract slot names to real commands (the
-[Suspec starter kit](https://github.com/jcosta33/suspec-starter-kit/blob/main/AGENTS.md) ships
-the template). Skills reference the slots by name and degrade gracefully when an entry is
+`AGENTS.md` mapping abstract slot names to real commands (`suspec init`, from
+[suspec-cli](https://github.com/jcosta33/suspec-cli), writes the seed carrying
+the table). Skills reference the slots by name and degrade gracefully when an entry is
 missing.
 
 ```mermaid
