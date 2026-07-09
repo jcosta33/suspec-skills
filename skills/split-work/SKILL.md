@@ -18,9 +18,9 @@ agents will work in parallel and a collision would be expensive. The output is N
 store artifacts beside the spec, each self-contained, each handed to its implementer by absolute
 path in the dispatch prompt you compose (the CLI's `suspec work` prompt names only the spec and
 run file; an implementer can also read its packet via `suspec show task <id|slug>`) — plus a few
-lines recording the order they run in. Write it to your personal store — the same user-level territory where your plans and
-session files live, never into the repo. Exact directory: `suspec store path`
-(collision-safe); without the CLI, default `~/.claude/state/<repo-name>/`.
+lines recording the order they run in. Write it to your personal store — never into the repo. Resolve the exact directory with
+`suspec store path` (collision-safe); without the CLI, the store root comes from
+`SUSPEC_STATE_DIR` or `state_root` in `suspec.config.json` (the harness sets the default).
 
 ## Cut along requirements, cover them all
 

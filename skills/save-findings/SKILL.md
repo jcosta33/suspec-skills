@@ -27,7 +27,7 @@ edit time; it costs one short file per lesson.
    knowingly. The failure mode is neither saving nor dropping — candidates rotting in a closed
    run file nobody reopens.
 3. **Write one artifact per lesson** in the store, beside the run file (`finding-NNN.md`,
-   flat, same folder the launch prompt pointed you at — no launch prompt? it lives in your personal store — the same user-level territory as your plans and session files, never the repo; exact directory `suspec store path` (collision-safe), default `~/.claude/state/<repo-name>/` without the CLI.): what we learned (one claim),
+   flat, same folder the launch prompt pointed you at — no launch prompt? it lives in your personal store, never the repo; resolve it with `suspec store path` (collision-safe), or the store root from `SUSPEC_STATE_DIR` / `state_root` in `suspec.config.json` without the CLI): what we learned (one claim),
    the evidence, where it applies, where it does not, what to do differently next time. The
    `from:` field names the run or review it came out of — a finding without provenance can't
    be re-checked when someone doubts it later.

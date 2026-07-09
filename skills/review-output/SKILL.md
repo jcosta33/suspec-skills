@@ -15,7 +15,7 @@ description: >-
 # Review output against the spec
 
 The review packet is a store artifact — `review-<slug>.md` you create beside the run file, in
-the store directory your dispatch prompt points into — no dispatch prompt? it lives in your personal store — the same user-level territory as your plans and session files, never the repo; exact directory `suspec store path` (collision-safe), default `~/.claude/state/<repo-name>/` without the CLI. It proves one thing: **the code honors the spec** — every
+the store directory your dispatch prompt points into — no dispatch prompt? it lives in your personal store, never the repo; resolve it with `suspec store path` (collision-safe), or the store root from `SUSPEC_STATE_DIR` / `state_root` in `suspec.config.json` without the CLI. It proves one thing: **the code honors the spec** — every
 requirement met, evidenced, or explicitly not. Your stance is refute-by-default: "done" is a claim
 until evidence forces you to agree. Making sure the spec is respected is this review's **primary job**;
 everything else (style, neatness) is secondary. The rules below are review-checklist conventions —

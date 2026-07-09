@@ -19,9 +19,9 @@ reviewer can check every requirement against evidence. Start from the spec
 artifact scaffold (`suspec write spec` creates it in the store; the shape is
 documented in the Suspec repo's `docs/reference/artifact-formats.md`); this
 guide is how to fill it, not a
-restatement of it. Write it to your personal store — the same user-level territory where your plans and
-session files live, never into the repo. Exact directory: `suspec store path`
-(collision-safe); without the CLI, default `~/.claude/state/<repo-name>/`. Everything below is a convention plus a review checklist —
+restatement of it. Write it to your personal store — never into the repo. Resolve the exact directory with
+`suspec store path` (collision-safe); without the CLI, the store root comes from
+`SUSPEC_STATE_DIR` or `state_root` in `suspec.config.json` (the harness sets the default). Everything below is a convention plus a review checklist —
 nothing enforces it at edit time.
 
 ## Rules

@@ -56,9 +56,9 @@ Two failure modes void one:
 ## Where it lives
 
 In the personal store, beside the spec it will precede — a flat file, frontmatter `type: rfc`, status one of
-`proposed | accepted | rejected | superseded`. Write it to your personal store — the same user-level territory where your plans and
-session files live, never into the repo. Exact directory: `suspec store path`
-(collision-safe); without the CLI, default `~/.claude/state/<repo-name>/`. On acceptance, the RFC itself doesn't change
+`proposed | accepted | rejected | superseded`. Write it to your personal store — never into the repo. Resolve the exact directory with
+`suspec store path` (collision-safe); without the CLI, the store root comes from
+`SUSPEC_STATE_DIR` or `state_root` in `suspec.config.json` (the harness sets the default). On acceptance, the RFC itself doesn't change
 into anything: the ADR and/or spec are written _from_ it, name it in their `sources:`, and the
 RFC's status flips to `accepted`.
 
