@@ -9,7 +9,7 @@ The catalog has two groups:
 - **The Suspec methodology** — the skills that run the Suspec loop: authoring specs and the other typed artifacts, implementing task packets, reviewing output against the spec, splitting work, saving findings. Install these **globally** — the methodology travels with you, not with any one repo.
 - **Universal disciplines** — market/review methods, evidence disciplines, and code-lifecycle fundamentals. Framework-free; each stands alone in any repo.
 
-**The zero-overlap rule:** globally installed skills carry the methodology; a repo's own `.agents/skills/` carries only repo-specific guides (its conventions, its architecture rules). The two tiers never ship the same guide — that is what keeps a repo's guides from skewing against an evolving methodology.
+**The zero-overlap rule:** globally installed skills carry the methodology and the universal disciplines; a repo's own `.agents/skills/` carries only repo-specific guides (its conventions, its architecture rules). The two tiers never ship the same guide — that is what keeps a repo's guides from skewing against an evolving methodology.
 
 ## Install
 

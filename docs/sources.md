@@ -1,6 +1,6 @@
 # Sources
 
-> **Every claim in this directory cites at least one entry below. A claim without a citation is opinion, not finding** — cribbed from the Suspec starter kit's [`write-research`](https://github.com/jcosta33/suspec-starter-kit/blob/main/.agents/skills/write-research/SKILL.md) guide. Where a primary source was unavailable, the most authoritative secondary source is cited and labelled.
+> **Every claim in this directory cites at least one entry below. A claim without a citation is opinion, not finding** — cribbed from this catalog's [`write-research`](../skills/write-research/SKILL.md) guide. Where a primary source was unavailable, the most authoritative secondary source is cited and labelled.
 
 ---
 

@@ -8,13 +8,14 @@ Most repos define themselves by what they contain. This one is also defined by w
 
 ## What this repo is
 
-`suspec-skills` ships **universal agent-workflow skills** that hold for any repo regardless of the Suspec workflow. Each skill is a self-contained discipline that an agent loads when the task matches its description. The Suspec-coupled guides — the artifact builders (specs, audits, research, RFCs, change plans) and the `write-*` task-implementation depth (including `implement-task`) — ship installed in the [starter kit](https://github.com/jcosta33/suspec-starter-kit), not here.
+`suspec-skills` ships two tiers of skills, both installed globally, both repo-agnostic. The **universal disciplines** hold for any repo regardless of the Suspec workflow — each a self-contained discipline an agent loads when the task matches its description. The **Suspec methodology guides** — the artifact authoring skills (specs, audits, research, RFCs, change plans, and the rest of the `write-*` family) plus the loop skills (`implement-task`, `review-output`, `save-findings`, `spec-check`, `split-work`) — were relocated into this catalog in v3.0.0 (they previously shipped in the [starter kit](https://github.com/jcosta33/suspec-starter-kit)). They are Suspec-flavored but coupled to no particular repo, stack, or vendor: artifacts live in the personal store and arrive by absolute path.
 
 | Domain                     | Shape of skills shipped                                                                                                                                                |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Market/review methods**  | Cross-cutting methods loaded alongside the work — `market-research`, `persona-challenger`, `bulletproof`, `revolver-review` — plus the standalone evidence discipline (`empirical-proof`). |
 | **Disciplines**            | Framework-free practices that raise the floor on any task — `empirical-proof`, `concise-output`, `fix-flaky-test`.                           |
 | **Code-lifecycle**         | The fundamental coding skills — `codebase-exploration`, `debugging`, `security-review`, `git-pr`, `planning-spec`.                                                      |
+| **Suspec methodology**     | The store-based workflow guides — the 16-skill `write-*` authoring family and the loop skills `implement-task`, `review-output`, `save-findings`, `spec-check`, `split-work`.              |
 
 Every skill answers the question _"how should an agent shape its work for tasks of this type?"_ — not _"what should an engineer know about this domain?"_.
 
@@ -118,6 +119,8 @@ When a candidate skill is proposed, the gating question is:
 > _Could this skill be installed by a team using a different language, a different framework, a different CI provider, and a different agent — and still produce its intended behaviour, with no other skill in context?_
 
 If the answer is _"yes"_, the skill belongs here. If _"no"_, it belongs somewhere else — usually the consuming project's own `AGENTS.md`, a stack-specific skill repo, or an internal docs site.
+
+For the methodology tier the same question applies with one licensed assumption: a methodology skill may assume the Suspec workflow (the personal store, absolute paths handed in the dispatch prompt, the `suspec` CLI verbs) — but never a particular repo, stack, vendor, or any committed workspace.
 
 ---
 
