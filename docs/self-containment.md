@@ -55,12 +55,12 @@ never inside a `SKILL.md` body.
 
 ## Cross-cutting stances: the canonical worked example
 
-The cross-cutting stances are where the self-containment principle does its loudest work. Each is a fully standalone skill — installing the starter kit's `review-output` guide does not pull in `revolver-review`, and installing that skill does not require the guide.
+The cross-cutting stances are where the self-containment principle does its loudest work. Each is a fully standalone skill — installing `review-output` does not pull in `revolver-review`, and installing that skill does not require the other.
 
 ```mermaid
 flowchart TD
     UR[User: "review this finished task"] --> AGT[Agent assesses task]
-    AGT -->|matches description| RO["review-output loads (starter kit)"]
+    AGT -->|matches description| RO[review-output loads]
     AGT -->|matches description| PS[revolver-review loads]
     RO -.no link to.-> PS
     PS -.no link to.-> RO

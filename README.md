@@ -85,7 +85,16 @@ The skill family that runs the Suspec loop. Artifacts (specs, task packets, revi
 
 Per-kind execution discipline for an implementing agent — each ships a fillable run-notes frame.
 
-`write-feature` · `write-fix` · `write-refactor` · `write-rewrite` · `write-migration` · `write-performance` · `write-testing` · `write-documentation`
+| Skill                 | Use it when                                                                        |
+| --------------------- | ----------------------------------------------------------------------------------- |
+| `write-feature`       | the task adds net-new capability — survey the patterns first, then build            |
+| `write-fix`           | the task repairs a diagnosed defect — reproduction first, minimal change            |
+| `write-refactor`      | the task restructures without behavior change — equivalence proven per batch        |
+| `write-rewrite`       | the task replaces an implementation wholesale — the delta table drives it           |
+| `write-migration`     | the task moves callers across a boundary — callsite tracker, shim, rollback         |
+| `write-performance`   | the task chases a measured target — baseline pasted before any change               |
+| `write-testing`       | the task authors tests — every test flipped to prove it can fail                    |
+| `write-documentation` | the task writes human-facing docs — one frame held, every example run               |
 
 ## Catalog — universal disciplines
 
