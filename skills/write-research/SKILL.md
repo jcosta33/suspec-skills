@@ -8,7 +8,8 @@ description: >-
   opinion as a finding, cite a blog without its primary source, fabricate or leave a claim
   unmarked when you could not verify it, settle an open question by asserting a choice, or write
   requirements. Skip when writing a spec (write-spec), recording the present state of code
-  (write-audit), or diagnosing a defect (write-bug-report) — research is their upstream input,
+  (write-audit), diagnosing a defect (write-bug-report), or sizing markets / mapping competitors /
+  synthesizing customer evidence (market-research) — research is their upstream input,
   not a substitute.
 ---
 
