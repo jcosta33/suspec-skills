@@ -19,9 +19,9 @@ large to interpret without a map. Skip it for an obvious bug fix or a small clea
 
 Start from the change-plan scaffold (`suspec new change-plan <slug>` creates it in the store;
 the shape is documented in the Suspec repo's `docs/reference/artifact-formats.md`); the plan
-is a store artifact beside the spec it serves. Resolve the store first: `suspec store path`
-prints the exact directory (collision-safe); without the CLI, default to
-`~/.claude/state/<repo-name>/`. The
+is a store artifact beside the spec it serves. Write it to your personal store — the same user-level territory where your plans and
+session files live, never into the repo. Exact directory: `suspec store path`
+(collision-safe); without the CLI, default `~/.claude/state/<repo-name>/`. The
 frontmatter `kind` names the transformation: refactor · rewrite · migration ·
 dependency-upgrade · performance · test-infra · mechanical-cleanup · architecture-cleanup ·
 schema-change. The kind lives on the plan; the task packets keep one shape regardless.
