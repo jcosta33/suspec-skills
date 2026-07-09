@@ -1,7 +1,7 @@
 ---
 name: git-pr
 type: agent-guide
-description: Ship a change end to end with discipline — stage only what belongs, commit with an imperative subject and a why-body, push, and open a PR that states intent and how to verify. ALWAYS apply when committing, pushing, opening or updating a pull request, addressing review comments, fixing a failing CI job, or running parallel branches that risk clobbering each other. Run review-comment and CI work as a loop you close, not a fire-and-forget. Never force-push a shared branch, stage files you did not inspect, blind-retry a red CI job, or open a PR with no how-to-verify. Skip when only editing files locally with no intent to commit, when asked to judge someone else's finished PR (that is a review job, not a shipping job), and when the repo's own contribution guide prescribes a different flow (follow it).
+description: Ship a change end to end with discipline — stage only what belongs, commit with an imperative subject and a why-body, push, and open a PR that states intent and how to verify. ALWAYS apply when committing, pushing, opening or updating a pull request, addressing review comments, fixing a failing CI job, or running parallel branches that risk clobbering each other. Run review-comment and CI work as a loop you close, not a fire-and-forget. Never force-push a shared branch, stage files you did not inspect, blind-retry a red CI job, or open a PR with no how-to-verify. Skip when only editing files locally with no intent to commit, when judging someone else's finished PR (a review job, not a shipping job), and when the repo's own contribution guide prescribes a different flow (follow it).
 ---
 
 # Skill: git-pr
