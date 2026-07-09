@@ -14,8 +14,8 @@ description: >-
 
 # Review output against the spec
 
-The review packet is a store artifact — `review-<slug>.md` beside the run file, at the store
-path the launch prompt gives you. It proves one thing: **the code honors the spec** — every
+The review packet is a store artifact — `review-<slug>.md` you create beside the run file, in
+the store directory your dispatch prompt points into. It proves one thing: **the code honors the spec** — every
 requirement met, evidenced, or explicitly not. Your stance is refute-by-default: "done" is a claim
 until evidence forces you to agree. Making sure the spec is respected is this review's **primary job**;
 everything else (style, neatness) is secondary. The rules below are review-checklist conventions —

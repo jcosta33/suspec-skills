@@ -16,7 +16,9 @@ Most work is one spec → one implementer — **no task packet**; the implemente
 `## Execution` section. Cut tasks only when the work is too big for one agent run, or when several
 agents will work in parallel and a collision would be expensive. The output is N task packets —
 store artifacts beside the spec, each self-contained, each handed to its implementer by absolute
-path in the launch prompt — plus a few lines recording the order they run in.
+path in the dispatch prompt you compose (the CLI's `suspec work` prompt names only the spec and
+run file; an implementer can also read its packet via `suspec show task <id|slug>`) — plus a few
+lines recording the order they run in.
 
 ## Cut along requirements, cover them all
 

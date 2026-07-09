@@ -14,8 +14,11 @@ description: >-
 # Implement a task
 
 The task packet bounds your work: a scope of requirement IDs, areas not to
-change, and a Verify checklist. The packet and its spec are store artifacts —
-the launch prompt gives you their absolute paths; read them there and append
+change, and a Verify checklist. The packet and its spec are store artifacts.
+The CLI-generated launch prompt (`suspec work`) points only at the spec and
+the run file by absolute path; a task packet's path arrives in the dispatch
+prompt from whoever cut the tasks — or read it with `suspec show task
+<id|slug>`. Read the artifacts in the store and append
 your run record there. Your job is to satisfy
 exactly that scope and leave behind evidence a reviewer can check without
 trusting you. These rules are conventions the review packet inspects — nothing
@@ -24,8 +27,8 @@ enforces them at edit time.
 ## Rules
 
 1. **Read the sources first.** The task packet, then the linked spec (and
-   change plan, if any) — at the absolute store paths the launch prompt names —
-   before touching code. _Why: the packet says what to
+   change plan, if any) — at their absolute store paths, from the dispatch
+   prompt or `suspec show task <id|slug>` — before touching code. _Why: the packet says what to
    do; the spec says why, and how success will be judged._
 2. **One worktree (or branch) per task.** Keep this task's changes isolated so
    parallel tasks stay write-disjoint and the reviewer sees one clean diff.
