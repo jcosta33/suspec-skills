@@ -56,7 +56,9 @@ Two failure modes void one:
 ## Where it lives
 
 In the personal store, beside the spec it will precede — a flat file, frontmatter `type: rfc`, status one of
-`proposed | accepted | rejected | superseded`. On acceptance, the RFC itself doesn't change
+`proposed | accepted | rejected | superseded`. Resolve the store first: `suspec store path`
+prints the exact directory (collision-safe); without the CLI, default to
+`~/.claude/state/<repo-name>/`. On acceptance, the RFC itself doesn't change
 into anything: the ADR and/or spec are written _from_ it, name it in their `sources:`, and the
 RFC's status flips to `accepted`.
 

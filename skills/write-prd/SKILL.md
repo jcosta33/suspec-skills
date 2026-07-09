@@ -55,7 +55,9 @@ under load" — the spec decides what "fast" means and the design decides how.
 ## Where it lives
 
 A PRD lives in the personal store beside the spec it will feed — a flat file next to the spec
-artifact. Its frontmatter `type: prd` is what distinguishes it; the spec that follows
+artifact. Resolve the store first: `suspec store path` prints the exact directory
+(collision-safe); without the CLI, default to `~/.claude/state/<repo-name>/`. Its
+frontmatter `type: prd` is what distinguishes it; the spec that follows
 names the PRD in its `sources:`.
 
 ## Common mistakes

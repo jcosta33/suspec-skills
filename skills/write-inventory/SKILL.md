@@ -22,7 +22,9 @@ refactor — write the inventory first — a convention Suspec expects before re
 
 Start from the inventory shape (documented in the Suspec repo's
 `docs/reference/artifact-formats.md`); the inventory is a
-store artifact beside the spec or change plan it serves. This guide is how to fill it well.
+store artifact beside the spec or change plan it serves. Resolve the store first:
+`suspec store path` prints the exact directory (collision-safe); without the CLI, default to
+`~/.claude/state/<repo-name>/`. This guide is how to fill it well.
 
 ## The stance: map, don't judge
 
