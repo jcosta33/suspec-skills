@@ -7,8 +7,8 @@ description: >-
   code audit, tech-debt survey, cleanup or benchmark report, or a quality assessment of existing
   code — including deepening a prior audit. Never assert intended behavior, prescribe a fix,
   write requirements, or leave an observation without file:line or pasted-output evidence. Skip
-  when writing a forward-looking spec (write-spec), diagnosing one defect (write-bug-report), or
-  surveying open options (write-research).
+  when writing a forward-looking spec, diagnosing one defect to its root cause, or surveying
+  open options against external sources.
 ---
 
 # Writing an audit

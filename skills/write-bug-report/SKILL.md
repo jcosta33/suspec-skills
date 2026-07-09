@@ -7,7 +7,7 @@ description: >-
   to report, diagnose, or root-cause a bug, regression, or unexpected behavior, even an
   intermittent one. Never write the fix, conflate symptom with cause, write new requirements, or
   finish without the verbatim failing reproduction pasted. Skip when fixing the defect (that is
-  its own task), recording the present state of an area (write-audit), or writing a spec.
+  its own task), recording the present state of a whole area, or writing a spec.
 ---
 
 # Writing a bug report

@@ -7,10 +7,9 @@ description: >-
   comparison, an evidence survey, or a recommendation feeding a later decision. Never present
   opinion as a finding, cite a blog without its primary source, fabricate or leave a claim
   unmarked when you could not verify it, settle an open question by asserting a choice, or write
-  requirements. Skip when writing a spec (write-spec), recording the present state of code
-  (write-audit), diagnosing a defect (write-bug-report), or sizing markets / mapping competitors /
-  synthesizing customer evidence (market-research) — research is their upstream input,
-  not a substitute.
+  requirements. Skip when writing a spec, recording the present state of code, diagnosing a
+  defect, or sizing markets / mapping competitors / synthesizing customer evidence — research
+  is their upstream input, not a substitute.
 ---
 
 # Writing a research note
