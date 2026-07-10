@@ -10,6 +10,22 @@ The catalog is pull-updatable — you install it with `npx skills add jcosta33/s
 a tag or commit for stability) and re-run to re-fetch. Watch the
 [releases](https://github.com/jcosta33/suspec-skills/releases) and re-pull when a bump matters.
 
+## [4.0.0] - 2026-07-10
+
+### Changed
+
+- **Placement is described, never prescribed** (breaking): every artifact-authoring skill now
+  carries one canonical placement paragraph — place the file next to your own native artifacts,
+  in a folder named after the repo you are working on (or wherever fits your harness best), and
+  carry the full path forward. The store, its environment/config resolution, and launch-prompt
+  path handover are gone from every skill.
+- **`save-findings` routes durable lessons to native harness memory** (breaking): one claim per
+  memory, evidence attached, searchable title, written the way the harness records memories.
+  Ephemeral findings ride the review packet. The finding artifact and its triage flow are gone.
+- **Checking is path-explicit**: a spec or change plan is checked with `suspec check <path>`; a
+  review packet with `suspec check <review-path> --spec <spec-path> --task <task-path>`. Task
+  templates and core-loop skills hand every artifact over by explicit full path.
+
 ## [3.0.0] - 2026-07-09
 
 ### Added
