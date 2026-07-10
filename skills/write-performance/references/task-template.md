@@ -1,7 +1,7 @@
 # Run notes: {{title}}
 
-- Task packet: {{absolute store path — from the dispatch prompt, or `suspec show task <id|slug>`}}
-- Change plan (target, rollback ceiling): {{absolute store path — from the dispatch prompt}}
+- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
+- Change plan (target, rollback ceiling): {{full path to the change plan}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 
@@ -86,7 +86,7 @@ Choices the requirements did not constrain — including why a readability trade
 
 ## Findings
 
-Second bottlenecks, allocations on hot paths, N+1 patterns — candidates for store finding artifacts at Close.
+Second bottlenecks, allocations on hot paths, N+1 patterns — durable ones become native memories (see save-findings).
 
 -
 

@@ -1,6 +1,6 @@
 # Run notes: {{title}}
 
-- Task packet: {{absolute store path — from the dispatch prompt, or `suspec show task <id|slug>`}}
+- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
 - Driving doc (spec / audit / bug report, if any): `{{path}}`
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
@@ -72,8 +72,8 @@ Blocked questions, not here.
 
 ## Findings
 
-A real bug a test exposed, production code too coupled to test cleanly, a missing AC — candidates
-for store finding artifacts at Close.
+A real bug a test exposed, production code too coupled to test cleanly, a missing AC — durable
+ones become native memories (see save-findings).
 
 -
 

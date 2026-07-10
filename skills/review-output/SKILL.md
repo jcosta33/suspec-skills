@@ -14,12 +14,14 @@ description: >-
 
 # Review output against the spec
 
-The review packet is a store artifact — `review-<slug>.md` you create beside the run file, in
-the store directory your dispatch prompt points into — no dispatch prompt? it lives in your personal store, never the repo; resolve it with `suspec store path` (collision-safe), or the store root from `SUSPEC_STATE_DIR` / `state_root` in `suspec.config.json` without the CLI. It proves one thing: **the code honors the spec** — every
-requirement met, evidenced, or explicitly not. Your stance is refute-by-default: "done" is a claim
-until evidence forces you to agree. Making sure the spec is respected is this review's **primary job**;
-everything else (style, neatness) is secondary. The rules below are review-checklist conventions —
-nothing enforces them.
+The review packet — `review-<slug>.md` — lives beside the run/task artifacts it reconciles, next
+to your own native artifacts, never the repo unless the project's own governance says otherwise.
+It proves one thing: **the code honors the spec** — every requirement met, evidenced, or
+explicitly not. Your stance is refute-by-default: "done" is a claim until evidence forces you to
+agree. Making sure the spec is respected is this review's **primary job**; everything else
+(style, neatness) is secondary. The rules below are review-checklist conventions — nothing
+enforces them. Check it with `suspec check <review-path> --spec <spec-path> --task <task-path>`
+(companions explicit; a missing required companion is blocking).
 
 **Reconcile against the spec, never the task.** The requirement, its `Verify with:` method, and the bar
 for Pass come from the **spec's** ACs — the spec is the source of truth for *what* must be true. A task,
@@ -72,8 +74,8 @@ required; spawning a fresh reviewer is a harness capability, not a dependency.)
    which rows · why · expiry — and status `waived`; otherwise "Block until …", naming the rows or
    exceptions.
 10. **Save finding candidates.** Anything durable the work surfaced — a fact, a decision, a pattern, a
-    gotcha — becomes a finding artifact in the store beside the packet, linked from it; findings are
-    triaged at `suspec done` (promote to a GitHub issue, keep with an expiry, or discard).
+    gotcha — is recorded here. Findings ride the review packet; durable ones become native memories
+    (see save-findings).
 11. **Keep the status honest.** `pass` only when the tables support it; `blocked`/`needs-human`
     otherwise; `draft` while working. Never soften a Fail or inflate a nit. The packet's status field
     is the record the gate and the human read — a stale or inflated status misleads more than an
@@ -117,5 +119,6 @@ Before setting the packet status:
 - [ ] You searched callers of changed public surfaces, not just the diff.
 - [ ] Each Human-attention entry has what / why / suggested action; nothing was silently skipped.
 - [ ] The suggested decision follows strictly from the rows.
-- [ ] Finding candidates are saved as finding artifacts beside the packet, ready for triage.
+- [ ] Finding candidates are recorded in the packet; durable ones are captured as native memories
+      (see save-findings).
 - [ ] You did not author the change you judged — an independent (fresh-context) reviewer produced this.

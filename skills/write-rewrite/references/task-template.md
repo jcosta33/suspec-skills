@@ -1,7 +1,7 @@
 # Run notes: {{title}}
 
-- Task packet: {{absolute store path — from the dispatch prompt, or `suspec show task <id|slug>`}}
-- Spec: {{absolute store path — given in the launch prompt}} · Change plan: {{absolute store path}}
+- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
+- Spec: {{full path to the source spec}} · Change plan: {{full path to the change plan}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 
@@ -75,7 +75,7 @@ here, not reverted.
 
 ## Findings
 
-"Redesign while we're here" temptations, off-delta discoveries — candidates for store finding artifacts at Close.
+"Redesign while we're here" temptations, off-delta discoveries — durable ones become native memories (see save-findings).
 
 -
 

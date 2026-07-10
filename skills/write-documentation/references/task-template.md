@@ -1,7 +1,7 @@
 # Run notes: {{title}}
 
-- Task packet: {{absolute store path — from the dispatch prompt, or `suspec show task <id|slug>`}}
-- Spec: {{absolute store path — given in the launch prompt}}
+- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
+- Spec: {{full path to the source spec}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 
@@ -77,7 +77,7 @@ claim you could not anchor to a line goes to Blocked questions, not here.
 ## Findings
 
 Contradicting docs outside the packet's areas, behavior no requirement covers, real issues spotted
-while writing — candidates for store finding artifacts at Close.
+while writing — durable ones become native memories (see save-findings).
 
 -
 

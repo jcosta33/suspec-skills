@@ -14,8 +14,8 @@ description: >-
 
 A defect in a spec is cheapest to catch before any task is cut from it — after that, every
 agent run inherits it. This guide runs the check by hand and produces a short report.
-`suspec check` (suspec-cli, shipped) automates exactly this contract; run it by hand when the CLI
-is not installed. Either way the result is a review checklist, not a gate —
+`suspec check <spec-path>` (suspec-cli) automates exactly this contract; run it by hand when the
+CLI is not installed. Either way the result is a review checklist, not a gate —
 whether it blocks is the team's policy.
 
 ## The one rule: check, don't edit
@@ -76,12 +76,12 @@ think") that belongs in Open questions.
 
 If the spec opts into structured requirements (`format: sol` in the frontmatter), also walk
 the SOL check catalogue — same discipline, finer grain. It lives in the Suspec repo at
-`docs/reference/checks.md`; the kit does not carry it. The notation itself is in the Suspec repo at
+`docs/reference/checks.md`. The notation itself is in the Suspec repo at
 `docs/reference/structured-requirements.md`.
 
 ## The leverage test (does every section pull weight?)
 
-One structural pass — a review-checklist item (Suspec repo ADR-0131): a spec that carries ceremony no
+One structural pass — a review-checklist item: a spec that carries ceremony no
 reader uses is as costly as one that's vague. For each section, ask whether it improves at least one of **clarity,
 scope, execution-context, verification, reviewability,** or **durable-memory**. A section that serves
 none — an empty Non-goals kept only for the template's sake, a restated background nobody acts on,

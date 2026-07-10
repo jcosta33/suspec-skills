@@ -1,7 +1,7 @@
 # Run notes: {{title}}
 
-- Task packet: {{absolute store path — from the dispatch prompt, or `suspec show task <id|slug>`}}
-- Change plan (baseline, batches, rollback): {{absolute store path — from the dispatch prompt}}
+- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
+- Change plan (baseline, batches, rollback): {{full path to the change plan}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 
@@ -86,8 +86,8 @@ reflection, generated code, config) that a call-syntax search cannot reach.
 
 ## Findings
 
-Semantic improvements the restructuring tempted, neighboring debt, missing tests — candidates
-for store finding artifacts at Close.
+Semantic improvements the restructuring tempted, neighboring debt, missing tests — durable
+ones become native memories (see save-findings).
 
 -
 

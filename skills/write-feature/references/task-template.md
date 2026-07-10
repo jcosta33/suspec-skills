@@ -1,7 +1,7 @@
 # Run notes: {{title}}
 
-- Task packet: {{absolute store path — from the dispatch prompt, or `suspec show task <id|slug>`}}
-- Spec: {{absolute store path — given in the launch prompt}}
+- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
+- Spec: {{full path to the source spec}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 
@@ -56,7 +56,7 @@ to Blocked questions.
 
 ## Findings
 
-Durable discoveries — debt spotted, a neighboring gap, a missing AC. Candidates for store finding artifacts at Close.
+Durable discoveries — debt spotted, a neighboring gap, a missing AC. Durable ones become native memories (see save-findings).
 
 -
 

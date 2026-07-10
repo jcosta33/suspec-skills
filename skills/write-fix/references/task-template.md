@@ -1,6 +1,6 @@
 # Run notes: {{title}}
 
-- Task packet: {{absolute store path — from the dispatch prompt, or `suspec show task <id|slug>`}}
+- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
 - Bug report: `{{path}}`
 - Spec defining the broken behavior (if any): `{{path}}`
 - Worktree / branch: {{branch}}
@@ -77,7 +77,7 @@ evidence, not a decision; it goes above.)
 
 ## Findings
 
-Neighboring bugs, refactor opportunities, missing tests elsewhere — candidates for store finding artifacts at Close.
+Neighboring bugs, refactor opportunities, missing tests elsewhere — durable ones become native memories (see save-findings).
 
 -
 

@@ -120,5 +120,5 @@ Walk the draft once as its harshest reviewer; fix what you find before deliverin
 - [ ] Dynamic claims were run, not read — the output is pasted, not paraphrased.
 - [ ] No fix, no intended behavior, no requirement anywhere; recommendations are prose only.
 - [ ] The scope section matches what you actually examined.
-- [ ] Anything durable you learned along the way is noted as a finding candidate — a store
-      finding artifact, triaged at `suspec done`.
+- [ ] Anything durable you learned along the way is noted as a finding candidate. Findings ride
+      the review packet; durable ones become native memories (see save-findings).

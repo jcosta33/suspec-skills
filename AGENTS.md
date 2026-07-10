@@ -29,10 +29,13 @@ The rationale and evidence for each rule live in `docs/` (the rule names its pag
   `../<name>/SKILL.md` with an explicit "if installed" marker. A plain mention
   that merely sends a different task elsewhere (`load fix-flaky-test, not this`)
   carries no dependency and needs no marker — the test is whether the skill
-  still works when the named guide is absent. Store artifacts are referenced
-  by role ("the spec", "the run file") — their absolute paths arrive in the
-  launch prompt, so a skill never hardcodes an artifact path. Anything
-  else goes to the Suspec repo by name, never by relative path.
+  still works when the named guide is absent. Artifacts are referenced by
+  role ("the spec", "the task packet"); a skill that places an artifact states
+  the placement guidance — the placement paragraph, kept byte-identical
+  wherever it appears across the catalog — and carries the file's full path
+  forward, so every later step names artifacts by explicit path. A skill
+  never hardcodes a location. Anything else goes to the Suspec repo by name,
+  never by relative path.
 - Skills name abstract command slots (`cmdTest`, `cmdLint`, `cmdValidate`, …) —
   never a concrete toolchain command; the consuming repo's `AGENTS.md` supplies
   those. An empty slot means ask.

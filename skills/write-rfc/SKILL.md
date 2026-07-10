@@ -49,18 +49,22 @@ Two failure modes void one:
   written reason, before asking for the decision. This is a convention — nothing in this
   repository enforces it; the person deciding is who it protects.
 - **Decision requested.** The precise decision you ask for, and where the proposal goes on
-  acceptance: an ADR in the repo's decision ledger (recording the choice), a spec in the store
-  (carrying the requirements), or both. An RFC that doesn't say what it's asking for can't be
-  acted on.
+  acceptance: an ADR in the repo's decision ledger (recording the choice), a spec (carrying
+  the requirements), or both. An RFC that doesn't say what it's asking for can't be acted on.
 
 ## Where it lives
 
-In the personal store, beside the spec it will precede — a flat file, frontmatter `type: rfc`, status one of
-`proposed | accepted | rejected | superseded`. Write it to your personal store — never into the repo. Resolve the exact directory with
-`suspec store path` (collision-safe); without the CLI, the store root comes from
-`SUSPEC_STATE_DIR` or `state_root` in `suspec.config.json` (the harness sets the default). On acceptance, the RFC itself doesn't change
-into anything: the ADR and/or spec are written _from_ it, name it in their `sources:`, and the
-RFC's status flips to `accepted`.
+Beside the spec it will precede — a flat file, frontmatter `type: rfc`, status one of
+`proposed | accepted | rejected | superseded`.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
+On acceptance, the RFC itself doesn't change into anything: the ADR and/or spec are
+written _from_ it, name it in their `sources:`, and the RFC's status flips to `accepted`.
 
 ## Common mistakes
 

@@ -52,11 +52,11 @@ watch the [releases](https://github.com/jcosta33/suspec-skills/releases) and re-
 
 ## The AGENTS.md contract
 
-Skills name abstract command slots — `cmdTest`, `cmdLint`, `cmdTypecheck`, `cmdValidate` — never concrete commands. The consuming repo's `AGENTS.md` Commands table supplies the implementations. That split is what makes a skill portable: the guide carries the discipline, your repo carries the toolchain. An empty slot means **ask** — a skill never invents a command. `suspec init` (from [suspec-cli](https://github.com/jcosta33/suspec-cli)) seeds this contract in a repo for you.
+Skills name abstract command slots — `cmdTest`, `cmdLint`, `cmdTypecheck`, `cmdValidate` — never concrete commands. The consuming repo's `AGENTS.md` Commands table supplies the implementations. That split is what makes a skill portable: the guide carries the discipline, your repo carries the toolchain. An empty slot means **ask** — a skill never invents a command. A repo without the table adds one to its `AGENTS.md` by hand.
 
 ## Catalog — the Suspec methodology
 
-The skill family that runs the Suspec loop. Artifacts (specs, task packets, review packets, findings) are the agent's typed working memory: they live in the personal store, the launch prompt hands over their absolute paths, and durable value is promoted — to ADRs, tests, GitHub issues, and PR digests.
+The skill family that runs the Suspec loop. Artifacts (specs, task packets, review packets) are the agent's typed working memory: they live beside the agent's own native artifacts — the same place it keeps its plans, notes, and memories, out of the repo unless the project's own governance says otherwise — and every later step names them by explicit path. Durable value becomes native memories; what belongs to the team goes through the project's own channels — an ADR, a test, an issue.
 
 ### The core loop
 
@@ -67,7 +67,7 @@ The skill family that runs the Suspec loop. Artifacts (specs, task packets, revi
 | `split-work`     | the work is too big for one run — cut task packets that cover every requirement exactly once and never collide                 |
 | `implement-task` | implementing a task packet or spec — stay in scope, run every Verify item, paste real output, self-review before handoff       |
 | `review-output`  | reviewing finished work against its spec — refute by default, re-run the checks yourself, evidence every row                   |
-| `save-findings`  | closing a run — save each durable lesson as a finding artifact, ready for triage (promote / keep / discard) at `suspec done`   |
+| `save-findings`  | closing a task — findings ride the review packet; durable ones become native memories, one claim per memory with the evidence attached |
 
 ### Authoring the other artifacts
 
@@ -151,4 +151,4 @@ Read a skill before installing it — a skill is instructions your agent will fo
 
 ## Relationship to the Suspec framework
 
-The framework and its docs live at [jcosta33/suspec](https://github.com/jcosta33/suspec). A repo adopts it with `suspec init` (from [jcosta33/suspec-cli](https://github.com/jcosta33/suspec-cli)), which writes the `AGENTS.md` seed and `suspec.config.json`; the artifact shapes are built into the CLI, enforced by the checks contract, and documented in the Suspec repo's [`docs/reference/artifact-formats.md`](https://github.com/jcosta33/suspec/blob/main/docs/reference/artifact-formats.md). The sibling catalog [jcosta33/suspec-agents](https://github.com/jcosta33/suspec-agents) ships Claude-Code-first worker definitions for the Suspec roles — agent-neutral disciplines here, runner-specific agents there. The universal group assumes nothing about Suspec — each of those skills stands alone in any repo with an `AGENTS.md`. This catalog is curated: skill content is edited here.
+The framework and its docs live at [jcosta33/suspec](https://github.com/jcosta33/suspec). Adopting it is installing these skills — a capable harness plus the methodology family is a complete install; the skills carry the artifact shapes and the placement guidance. [jcosta33/suspec-cli](https://github.com/jcosta33/suspec-cli) is an optional deterministic checker over artifacts it is handed — `suspec check <path>` — enforcing the checks contract documented in the Suspec repo's [`docs/reference/checks.md`](https://github.com/jcosta33/suspec/blob/main/docs/reference/checks.md). The sibling catalog [jcosta33/suspec-agents](https://github.com/jcosta33/suspec-agents) ships Claude-Code-first worker definitions for the Suspec roles — agent-neutral disciplines here, runner-specific agents there. The universal group assumes nothing about Suspec — each of those skills stands alone in any repo with an `AGENTS.md`. This catalog is curated: skill content is edited here.

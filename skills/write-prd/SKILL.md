@@ -54,12 +54,16 @@ under load" — the spec decides what "fast" means and the design decides how.
 
 ## Where it lives
 
-A PRD lives in the personal store beside the spec it will feed — a flat file next to the spec
-artifact. Write it to your personal store — never into the repo. Resolve the exact directory with
-`suspec store path` (collision-safe); without the CLI, the store root comes from
-`SUSPEC_STATE_DIR` or `state_root` in `suspec.config.json` (the harness sets the default). Its
-frontmatter `type: prd` is what distinguishes it; the spec that follows
-names the PRD in its `sources:`.
+A PRD lives beside the spec it will feed — a flat file next to the spec artifact.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
+Its frontmatter `type: prd` is what distinguishes it; the spec that follows names the PRD
+in its `sources:`.
 
 ## Common mistakes
 

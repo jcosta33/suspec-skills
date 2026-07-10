@@ -1,7 +1,7 @@
 # Run notes: {{title}}
 
-- Task packet: {{absolute store path — from the dispatch prompt, or `suspec show task <id|slug>`}}
-- Change plan (waves, baseline, rollback): {{absolute store path — from the dispatch prompt}}
+- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
+- Change plan (waves, baseline, rollback): {{full path to the change plan}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 
@@ -84,7 +84,7 @@ The references a text search of the call syntax cannot reach. Audit each; paste 
 
 ## Findings
 
-Behavior changes the new API tempts, neighboring cleanup, missing tests — candidates for store finding artifacts at Close.
+Behavior changes the new API tempts, neighboring cleanup, missing tests — durable ones become native memories (see save-findings).
 
 -
 

@@ -14,13 +14,11 @@ description: >-
 
 Most work is one spec → one implementer — **no task packet**; the implementer fills the spec's
 `## Execution` section. Cut tasks only when the work is too big for one agent run, or when several
-agents will work in parallel and a collision would be expensive. The output is N task packets —
-store artifacts beside the spec, each self-contained, each handed to its implementer by absolute
-path in the dispatch prompt you compose (the CLI's `suspec work` prompt names only the spec and
-run file; an implementer can also read its packet via `suspec show task <id|slug>`) — plus a few
-lines recording the order they run in. Write it to your personal store — never into the repo. Resolve the exact directory with
-`suspec store path` (collision-safe); without the CLI, the store root comes from
-`SUSPEC_STATE_DIR` or `state_root` in `suspec.config.json` (the harness sets the default).
+agents will work in parallel and a collision would be expensive. The output is N task packets,
+each self-contained, placed next to your own native artifacts beside the spec — never into the
+repo unless the project's own governance says otherwise — plus a few lines recording the order
+they run in. The dispatch prompt you compose names every input, including each task packet, by
+full path; carry the full path forward from there into every step that touches the task.
 
 ## Cut along requirements, cover them all
 
@@ -85,8 +83,8 @@ work is judgment work, and no Suspec tooling does it for you.
 
 ## Write the dependency order down
 
-A few lines next to the packets (in the change plan's Task split, or appended to the spec in
-the store) — plain language:
+A few lines next to the packets (in the change plan's Task split, or appended to the spec) —
+plain language:
 
 ```markdown
 ## Run order — SPEC-payment-retry
@@ -122,7 +120,7 @@ verifies.
 
 Each task packet carries the requirement slice it covers **inside** the packet — stamped with
 the spec id and the commit it was cut against — so the implementer reads a pinned slice and
-the spec cannot drift mid-task. Re-cut the task if the spec changes materially. The store spec
+the spec cannot drift mid-task. Re-cut the task if the spec changes materially. The spec
 stays canonical; the packet's copy is a marked execution snapshot, not authoritative.
 
 ## Review the split against the spec

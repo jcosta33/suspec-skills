@@ -21,10 +21,16 @@ callers actually rely on? An audit alone is not enough preparation for a rewrite
 refactor — write the inventory first — a convention Suspec expects before rewrites; nothing enforces it.
 
 Start from the inventory shape (documented in the Suspec repo's
-`docs/reference/artifact-formats.md`); the inventory is a
-store artifact beside the spec or change plan it serves. Write it to your personal store — never into the repo. Resolve the exact directory with
-`suspec store path` (collision-safe); without the CLI, the store root comes from
-`SUSPEC_STATE_DIR` or `state_root` in `suspec.config.json` (the harness sets the default). This guide is how to fill it well.
+`docs/reference/artifact-formats.md`); the inventory sits beside the spec or change plan
+it serves.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
+This guide is how to fill it well.
 
 ## The stance: map, don't judge
 
