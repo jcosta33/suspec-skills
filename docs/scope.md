@@ -8,7 +8,7 @@ Most repos define themselves by what they contain. This one is also defined by w
 
 ## What this repo is
 
-`suspec-skills` ships two tiers of skills, both installed globally, both repo-agnostic. The **universal disciplines** hold for any repo regardless of the Suspec workflow — each a self-contained discipline an agent loads when the task matches its description. The **Suspec methodology guides** — the artifact authoring skills (specs, audits, research, RFCs, change plans, and the rest of the `write-*` family) plus the loop skills (`implement-task`, `review-output`, `save-findings`, `spec-check`, `split-work`) — were relocated into this catalog in v3.0.0 (they previously shipped in the [starter kit](https://github.com/jcosta33/suspec-starter-kit), since retired). They are Suspec-flavored but coupled to no particular repo, stack, or vendor: artifacts live in the personal store and arrive by absolute path.
+`suspec-skills` ships two tiers of skills, both installed globally, both repo-agnostic. The **universal disciplines** hold for any repo regardless of the Suspec workflow — each a self-contained discipline an agent loads when the task matches its description. The **Suspec methodology guides** — the artifact authoring skills (specs, audits, research, RFCs, change plans, and the rest of the `write-*` family) plus the loop skills (`implement-task`, `review-output`, `save-findings`, `spec-check`, `split-work`) — carry the methodology itself. They are Suspec-flavored but coupled to no particular repo, stack, or vendor: artifacts live beside the agent's own native artifacts and are named by explicit path.
 
 | Domain                     | Shape of skills shipped                                                                                                                                                |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -120,7 +120,7 @@ When a candidate skill is proposed, the gating question is:
 
 If the answer is _"yes"_, the skill belongs here. If _"no"_, it belongs somewhere else — usually the consuming project's own `AGENTS.md`, a stack-specific skill repo, or an internal docs site.
 
-For the methodology tier the same question applies with one licensed assumption: a methodology skill may assume the Suspec workflow (the personal store, absolute paths handed in the dispatch prompt, the `suspec` CLI verbs) — but never a particular repo, stack, vendor, or any committed workspace.
+For the methodology tier the same question applies with one licensed assumption: a methodology skill may assume the Suspec workflow (artifacts beside the agent's native artifacts, full paths handed in the dispatch prompt, `suspec check` as the deterministic floor) — but never a particular repo, stack, vendor, or any committed workspace.
 
 ---
 
