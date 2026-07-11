@@ -15,11 +15,14 @@ description: >-
 
 A spec is the contract between whoever wants the change and whoever builds it.
 Done well, an implementer can build from it with no follow-up questions, and a
-reviewer can check every requirement against evidence. Start from the spec
-artifact scaffold (the shape is documented in the Suspec repo's
-`docs/reference/artifact-formats.md`); this guide is how to fill it, not a
-restatement of it. This skill is how the spec gets created — writing it well
-is the job; check it with `suspec check <path>`.
+reviewer can check every requirement against evidence. A spec has these sections, in
+order: **Intent · Non-goals · Requirements · Open questions · Affected areas · Dropped
+from sources (when needed) · Execution** — an append-only run record, one dated entry
+per change-cycle. Frontmatter carries `type: spec`, `id: SPEC-<name>`, `title`,
+`status`, `owner`, and `sources` (the intake, PRD, or ticket this spec traces to); each
+requirement is an `AC-NNN` with a `Verify with:` line. This guide is how to fill that
+shape, not a restatement of it. This skill is how the spec gets created — writing it
+well is the job; check it with `suspec check <path>`.
 
 Place the file next to your own native artifacts — the same place you keep your plans,
 notes, and memories for this work, in a folder named after the repo you are working on
@@ -78,12 +81,16 @@ time.
    challenge._
 9. **Non-goals are load-bearing — write them in three parts.** The prohibition, the
    positive alternative (what to do instead), and the escape hatch (blocked by the
-   boundary? stop and ask). _Why: a bare "do not" is measured weak — agents walk past a
-   lone prohibition, while prohibition-plus-stop-option cuts violations by an order of
-   magnitude._ Non-goals bound the task and protect the reviewer from scope drift.
+   boundary? stop and ask). _Why: a bare "do not" is easy for an agent to walk past
+   alone; pairing it with a positive alternative and a stop option keeps it
+   actionable._ Non-goals bound the task and protect the reviewer from scope drift.
 10. **Need stricter structure?** Any spec can switch its requirements to
-   structured (SOL) form: add `format: sol` to the frontmatter, per the note in
-   the spec template. Use it for high-risk work; plain form is the default.
+   structured (SOL) form: add `format: sol` to the frontmatter. SOL blocks are
+   bare-header lines like `REQ AC-001:` drawn from a fixed set of block
+   keywords (`REQ`, `CONSTRAINT`, `INVARIANT`, `INTERFACE`, `QUESTION`) and
+   modal keywords (`MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, `MAY`) — full
+   grammar in [`references/sol-grammar.md`](./references/sol-grammar.md).
+   Use it for high-risk work; plain form is the default.
 
 ## When NOT to write a spec
 
@@ -145,3 +152,10 @@ Before handing the spec on, check each — fix, don't rationalize:
 - [ ] You can point at what you surveyed before any new pattern you introduced.
 - [ ] `git status` (pasted) shows only spec documents changed — the spec
       session touched no code.
+
+## Bundled resources
+
+- [`references/sol-grammar.md`](./references/sol-grammar.md) — the full SOL grammar for rule 10:
+  block types (`REQ`, `CONSTRAINT`, `INVARIANT`, `INTERFACE`, `QUESTION`), strength words, `VERIFY
+  BY` syntax, and metadata clauses. Load it when a spec sets `format: sol` — not needed for plain
+  form.

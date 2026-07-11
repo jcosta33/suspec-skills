@@ -3,7 +3,7 @@ name: write-rfc
 type: agent-guide
 description: >-
   Write an RFC — one pre-decision proposal: the problem, the approach you advocate,
-  the alternatives you weighed, and the exact decision you ask for. Use when a
+  the alternatives you weighed, and the exact decision you ask for. ALWAYS apply when a
   technical approach needs to be argued before anyone commits to it. Never write
   requirements into an RFC, leave Alternatives empty, or word a sentence as a
   settled decision. Skip when the decision is already made (write an ADR), when

@@ -51,7 +51,7 @@ flowchart LR
     C3 --> D2
     C4 --> D3["empirical-proof, fix-flaky-test"]
     C5 --> D4["no cross-skill links + AGENTS.md contract"]
-    C6 --> D5["task shape (built into suspec-cli)"]
+    C6 --> D5["task shape (skills/*/references/task-template.md)"]
 ```
 
 Each principle has a dedicated document in this directory; the [Sources](./sources.md) page lists the primary evidence behind every link in the chain.

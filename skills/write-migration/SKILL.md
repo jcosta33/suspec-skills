@@ -20,19 +20,20 @@ implementation moves; the contract does not. Migrations fail in two ways, both p
 that looks finished: the **permanent half-migration** (some callsites on the old API, some on the
 new, indefinitely) and the **phantom completion** (old-API callsites still alive in dynamic
 dispatch, registries, or generated code that a text search of the call syntax never reached). This
-guide adds the migration discipline on top of the base `implement-task` rules. These are
-conventions the review packet inspects — nothing enforces them at edit time.
+guide carries the migration discipline standalone, and keeps this task's changes isolated in one
+worktree (or branch) so parallel tasks stay write-disjoint and the reviewer sees one clean diff.
+These are conventions the review packet inspects — nothing enforces them at edit time.
 
-Plan the transformation first — the change plan (a store artifact) covers baseline, waves, and rollback;
+Plan the transformation first — the change plan covers baseline, waves, and rollback;
 this guide is the execution half. One discipline covers both kinds: an internal API replacement and
 a framework/language/library upgrade differ only in trigger, not method. If the new API is _meant_
 to behave differently, that is a rewrite — relabel before proceeding.
 
 **Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
 into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
-the structure from memory). It scaffolds the callsite tracker, the shim table, per-wave evidence
-slots, the beyond-the-grep audit, and the self-review. The task packet itself uses the kit's task
-template; the wave plan itself lives in the change plan.
+the structure from memory). It scaffolds the equivalence check, the callsite tracker, the shim
+table, per-wave evidence slots, the beyond-the-grep audit, and the self-review. The task packet
+itself uses the kit's task template; the wave plan itself lives in the change plan.
 
 ## Rules
 
@@ -112,6 +113,6 @@ Before declaring the task done:
 
 ## Bundled resources
 
-- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (callsite tracker, shim
-  table, per-wave evidence slots, beyond-the-grep audit, self-review). The task packet itself uses
-  the kit's task template; the wave plan itself lives in the change plan.
+- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (equivalence check,
+  callsite tracker, shim table, per-wave evidence slots, beyond-the-grep audit, self-review). The
+  task packet itself uses the kit's task template; the wave plan itself lives in the change plan.

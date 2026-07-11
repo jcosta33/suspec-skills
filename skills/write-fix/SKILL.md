@@ -16,9 +16,10 @@ description: >-
 Fixes fail two ways, both producing a green-looking diff that ships the bug. **Patching the
 symptom**: suppressing the visible failure while the cause survives, so the defect recurs through a
 different path. **A regression test that does not exercise the bug**: one green before the patch
-proves nothing, because it stays green if the fix is deleted. This guide adds the fix discipline on
-top of the base `implement-task` rules. These are conventions the review packet inspects — nothing
-enforces them at edit time.
+proves nothing, because it stays green if the fix is deleted. This guide carries the fix discipline
+standalone, and keeps this task's changes isolated in one worktree (or branch) so parallel tasks stay
+write-disjoint and the reviewer sees one clean diff. These are conventions the review packet inspects
+— nothing enforces them at edit time.
 
 Writing the bug _report_ is a separate job with its own guide, `write-bug-report`, in this kit —
 this guide consumes a report and produces the fix. A test that fails _sometimes_ is a different
@@ -28,8 +29,8 @@ oracle entirely — a flake needs a loop run to reproduce, and you fix the sourc
 **Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
 into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
 the structure from memory). It scaffolds the reproduction block, the hypothesis trail where each
-rejected attempt teaches the next, pasted evidence, and the self-review. The task packet itself uses
-the kit's task template.
+rejected attempt teaches the next, the root cause block, pasted evidence, and the self-review. The
+task packet itself uses the kit's task template.
 
 ## Rules
 
@@ -118,5 +119,5 @@ The same failure modes as the rules, shown as the run-time scenario that produce
 ## Bundled resources
 
 - [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run: reproduction block,
-  hypothesis trail (each rejected attempt teaches the next), progress checklist, pasted evidence,
-  self-review. The task packet itself uses the kit's task template.
+  hypothesis trail (each rejected attempt teaches the next), the root cause block, progress
+  checklist, pasted evidence, self-review. The task packet itself uses the kit's task template.

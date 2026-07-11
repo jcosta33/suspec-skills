@@ -4,8 +4,8 @@ type: agent-guide
 description: >-
   Write a change plan — how the codebase changes safely: baseline and target from the
   inventory, enumerated preservation guarantees, transformation waves that each leave
-  the build green, cutover and rollback conditions, and the task split. Use for
-  refactors, rewrites, migrations, upgrades, performance and schema work. Never write
+  the build green, cutover and rollback conditions, and the task split. ALWAYS apply when planning
+  refactors, rewrites, migrations, upgrades, performance, or schema work. Never write
   "no behavior change" — enumerate what is preserved. Skip for small cleanups, obvious
   bug fixes, and ordinary feature work.
 ---
@@ -17,9 +17,10 @@ change _safely_?" Write one when the work is primarily structural — it spans m
 preserve behavior while touching risky code, needs sequencing, or will land as a diff too
 large to interpret without a map. Skip it for an obvious bug fix or a small cleanup.
 
-Start from the change-plan scaffold (the shape is documented in the Suspec repo's
-`docs/reference/artifact-formats.md`); the plan sits beside the spec it serves. This skill
-is how the plan gets created; check it with `suspec check <path>`.
+A change plan has these sections, in order: **Baseline · Target · Preservation
+guarantees · Transformation waves · Cutover / rollback · Task split**. The plan sits
+beside the spec it serves. This skill is how the plan gets created — filling that shape
+well is the job; check it with `suspec check <path>`.
 
 Place the file next to your own native artifacts — the same place you keep your plans,
 notes, and memories for this work, in a folder named after the repo you are working on

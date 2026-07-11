@@ -74,7 +74,7 @@ flowchart TD
 | **No method index / core / loader skill**                                    | There is no `methods-core`, no monolithic index skill. Each is independently installable.                                                                                                                       |
 | **Methods are not referenced from any other skill**                          | A method skill is loaded because its own description matches the task, not because another skill names it.                                                                                                      |
 
-> A consumer who installs only the kit's `review-output` and this catalog's `revolver-review` gets the same behaviour as one with everything installed — neither file mentions the other.
+> A consumer who installs only `review-output` and `revolver-review` gets the same behaviour as one with everything installed — neither file mentions the other.
 
 ---
 
@@ -128,7 +128,9 @@ a GitHub or DOI URL) do not belong in a skill body. Two reasons, the same ones b
 never the citation; external best-of-breed provenance is recorded in [`sources.md`](./sources.md), not in
 the skill. Tool names the agent actually **uses** (Semgrep, CodeQL, Diátaxis) are instructions, not
 sourcing, and stay. The gate: `grep -rniE 'sources\.md|github\.com|https?://|doi\.org|\[\\[[0-9]' skills/`
-returns nothing.
+returns nothing, with one standing exception — `skills/spec-check/SKILL.md`'s checks table names
+`sources.md` as a check-contract term (the artifact-level file a reviewed spec's `[[KEY]]` citation must
+resolve against), not a citation into this repo's own `docs/sources.md`; that hit is expected, not drift.
 
 ---
 
@@ -151,13 +153,13 @@ The densest cluster is the behavior-preserving-transformation rule family — th
 
 Self-containment relies on each skill carrying its own state. If one skill had to rely on another keeping a _shared in-memory_ picture of what was decided, the skills wouldn't actually be independent — they'd be implicitly coupled through the agent's working memory.
 
-The repo's answer is **file-based state externalisation**: every long-running task writes to a local task file (e.g. a gitignored `.tasks/<slug>.md` on the dev's machine). Each skill reads the file, writes to it, and assumes nothing about what other skills did beyond what's recorded there. The file is personal working memory, not a team artefact — see [Task files § Where the task file lives](./task-files.md#where-the-task-file-lives-gitignored-local-personal).
+The repo's answer, for the skills that carry one, is **file-based state externalisation**: a long-running task writes to a local task file (e.g. a gitignored `.tasks/<slug>.md` on the dev's machine). Each such skill reads the file, writes to it, and assumes nothing about what other skills did beyond what's recorded there. The core-loop skills externalise state, but not all the same way: `implement-task` writes into the artifact it's already producing — a spec's `## Execution` section for 1:1 work, or the task's `## Run summary` when a task packet exists (see [Task files § Applied in this repo](./task-files.md#applied-in-this-repo)); `split-work`'s task packets are themselves the produced artifact, not a second file layered on one; `review-output` writes into the review packet it is producing — a second file, placed beside the agent's own native artifacts; `spec-check` follows its own "check, don't edit" rule and writes nothing — it produces an ephemeral report and touches no artifact; `save-findings` writes into native harness memory (a memory file, `CLAUDE.md`, whatever the runner provides), not into the spec or task artifact. The file is personal working memory, not a team artefact — see [Task files § Where the task file lives](./task-files.md#where-the-task-file-lives-gitignored-local-personal).
 
 The empirical case for this is unusually direct. InfiAgent [\[29\]](./sources.md#29) ran an ablation study removing file-based state externalisation from their long-horizon agent and measured a **21× performance degradation**. Anthropic's three-file pattern [\[20\]](./sources.md#20) and the Claude Code Tasks system [\[23\]](./sources.md#23) converge on the same shape from a different angle. The full case is in [Task files](./task-files.md).
 
-For self-containment specifically, the implication is structural: **state is shared through the file, not through implicit context**. A skill that needs prior findings reads them from the task file. A skill that needs to record a decision writes it to the task file. No skill assumes another skill kept anything in attention.
+For self-containment specifically, the implication is structural: **state is shared through a file — a task file, or the artifact already under work — not through implicit context**. A skill that needs prior findings reads them from wherever its family keeps state; a skill that needs to record a decision writes it there. No skill assumes another skill kept anything in attention.
 
-> Without file-based state, "self-contained skills" would be a polite fiction — every skill would secretly depend on the agent's memory of what its siblings did. The task file is what makes the independence real.
+> Without file-based state, "self-contained skills" would be a polite fiction — every skill would secretly depend on the agent's memory of what its siblings did. Externalising state to a file — task file or artifact — is what makes the independence real.
 
 ---
 

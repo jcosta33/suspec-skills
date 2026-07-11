@@ -16,11 +16,12 @@ description: >-
 
 Restructure code so it reads, factors, or layers better — **without moving any observable
 behavior**. A refactor fails in exactly two ways: a behavior delta smuggled in under the "purely
-internal" label, and a compatibility shim that quietly becomes permanent. This guide adds the
-refactor discipline on top of the base `implement-task` rules. These are conventions the review
-packet inspects — nothing enforces them at edit time.
+internal" label, and a compatibility shim that quietly becomes permanent. This guide carries the
+refactor discipline standalone, and keeps this task's changes isolated in one worktree (or branch)
+so parallel tasks stay write-disjoint and the reviewer sees one clean diff. These are conventions
+the review packet inspects — nothing enforces them at edit time.
 
-Plan the transformation first — the change plan (a store artifact) covers baseline, waves, and rollback;
+Plan the transformation first — the change plan covers baseline, waves, and rollback;
 this guide is the execution half. The defining test: if any observable behavior moves, the work is
 no longer a refactor — it is a rewrite (behavior changes on purpose) or a migration (API A → B).
 Stop and say so; do not proceed under the wrong label.

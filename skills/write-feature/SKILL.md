@@ -16,9 +16,10 @@ description: >-
 
 Features fail when the builder improvises around the spec — building past it, smuggling in "while
 I'm here" cleanup, or declaring done on a green suite that never exercised the new behavior. This
-guide adds the feature discipline on top of the base `implement-task` rules: build exactly what the
-requirements name, reuse before you invent, let nothing leave your hand unverified. These are
-conventions the review packet inspects — nothing enforces them at edit time.
+guide carries the feature discipline standalone: build exactly what the requirements name, reuse
+before you invent, let nothing leave your hand unverified, and keep this task's changes isolated in
+one worktree (or branch) so parallel tasks stay write-disjoint and the reviewer sees one clean diff.
+These are conventions the review packet inspects — nothing enforces them at edit time.
 
 A feature adds capability that did not exist. Repairing a defect, restructuring without a behavior
 change, deliberately changing existing behavior, moving between APIs, and tuning a bottleneck are
@@ -26,7 +27,7 @@ different kinds with their own guides in this kit.
 
 **Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
 into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
-the structure from memory). It scaffolds the AC-to-change map, batch checkpoints, pasted evidence,
+the structure from memory). It scaffolds the plan, progress checklist, decisions, pasted evidence,
 and the self-review. The task packet itself uses the kit's task template.
 
 ## Rules

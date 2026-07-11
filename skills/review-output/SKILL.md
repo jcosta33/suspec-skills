@@ -2,26 +2,32 @@
 name: review-output
 type: agent-guide
 description: >-
-  Review finished work against its SPEC — the best spec-to-code conformance
-  review: refute by default, re-run the checks yourself, prove every spec
-  requirement is honored by the code with evidence, and route what a human must
-  see. ALWAYS apply when asked to review a finished task, a diff, or a PR against
-  a spec, or to fill a review packet. Reconcile against the spec, never
-  the task; never mark Pass from the worker's paste alone; never leave a Pass
-  with an empty Evidence cell; never review a change you wrote. Skip for writing
-  specs and implementing tasks.
+  Review finished work against its SPEC: refute by default, re-run the checks
+  yourself, prove every spec requirement is honored by the code with evidence,
+  and route what a human must see. ALWAYS apply when asked to review a
+  finished task, a diff, or a PR against a spec, or to fill a review packet.
+  Reconcile against the spec, never the task; never mark Pass from the
+  implementer's paste alone; never leave a Pass with an empty Evidence cell; never
+  review a change you wrote. Skip for writing specs and implementing tasks.
 ---
 
 # Review output against the spec
 
-The review packet — `review-<slug>.md` — lives beside the run/task artifacts it reconciles, next
-to your own native artifacts, never the repo unless the project's own governance says otherwise.
+The review packet is named `review-<slug>.md`.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
 It proves one thing: **the code honors the spec** — every requirement met, evidenced, or
 explicitly not. Your stance is refute-by-default: "done" is a claim until evidence forces you to
 agree. Making sure the spec is respected is this review's **primary job**; everything else
 (style, neatness) is secondary. The rules below are review-checklist conventions — nothing
-enforces them. Check it with `suspec check <review-path> --spec <spec-path> --task <task-path>`
-(companions explicit; a missing required companion is blocking).
+enforces them. Check it with `suspec check <review-path> --spec <spec-path> [--task <task-path>]`
+(spec is always required; task only when this review's frontmatter names one — a missing required
+companion is blocking).
 
 **Reconcile against the spec, never the task.** The requirement, its `Verify with:` method, and the bar
 for Pass come from the **spec's** ACs — the spec is the source of truth for *what* must be true. A task,
@@ -40,7 +46,7 @@ required; spawning a fresh reviewer is a harness capability, not a dependency.)
 
 ## Rules
 
-1. **The worker's paste is a claim; your run is evidence.** Re-run every check yourself wherever
+1. **The implementer's paste is a claim; your run is evidence.** Re-run every check yourself wherever
    possible — resolve commands from the `AGENTS.md` `Commands` table; if a needed command is missing,
    ask, never guess. Paste _your_ output into the Evidence column. A check you could not run is
    Unverified, not Pass. _Why: a paste shows the command ran at some past moment on some past code, not
@@ -58,7 +64,7 @@ required; spawning a fresh reviewer is a harness capability, not a dependency.)
    rubber-stamping; one real probe breaks the habit._
 5. **Prove the exact requirement, not a neighbour.** For each AC, point at the lines that address _that_
    requirement as the spec defines it — the first plausible match is how a hole gets approved. Treat
-   "should never happen", "harmless", "edge case unlikely" in the worker's summary as flags to check,
+   "should never happen", "harmless", "edge case unlikely" in the implementer's summary as flags to check,
    not assurances.
 6. **Read what did not change.** Callers of every changed public surface, tests, docs. _Why: the diff
    shows what changed, not what the change broke elsewhere._
@@ -74,30 +80,30 @@ required; spawning a fresh reviewer is a harness capability, not a dependency.)
    which rows · why · expiry — and status `waived`; otherwise "Block until …", naming the rows or
    exceptions.
 10. **Save finding candidates.** Anything durable the work surfaced — a fact, a decision, a pattern, a
-    gotcha — is recorded here. Findings ride the review packet; durable ones become native memories
-    (see save-findings).
+    gotcha — is recorded here; for 1:1 work, carry forward anything the implementer noted in the
+    spec's Execution entry, since the spec itself holds no `## Findings` section. Findings ride the
+    task or review packet; durable ones become native memories (see save-findings).
 11. **Keep the status honest.** `pass` only when the tables support it; `blocked`/`needs-human`
     otherwise; `draft` while working. Never soften a Fail or inflate a nit. The packet's status field
-    is the record the gate and the human read — a stale or inflated status misleads more than an
-    empty one.
+    is the record the human reads — a stale or inflated status misleads more than an empty one.
 
 ## Refuses
 
 | Red flag                                                 | Action                                                               |
 | -------------------------------------------------------- | -------------------------------------------------------------------- |
 | "Tests passed" with no command, exit, or output          | Row is Unverified; produce or demand the real run                    |
-| Accepting the worker's paste as final evidence           | Re-run it yourself; if you cannot, mark Unverified and say why       |
+| Accepting the implementer's paste as final evidence      | Re-run it yourself; if you cannot, mark Unverified and say why       |
 | Judging an AC against the task's wording, not the spec's | The spec is the bar; re-read the spec's requirement and Verify line  |
 | Evidence that addresses a neighbouring AC, not this one  | Unverified for this row — evidence must match the ID                 |
 | Schema-valid / well-formed output offered as correctness | Shape is not truth; check the value, not the format                  |
-| Your run disagrees with the worker's paste               | The discrepancy is itself a finding — investigate, do not dismiss it |
+| Your run disagrees with the implementer's paste          | The discrepancy is itself a finding — investigate, do not dismiss it |
 | A vague concern ("looks rough")                          | Sharpen it to a file and line, or drop it                            |
 | Fixing the code mid-review                               | Review judges; the fix is a new task                                 |
 | Reviewing a diff you authored                            | Spawn a fresh reviewer; record that you did                          |
 
 ## Gotchas
 
-- **Marking a row Pass from the worker's paste without re-running it.** A paste proves the command ran
+- **Marking a row Pass from the implementer's paste without re-running it.** A paste proves the command ran
   at some past moment on some past code, not that it passes on the diff in front of you — the one thing
   the review exists to establish.
 - **Leaving a Pass row with an empty Evidence cell.** An empty cell is indistinguishable from "I never
@@ -119,6 +125,5 @@ Before setting the packet status:
 - [ ] You searched callers of changed public surfaces, not just the diff.
 - [ ] Each Human-attention entry has what / why / suggested action; nothing was silently skipped.
 - [ ] The suggested decision follows strictly from the rows.
-- [ ] Finding candidates are recorded in the packet; durable ones are captured as native memories
-      (see save-findings).
+- [ ] Finding candidates are recorded in the packet.
 - [ ] You did not author the change you judged — an independent (fresh-context) reviewer produced this.

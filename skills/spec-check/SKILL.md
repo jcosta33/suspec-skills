@@ -2,12 +2,13 @@
 name: spec-check
 type: agent-guide
 description: >-
-  Check a spec by hand against the core checks and the writing-rules watchlist, and
-  report hard errors and warnings — without changing a character of the spec. Use
+  Check a spec by hand against the core checks, the writing-rules watchlist, and the
+  leverage test (does every section pull weight), and report hard errors, warnings,
+  and advice — without changing a character of the spec. ALWAYS apply this skill
   before a spec goes to status ready, before tasks are cut from it, or when asked
-  "is this spec sound?". Never fix what you find while checking — report it; editing
-  is a separate step with the author. Skip when asked to write or improve the spec
-  itself.
+  "is this spec sound?". Never fix what you find while checking — report it;
+  editing is a separate step with the author. Skip when asked to write or
+  improve the spec itself.
 ---
 
 # Checking a spec
@@ -27,8 +28,8 @@ the report to the author (or switch hats explicitly and edit _after_ the report 
 
 ## The core checks
 
-Run each against the spec (full catalogue with IDs and severities: the Suspec repo's
-`docs/reference/checks.md`):
+Run each against the spec (this table is a curated set; the full catalogue with IDs and
+severities lives in the Suspec repo):
 
 | ID   | Check                                                                                           | Severity   |
 | ---- | ----------------------------------------------------------------------------------------------- | ---------- |
@@ -41,11 +42,14 @@ Run each against the spec (full catalogue with IDs and severities: the Suspec re
 | C007 | No `TBD`, `TODO`, `???`, or unresolved open question at `status: ready`                         | hard error |
 | C008 | Frontmatter `sources:` names at least one origin                                                | warning    |
 | C009 | Every path or ID in `sources:` and cross-references resolves to something that exists           | hard error |
+| C015 | Every inline `[[KEY]]` citation resolves to a matching `<a id="KEY">` anchor in the `sources.md` the frontmatter names | warning    |
+| C019 | A `###` heading shaped like a requirement id but with a lowercase split-suffix (`AC-004a`) parses as prose and silently vanishes from scope and coverage | warning    |
 
-Two notes. C003 asks that the `Verify with:` line _be there_ — a target that doesn't exist yet
+Three notes. C003 asks that the `Verify with:` line _be there_ — a target that doesn't exist yet
 is not a spec defect; the requirement simply reviews as Unverified until it does. C004's usual
 finding: two strength words in one requirement means two requirements — report it as a split
-candidate, don't split it yourself.
+candidate, don't split it yourself. C019 only fires on the plain `###` form — a spec written in
+structured requirements (`format: sol`) is caught by the SOL catalogue instead.
 
 ## The writing-rules watchlist
 
@@ -75,9 +79,8 @@ _should_ happen instead?), and uncertainty buried in requirement prose ("probabl
 think") that belongs in Open questions.
 
 If the spec opts into structured requirements (`format: sol` in the frontmatter), also walk
-the SOL check catalogue — same discipline, finer grain. It lives in the Suspec repo at
-`docs/reference/checks.md`. The notation itself is in the Suspec repo at
-`docs/reference/structured-requirements.md`.
+the SOL check catalogue — same discipline, finer grain. Both the SOL check catalogue and the
+structured-requirements notation live in the Suspec repo.
 
 ## The leverage test (does every section pull weight?)
 
@@ -91,7 +94,7 @@ whether a line is *checkable*, the leverage test asks whether a section is *earn
 
 ## The report
 
-Short and sorted — hard errors first, warnings second, watchlist hits third:
+Short and sorted — hard errors first, warnings second, watchlist hits third, advice last:
 
 ```markdown
 # Spec check: SPEC-payment-retry (2026-06-11)
@@ -111,7 +114,12 @@ Watchlist
 - AC-003 "handles errors gracefully" — no same-line criterion; what does the
   caller observe?
 
-Result: 2 hard errors, 2 warnings, 1 watchlist hit. Not ready.
+Advice
+
+- Background section restates the ticket and nobody acts on it — cut it or
+  make it earn its place.
+
+Result: 2 hard errors, 2 warnings, 1 watchlist hit, 1 leverage miss. Not ready.
 ```
 
 Every line points at a requirement ID or section, so the author's fix is unambiguous. "Not

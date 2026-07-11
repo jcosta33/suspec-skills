@@ -17,9 +17,10 @@ Tests fail their job in three quiet ways: the test that passes even when the cod
 commented out (pure ceremony), the test that reaches into internals and shatters on a
 behavior-preserving refactor (the test broke, not the code), and the test that bundles six
 unrelated assertions so a failure says "something broke" without saying what. All three are
-net-negative — they cost maintenance and catch nothing. This guide adds the testing discipline on
-top of the base `implement-task` rules. These are conventions the review packet inspects — nothing
-enforces them at edit time.
+net-negative — they cost maintenance and catch nothing. This guide carries the testing discipline
+standalone, and keeps this task's changes isolated in one worktree (or branch) so parallel tasks
+stay write-disjoint and the reviewer sees one clean diff. These are conventions the review packet
+inspects — nothing enforces them at edit time.
 
 This guide is for tests as the deliverable in their own right. Tests written _as part of_ a feature
 or fix ride inside those guides; a test that already fails non-deterministically is stabilization

@@ -4,7 +4,7 @@ type: agent-guide
 description: >-
   Write a PRD — the durable record of product intent a spec is later written from:
   the problem, who it affects, the outcomes that define success, and what is
-  deliberately out of scope. Use when new product behavior needs its "why" written
+  deliberately out of scope. ALWAYS apply when new product behavior needs its "why" written
   down before anyone drafts requirements. Never write requirements, strength words,
   or solution mechanisms into a PRD. Skip when the intent is already clear enough
   to spec directly — then write the spec.

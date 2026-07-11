@@ -17,11 +17,12 @@ description: >-
 Performance work fails two ways, both producing a diff that looks like a win: **a number that moved
 on the benchmark but not in production** (measured under conditions that don't match where the
 system is slow, or against a baseline taken under a different protocol), and **a speedup that
-quietly broke correctness** — a faster wrong answer is still a defect. This guide adds the
-performance discipline on top of the base `implement-task` rules. These are conventions the review
-packet inspects — nothing enforces them at edit time.
+quietly broke correctness** — a faster wrong answer is still a defect. This guide carries the
+performance discipline standalone, and keeps this task's changes isolated in one worktree (or
+branch) so parallel tasks stay write-disjoint and the reviewer sees one clean diff. These are
+conventions the review packet inspects — nothing enforces them at edit time.
 
-Plan the transformation first — the change plan (a store artifact) covers baseline, waves, and rollback;
+Plan the transformation first — the change plan covers baseline, waves, and rollback;
 this guide is the execution half. Numbers, not vibes: nothing is faster until a baseline and a
 final figure, under the identical protocol, say so. No number and no protocol is tinkering, not
 optimizing — get the target before you start.

@@ -18,10 +18,11 @@ A rewrite is riskier than a refactor because behavior is _permitted_ to change �
 change hides exactly where an intended one is allowed. The discipline forces the change onto two
 provable surfaces: the **delta** (every behavior meant to change) and the **preserved non-delta**
 (everything else). The delta is the contract; anything not on it must survive untouched. This guide
-adds the rewrite discipline on top of the base `implement-task` rules. These are conventions the
-review packet inspects — nothing enforces them at edit time.
+carries the rewrite discipline standalone, and keeps this task's changes isolated in one worktree
+(or branch) so parallel tasks stay write-disjoint and the reviewer sees one clean diff. These are
+conventions the review packet inspects — nothing enforces them at edit time.
 
-Plan the transformation first — the change plan (a store artifact) covers baseline, waves, and rollback;
+Plan the transformation first — the change plan covers baseline, waves, and rollback;
 this guide is the execution half. If your task moves _no_ observable behavior, it is a refactor; if
 only the implementation API moves while behavior holds, it is a migration; if it adds capability
 that did not exist, it is a feature. Relabel rather than proceed under the wrong discipline.

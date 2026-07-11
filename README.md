@@ -67,7 +67,7 @@ The skill family that runs the Suspec loop. Artifacts (specs, task packets, revi
 | `split-work`     | the work is too big for one run — cut task packets that cover every requirement exactly once and never collide                 |
 | `implement-task` | implementing a task packet or spec — stay in scope, run every Verify item, paste real output, self-review before handoff       |
 | `review-output`  | reviewing finished work against its spec — refute by default, re-run the checks yourself, evidence every row                   |
-| `save-findings`  | closing a task — findings ride the review packet; durable ones become native memories, one claim per memory with the evidence attached |
+| `save-findings`  | closing a task — findings ride the task or review packet; durable ones become native memories, one claim per memory with the evidence attached |
 
 ### Authoring the other artifacts
 

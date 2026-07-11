@@ -1,8 +1,8 @@
 # Run notes: {{title}}
 
 - Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
-- Bug report: `{{path}}`
-- Spec defining the broken behavior (if any): `{{path}}`
+- Bug report: {{full path to the bug report}}
+- Spec defining the broken behavior (if any): {{full path to the spec}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 

@@ -1,7 +1,7 @@
 # Run notes: {{title}}
 
 - Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
-- Driving doc (spec / audit / bug report, if any): `{{path}}`
+- Driving doc (spec / audit / bug report, if any): {{full path to the driving doc}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 

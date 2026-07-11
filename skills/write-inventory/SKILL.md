@@ -4,7 +4,7 @@ type: agent-guide
 description: >-
   Write an inventory — a reconstructive map of what exists before anyone draws new
   boundaries: modules, interfaces and their callers, observed behavior with evidence,
-  existing tests, and unknowns. Use before a rewrite, major refactor, migration, or
+  existing tests, and unknowns. ALWAYS apply when starting a rewrite, major refactor, migration, or
   sending an agent into unfamiliar brownfield code. Map, don't judge — risks and
   violations belong in an audit; prescriptions belong in the change plan. Skip for a
   simple feature, a small fix, or a single-file cleanup.
@@ -20,9 +20,8 @@ answers the audit doesn't carry: who calls this function? who subscribes to this
 callers actually rely on? An audit alone is not enough preparation for a rewrite or a major
 refactor — write the inventory first — a convention Suspec expects before rewrites; nothing enforces it.
 
-Start from the inventory shape (documented in the Suspec repo's
-`docs/reference/artifact-formats.md`); the inventory sits beside the spec or change plan
-it serves.
+The inventory sits beside the spec or change plan it serves; its shape is set out below,
+section by section.
 
 Place the file next to your own native artifacts — the same place you keep your plans,
 notes, and memories for this work, in a folder named after the repo you are working on

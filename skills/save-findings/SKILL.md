@@ -5,10 +5,13 @@ description: >-
   Close the work by saving what it taught: sweep the task or review packet's
   Findings section, write each durable lesson as a native harness memory with
   its evidence, and route team-facing residue through the project's own
-  channels by hand. Use at Close — after the review, before the work is handed
-  off — or whenever a session surfaced something a future session would want
-  to know. One claim per memory, evidence attached, searchable title. Skip
-  mid-task; the packet's Findings section is the staging area until Close.
+  channels by hand. ALWAYS apply this skill at Close — after the review,
+  before the work is handed off — or whenever a session surfaced something a
+  future session would want to know. Never save unevidenced memories, bundle
+  lessons under one generic title, point evidence at a packet that dies
+  with the work, or drop a severe candidate (a security issue, a correctness
+  risk) as ephemeral without escalating it first. Skip mid-task; the packet's
+  Findings section is the staging area until Close.
 ---
 
 # Saving findings
@@ -24,8 +27,11 @@ enforces it; it costs one memory per lesson.
    one exists, the review packet's otherwise. List every candidate: facts learned, quirks hit,
    decisions made, gotchas survived.
 2. **Decide each candidate deliberately.** Durable → a native memory. Ephemeral → it rides the
-   review packet and dies with it — drop it, knowingly. The failure mode is neither saving nor
-   dropping — candidates rotting in a closed packet nobody reopens.
+   review packet and dies with it — drop it, knowingly. A candidate carrying real severity — a
+   security issue, a correctness risk — is never dropped as ephemeral without escalating it
+   first: an issue, an ADR, or the review packet's `## Human attention` list (see
+   review-output). The failure mode is neither saving nor dropping — candidates rotting in a
+   closed packet nobody reopens, or a severe one dying quietly because nobody escalated it.
 3. **Write each durable lesson natively.** A durable lesson becomes a native memory: write it
    the way your harness records memories (a memory file, CLAUDE.md, whatever your runner
    provides), one claim per memory, the evidence attached, under a searchable title. Suspec

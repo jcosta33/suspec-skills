@@ -3,11 +3,12 @@ name: split-work
 type: agent-guide
 description: >-
   Split a spec or change plan into task packets agents can run without colliding:
-  every requirement lands in exactly one task, tasks that write the same files are
-  sequenced not parallelized, and the dependency order is written down. Use when the
-  work is too big for one run or several agents will work at once. Never invent new
+  every requirement lands in exactly one task (or, for same-behavior-per-platform/repo
+  work, one task per context), tasks that write the same files are sequenced not
+  parallelized, and the dependency order is written down. ALWAYS apply this skill when
+  the work is too big for one run or several agents will work at once. Never invent new
   requirements while splitting, and never cut a task from a requirement with an open
-  blocking question. Skip when one task packet covers the whole job — most do.
+  blocking question. Skip when the job fits one spec → one implementer with no task packet — most do.
 ---
 
 # Splitting work into tasks
@@ -15,10 +16,15 @@ description: >-
 Most work is one spec → one implementer — **no task packet**; the implementer fills the spec's
 `## Execution` section. Cut tasks only when the work is too big for one agent run, or when several
 agents will work in parallel and a collision would be expensive. The output is N task packets,
-each self-contained, placed next to your own native artifacts beside the spec — never into the
-repo unless the project's own governance says otherwise — plus a few lines recording the order
-they run in. The dispatch prompt you compose names every input, including each task packet, by
-full path; carry the full path forward from there into every step that touches the task.
+each self-contained, plus a few lines recording the order they run in.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
+The dispatch prompt you compose names every input, including each task packet, by full path.
 
 ## Cut along requirements, cover them all
 
@@ -102,7 +108,7 @@ task A waits on B waits on A — the boundary is wrong; merge them or re-cut.
 ## Each packet stands alone
 
 The agent running a packet sees the packet, not your splitting reasons. Each one carries its
-own source links, Scope ("implement or preserve" the listed IDs), **Do not change** (which for
+own source links, Scope ("implement or preserve" the listed IDs), Do not change (which for
 a parallel task includes the files its siblings own), Affected areas, and a Verify line per
 requirement. A packet that needs the other packets explained to it isn't disjoint yet — and
 "the other agent will handle it" is not a sentence that belongs inside one.
@@ -168,5 +174,5 @@ turns on code, turned here on the split itself.
 - [ ] Every parallel pair passed all four conditions in the box — including the file-overlap
       comparison, done against listed paths, not from memory.
 - [ ] The run order is written down where the next person will look.
-- [ ] Each packet reads as self-contained: source, scope, do-not-change, verify — with its
+- [ ] Each packet reads as self-contained: source, scope, do not change, verify — with its
       pinned spec-slice snapshot stamped with the spec id and commit it was cut against.

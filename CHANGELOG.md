@@ -23,7 +23,7 @@ a tag or commit for stability) and re-run to re-fetch. Watch the
   memory, evidence attached, searchable title, written the way the harness records memories.
   Ephemeral findings ride the review packet. The finding artifact and its triage flow are gone.
 - **Checking is path-explicit**: a spec or change plan is checked with `suspec check <path>`; a
-  review packet with `suspec check <review-path> --spec <spec-path> --task <task-path>`. Task
+  review packet with `suspec check <review-path> --spec <spec-path> [--task <task-path>]`. Task
   templates and core-loop skills hand every artifact over by explicit full path.
 
 ## [3.0.0] - 2026-07-09

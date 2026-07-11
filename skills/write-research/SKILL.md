@@ -104,8 +104,8 @@ the reader back the question they came with.
 
 ## What does not belong
 
-- Requirements in any form: no AC items, no SOL blocks (the Suspec repo's `docs/reference/structured-requirements.md`) — those belong in
-  the spec someone writes _from_ this note.
+- Requirements in any form: no AC items, no SOL blocks (see write-spec's
+  "structured (SOL) form") — those belong in the spec someone writes _from_ this note.
 - Opinion or "best practice" with no cited primary source.
 - A decision. Findings survey; they do not conclude.
 - Sources you did not actually consult.
@@ -142,6 +142,5 @@ the reader back the question they came with.
 - [`references/research-methodology.md`](./references/research-methodology.md) — how to grade
   evidence when a question turns on empirical or scientific claims: the source-tier ladder
   (OCEBM-adapted), the downgrade/upgrade checks (GRADE-adapted), the predatory-/untrustworthy-venue
-  screen (Grudniewicz 2019 + Think.Check.Submit), keeping observation distinct from claim, and the
-  auditable Rejected trail. Load it at rule 3 when the evidence is empirical — not needed for a
-  plain API/feature comparison.
+  screen, keeping observation distinct from claim, and the auditable Rejected trail. Load it at
+  rule 3 when the evidence is empirical — not needed for a plain API/feature comparison.
