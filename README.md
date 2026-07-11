@@ -109,7 +109,7 @@ Cross-cutting methods loaded _alongside_ the work — they change what the agent
 | `persona-challenger` | pressure-testing a live proposal before it's built — surface assumptions, steelman the alternative, ground the challenge in external evidence                       |
 | `market-research`    | market, customer, competitor, or UX-pattern research — type claims, triangulate evidence, grade confidence, and preserve uncertainty                                |
 | `bulletproof`        | hardening an important claim, decision, spec, or plan before it ships — expose unsupported claims, hidden assumptions, and failure modes, then verdict on already-run evidence, not confidence |
-| `revolver-review`    | driving a substantial change to a clean state — a rotating pool of at least 6 distinct stances fired one reviewer at a time on cheap varied models, fixing between rounds and re-reviewing the revised code, one stance per round, up to 3 cycles |
+| `revolver-review`    | driving a substantial change to a clean state — the agent derives at least 6 distinct stances from the target with no default menu, then fires one reviewer at a time on cheap varied models, fixing between rounds and re-reviewing the revised code for up to 3 cycles |
 
 ### Disciplines
 

@@ -1,7 +1,7 @@
 ---
 name: revolver-review
 type: agent-guide
-description: "Run a rotating, self-converging adversarial review of a substantial change: a pool of at least 6 distinct review stances, fired ONE reviewer at a time on cheap, varied models; after each single review the orchestrator applies the legitimate fixes and the next stance reviews the REVISED code, rotating through the pool one stance per round so coverage stays even; continue until a full rotation covers every stance, then repeat for up to 3 cycles, stopping when a cycle surfaces nothing new. Each subagent runs an EXTREMELY adversarial discipline — refute by default, re-run/reconcile the evidence itself, cite file:line, keep effective false positives low — injected into its prompt alongside its stance. Self-contained: it depends on no other skill. ALWAYS apply when reviewing a substantial change and you want it driven to a clean state, not just a findings list. Skip for a tiny one-line change and for original authoring (nothing exists yet to refute)."
+description: "Run a rotating, self-converging adversarial review of a substantial change: autonomously derive at least 6 distinct review stances from the target, never a default menu, then fire ONE reviewer at a time on cheap, varied models; after each single review the orchestrator applies the legitimate fixes and the next stance reviews the REVISED code, rotating through the pool one stance per round so coverage stays even; continue until a full rotation covers every stance, then repeat for up to 3 cycles, stopping when a cycle surfaces nothing new. Each subagent runs an EXTREMELY adversarial discipline — refute by default, re-run/reconcile the evidence itself, cite file:line, keep effective false positives low — injected into its prompt alongside its stance. Self-contained: it depends on no other skill. ALWAYS apply when reviewing a substantial change and you want it driven to a clean state, not just a findings list. Skip for a tiny one-line change and for original authoring (nothing exists yet to refute)."
 ---
 
 # Skill: revolver-review
@@ -17,11 +17,14 @@ just hand a human a list.
 
 ## The revolver mechanism
 
-1. **Load the cylinder — at least 6 distinct stances.** Draw from the stance menu below plus whatever
-   this change warrants. **No fixed upper limit**: use as many *genuinely distinct* stances as the
-   change's risk surface supports — but review perspectives **saturate**, so a stance that duplicates
-   another's blind spot adds cost and noise, not coverage. Distinctness is the real bound, not a number;
-   six is the floor for a change substantial enough to warrant the loop.
+1. **Derive and load the cylinder — at least 6 distinct stances.** Inspect the actual target, its stated
+   intent, changed surfaces, surrounding callers and dependencies, evidence, and plausible failure
+   modes; then autonomously name the stances that best expose *this change's* blind spots. **The
+   orchestrating agent decides the full pool itself: use no canned taxonomy, default names, pre-seeded
+   menu, or human-supplied stance list.** No fixed upper limit: use as many *genuinely distinct* stances
+   as the change's risk surface supports — but review perspectives **saturate**, so a stance that
+   duplicates another's falsification question adds cost and noise, not coverage. Distinctness is the
+   real bound, not a number; six is the floor for a change substantial enough to warrant the loop.
 2. **Fire one reviewer at a time.** Each round spawns **one** subagent holding the next stance, running
    the adversarial discipline below, reviewing the code **as it stands now**.
 3. **Fix after every round.** The orchestrator collects that reviewer's findings, accepts the ones
@@ -73,17 +76,13 @@ holes through.
 - **Never issue the ship verdict, never edit the code.** A reviewer produces findings + evidence. The
   orchestrator fixes; a human owns the final call.
 
-## The stance menu — at least 6, distinct
+## Derive the stances from the target
 
-**Base stances:** requirement/spec coverage · regression risk · security/privacy · architecture &
-boundaries · pattern/idiom fit · tests & evidence · performance/resources · API/migration/compatibility
-· maintainability (scope creep, duplication, dead code).
-
-**Add by risk when the change touches the area:** accessibility/UX · observability/ops · dependency &
-supply chain · concurrency/idempotency · deployment/infra · data correctness.
-
-Order the rotation so the highest-risk stances for *this* change fire first — and, if a second cycle
-runs, fire again first.
+Before the first round, write the pool as a compact list. For each stance, state the distinct
+falsification question it owns and the target evidence that made it relevant. Reject a candidate that
+merely renames another stance or lacks a concrete surface to inspect. The pool must emerge from the
+current change, not from a reusable review checklist. Order the rotation by potential consequence and
+uncertainty, then keep the pool and its order fixed through every cycle.
 
 ## Models — cheap and varied, so the loop is affordable
 
@@ -95,8 +94,8 @@ rotation where the runner offers a choice. Two reasons, both load-bearing:
 - **Decorrelation.** Different models err in different ways; varying the model across the rotation
   surfaces coverage a uniform run misses — bought for free by not paying for uniformity.
 
-Escalating a specific stance (security, architecture) or the reconciling orchestrator to a stronger model
-is a deliberate opt-in — never the default, never the whole rotation.
+Escalating a specific stance or the reconciling orchestrator to a stronger model is a deliberate opt-in
+— never the default, never the whole rotation.
 
 ## Reconcile and fix — the orchestrator's round
 
@@ -123,5 +122,6 @@ sees. Aggregate findings **on evidence**, never on how confident the reviewer so
 An unbounded loop with no cycle cap; firing several reviewers at once instead of one at a time (that is a
 different, unmeasured design); reviewing the frozen original instead of the revised state; a reviewer
 that edits the code or issues the ship verdict; running the reviewer chambers on an expensive model by
-default; a stance so vague it duplicates another chamber's blind spot; treating the pool size, the
-one-at-a-time cadence, or the 3-cycle cap as proven constants rather than reasoned defaults to measure.
+default; a canned stance menu or default stance name; asking the human to design or supply the pool; a
+stance so vague it duplicates another chamber's blind spot; treating the pool size, the one-at-a-time
+cadence, or the 3-cycle cap as proven constants rather than reasoned defaults to measure.
