@@ -20,7 +20,7 @@ assume every harness exposes memory.
 ## Close flow
 
 1. **Collect every candidate.** Read the active task packet's `## Findings` when work was split,
-   the review packet's findings and Human attention, the spec's current `## Execution` notes for
+   the review packet's findings and Findings or Open decisions, the spec's current `## Execution` notes for
    direct work, and any verified lesson surfaced in the session. The carrier varies; the sweep does
    not.
 2. **Classify deliberately.** Mark each candidate:
@@ -39,7 +39,7 @@ assume every harness exposes memory.
 5. **Use an honest fallback when native memory does not exist.** Create no substitute store. Route
    team-durable findings through project channels. Leave personal task-local observations ephemeral;
    do not invent a handoff section that behaves like an unsanctioned memory store. Severe candidates
-   still go to Human attention and the project's approved escalation path.
+   still go to Findings or Open decisions and the project's approved escalation path.
 6. **Route team residue by ownership.** Decisions go to the project's ADR process. Reproduced defects
    go to its issue or bug-report process. Invariants that must never regress become tests when that
    change is authorized. Operational facts use the team's documented runbook or issue channel.
@@ -68,7 +68,7 @@ future session.
 | Invent a memory file or handoff store because no API exists | Route team residue; leave personal-only observations ephemeral |
 | Paste raw logs containing secrets or personal data | Redact or use an approved restricted channel |
 | Keep a team issue only in personal memory | Route it through the project's shared channel |
-| Drop a severe candidate as run noise | Put it in Human attention and escalate before close |
+| Drop a severe candidate as run noise | Put it in Findings or Open decisions and escalate before close |
 | Save mid-task before the evidence settles | Keep it staged until Close |
 
 ## Memory hygiene
@@ -83,7 +83,7 @@ future session.
 ## Completion gate
 
 - [ ] Every candidate was classified and accounted for.
-- [ ] Severe candidates appear in Human attention and an approved escalation path.
+- [ ] Severe candidates appear in Findings or Open decisions and an approved escalation path.
 - [ ] Native memories, when supported, each contain one verified claim, evidence, and bounds.
 - [ ] When memory was unavailable, no ad hoc file or handoff store was invented.
 - [ ] Team-durable findings went through project-owned channels.

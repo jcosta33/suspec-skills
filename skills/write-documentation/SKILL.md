@@ -14,6 +14,8 @@ description: >-
 
 # Implement documentation
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 Documentation that hedges, ships examples that do not run, or contradicts the code is worse than no
 documentation — it misleads, and the reader cannot tell. The reader is a human who may not have read
 the code and arrived with a specific question. When runs are parallel, isolate each in its own

@@ -6,6 +6,8 @@ description: Plan a non-trivial change before breaking it into steps — draft t
 
 # Skill: planning-spec
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 ## Purpose
 
 Left to default behavior, an agent jumps straight from a request to a task list and starts editing. That

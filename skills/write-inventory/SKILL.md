@@ -12,6 +12,8 @@ description: >-
 
 # Writing an inventory
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 Brownfield change fails predictably when nobody reconstructs the current contract before moving
 code. An audit won't save you here: **audits find violations — the inventory is the contract
 map you need before drawing new boundaries.** An audit can correctly flag that a module

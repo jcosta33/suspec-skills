@@ -14,6 +14,8 @@ description: >-
 
 # Implement a refactor
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 Restructure code so it reads, factors, or layers better — **without moving any observable
 behavior**. Two prominent failure modes are a behavior delta smuggled in under the "purely
 internal" label and a compatibility shim that quietly becomes permanent. This guide carries the

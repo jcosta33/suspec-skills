@@ -14,6 +14,8 @@ description: >-
 
 # Implement a migration
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 A migration moves the implementation from API A to API B — a framework upgrade, a version bump, a
 library replacement, an internal API sunset — while the behavior callers observe holds. The
 implementation moves; the contract does not. Migrations fail in two ways, both producing a diff

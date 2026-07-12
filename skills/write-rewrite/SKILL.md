@@ -14,6 +14,8 @@ description: >-
 
 # Implement a rewrite
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 A rewrite is riskier than a refactor because behavior is _permitted_ to change — so an unintended
 change hides exactly where an intended one is allowed. The discipline forces the change onto two
 provable surfaces: the **delta** (every behavior meant to change) and the **preserved non-delta**

@@ -13,6 +13,8 @@ description: >-
 
 # Writing an RFC
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 A design argued only in chat is hard to inspect or hand off. An RFC gives one proposal a stable
 working form: the problem forcing it, alternatives weighed against it, and the exact decision
 requested. If accepted, the durable decision belongs in an ADR; project governance decides whether

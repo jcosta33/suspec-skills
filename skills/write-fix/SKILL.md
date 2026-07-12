@@ -13,6 +13,8 @@ description: >-
 
 # Implement a fix
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 Fixes fail two ways, both producing a green-looking diff that ships the bug. **Patching the
 symptom**: suppressing the visible failure while the cause survives, so the defect recurs through a
 different path. **A regression test that does not exercise the bug**: one green before the patch

@@ -13,6 +13,8 @@ description: >-
 
 # Implement tests
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 Tests fail their job in three quiet ways: the test that passes even when the code under test is
 commented out (pure ceremony), the test that reaches into internals and shatters on a
 behavior-preserving refactor (the test broke, not the code), and the test that bundles six

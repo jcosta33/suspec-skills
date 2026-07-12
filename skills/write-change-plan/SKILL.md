@@ -12,6 +12,8 @@ description: >-
 
 # Writing a change plan
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 A spec answers "what should the system do?"; a change plan answers "how does the codebase
 change _safely_?" Write one when the work is primarily structural — it spans modules, must
 preserve behavior while touching risky code, needs sequencing, or will land as a diff too
@@ -47,7 +49,7 @@ With enough users, every observable behavior gets depended on — sort order of 
 endpoint, the exact text of an error message, timing someone's retry loop was calibrated
 against. So the plan never gestures at "no behavior change"; it **enumerates** the behaviors it
 preserves as guarantee rows: `ID | Behavior | Verify with` — the same one verification line a
-requirement gets, and the review packet checks each row the same way (Pass needs pasted output).
+requirement gets, and the review packet checks each row the same way (Supported needs pasted output).
 
 Reuse the spec's own requirement IDs via the `preserves:` frontmatter. A guarantee with no spec
 ID to point at gets a plan-local `PG-NNN` of its own. That records preservation without inventing

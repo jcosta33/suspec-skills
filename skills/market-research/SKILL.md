@@ -6,6 +6,8 @@ description: Conduct market, customer, competitor, UX, or category research with
 
 # Skill: market-research
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 ## Purpose
 
 Market research fails when a confident story outruns the evidence: a landing page becomes

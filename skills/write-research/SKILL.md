@@ -14,6 +14,8 @@ description: >-
 
 # Writing a research note
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 A research note answers one decision-informing question by mapping the options and the evidence,
 then stops. Its job is to leave the decision space well-mapped, not to close it: the decision is
 made later, when someone lifts the findings into a spec or an ADR. A research note has these sections:

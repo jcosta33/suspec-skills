@@ -13,11 +13,13 @@ description: >-
 
 # Write a spec
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 A spec is the contract between whoever wants the change and whoever builds it.
 Done well, an implementer can build from it with no follow-up questions, and a
-reviewer can check every requirement against evidence. A spec has these sections, in
-order: **Intent · Non-goals · Requirements · Open questions · Affected areas · Dropped
-from sources (when needed) · Execution**. Execution carries the current implementation run's state;
+reviewer can check every requirement against evidence. A spec requires **Intent** and
+**Requirements**. Add **Non-goals · Open questions · Affected areas · Dropped from sources ·
+Execution** only when each carries information. Execution carries the current implementation run's state;
 it is not a historical log. Frontmatter carries `type: spec`, `id: SPEC-<name>`, `title`,
 `status`, `owner`, and `sources` (the intake, PRD, or ticket this spec traces to); each
 requirement is an `AC-NNN` with a `Verify with:` line. This guide is how to fill that
@@ -63,12 +65,18 @@ time.
    with reach beyond this spec, or under `## Dropped from sources` when it is a
    cut. _Why: a decision without alternatives is incomplete — the reader cannot
    tell whether the others were weighed or overlooked._
-7. **Halt on ambiguity — frame a decision, never guess.** Any unresolved
+7. **Halt on ambiguity — frame a decision, never guess.** Investigate discoverable facts first.
+   Decide reversible, convention-bound details. Material behavior, public contracts, security
+   tradeoffs, costly choices, conflicting authority, and irreversible actions require a human picker.
+   Present three genuine options by default, two for a binary choice, recommendation first,
+   one-sentence tradeoffs, and automatic `Other`; without a native picker render numbered choices
+   plus `Other`. Batch only independent decisions. Any unresolved
    behavioral decision goes under `## Open questions` as **comparable options + a
    recommendation when evidence supports one** (the decision in one line; viable options with the case
    for and against; what it blocks) — not into
    an AC, and not as a bare question. Where your runner supports it, ask the owner
-   and proceed on the answer; otherwise leave the decision for them. A spec with a
+   and proceed on the answer; otherwise leave the decision for them. A deferred choice blocks
+   dependent work. A spec with a
    blocking open question is not `status: ready`. _Why: a guess written as a
    requirement commits a decision nobody made; a bare question makes the owner do
    the framing — comparable options make the decision cheaper._ Either get the owner's answer and
@@ -82,7 +90,7 @@ time.
    the CSV export option (only JSON consumers exist)" is. _Why: a silent drop
    looks like an oversight; a recorded drop is a decision someone can
    challenge._
-9. **Non-goals are load-bearing — write them in three parts.** The prohibition, the
+9. **When non-goals carry information, write them in three parts.** The prohibition, the
    positive alternative (what to do instead), and the escape hatch (blocked by the
    boundary? stop and ask). _Why: a bare "do not" is easy for an agent to walk past
    alone; pairing it with a positive alternative and a stop option keeps it
@@ -147,7 +155,7 @@ Before handing the spec on, check each — fix, don't rationalize:
 - [ ] No AC names an algorithm, data structure, or library where a behavior
       belongs.
 - [ ] Each AC is one independently verifiable obligation; conjunctions do not hide separable outcomes.
-- [ ] Requirements are in importance order; non-goals are stated.
+- [ ] Requirements are in importance order; optional sections exist only when informative.
 - [ ] Every unresolved decision sits in Open questions, and the status is
       honest (`draft` until they close).
 - [ ] `Dropped from sources`, when needed, accounts for meaningful source requests this spec leaves out.

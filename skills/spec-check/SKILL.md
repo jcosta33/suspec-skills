@@ -13,6 +13,8 @@ description: >-
 
 # Checking a spec
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 A defect in a spec is cheapest to catch before any task is cut from it — after that, every
 agent run inherits it. This guide runs the check by hand and produces a short report.
 When available, `suspec check <spec-path>` (suspec-cli) applies the machine-checkable catalog. It
@@ -38,8 +40,6 @@ severities lives in the Suspec repo):
 | C002 | No two artifacts handed to the same check invocation claim the same frontmatter `id:`; a single-file check cannot establish repository-wide uniqueness | hard error |
 | C003 | Every requirement carries a `Verify with:` line                                                 | hard error |
 | C004 | Each requirement states at least one strength word (must / must not / should / should not / may); more than one flags a split candidate (advice, not a format bar) | warning    |
-| C005 | Non-goals section present and non-empty                                                         | warning    |
-| C006 | Open questions section present (even if "none")                                                 | warning    |
 | C007 | No `TBD`, `TODO`, `???`, or unresolved blocking open question at `status: ready`; an explicitly non-blocking question may remain | hard error |
 | C008 | Frontmatter `sources:` names at least one origin                                                | warning    |
 | C009 | Every path-shaped source or cross-reference resolves artifact-relative; bare tracker IDs are exempt | hard error |
@@ -110,7 +110,6 @@ Hard errors (fix before status: ready)
 Warnings
 
 - C004 — AC-001 says "must … and should …": two requirements bundled.
-- C005 — Non-goals section is empty.
 
 Watchlist
 
@@ -122,7 +121,7 @@ Advice
 - Background section restates the ticket and nobody acts on it — cut it or
   make it earn its place.
 
-Result: 2 hard errors, 2 warnings, 1 watchlist hit, 1 leverage miss. Not ready.
+Check summary: 2 hard errors, 1 warning, 1 watchlist hit, 1 leverage miss. Not ready.
 ```
 
 Every line points at a requirement ID or section, so the author's fix is unambiguous. "Not

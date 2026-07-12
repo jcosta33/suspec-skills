@@ -14,6 +14,8 @@ description: >-
 
 # Splitting work into tasks
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 Most work is one spec → one implementer — **no task packet**; the implementer fills the spec's
 `## Execution` section. Cut tasks only when a spec has multiple independently dispatchable
 parallel/context slices, or a change plan defines separately dispatchable sequenced waves. Size
@@ -121,8 +123,8 @@ requirement. A packet that needs the other packets explained to it isn't disjoin
 One context carve-out (platform or repo): a spec shipping the same behavior on N platforms —
 or a requirement independently verifiable in each of N repos, the contract-test shape (an API
 honored on both sides) — may scope the same requirement id to N context tasks, write-disjoint
-by platform directory or repo. At spec level the human finalizes the requirement as Pass only
-when every context's review packet records Pass for that shared id; per-context results never
+by platform directory or repo. At spec level the human finalizes the requirement as Supported only
+when every context's review packet records Supported for that shared id; per-context assessments never
 substitute for each other. The
 entry condition is strict: a behavior that only exists when both repos meet decomposes into
 per-repo requirements instead — the carve-out never covers a requirement no single task

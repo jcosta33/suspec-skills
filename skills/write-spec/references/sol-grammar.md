@@ -4,7 +4,7 @@ Pull this up when a spec sets `format: sol` in its frontmatter (rule 10). SOL tr
 ACs for bare-header blocks a parser can read; use it for high-risk specs — plain form stays the
 default. This is a working reference for authoring SOL blocks, not the full check contract; the
 requirement record every block compiles to is `{ id, strength, statement, verify_refs[], kind,
-edges[] }`, and review consumes the same Pass / Fail / Unverified / Blocked results either form
+edges[] }`, and review consumes the same Supported / Unsupported / Unverified / Blocked results either form
 produces.
 
 ## Block rules

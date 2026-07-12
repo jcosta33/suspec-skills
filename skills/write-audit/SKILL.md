@@ -13,6 +13,8 @@ description: >-
 
 # Writing an audit
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 An audit makes a code area legible so the work on it can be planned. It records what is true
 **today**, grounds each claim in evidence, names the risk that state carries — and stops there.
 An audit has these sections: **Scope · Observations · Risks · Open questions / unverified areas**.

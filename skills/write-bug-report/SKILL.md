@@ -12,6 +12,8 @@ description: >-
 
 # Writing a bug report
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 A bug report is a defect record, not a remedy: symptom, reproduction, root cause, and the
 requirement the defect violates. The fix is a separate, later task. The report must preserve enough
 state that a fixer can rerun the reproduction and evaluate the diagnosis without reconstructing

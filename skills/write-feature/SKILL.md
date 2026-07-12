@@ -13,6 +13,8 @@ description: >-
 
 # Implement a feature
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 Features fail when the builder improvises around the spec — building past it, smuggling in "while
 I'm here" cleanup, or declaring done on a green suite that never exercised the new behavior. This
 guide carries the feature discipline standalone: build exactly what the requirements name, reuse

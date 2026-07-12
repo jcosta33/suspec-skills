@@ -12,6 +12,8 @@ description: >-
 
 # Writing a PRD
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 A PRD records **what outcome is wanted and why**. The spec written from it records what the
 system must do. Keeping the two apart gives later requirements a traceable origin while the work
 is active; project governance decides whether the PRD itself becomes a durable team record.

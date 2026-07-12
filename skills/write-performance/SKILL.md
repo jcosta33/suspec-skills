@@ -14,6 +14,8 @@ description: >-
 
 # Implement a performance change
 
+`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
+
 Two performance failure modes produce a diff that looks like a win: **a number that moved
 on the benchmark but not in production** (measured under conditions that don't match where the
 system is slow, or against a baseline taken under a different protocol), and **a speedup that

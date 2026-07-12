@@ -24,7 +24,7 @@ npx skills add jcosta33/suspec-skills -g -a codex
 npx skills add jcosta33/suspec-skills -g -a claude-code
 
 # or a single skill for Codex
-npx skills add jcosta33/suspec-skills --skill revolver-review -g -a codex
+npx skills add jcosta33/suspec-skills --skill revolver -g -a codex
 ```
 
 No CLI? Copy the skill folders to **both** user-level catalogs — `~/.claude/skills/` and `~/.agents/skills/` — or copy to one and symlink the other to it:
@@ -40,10 +40,10 @@ ln -s ~/.agents/skills ~/.claude/skills   # if ~/.claude/skills does not already
 To pin a specific skill version to one repo — or to ship a repo-specific guide — install into the repo instead:
 
 ```bash
-npx skills add jcosta33/suspec-skills --skill revolver-review -a codex
+npx skills add jcosta33/suspec-skills --skill revolver -a codex
 # or:
 mkdir -p <your-repo>/.agents/skills
-cp -R skills/revolver-review <your-repo>/.agents/skills/
+cp -R skills/revolver <your-repo>/.agents/skills/
 ```
 
 Reserve per-repo installs for pinning; the methodology itself belongs at user level.
@@ -66,9 +66,10 @@ The skill family that runs the Suspec loop. Intent, review, and findings are alw
 | `write-spec`     | turning intent into verifiable requirements — one AC per id, each with a `Verify with:` line                                   |
 | `spec-check`     | checking a spec by hand against the checks contract before work is cut from it                                                 |
 | `split-work`     | a spec or change plan has separately dispatchable slices — cut exact, ordered, collision-safe task packets                    |
-| `implement-task` | implementing a task packet or spec — stay in scope, run every Verify item, paste real output, self-review before handoff       |
-| `review-output`  | reviewing finished work against its spec — rerun checks, evidence every row, leave the result to the human                    |
+| `implement-task` | generic or unclassified task packets only; specialized implementation skills take precedence                              |
+| `review-output`  | reconciling finished work against its spec — assess evidence, then route acceptance to the human picker                       |
 | `save-findings`  | closing work — use native memory when supported, project channels for team residue, and no substitute store                     |
+| `disrespec`      | creating or revising any Markdown artifact — maximum clarity per token and file-only handoff                                  |
 
 ### Authoring the other artifacts
 
@@ -107,10 +108,12 @@ Cross-cutting methods loaded _alongside_ the work — they change what the agent
 
 | Skill                | Use it when                                                                                                                                                         |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `persona-challenger` | pressure-testing a live proposal before it's built — surface assumptions, steelman the alternative, ground the challenge in external evidence                       |
 | `market-research`    | market, customer, competitor, or UX-pattern research — type claims, triangulate evidence, grade confidence, and preserve uncertainty                                |
-| `bulletproof`        | hardening an important claim, decision, spec, or plan before it ships — expose unsupported claims, hidden assumptions, and failure modes, then verdict on already-run evidence, not confidence |
-| `revolver-review`    | driving a substantial change to a clean state — the agent derives at least 6 distinct stances from the target with no default menu, then fires one reviewer at a time on cheap varied models, fixing between rounds and re-reviewing the revised code for up to 3 cycles |
+| `bulletproof`        | actively fact-checking every explicit and load-bearing implied claim without editing the target                                                     |
+| `demolition`         | explicit one-sided advocacy against an idea or design, quarantined from evidence and findings                                                       |
+| `revolver`           | broad risk-derived inspection over any target; complete rotations, inspect by default, refine only when requested                                    |
+| `triple-check`       | exactly three fresh top-tier passes for narrow depth; fixed snapshot by default                                                                      |
+| `promote-artifact`   | explicitly moving a whole artifact into a project-native durable destination, repairing references, never implicitly pushing                         |
 
 ### Disciplines
 
@@ -118,8 +121,7 @@ Framework-free practices that raise the floor on any task, in any repo.
 
 | Skill                | Use it when                                                                                                                                                         |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `empirical-proof`    | command-backed completion claims need verbatim output; cite CI, manual, and source evidence in their native form                                                   |
-| `concise-output`     | you want terse, scannable, token-economical output — evidence-first, structure over prose, no filler (clarity still outranks brevity)                               |
+| `empirical-proof`    | current command evidence written once; large raw output moves to stable evidence receipts                                                            |
 | `fix-flaky-test`     | a test that fails intermittently — reproduce by looping, fix the cause not the assertion, don't retry-loop                                                          |
 
 ### Code-lifecycle
@@ -137,15 +139,17 @@ The fundamental coding skills, informed by inspected public [reference implement
 ## Where to start
 
 1. **The methodology group, globally.** One `-g` install gives every repo the loop.
-2. **`revolver-review`** — load it when an agent _judges another agent's_ substantial change and you want it driven to a clean state, not a merge sign-off.
+2. **`revolver`** — use breadth inspection when several target-derived risk stances need independent passes.
 3. **`empirical-proof`** — bind runnable completion claims to verbatim output and every other claim to
    exact durable evidence; the fastest cure for "done" that was never actually checked.
 4. **A code-lifecycle skill** matching the work — `debugging` for a live defect, `security-review` for a risk-bearing change, `codebase-exploration` for an unfamiliar repo, `planning-spec` before you build, `git-pr` to ship.
-5. **A cross-cutting method** when you need a focused discipline — `persona-challenger` while pressure-testing a proposal, or `market-research` for market, customer, competitor, or UX-pattern evidence synthesis.
+5. **A cross-cutting method** matching the question: `bulletproof` for claim verification,
+   `triple-check` for depth, `demolition` for explicit advocacy, or `market-research` for market evidence.
 
 ## The science
 
 [`docs/`](./docs/) separates specification requirements, official guidance, empirical evidence, and catalog conventions: directive descriptions ([activation](./docs/activation.md)), compact bodies and progressive disclosure ([body anatomy](./docs/body-anatomy.md)), visible evidence ([execution](./docs/execution.md)), standalone installation ([self-containment](./docs/self-containment.md)), private run-note templates ([task files](./docs/task-files.md)), and repository boundaries ([scope](./docs/scope.md)). The bibliography is in [sources](./docs/sources.md).
+The [existence test](./docs/skill-existence-test.md) records the boundaries between plausible overlaps.
 
 ## Security
 
