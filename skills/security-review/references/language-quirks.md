@@ -49,7 +49,7 @@ it's a finding, and run it through the false-positive filter (step 4) before you
 | SSRF | `http.Get(userURL)` with no host validation; default client follows redirects |
 | SQL | `fmt.Sprintf` into a query vs `db.Query(q, args...)` placeholders |
 | Command injection | `exec.Command("sh", "-c", interpolated)` (prefer a fixed binary + args slice) |
-| Path traversal | `filepath.Join` with input and no `filepath.Clean` + prefix check |
+| Path traversal | `filepath.Join` followed by lexical `HasPrefix` containment (sibling prefixes bypass it); prefer `os.OpenRoot`/`Root` operations where available, otherwise canonicalize according to the symlink policy and reject any `filepath.Rel(base, candidate)` result equal to `..` or beginning with `..` plus a separator |
 | Crypto | `math/rand` for tokens/secrets instead of `crypto/rand` |
 
 ## Ruby / Rails

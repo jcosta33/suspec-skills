@@ -5,33 +5,43 @@ description: >-
   Implement a performance task: optimize a measured bottleneck to a numeric
   target — baseline before any edit, identical measurement protocol on both
   sides, one benchmarked change at a time, full suite green after each. ALWAYS
-  apply when a task packet optimizes, profiles, or cuts latency / memory / CPU
-  / allocations against a metric — or gates a model-quality metric (an
-  eval-gated requirement). Never edit before a baseline, mix protocols,
+  apply when asked to optimize, profile, or cut latency / memory / CPU
+  / allocations against a metric, or when a model-quality metric gates
+  acceptance. Never edit before a baseline, mix protocols,
   batch unattributable changes, or accept "make X faster" as the target. Skip
   correctness fixes, refactors, rewrites, migrations, and net-new features.
 ---
 
 # Implement a performance change
 
-Performance work fails two ways, both producing a diff that looks like a win: **a number that moved
+Two performance failure modes produce a diff that looks like a win: **a number that moved
 on the benchmark but not in production** (measured under conditions that don't match where the
 system is slow, or against a baseline taken under a different protocol), and **a speedup that
 quietly broke correctness** — a faster wrong answer is still a defect. This guide carries the
-performance discipline standalone, and keeps this task's changes isolated in one worktree (or
-branch) so parallel tasks stay write-disjoint and the reviewer sees one clean diff. These are
-conventions the review packet inspects — nothing enforces them at edit time.
+performance discipline standalone. When runs are parallel, isolate each in its own worktree or
+branch so their writes stay disjoint. These are conventions the review packet inspects — nothing
+enforces them at edit time.
 
 Plan the transformation first — the change plan covers baseline, waves, and rollback;
 this guide is the execution half. Numbers, not vibes: nothing is faster until a baseline and a
 final figure, under the identical protocol, say so. No number and no protocol is tinkering, not
 optimizing — get the target before you start.
 
-**Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
-into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
-the structure from memory). It scaffolds the baseline block, the target and ceiling, the hypothesis,
-the measurement protocol, the per-change ledger, and the self-review. The task packet itself uses the
-kit's task template.
+**Before editing, open [`references/task-template.md`](./references/task-template.md)** and instantiate
+it as run notes. Record its path separately from any input task packet and fill it as you go. These
+notes are private execution state, not a Suspec task packet.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
+**Before handoff, close the evidence loop.** These notes are scratch state, not the review index.
+When a task or spec governs the work, copy final changed files, fresh Verify evidence, scope drift,
+blocked questions, and findings into the task's `## Run summary` / `## Findings` or the spec's
+`## Execution`. If neither exists, return the same material in the direct handoff. A reviewer must
+not need this private file to find the final evidence.
 
 ## Rules
 
@@ -44,12 +54,13 @@ kit's task template.
    change in the right direction, which is how a rounding-error gain ships as done.
 3. **State a falsifiable hypothesis and profile to confirm it before optimizing.** "Allocations in
    the hot loop dominate; cutting them 50% should drop latency ≥ 30%" can be disproven; "I think
-   this is slow" cannot. Optimizing a path you never profiled is the most common way perf effort
+   this is slow" cannot. Optimizing a path you never profiled is a common way performance work
    produces no production gain.
-4. **Identical protocol before and after — or the comparison is void.** Warmup, sample count,
-   statistical aggregate, hardware, environment, input shape, cache state: record the protocol
-   once, reuse it verbatim. A cold baseline against a warm final "proves" a speedup that does not
-   exist. If the figure is noisy, run more samples until it is stable — noise is not evidence.
+4. **Predefine an identical protocol before the baseline — or the comparison is void.** Warmup,
+   sample count or statistical stopping rule, aggregate, uncertainty measure, hardware,
+   environment, input shape, and cache state are fixed before measurement and reused verbatim. Do
+   not keep sampling one side until it looks stable or favorable. If the protocol proves inadequate,
+   discard that comparison, revise the protocol, and rerun both baseline and candidate from scratch.
 5. **One benchmarked change at a time.** Per iteration: change → re-run the benchmark under the
    protocol → compare → run the full suite. Batched optimizations are unattributable — you cannot
    tell which moved the number, which regressed it, which is dead weight. A second bottleneck found
@@ -79,7 +90,7 @@ kit's task template.
 | Several optimizations bundled into one change                 | One benchmarked change at a time                                 |
 | "I'll skip the suite; it's just a perf change"                | Full suite after every change; paste it                          |
 | "Make X faster" accepted as the target                        | Get a number under named conditions, or raise a blocked question |
-| "The variance is high but my speedup is real"                 | More samples until stable; noise is not evidence                 |
+| "I'll keep sampling the noisy side until it stabilizes"       | Revise the protocol, then rerun both sides from scratch           |
 | Shipping the gain while another metric breached the ceiling   | Roll back; the ceiling is the agreed trade boundary              |
 | Behavior changed under a perf label                           | Surface it — that is a rewrite in different scope                |
 
@@ -90,6 +101,8 @@ Before declaring the task done:
 - [ ] The baseline output is pasted and was captured before any code change.
 - [ ] The final benchmark is pasted, under the provably identical protocol, against a numeric
       target.
+- [ ] The protocol and stopping rule were fixed before measurement; any revision caused both sides
+      to be rerun.
 - [ ] Each change was benchmarked individually — you can point at which change moved the number.
 - [ ] The full suite ran after every change and after your final edit; output pasted.
 - [ ] The conditions under which the gain holds are recorded; no other metric breached the
@@ -121,6 +134,5 @@ rules above apply unchanged; the Skip list still excludes net-new feature work.
 
 ## Bundled resources
 
-- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (baseline block, target and
-  ceiling, hypothesis, measurement protocol, per-change ledger, pasted evidence, self-review). The
-  task packet itself uses the kit's task template.
+- [`references/task-template.md`](./references/task-template.md) — private run notes for baseline,
+  target, hypothesis, protocol, per-change evidence, and self-review.

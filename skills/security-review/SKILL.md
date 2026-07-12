@@ -17,9 +17,9 @@ failure modes show up when an agent does a security pass untuned:
    the grep never connected.
 2. **False-positive flood.** The agent dumps every theoretical concern (missing input validation,
    "could be a DoS", open-redirect maybe, no rate limit) as if all were findings. A reviewer who floods
-   low-confidence flags gets muted — a check that fires on noise has under ~10% effective value and
-   developers stop reading it. At that point the security review is worse than none, because it
-   buries the one real flag.
+   low-confidence flags gets muted. Google's static-analysis guidance targets fewer than 10% effective
+   false positives for review-time checks; it does not say a noisy review has "under 10% value".
+   The transferable lesson is to measure actionability and avoid burying a real flag in noise.
 
 This skill replaces both with **semantic data-flow review** plus a **tunable false-positive filter**:
 review the PR diff by reasoning about taint flow, then actively filter low-signal classes before
@@ -80,8 +80,9 @@ This is the differentiator. Before a concern becomes a reported finding, it must
 - Open-redirect / verbose-error / missing-security-header noise with no concrete abuse.
 - A flag on input the code does not actually expose to an attacker.
 
-The filter is **tunable**: in a pre-auth, internet-facing path tighten it (theoretical reachability
-counts); in an internal admin-only tool with trusted callers, drop more aggressively. State the tuning
+The filter is **tunable**: in a pre-auth, internet-facing path investigate uncertain paths more deeply;
+in an internal admin-only tool with trusted callers, require evidence that the trust assumption can be
+violated before escalating. Every reported vulnerability still needs a concrete path. State the tuning
 you chose so the reader can re-tighten it. A reachable concrete bug that you down-ranked is the
 expensive error — when unsure whether something is reachable, *investigate the path* before dropping or
 reporting; don't resolve the doubt by flagging it anyway.
@@ -102,8 +103,8 @@ the path so the reader can check it cheaply.
   *unchanged* caller feeds it unsanitized input. Reviewing only the diff misses it every time — trace
   out to the callers (step 2).
 - **False-positive flood.** Shipping ten theoretical concerns to look thorough. The reader mutes the
-  channel and the one real BLOCKER dies with the noise — the precise effect the <10% effective-value
-  threshold predicts. Fewer, reachable findings beat a comprehensive-looking list.
+  channel and the one real BLOCKER dies with the noise. Fewer, reachable findings beat a
+  comprehensive-looking list.
 - **Unreachable-as-blocker.** Reporting a textbook issue (missing header, theoretical timing leak) as a
   blocker when no attacker path reaches it. Severity is exploit impact on a *reachable* path; an
   unreachable issue is a note at most.

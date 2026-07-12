@@ -4,9 +4,9 @@ type: agent-guide
 description: >-
   Implement a migration or upgrade task: move the code from API A to API B —
   framework/library bump or API replacement — surface preserved, green after
-  every wave, old-API callsites grepped to zero. ALWAYS apply when a task
-  packet migrates, upgrades, ports, or adopts a breaking change while behavior
-  holds. Never bulk-codemod, skip per-wave checks, finish with old-API
+  every wave, old-API callsites grepped to zero. ALWAYS apply when asked to
+  migrate, upgrade, port, or adopt a breaking change while behavior holds.
+  Never use an unreviewed text-only bulk rewrite, skip per-wave checks, finish with old-API
   callsites surviving, or leave a shim without a removal criterion. Skip
   same-API refactors, deliberate behavior changes (rewrite), and net-new
   features at the new version.
@@ -20,20 +20,30 @@ implementation moves; the contract does not. Migrations fail in two ways, both p
 that looks finished: the **permanent half-migration** (some callsites on the old API, some on the
 new, indefinitely) and the **phantom completion** (old-API callsites still alive in dynamic
 dispatch, registries, or generated code that a text search of the call syntax never reached). This
-guide carries the migration discipline standalone, and keeps this task's changes isolated in one
-worktree (or branch) so parallel tasks stay write-disjoint and the reviewer sees one clean diff.
-These are conventions the review packet inspects — nothing enforces them at edit time.
+guide carries the migration discipline standalone. When runs are parallel, isolate each in its own
+worktree or branch so their writes stay disjoint. These are conventions the review packet inspects
+— nothing enforces them at edit time.
 
 Plan the transformation first — the change plan covers baseline, waves, and rollback;
 this guide is the execution half. One discipline covers both kinds: an internal API replacement and
 a framework/language/library upgrade differ only in trigger, not method. If the new API is _meant_
 to behave differently, that is a rewrite — relabel before proceeding.
 
-**Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
-into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
-the structure from memory). It scaffolds the equivalence check, the callsite tracker, the shim
-table, per-wave evidence slots, the beyond-the-grep audit, and the self-review. The task packet
-itself uses the kit's task template; the wave plan itself lives in the change plan.
+**Before editing, open [`references/task-template.md`](./references/task-template.md)** and instantiate
+it as run notes. Record its path separately from any input task packet and fill it as you go. These
+notes are private execution state, not a Suspec task packet; migration waves remain in the change plan.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
+**Before handoff, close the evidence loop.** These notes are scratch state, not the review index.
+When a task or spec governs the work, copy final changed files, fresh Verify evidence, scope drift,
+blocked questions, and findings into the task's `## Run summary` / `## Findings` or the spec's
+`## Execution`. If neither exists, return the same material in the direct handoff. A reviewer must
+not need this private file to find the final evidence.
 
 ## Rules
 
@@ -48,10 +58,10 @@ itself uses the kit's task template; the wave plan itself lives in the change pl
    end of each wave and paste both before starting the next — per-wave checks localize a break to
    the wave that introduced it; final-only checking lets the breakage tangle into the permanent
    half-migration.
-3. **Each file migrated individually — no bulk codemods.** No `sed`, codemod, or shell loop across
-   hundreds of files in one commit: the fixed substitution silently breaks the one callsite using
-   the API in an unusual way, and the green-looking global edit is exactly the misleading signal to
-   distrust. Read, migrate, and check each file deliberately.
+3. **Choose the transformation mechanism by callsite uniformity.** For a mechanically uniform API
+   change, a syntax-aware codemod may be safer than hand editing. Dry-run it, limit each wave, inspect
+   every changed diff, and run the wave checks. Never use a blind `sed`, regex, or shell sweep over
+   syntax; hand-edit callsites that do not match the proven shape.
 4. **Track callsites to zero, across the whole codebase.** Count old-API callsites up front; track
    per wave how many moved and how many remain. Done means **zero old-API callsites outside
    explicitly tracked shims**, counted over the whole codebase, not just the modules the work was
@@ -72,8 +82,8 @@ itself uses the kit's task template; the wave plan itself lives in the change pl
 
 | Temptation                                                    | Do instead                                                         |
 | ------------------------------------------------------------- | ------------------------------------------------------------------ |
-| "I'll sed this across all 200 files in one step"              | One file at a time; the sweep buries the outlier                   |
-| "Wave checks are optional; it's all the same change"          | Check after every wave; paste the output                           |
+| "I'll sed this across the tree in one step"                   | Use a syntax-aware transform in reviewed waves; hand-edit outliers |
+| "I'll skip wave checks; it's all the same change"             | Check after every wave; paste the output                           |
 | "The shim is temporary, no need to document removal"          | Path + forward target + removable-when check, or no shim           |
 | "Old API is mostly gone; I'll handle the rest in a follow-up" | Enumerate and convert the rest, or track each exception explicitly |
 | "Behavior drifted slightly but the tests still pass"          | Surface it; a migration moves surface, not semantics               |
@@ -98,10 +108,9 @@ Before declaring the task done:
 
 ## Gotchas
 
-- **Bulk-codemodded instead of migrating per-wave.** A `sed`/codemod/shell loop swept hundreds of
-  files in one pass; the fixed substitution silently mangled the one callsite using the API in an
-  unusual way, and the green-looking global edit hid it. Migrate and check each file deliberately so
-  the outlier surfaces.
+- **Ran an unreviewed bulk rewrite.** A text substitution swept the tree in one pass and mangled an
+  unusual callsite. Use syntax-aware transforms only in bounded waves, inspect every resulting diff,
+  and hand-edit outliers.
 - **Finished with old-API callsites surviving.** The diff looked done but old-API callsites lived on
   in dynamic dispatch, string-based registry lookups, generated code, or fixtures the call-syntax
   grep never reached — the phantom completion. Done means zero old-API callsites outside tracked
@@ -113,6 +122,6 @@ Before declaring the task done:
 
 ## Bundled resources
 
-- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (equivalence check,
-  callsite tracker, shim table, per-wave evidence slots, beyond-the-grep audit, self-review). The
-  task packet itself uses the kit's task template; the wave plan itself lives in the change plan.
+- [`references/task-template.md`](./references/task-template.md) — private run notes for the
+  equivalence check, callsite tracker, shims, per-wave evidence, and self-review. Migration waves
+  remain in the change plan.

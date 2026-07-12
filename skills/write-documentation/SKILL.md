@@ -4,8 +4,9 @@ type: agent-guide
 description: >-
   Implement a documentation task: write or update human-facing docs (README,
   tutorial, how-to, reference, explanation) — one frame held throughout, every
-  example run as written, every behavior claim cited to file:line. ALWAYS apply
-  when a task packet produces a doc a human (not an agent) reads. Never mix
+  example run as written, every behavior claim verified against an authoritative
+  source. ALWAYS apply when asked to produce a doc a human (not an agent) reads,
+  whether intent is inline or in a task packet. Never mix
   frames, hedge with should/might/could, ship unrun examples, or document
   beyond the task's requirements. Skip agent-facing material (guides,
   templates) and all code-changing kinds.
@@ -14,23 +15,31 @@ description: >-
 # Implement documentation
 
 Documentation that hedges, ships examples that do not run, or contradicts the code is worse than no
-documentation — it misleads, and the reader cannot tell. This guide carries the documentation
-discipline standalone, holding the Documentarian stance: the reader is a human who has not read the
-code, arrived with one question, and the doc answers it. Keep this task's changes isolated in one
-worktree (or branch) so parallel tasks stay write-disjoint and the reviewer sees one clean diff. This
-guide *is* the documentarian discipline's single home — its load-bearing rules are carried here in
-full, so the skill stands alone. These are conventions the review packet inspects — nothing enforces
-them at edit time.
+documentation — it misleads, and the reader cannot tell. The reader is a human who may not have read
+the code and arrived with a specific question. When runs are parallel, isolate each in its own
+worktree or branch so their writes stay disjoint. This guide carries its load-bearing rules in full
+so it stands alone. These are conventions the review packet inspects — nothing enforces them at edit
+time.
 
 This guide is for docs humans read. Agent-facing material (guides, templates, workflow docs) is a
 different audience with different conventions, and code-changing work belongs to the other guides
-in this kit.
+in this catalog.
 
-**Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
-into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
-the structure from memory). It scaffolds the frame, audience, and reader's question, the
-examples-to-verify table, pasted evidence, and the self-review. The task packet itself uses the kit's
-task template.
+**Before editing, open [`references/task-template.md`](./references/task-template.md)** and instantiate
+it as run notes. Record its path separately from any input task packet and fill it as you go. These
+notes are private execution state, not a Suspec task packet.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
+**Before handoff, close the evidence loop.** These notes are scratch state, not the review index.
+When a task or spec governs the work, copy final changed files, fresh Verify evidence, scope drift,
+blocked questions, and findings into the task's `## Run summary` / `## Findings` or the spec's
+`## Execution`. If neither exists, return the same material in the direct handoff. A reviewer must
+not need this private file to find the final evidence.
 
 ## Rules
 
@@ -40,17 +49,18 @@ task template.
    "developers" is not specific; "developers integrating our SDK for the first time" is — and the
    one question the doc answers, stated as the reader would ask it. Discovering mid-doc that you are
    switching frames means it is two docs: split it.
-2. **Lead with what the reader needs to do.** The first ~100 words contain the action the reader's
-   question asks about — not project history or "before we begin". A reader scanning for an answer
-   abandons a doc that buries the action under throat-clearing.
+2. **Lead with what the reader needs.** Put the answer, action, or lookup entry before history or
+   context that does not help the reader use it. No fixed word count decides this; the opening earns
+   its place when it helps the reader answer the stated question.
 3. **Run every example; capture the output before writing it down.** Execute each example exactly
    as the reader would — no implied setup, no missing imports. An example you did not run is a
-   hypothesis, not an example, and it is the most common way documentation lies. Paste the captured
+   hypothesis, not an example, and it is a common way documentation lies. Paste the captured
    run as your evidence.
-4. **Cite every behavior claim to file:line.** A statement about how the system behaves is
-   verifiable against the code — cite the line. If you cannot find the line, the claim is suspect:
-   verify it before writing it, or drop it. An uncited behavior claim is indistinguishable from a
-   guess, and will be wrong the next time the code moves.
+4. **Verify every behavior claim against an authoritative current source.** Use code, tests,
+   generated reference, official contracts, or observed output as appropriate. Record the evidence
+   in run notes. Put `file:line` citations in the published doc only when that doc's audience and
+   local convention benefit from source links; internal implementation coordinates are not a
+   universal public-document requirement.
 5. **No hedging the reader cannot act on.** "Should", "might", "could" leave the reader unable to
    decide. Either the system does X or it does not; if behavior is conditional, state the
    condition.
@@ -69,7 +79,7 @@ task template.
 | Temptation                                       | Do instead                                                |
 | ------------------------------------------------ | --------------------------------------------------------- |
 | An example pasted in without running it          | Run it as written; paste the captured output              |
-| "The system does X" with no file:line            | Find the line and cite it, or drop the claim              |
+| "The system does X" with no checked source       | Verify it and record the evidence, or drop the claim      |
 | "Should" / "might" / "could"                     | State the behavior, or the condition under which it holds |
 | Mixed frames in one doc                          | Pick one; split the doc if it drifts                      |
 | Choices in a tutorial ("you could also try…")    | A tutorial is linear; alternatives go in a how-to         |
@@ -86,7 +96,7 @@ task template.
 - **Shipping an example that was never run.** You paste a snippet that looks right —
   plausible imports, the obvious call — without executing it. The reader runs it first and
   hits the missing setup or the renamed argument you would have caught. An unrun example is
-  a hypothesis, and it is the most common way a doc lies.
+  a hypothesis, and it is a common way a doc lies.
 - **Hedging with should/might/could.** Unsure whether the behavior is guaranteed, you write
   "this should retry" to stay safe. The reader cannot act on it — does it retry or not? —
   and the hedge hid the one thing they needed: either state the behavior, or state the
@@ -101,9 +111,10 @@ task template.
 Before declaring the task done:
 
 - [ ] One frame held throughout; audience and reader's question are written down.
-- [ ] The first ~100 words contain the action the reader came for.
+- [ ] The opening answers the reader's question before unrelated history or setup.
 - [ ] Every example ran as written — self-contained, output captured and pasted.
-- [ ] Every behavior claim carries a file:line citation that checks out at this commit.
+- [ ] Every behavior claim was checked against a current authoritative source; public citations
+      follow the document's audience and project convention.
 - [ ] No hedge the reader cannot act on; conditional behavior states its condition.
 - [ ] Docs in scope that contradicted this one are reconciled; contradictions out of scope are
       finding candidates. No `TODO`/`FIXME` left behind.
@@ -111,6 +122,5 @@ Before declaring the task done:
 
 ## Bundled resources
 
-- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (frame, audience, reader's
-  question; examples-to-verify table; pasted evidence; self-review). The task packet itself uses
-  the kit's task template.
+- [`references/task-template.md`](./references/task-template.md) — private run notes for frame,
+  audience, examples to verify, evidence, and self-review.

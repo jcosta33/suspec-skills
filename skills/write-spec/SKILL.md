@@ -17,12 +17,12 @@ A spec is the contract between whoever wants the change and whoever builds it.
 Done well, an implementer can build from it with no follow-up questions, and a
 reviewer can check every requirement against evidence. A spec has these sections, in
 order: **Intent · Non-goals · Requirements · Open questions · Affected areas · Dropped
-from sources (when needed) · Execution** — an append-only run record, one dated entry
-per change-cycle. Frontmatter carries `type: spec`, `id: SPEC-<name>`, `title`,
+from sources (when needed) · Execution**. Execution carries the current implementation run's state;
+it is not a historical log. Frontmatter carries `type: spec`, `id: SPEC-<name>`, `title`,
 `status`, `owner`, and `sources` (the intake, PRD, or ticket this spec traces to); each
 requirement is an `AC-NNN` with a `Verify with:` line. This guide is how to fill that
-shape, not a restatement of it. This skill is how the spec gets created — writing it
-well is the job; check it with `suspec check <path>`.
+shape, not a restatement of it. This skill is how the spec gets created. When the deterministic
+checker is available, run `suspec check <path>`; otherwise apply the checks by hand.
 
 Place the file next to your own native artifacts — the same place you keep your plans,
 notes, and memories for this work, in a folder named after the repo you are working on
@@ -40,9 +40,9 @@ time.
    over-constrains the solution and hides the actual requirement._ If a
    mechanism is genuinely load-bearing (a wire format, compatibility with an
    existing API), state it as its own requirement with the reason attached.
-2. **One behavior per AC.** "When X, the component must Y." If the sentence
-   needs an "and", split it into two ACs. _Why: a compound requirement gets
-   partial credit at review — the half not done hides in the conjunction._
+2. **One independently verifiable obligation per AC.** Conditions and one resulting behavior may
+   share a sentence; two outcomes that can pass or fail independently need separate IDs. The word
+   "and" is a prompt to inspect, not proof that a requirement must split.
 3. **Every AC gets a `Verify with:` line.** Prefer a runnable test or command;
    a named manual check is the fallback. _Why: it is the highest-value line in
    the file — the review packet is built from these lines, and a requirement
@@ -64,17 +64,20 @@ time.
    cut. _Why: a decision without alternatives is incomplete — the reader cannot
    tell whether the others were weighed or overlooked._
 7. **Halt on ambiguity — frame a decision, never guess.** Any unresolved
-   behavioral decision goes under `## Open questions` as **options + a
-   recommendation** (the decision in one line; 2–4 options with the case
-   FOR/AGAINST; your recommended option + a brief why; what it blocks) — not into
+   behavioral decision goes under `## Open questions` as **comparable options + a
+   recommendation when evidence supports one** (the decision in one line; viable options with the case
+   for and against; what it blocks) — not into
    an AC, and not as a bare question. Where your runner supports it, ask the owner
    and proceed on the answer; otherwise leave the decision for them. A spec with a
    blocking open question is not `status: ready`. _Why: a guess written as a
    requirement commits a decision nobody made; a bare question makes the owner do
-   the framing — options + a lean lets them just choose._ Either get the answer, or
-   make the call explicitly, record it, and resolve it.
-8. **Fill `## Dropped from sources`.** What the ticket or PRD asked for that
-   this spec deliberately leaves out, and why. Be specific enough to challenge:
+   the framing — comparable options make the decision cheaper._ Either get the owner's answer and
+   record it, or leave the decision open. An explicitly non-blocking question may
+   remain at `ready` when it cannot alter implementation or acceptance.
+8. **Account for meaningful drops from source material.** When a ticket, PRD, or other source asked for
+   something this spec excludes, record it under `## Dropped from sources` with the reason. When
+   there is no meaningful drop, omit the section or state `None` rather than inventing one. Be
+   specific enough to challenge:
    "dropped: implementation details" is a category, not a record — "dropped:
    the CSV export option (only JSON consumers exist)" is. _Why: a silent drop
    looks like an oversight; a recorded drop is a decision someone can
@@ -90,16 +93,16 @@ time.
    keywords (`REQ`, `CONSTRAINT`, `INVARIANT`, `INTERFACE`, `QUESTION`) and
    modal keywords (`MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, `MAY`) — full
    grammar in [`references/sol-grammar.md`](./references/sol-grammar.md).
-   Use it for high-risk work; plain form is the default.
+   Use it when machine-checkable structured clauses earn their added syntax; plain form is the default.
 
 ## When NOT to write a spec
 
 Forced process on already-clear work hurts more than it helps. Skip the spec
 when:
 
-- **Small cleanup** (rename, dead code, comment fix) → a task packet alone.
+- **Small cleanup** (rename, dead code, comment fix) → keep intent inline with the work.
 - **Defect with a clear reproduction** → check the existing spec still holds,
-  then a task; do not re-specify working behavior.
+  then record the fix intent and verification directly; do not re-specify working behavior.
 - **An open question, not a decided change** → research first; a spec follows
   the decision.
 - **A present-state survey of existing code** → an audit; observations are not
@@ -114,7 +117,7 @@ when:
 | "Assume the obvious default and move on"             | Put it in Open questions, or record the decision explicitly — never guess silently                                                 |
 | A new boundary with no survey behind it              | Survey first; cite what you read                                                                                                   |
 | Editing code "to check the design works"             | The spec session changes the spec and nothing else                                                                                 |
-| Speccing a two-line cleanup                          | A task packet alone; say so                                                                                                        |
+| Speccing a two-line cleanup                          | Keep intent and verification inline with the work                                                                                  |
 
 ## Gotchas
 
@@ -143,12 +146,11 @@ Before handing the spec on, check each — fix, don't rationalize:
       question, and a reviewer check it from its `Verify with:` line alone?
 - [ ] No AC names an algorithm, data structure, or library where a behavior
       belongs.
-- [ ] Each AC is one behavior; none hides an "and".
+- [ ] Each AC is one independently verifiable obligation; conjunctions do not hide separable outcomes.
 - [ ] Requirements are in importance order; non-goals are stated.
 - [ ] Every unresolved decision sits in Open questions, and the status is
       honest (`draft` until they close).
-- [ ] `Dropped from sources` accounts for everything the source asked for that
-      this spec leaves out.
+- [ ] `Dropped from sources`, when needed, accounts for meaningful source requests this spec leaves out.
 - [ ] You can point at what you surveyed before any new pattern you introduced.
 - [ ] `git status` (pasted) shows only spec documents changed — the spec
       session touched no code.

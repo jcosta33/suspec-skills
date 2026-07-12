@@ -1,9 +1,16 @@
 # Run notes: {{title}}
 
-- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
-- Spec: {{full path to the source spec}} · Change plan: {{full path to the change plan}}
+- Run notes: {{full path or stable native-artifact identifier for this file}}
+- Task packet: {{full path when dispatched from one; otherwise None}}
+- Spec: {{full path when one exists; otherwise None}} · Change plan: {{full path to the change plan}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
 
 > **Rewrite task** — distinct from a refactor: behavior changes on purpose. The recorded delta is
 > the contract; everything outside it is preserved and proven preserved. Halt on any emergent
@@ -12,7 +19,7 @@
 > **Commands** resolve from the code repo's `AGENTS.md` Commands table. For any command you need
 > that is undefined, ask the user — do not guess.
 
-## Scope (from the task packet)
+## Scope (from the task packet or direct intent)
 
 Implement (the delta) and preserve (everything else):
 
@@ -54,15 +61,15 @@ registries, reflection, generated code, config). Paste the search; account for e
 - [ ] Equivalence baseline captured before touching code; suite green
 - [ ] Caller inventory complete; search output pasted
 - [ ] Rewrite in batches; checks run and pasted per batch
-- [ ] Delta ACs proven (flip transition pasted for new tests)
+- [ ] Delta ACs proven (intended-failure transition pasted for new tests)
 - [ ] Preserved surface proven by the equivalence check (or the sufficiency note recorded)
 - [ ] Findings recorded; self-review answered
 
 ## Evidence (paste actual command output — never paraphrase)
 
-- Check command (last lines + exit):
-- Test command (last lines + exit):
-- Flip transition per new delta test:
+- Check command (runner summary + exit):
+- Test command (runner summary + exit):
+- Intended-failure transition per new delta test:
 - Equivalence check output (or the recorded sufficiency justification):
 - Caller search (call syntax + string form):
 
@@ -75,7 +82,8 @@ here, not reverted.
 
 ## Findings
 
-"Redesign while we're here" temptations, off-delta discoveries — durable ones become native memories (see save-findings).
+"Redesign while we're here" temptations, off-delta discoveries. Keep them here for review; only
+evidence-backed, durable lessons move into native memory or project channels at close.
 
 -
 
@@ -89,6 +97,11 @@ ambiguous AC.
 ## Next steps
 
 -
+
+## Handoff
+
+- [ ] Final evidence, summary, and findings copied into the controlling task/spec when one exists;
+      otherwise included in the direct handoff. Nothing final lives only in these private notes.
 
 ## Self-review
 

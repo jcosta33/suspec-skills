@@ -1,12 +1,20 @@
 # Run notes: {{title}}
 
-- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
+- Run notes: {{full path or stable native-artifact identifier for this file}}
+- Task packet: {{full path when dispatched from one; otherwise None}}
+- Spec: {{full path when one exists; otherwise None}}
 - Change plan (waves, baseline, rollback): {{full path to the change plan}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
 > **Migration task** — move the implementation from API A to API B while the surface callers
-> observe holds. Green after every wave; each file migrated individually (no bulk codemods);
+> observe holds. Green after every wave; syntax-aware transforms bounded and diff-reviewed;
 > old-API callsites tracked to zero across the whole codebase; every shim carries a removal
 > criterion.
 >
@@ -17,7 +25,7 @@
 > **Behavior changing?** If the new API is *meant* to behave differently, that is a rewrite —
 > relabel the task and load that guide.
 
-## Scope (from the task packet)
+## Scope (from the task packet or direct intent)
 
 - From: {{API / framework / version being replaced}}
 - To: {{API / framework / version replacing it}}
@@ -74,7 +82,7 @@ The references a text search of the call syntax cannot reach. Audit each; paste 
 ## Evidence (paste actual command output — never paraphrase)
 
 - Per-wave test + check output (each wave):
-- Final test + check output (last lines + exit):
+- Final test + check output (runner summaries + exits):
 - Final old-API search showing zero callsites outside documented shims:
 - Equivalence check output (or the recorded sufficiency justification):
 
@@ -84,7 +92,8 @@ The references a text search of the call syntax cannot reach. Audit each; paste 
 
 ## Findings
 
-Behavior changes the new API tempts, neighboring cleanup, missing tests — durable ones become native memories (see save-findings).
+Behavior changes the new API tempts, neighboring cleanup, missing tests. Keep them here for review;
+only evidence-backed, durable lessons move into native memory or project channels at close.
 
 -
 
@@ -97,6 +106,11 @@ Behavior changes the new API tempts, neighboring cleanup, missing tests — dura
 Most migrations span sessions — leave the next wave's concrete starting point.
 
 -
+
+## Handoff
+
+- [ ] Final evidence, summary, and findings copied into the controlling task/spec when one exists;
+      otherwise included in the direct handoff. Nothing final lives only in these private notes.
 
 ## Self-review
 

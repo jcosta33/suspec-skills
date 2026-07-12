@@ -4,13 +4,13 @@
 
 ---
 
-## Primary research
+## Research and measured reports
 
 <a id="3"></a>
-**[3] Why Claude Code Skills Don't Activate — And How to Fix It.** Ivan Seleznov, Medium, Feb 2026. Controlled study of **650 automated trials** — 3 description variants × 4 environment conditions × 18 queries × 3 reps — with ground-truth verification via `cclogviewer`; statistical analysis via Cochran-Mantel-Haenszel and Fisher's exact tests. Open data and analysis at <https://github.com/SeleznovIvan/claude-skills-test>. <https://medium.com/@ivan.seleznov1/why-claude-code-skills-dont-activate-and-how-to-fix-it-86f679409af1>
+**[3] Why Claude Code Skills Don't Activate — And How to Fix It.** Ivan Seleznov, Medium, Feb 2026. Practitioner experiment comparing description variants in Claude Code, with session-log verification and published data and analysis. Useful evidence for testing directive descriptions and exclusions in that environment, not a peer-reviewed or cross-harness guarantee. <https://github.com/SeleznovIvan/claude-skills-test> · <https://medium.com/@ivan.seleznov1/why-claude-code-skills-dont-activate-and-how-to-fix-it-86f679409af1>
 
 <a id="4"></a>
-**[4] Claude Skills Have Two Reliability Problems, Not One.** Marc Bara, Medium, Mar 2026. Distinguishes activation failure from a separate execution failure mode (steps inside an already-loaded skill being silently skipped); documents the visible-output-forcing fix. <https://medium.com/@marc.bara.iniesta/claude-skills-have-two-reliability-problems-not-one-299401842ca8>
+**[4] Claude Skills Have Two Reliability Problems, Not One.** Marc Bara, Medium, Mar 2026. Practitioner analysis distinguishing activation failure from skipped steps inside an already-loaded skill and proposing visible output as a guard. Treat as design guidance, not a measured prevalence result. <https://medium.com/@marc.bara.iniesta/claude-skills-have-two-reliability-problems-not-one-299401842ca8>
 
 <a id="5"></a>
 **[5] Lost in the Middle: How Language Models Use Long Contexts.** Liu, Lin, Hewitt, et al., _Transactions of the Association for Computational Linguistics_, vol. 12, 2024. The U-shaped attention curve in long context; tested on GPT-3.5-Turbo, Claude-1.3, MPT-30B-Instruct, LongChat-13B. <https://aclanthology.org/2024.tacl-1.9/>
@@ -29,9 +29,6 @@
 
 <a id="28"></a>
 **[28] PAACE: A Plan-Aware Automated Agent Context Engineering Framework.** Yuksel, preprint Dec 2025. _"Modern agentic failures are overwhelmingly context failures, not model failures."_ Plan-aware context selection over flat retrieval. <https://arxiv.org/abs/2511.21345>. _Secondary citation_ — preprint metadata only; full text not yet verified line-by-line.
-
-<a id="29"></a>
-**[29] InfiAgent: An Infinite-Horizon Framework for General-Purpose Autonomous Agents.** Yu et al., 2026. File-centric architecture with k-most-recent action window plus workspace state snapshot; ablation removing file-based state externalization causes **21x performance degradation** on long-horizon tasks. Direct empirical support for externalized task files. <https://arxiv.org/abs/2511.10954>. _Secondary citation_ — abstract and ablation table verified; full architectural details summarised.
 
 <a id="30"></a>
 **[30] Context Rot: How Increasing Input Tokens Impacts LLM Performance.** Hong, Troynikov, Huber, _Chroma technical report_, July 2025. Eighteen LLMs evaluated; performance degrades non-uniformly as input grows, including in the _middle_ and _end_ of long contexts. Stronger and broader than the original Lost in the Middle finding. <https://research.trychroma.com/context-rot>
@@ -125,10 +122,10 @@
 **[19] agents.md.** The open `AGENTS.md` convention adopted by Cursor, Codex, Claude Code, OpenCode, and others; basis for Suspec's `AGENTS.md` Commands-table contract (a repo adds the table to its own `AGENTS.md` by hand). <https://agents.md>
 
 <a id="20"></a>
-**[20] Effective context engineering for AI agents.** Anthropic Engineering, Sep 29 2025. Official Anthropic guidance on context as a finite resource. Defines the **canonical three-file note-taking pattern**: `task_plan.md` for the plan, `progress_log.md` for the running session log, `decisions.md` for durable design choices. The discipline behind this repo's task-template sections. <https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents>
+**[20] Effective context engineering for AI agents.** Anthropic Engineering, Sep 29 2025. Official guidance on context as a finite resource, just-in-time retrieval, compaction, and structured note-taking through examples such as a to-do list or `NOTES.md`. It does not prescribe a fixed three-file pattern. <https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents>
 
 <a id="21"></a>
-**[21] Effective harnesses for long-running agents.** Anthropic Engineering, Nov 2025. Initializer + coding-agent + `claude-progress.txt` pattern using the Claude Agent SDK; the Initializer creates an `init.sh`, a git repo with first commit, the progress file, and a JSON feature list with 200+ items; the Coding Agent reads git logs and the progress file at every session start, picks one feature, runs end-to-end browser tests via the Puppeteer MCP, and commits before exit. Two-context-window architecture; predecessor of [\[22\]](#22)'s three-agent design. <https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents>
+**[21] Effective harnesses for long-running agents.** Anthropic Engineering, Nov 2025. First-party guidance using an initializer, a coding agent, a progress file, a feature list, git history, and end-to-end tests to preserve state and leave each session in a recoverable condition. <https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents>
 
 <a id="22"></a>
 **[22] Harness design for long-running application development.** Anthropic Engineering, Mar 2026. Three-agent harness (Planner + Generator + Evaluator) with structured-artefact handoffs; sprint contracts (success criteria graded against pre-committed rubrics) negotiated before the Generator writes code; context resets via clearing-and-handoff rather than compaction. <https://www.anthropic.com/engineering/harness-design-long-running-apps>
@@ -149,17 +146,11 @@
 <a id="6"></a>
 **[6] Skill Creation Anti-Patterns.** _Some Claude Skills_. Catalogue: Reference Illusion, Description Soup, Template Theater, The Everything Skill, Tool Overload, Missing Exclusions. <https://someclaudeskills.com/docs/skills/skill_coach/references/anti-patterns/>. _Secondary source._
 
-<a id="7"></a>
-**[7] I validated 100+ Claude Code Skills.** Olga Safonova, Substack. Frequency analysis of common skill-authoring mistakes (missing WHEN triggers, missing WHAT verbs, wordy passive trigger phrases). <https://olgasafonova.substack.com/p/i-validated-100-claude-code-skills>. _Secondary source_ — direct fetch timed out; relied on indexed search-engine summary.
-
 <a id="8"></a>
 **[8] Skill Authoring Patterns from Anthropic's Best Practices.** Bilgin Ibryam, _Generative Programmer_, Apr 2026. Distils Anthropic's docs and the `skill-creator` source into 14 named patterns covering discovery, context economy, instruction calibration, workflow control, and executable code. Cites the `skill-creator` `SKILL.md` (Anthropic's own dogfooded skill) directly, plus practitioner writing from Hassid, Pachaar, Tort Mario, Xu, and Siva. <https://generativeprogrammer.com/p/skill-authoring-patterns-from-anthropics>
 
 <a id="34"></a>
-**[34] Plugin skills load full SKILL.md content at startup, not frontmatter-only.** anthropics/claude-code issue #44371, Apr 2026 (still open, labelled `bug` · `has repro` · `area:skills` · `performance`). Reproducible measurement: 28 skills (~34K tokens) → cold start of 4+ minutes vs 3–4 seconds with no skills installed. Scaling is non-linear per skill count. Documents the gap between Claude Code's current implementation and the progressive-disclosure model the open spec [\[1\]](#1) and Anthropic's own docs [\[17\]](#17) describe. Cross-referenced by issues #16160 (lazy-loading feature request), #43816 (`SkillSearch` proposal), #46383 (`auto_invoke: false` flag), #46952 (token-overlap matcher), #49170 (35 % context consumed by auto-loaded plugin docs), #50079 (130K-token skill injection on language-detection failure). <https://github.com/anthropics/claude-code/issues/44371>.
-
-<a id="35"></a>
-**[35] Claude Code Skills Context Window Impact: How Many Is Too Many?** BSWEN, Mar 2026. Practitioner measurement of skill-count vs startup cost: each skill adds ~100 tokens of always-on metadata at session start; 45 skills consume ~4,500 tokens before the user prompt. Author's rule of thumb: **15 optimal · 20 good · 25 acceptable · 30 warning · 45+ problem**. The signal is that even disciplined directive descriptions cannot escape the eager-loading cost documented in [\[34\]](#34); selective install is the only consumer-side defence. <https://docs.bswen.com/blog/2026-03-28-claude-skills-context-window/>. _Secondary source_ — single-author measurement, not a controlled study.
+**[34] Plugin skills load full SKILL.md content at startup, not frontmatter-only.** `anthropics/claude-code` issue #44371, Apr 2026. Reproduction evidence reports full plugin skill bodies loaded at startup and substantial cold-start and context cost. This documents an implementation gap between the reported Claude Code behavior and the progressive-disclosure model in the open specification [[1]](#1); it is an open issue, not a stable cross-harness contract. <https://github.com/anthropics/claude-code/issues/44371>
 
 <a id="51"></a>
 **[51] Lessons from Building Static Analysis Tools at Google.** Sadowski, Aftandilian, Eagle, Miller-Cushon, Jaspan. **Communications of the ACM 61(4), 2018**, DOI 10.1145/3188720 (restated in *Software Engineering at Google*, ch. 20). A review-time check must produce **< 10 % effective false positives** — an "effective false positive" is one the developer takes no positive action on; technical correctness is secondary. <https://doi.org/10.1145/3188720>. _Authoritative engineering field report, not peer-reviewed primary research._ Grounds: a review finding carries a false-positive risk; a noisy reviewer gets ignored, so flag with a precision budget, not maximal recall.
@@ -194,50 +185,48 @@
 
 ---
 
-## Best-of-breed implementations
+## Code-lifecycle reference implementations
 
 <a id="best-of-breed-implementations"></a>
 
-The code-lifecycle skills are framework-free distillations of the strongest public implementation of each
-fundamental, identified by a live adoption census (GitHub `gh api` metrics, 2026-06-27; see the Suspec
-workspace `RESEARCH-most-used-skills`). **Tier: tool/artifact** — these are real shipping repos, but
-star/fork counts are an _interest and maintenance_ proxy, **not** install or usage telemetry; they ground
-*which technique is most-adopted*, never a MUST-level empirical claim. Every URL below was `gh api`-verified
-live (two author-proposed slugs were 404 and corrected: `coleam00/raptor`→`gadievron/raptor`,
-`agamm/owasp`→`agamm/claude-code-owasp`).
+These public implementations informed the code-lifecycle skills. They are design references, not
+empirical proof that a technique works or a popularity ranking. Each linked repository was inspected
+for the named procedure.
 
 <a id="53"></a>
-**[53] oil-oil/codex-explore-skill** (★15). Delegate-recon + key-files-map-before-reading — grounds `codebase-exploration`. <https://github.com/oil-oil/codex-explore-skill>
+**[53] oil-oil/codex-explore-skill.** Delegate reconnaissance and build a key-files map before reading deeply; reference for `codebase-exploration`. <https://github.com/oil-oil/codex-explore-skill>
 
 <a id="54"></a>
-**[54] shannonbay/setup-structure-index** (★15). Persisted lightweight structure index to skip cold-start — grounds `codebase-exploration` (optional step). <https://github.com/shannonbay/setup-structure-index>
+**[54] shannonbay/setup-structure-index.** Example of a lightweight structure index for repeated
+codebase orientation; informs reuse of an existing project-owned map in `codebase-exploration`, not
+creation of a parallel documentation surface. <https://github.com/shannonbay/setup-structure-index>
 
 <a id="55"></a>
-**[55] obra/superpowers** (★239.7k). `systematic-debugging` (4-phase root cause) + `using-git-worktrees` — grounds `debugging` and `git-pr`. Star count is the whole bundle, not a per-skill figure. <https://github.com/obra/superpowers>
+**[55] obra/superpowers.** `systematic-debugging` and `using-git-worktrees`; references for `debugging` and `git-pr`. <https://github.com/obra/superpowers>
 
 <a id="56"></a>
-**[56] getsentry/skills** (★828). Ground debugging in observed live trace/runtime context — grounds `debugging`. <https://github.com/getsentry/skills>
+**[56] getsentry/skills.** Ground debugging in observed live trace and runtime context; reference for `debugging`. <https://github.com/getsentry/skills>
 
 <a id="57"></a>
-**[57] anthropics/claude-code-security-review** (★5.4k). Semantic PR-diff analysis + tunable false-positive filtering — grounds `security-review`. <https://github.com/anthropics/claude-code-security-review>
+**[57] anthropics/claude-code-security-review.** Semantic PR-diff analysis and configurable false-positive filtering; reference for `security-review`. <https://github.com/anthropics/claude-code-security-review>
 
 <a id="58"></a>
-**[58] agamm/claude-code-owasp** (★261). Per-language security quirks (OWASP Top 10:2025, ASVS 5.0, 20+ language footguns) — grounds `security-review` step 3 + `references/language-quirks.md`. <https://github.com/agamm/claude-code-owasp>
+**[58] agamm/claude-code-owasp.** Per-language security review guidance; reference for `security-review` and its language notes. <https://github.com/agamm/claude-code-owasp>
 
 <a id="59"></a>
-**[59] gadievron/raptor** (★3.1k). Agentic harness that orchestrates real security tools — grounds `security-review`'s drive-the-scanner-first section. <https://github.com/gadievron/raptor>
+**[59] gadievron/raptor.** Harness that orchestrates security tools; reference for scanner-driven review. <https://github.com/gadievron/raptor>
 
 <a id="60"></a>
-**[60] openai/skills** (★22.9k). `yeet` (stage→commit→push→PR), `gh-address-comments`, `gh-fix-ci` ship-lifecycle skills — grounds `git-pr`. <https://github.com/openai/skills>
+**[60] openai/skills.** Shipping, review-comment, and CI workflows; reference for `git-pr`. <https://github.com/openai/skills>
 
 <a id="61"></a>
-**[61] github/spec-kit** (★115.7k). Plan-against-a-persistent-constitution pipeline — grounds `planning-spec`'s plan-vs-principles core. <https://github.com/github/spec-kit>
+**[61] github/spec-kit.** Planning against project principles; reference for `planning-spec`. <https://github.com/github/spec-kit>
 
 <a id="62"></a>
-**[62] glittercowboy/get-shit-done** (★64.5k). Explicit out-of-scope / non-goals tracking — grounds `planning-spec` step 3. <https://github.com/glittercowboy/get-shit-done>
+**[62] glittercowboy/get-shit-done.** Explicit out-of-scope tracking; reference for `planning-spec`. <https://github.com/glittercowboy/get-shit-done>
 
 <a id="63"></a>
-**[63] snarktank/ai-dev-tasks** (★7.8k). Human "go" checkpoint between plan and task breakdown — grounds `planning-spec` step 4. <https://github.com/snarktank/ai-dev-tasks>
+**[63] snarktank/ai-dev-tasks.** Human approval between planning and task breakdown; reference for `planning-spec`. <https://github.com/snarktank/ai-dev-tasks>
 
 The false-positive-budget claim in `security-review` (drop low-signal classes or get muted) is grounded in
 the peer-reviewed entry [\[51\]](#51) (Sadowski et al., Google static-analysis study), not in the tool repos above.

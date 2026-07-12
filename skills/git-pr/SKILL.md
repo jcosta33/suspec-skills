@@ -1,7 +1,7 @@
 ---
 name: git-pr
 type: agent-guide
-description: Ship a change end to end with discipline — stage only what belongs, commit with an imperative subject and a why-body, push, and open a PR that states intent and how to verify. ALWAYS apply when committing, pushing, opening or updating a pull request, addressing review comments, fixing a failing CI job, or running parallel branches that risk clobbering each other. Run review-comment and CI work as a loop you close, not a fire-and-forget. Never force-push a shared branch, stage files you did not inspect, blind-retry a red CI job, or open a PR with no how-to-verify. Skip when only editing files locally with no intent to commit, when judging someone else's finished PR (a review job, not a shipping job), and when the repo's own contribution guide prescribes a different flow (follow it).
+description: Ship a change end to end through the repository's approved flow — stage only what belongs, commit with an imperative subject and a why-body, push only when asked, and open or update a PR when that flow uses one. ALWAYS apply when committing, pushing, opening or updating a pull request, addressing review comments, fixing a failing CI job, or running parallel branches that risk clobbering each other. Run review-comment and CI work as a loop you close, not a fire-and-forget. Never force-push a shared branch, stage files you did not inspect, blind-retry a red CI job, or open a PR with no how-to-verify. Skip when only editing files locally with no intent to commit or when judging someone else's finished PR.
 ---
 
 # Skill: git-pr
@@ -14,11 +14,12 @@ Each shortcut fails silently in a way nobody notices until later: `add -A` sweep
 unrelated edit into history; a one-word commit message erases the *why* the next reader needs; a PR
 with no verification steps makes the reviewer reconstruct your intent from the diff; a blind CI
 re-run burns minutes and hides a real bug; parallel branches in one checkout overwrite each other's
-work. This guide makes shipping a **disciplined lifecycle** — stage, commit, push, open, then close
-the loop on review and CI — so the change lands the way you meant it to.
+work. This guide makes shipping a disciplined sequence — stage, commit, push, then open a PR when
+the repository uses one, and close the loop on review and CI — so the change lands the way you meant
+it to.
 
-The ship loop here is stage → commit → push → open a PR, plus address review comments and fix a failing
-CI job; the parallel-work isolation uses git worktrees.
+The ship loop here is stage → commit → push, plus a PR when required, review-comment closure, and CI
+follow-through. Parallel work uses git worktrees.
 
 ## Resolve the repo's flow first
 
@@ -26,7 +27,8 @@ Before committing, check the repo for a contribution guide (`CONTRIBUTING.md`, `
 template, or the CI config). If it prescribes a branch-naming scheme, a commit-message convention
 (Conventional Commits, a sign-off, an issue-key prefix), or a required PR section, follow that over
 the generic flow below — a house convention beats a guessed one. Also confirm whether to commit or
-push at all: do those only when the user asked, and never push straight to the default branch.
+push at all: do those only when the user asked. Push directly to the default branch only when the
+user explicitly requests it and the repository's flow permits it.
 
 ## The ship lifecycle
 
@@ -48,15 +50,17 @@ mixes two unrelated concerns should be two commits.
   Wrap at ~72 chars, separated from the subject by a blank line. Skip the body only for a genuinely
   trivial change.
 
-### 3. Push to a branch, never force a shared one
+### 3. Push through the approved branch flow
 
-Work on a feature branch, not the default branch. Push with `git push -u origin <branch>`. If you
-must rewrite history you already pushed, use `git push --force-with-lease`, never bare `--force`:
+Use the branch required by the repository and the user's instruction. For a feature branch, push
+with `git push -u origin <branch>`. For an explicitly approved direct-default-branch flow, first
+confirm the local branch is current and push normally; never rewrite that branch. If you must
+rewrite history on your own feature branch, use `git push --force-with-lease`, never bare `--force`:
 `--force-with-lease` refuses the push if someone else added commits you have not seen, which is the
 exact accident bare `--force` causes. On a branch others may be using, prefer not to rewrite history
 at all.
 
-### 4. Open a PR that states intent and how to verify
+### 4. When the flow uses a PR, state intent and how to verify
 
 The description has two non-negotiable parts: **what this changes and why** (the intent, linked to
 the issue/requirement it satisfies), and **how to verify** (the exact commands or steps a reviewer
@@ -120,7 +124,8 @@ cleanup discipline) is in [`references/worktrees.md`](./references/worktrees.md)
 ## What does not belong
 
 - `git add -A` / `git add .` without reading the staged diff; bare `git push --force` on any branch
-  others touch; pushing to the default branch directly; committing when the user did not ask to.
+  others touch; pushing to the default branch without explicit approval or against repository
+  policy; committing when the user did not ask to.
 - A commit subject that says what you did ("Added X") rather than what the commit does ("Add X"); a
   body that paraphrases the diff instead of giving the why.
 - A PR with no how-to-verify; review comments addressed silently with no reply/resolve; a CI re-run

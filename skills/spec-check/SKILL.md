@@ -15,8 +15,9 @@ description: >-
 
 A defect in a spec is cheapest to catch before any task is cut from it — after that, every
 agent run inherits it. This guide runs the check by hand and produces a short report.
-`suspec check <spec-path>` (suspec-cli) automates exactly this contract; run it by hand when the
-CLI is not installed. Either way the result is a review checklist, not a gate —
+When available, `suspec check <spec-path>` (suspec-cli) applies the machine-checkable catalog. It
+does not perform the writing watchlist or leverage judgment below; run those by hand. When the CLI
+is absent, apply the core checks by hand as well. Either way the result is a review checklist, not a gate —
 whether it blocks is the team's policy.
 
 ## The one rule: check, don't edit
@@ -34,18 +35,20 @@ severities lives in the Suspec repo):
 | ID   | Check                                                                                           | Severity   |
 | ---- | ----------------------------------------------------------------------------------------------- | ---------- |
 | C001 | Every requirement ID (`AC-NNN`) appears exactly once in the file                                | hard error |
-| C002 | No other file claims the same frontmatter `id:` (requirement IDs are spec-scoped — AC-001 in two specs is fine) | hard error |
+| C002 | No two artifacts handed to the same check invocation claim the same frontmatter `id:`; a single-file check cannot establish repository-wide uniqueness | hard error |
 | C003 | Every requirement carries a `Verify with:` line                                                 | hard error |
 | C004 | Each requirement states at least one strength word (must / must not / should / should not / may); more than one flags a split candidate (advice, not a format bar) | warning    |
 | C005 | Non-goals section present and non-empty                                                         | warning    |
 | C006 | Open questions section present (even if "none")                                                 | warning    |
-| C007 | No `TBD`, `TODO`, `???`, or unresolved open question at `status: ready`                         | hard error |
+| C007 | No `TBD`, `TODO`, `???`, or unresolved blocking open question at `status: ready`; an explicitly non-blocking question may remain | hard error |
 | C008 | Frontmatter `sources:` names at least one origin                                                | warning    |
-| C009 | Every path or ID in `sources:` and cross-references resolves to something that exists           | hard error |
+| C009 | Every path-shaped source or cross-reference resolves artifact-relative; bare tracker IDs are exempt | hard error |
 | C015 | Every inline `[[KEY]]` citation resolves to a matching `<a id="KEY">` anchor in the `sources.md` the frontmatter names | warning    |
 | C019 | A `###` heading shaped like a requirement id but with a lowercase split-suffix (`AC-004a`) parses as prose and silently vanishes from scope and coverage | warning    |
 
-Three notes. C003 asks that the `Verify with:` line _be there_ — a target that doesn't exist yet
+Applicability matters. C002 needs a set of files passed together. C015 skips when no `sources.md`
+can be resolved from the spec's named sources. C019 applies to the plain Markdown requirement form;
+structured requirements have their own catalog. Three further notes: C003 asks that the `Verify with:` line _be there_ — a target that doesn't exist yet
 is not a spec defect; the requirement simply reviews as Unverified until it does. C004's usual
 finding: two strength words in one requirement means two requirements — report it as a split
 candidate, don't split it yourself. C019 only fires on the plain `###` form — a spec written in

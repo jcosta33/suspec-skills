@@ -2,7 +2,7 @@
 name: write-prd
 type: agent-guide
 description: >-
-  Write a PRD — the durable record of product intent a spec is later written from:
+  Write a PRD — a product-intent artifact a spec may later be written from:
   the problem, who it affects, the outcomes that define success, and what is
   deliberately out of scope. ALWAYS apply when new product behavior needs its "why" written
   down before anyone drafts requirements. Never write requirements, strength words,
@@ -13,8 +13,8 @@ description: >-
 # Writing a PRD
 
 A PRD records **what outcome is wanted and why**. The spec written from it records what the
-system must do. Keeping the two apart gives every future requirement a single, citable origin:
-six months on, "why does this requirement exist?" has a file to point at instead of a memory.
+system must do. Keeping the two apart gives later requirements a traceable origin while the work
+is active; project governance decides whether the PRD itself becomes a durable team record.
 
 A PRD has these sections: **Problem · Users · Goals · Non-goals · Success metrics · Release constraints · Linked evidence** (walked below). Fill them — this guide is how to fill them well.
 
@@ -40,17 +40,16 @@ under load" — the spec decides what "fast" means and the design decides how.
 - **Goals.** Outcome statements: the results that define success. No strength words (must /
   must not / should / may) — a goal worded as a requirement reads as an approved contract that
   nobody approved. Goals seed requirements; they are not requirements.
-- **Non-goals.** Mandatory and non-empty: the outcomes you are deliberately not pursuing.
-  Without this boundary, the spec author can't tell a dropped outcome from an overlooked one,
-  and scope expands silently.
+- **Non-goals.** State the outcomes deliberately outside this intent. If none are known, say
+  `None identified` instead of inventing one. The explicit boundary lets a spec author distinguish
+  a deliberate exclusion from an oversight.
 - **Success metrics.** A table — metric, target, how observed. Each row names _how you'd see
   it_: a number, a dashboard, a query. "The feature feels faster" strands its goal with no path
   to evidence; "p95 checkout time under 2 s, from the existing latency dashboard" doesn't.
 - **Release constraints.** Limits on _shipping_ — dates, rollout staging, compliance windows,
   dependency freezes. Not limits on what the solution may do; those are the spec's constraints.
-- **Linked evidence.** Point at the research, findings, or data that ground the intent — by
-  file and ID, never pasted in. Duplicated evidence drifts; linked evidence stays authoritative
-  where it lives.
+- **Linked evidence.** Point at the research, findings, or data that ground the intent by stable
+  path or native-artifact identifier. Avoid duplicating evidence that has an authoritative home.
 
 ## Where it lives
 
@@ -69,8 +68,7 @@ in its `sources:`.
 
 - A goal written as "the system must…" — restate it as the outcome; let the spec author mint
   the requirement.
-- An empty or missing Non-goals section — name at least one outcome you are not pursuing, or
-  the boundary of intent doesn't exist.
+- An unexplained Non-goals section — record real exclusions or `None identified`; do not invent one.
 - A metric with no observation method — if you can't say how you'd see it, you can't later
   claim you hit it.
 - A delivery constraint that actually constrains the design ("must use the existing queue") —
@@ -96,7 +94,7 @@ in its `sources:`.
 - [ ] No requirement language anywhere: search the file for "must", "must not", "should",
       "shall" — every hit is either rewritten as an outcome or moved out.
 - [ ] Problem and Goals name no mechanism, fix, or API.
-- [ ] Non-goals present and non-empty.
+- [ ] Non-goals records real exclusions or `None identified`.
 - [ ] Every success-metric row says how it is observed.
 - [ ] Release constraints limit shipping, not the solution space.
 - [ ] Evidence is linked by file/ID, not pasted.

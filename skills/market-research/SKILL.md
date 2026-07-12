@@ -26,17 +26,22 @@ State the decision the research will inform, the audience/segment, geography, ti
 what would change the decision. This prevents broad "market vibes" research: the right sources for
 enterprise DevTools adoption are not the right sources for consumer willingness-to-pay.
 
-### 2. Build an evidence ladder
+### 2. Build a claim-fit source map
 
 Label every source by type before using it:
 
-- observed behavior: product trial, docs, changelog, pricing flow, screenshots, telemetry, reviews;
+- observed product behavior: direct product exercise, docs, changelog, pricing flow, screenshots,
+  or telemetry;
+- user-generated evidence: reviews, support threads, interviews, and community posts, with sampling
+  and authenticity limits recorded;
 - primary research: interviews, surveys, panels, experiments, usage analytics;
 - official market data: filings, standards bodies, government/industry datasets, app-store metrics;
 - secondary analysis: analyst reports, media, blog posts, roundups;
 - synthetic/LLM output: hypothesis or augmentation only, never a respondent or market fact.
 
-Prefer direct, recent, segment-matched evidence. Use weaker sources only when marked as weak.
+Prefer evidence that directly measures or exposes the claim at issue. Source type alone does not decide
+quality: a current pricing page is strong evidence for current price and weak evidence for customer
+value; a well-sampled review dataset can support reported experience but not observed behavior.
 
 ### 3. Separate observation, claim, inference, and recommendation
 
@@ -50,11 +55,13 @@ Write each finding as one of:
 Do not let an inference masquerade as an observation. Do not let research close a product decision
 unless the user explicitly asked for a recommendation.
 
-### 4. Prove patterns with multiple independent witnesses
+### 4. Match pattern language to coverage
 
-For "common practice", "most competitors", "standard pattern", or "users expect", name at least
-three concrete instances from independent products, studies, or datasets. If you only have one or
-two, downgrade the language to "one example observed" or "candidate pattern".
+For "common practice", "most competitors", "standard pattern", or "users expect", disclose the
+population searched, the independent instances observed, and contrary cases. Use "most" only when the
+sample supports a denominator; use "common" only when coverage is broad enough for the decision. With
+sparse evidence, say "example observed" or "candidate pattern". No fixed witness count turns a sample
+into a market fact.
 
 ### 5. Verify competitor behavior in the working product
 
@@ -109,7 +116,7 @@ clear without hiding uncertainty.
 | --- | --- |
 | "Users want X" from intuition, one interview, or a review quote | Downgrade to anecdote or gather more evidence |
 | A competitor behavior inferred from a landing page headline | Verify in product/docs/pricing/changelog or mark as positioning only |
-| "Common pattern" from fewer than three independent witnesses | Rename as candidate pattern or single example |
+| Broad pattern language from narrow or undisclosed coverage | State the sample and narrow the claim to what it supports |
 | Synthetic respondents presented as real customer evidence | Reject; mark synthetic and specify the needed human-data check |
 | Market size with no formula, units, source dates, or sensitivity | Reject; rebuild as a transparent estimate |
 | Survey result without sample, recruitment, dates, mode, or limitations | Treat as weak evidence until disclosed |
@@ -150,6 +157,6 @@ Use this order unless the user asks for a different artifact:
 - **Synthetic consensus.** Ten simulated respondents agreeing is still one model distribution unless
   calibrated against real data.
 - **Category mixing.** Enterprise buyers, open-source maintainers, hobbyists, and procurement teams
-  are different markets; do not average them into one persona.
+  are different segments; do not average them into one synthetic customer.
 - **Recency drift.** Competitor pricing, packaging, and AI features change quickly. Record access dates
   and prefer current primary surfaces.

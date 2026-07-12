@@ -13,14 +13,14 @@ description: >-
 
 # Writing an RFC
 
-A design argued only in chat is gone when the session ends; six months later nobody can say why
-this approach won and the rejected options get re-litigated from scratch. An RFC is the durable
-version: one proposal, the problem forcing it, the alternatives weighed against it, and the
-exact decision requested — so _why this and not that_ outlives the change.
+A design argued only in chat is hard to inspect or hand off. An RFC gives one proposal a stable
+working form: the problem forcing it, alternatives weighed against it, and the exact decision
+requested. If accepted, the durable decision belongs in an ADR; project governance decides whether
+the RFC itself is retained.
 
 An RFC has these sections: **Problem · Proposal · Alternatives · Migration plan · Open questions · Decision requested** (walked below). Fill them — this guide is how to fill them well.
 
-## The stance: advocate, commit to nothing
+## The principle: advocate, commit to nothing
 
 An RFC argues for exactly one approach, in enough detail to be judged — and decides nothing.
 Two failure modes void one:
@@ -41,7 +41,7 @@ Two failure modes void one:
 - **Alternatives.** A table — alternative, why weaker than the proposal — with at least one
   real row. This section is the RFC's durable value: a future reader trusts the chosen approach
   because the rejected ones sit written down beside it. "None considered" is a defect — if you
-  genuinely can't name an alternative, the proposal is under-explored, not the section optional.
+  genuinely can't name an alternative, the proposal is under-explored.
 - **Migration plan.** Ordered steps from the present state to the proposed one. Adoption order
   is part of judging a proposal: a great design with an impossible rollout is a weak proposal.
 - **Open questions.** Every unresolved point, each marked **blocking** or **non-blocking**. A
@@ -63,8 +63,9 @@ notes, and memories for this work, in a folder named after the repo you are work
 unless the project's own governance says otherwise, and carry the file's full path
 forward — every later step names artifacts by explicit path.
 
-On acceptance, the RFC itself doesn't change into anything: the ADR and/or spec are
-written _from_ it, name it in their `sources:`, and the RFC's status flips to `accepted`.
+On acceptance, write the ADR and/or spec from it and name the RFC as a source. If the RFC is
+retained, its status flips to `accepted`; native artifact storage may instead preserve only its
+stable identifier and the durable downstream record.
 
 ## Common mistakes
 

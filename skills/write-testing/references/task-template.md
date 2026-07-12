@@ -1,19 +1,26 @@
 # Run notes: {{title}}
 
-- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
+- Run notes: {{full path or stable native-artifact identifier for this file}}
+- Task packet: {{full path when dispatched from one; otherwise None}}
 - Driving doc (spec / audit / bug report, if any): {{full path to the driving doc}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
 
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
 > **Testing task** — tests are the deliverable. Test behavior, not implementation. Each test fails
-> for one reason. Flip every assertion and prove the test means something. Coverage is a map, not
+> for one reason. Prove each test fails for the targeted violation. Coverage is a map, not
 > a score.
 >
 > **Commands** resolve from the code repo's `AGENTS.md` Commands table. A coverage report and a
-> single-test / flip-and-rerun runner are often project-specific — for any command you need that is
+> single-test / falsification runner is often project-specific — for any command you need that is
 > undefined, ask the user; do not guess.
 
-## Scope (from the task packet)
+## Scope (from the task packet or direct intent)
 
 - Test: the behavior the listed ACs name — nothing another task owns.
 - Do not change: production code (unless the packet says so); an existing flaky test (its own
@@ -48,7 +55,7 @@ runs.
 - [ ] Packet and driving doc read; coverage gap named as behavior
 - [ ] Test cases enumerated; placement decided per project convention
 - [ ] Each test written against the public surface, one reason to fail
-- [ ] Each test flipped → fails → restored → passes (transition pasted below)
+- [ ] Each test fails for its targeted violation → restored state passes (transition pasted below)
 - [ ] Each AC-bound test confirmed to fail when *its* requirement is violated, not an adjacent
       condition
 - [ ] High-stakes requirements / invariants carry a strengthened check (property, metamorphic,
@@ -58,9 +65,9 @@ runs.
 
 ## Evidence (paste actual command output — never paraphrase)
 
-- Test command, whole suite (last lines + exit):
-- Check command (last lines + exit):
-- Flip transition per new test (fails flipped → passes restored) — representative sample:
+- Test command, whole suite (runner summary + exit):
+- Check command (runner summary + exit):
+- Intended-failure transition per new test (targeted violation fails → restored state passes):
 
 ## Decisions
 
@@ -72,8 +79,9 @@ Blocked questions, not here.
 
 ## Findings
 
-A real bug a test exposed, production code too coupled to test cleanly, a missing AC — durable
-ones become native memories (see save-findings).
+A real bug a test exposed, production code too coupled to test cleanly, a missing AC. Keep them
+here for review; only evidence-backed, durable lessons move into native memory or project channels
+at close.
 
 -
 
@@ -88,12 +96,18 @@ manual check); a missing runner; production code that must change to be testable
 
 -
 
+## Handoff
+
+- [ ] Final evidence, summary, and findings copied into the controlling task/spec when one exists;
+      otherwise included in the direct handoff. Nothing final lives only in these private notes.
+
 ## Self-review
 
 Answer in writing, evidence pasted. A test that passes when the code is commented out, asserts on
 internals, or bundles behaviors is net-negative — it costs maintenance and catches nothing.
 
-- **Flips:** did every new test fail when flipped and pass when restored, transitions pasted?
+- **Falsification:** did every new test fail for its targeted violation and pass in the restored
+  state, with representative transitions pasted?
 - **Behavior:** does each test exercise the public surface and survive a behavior-preserving
   refactor — no internals asserted?
 - **One reason:** does each test fail for one reason, with a message that says what behavior broke?

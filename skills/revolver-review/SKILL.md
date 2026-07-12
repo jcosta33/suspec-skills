@@ -1,7 +1,7 @@
 ---
 name: revolver-review
 type: agent-guide
-description: "Run a rotating, self-converging adversarial review of a substantial change: autonomously derive at least 6 distinct review stances from the target, never a default menu, then fire ONE reviewer at a time on cheap, varied models; after each single review the orchestrator applies the legitimate fixes and the next stance reviews the REVISED code, rotating through the pool one stance per round so coverage stays even; continue until a full rotation covers every stance, then repeat for up to 3 cycles, stopping when a cycle surfaces nothing new. Each subagent runs an EXTREMELY adversarial discipline — refute by default, re-run/reconcile the evidence itself, cite file:line, keep effective false positives low — injected into its prompt alongside its stance. Self-contained: it depends on no other skill. ALWAYS apply when reviewing a substantial change and you want it driven to a clean state, not just a findings list. Skip for a tiny one-line change and for original authoring (nothing exists yet to refute)."
+description: "Run a rotating adversarial review of a substantial change: derive at least 6 distinct stances from the target, never a default menu, then fire ONE reviewer at a time on a cost-conscious model adequate for its stance. After each review, the orchestrator applies legitimate fixes and the next stance reviews the REVISED code. Complete every stance in a rotation; repeat for up to 3 cycles, stopping when a cycle surfaces nothing new. Each subagent receives an EXTREMELY adversarial discipline: refute by default, rerun or reconcile evidence, cite file:line, and keep effective false positives low. Self-contained: it depends on no other skill. ALWAYS apply when reviewing a substantial change that must be driven to a clean state, not merely listed as findings. Skip a tiny one-line change and original authoring where nothing exists yet to refute."
 ---
 
 # Skill: revolver-review
@@ -39,8 +39,8 @@ just hand a human a list.
 6. **One full rotation is the floor.** A rotation is done when every stance has fired once.
 7. **Repeat up to 3 cycles; stop when a cycle goes quiet.** If the last full rotation still surfaced
    real, new accepted findings, run another — to a **maximum of 3 cycles**. Stop the moment a rotation
-   surfaces no new accepted finding. Iterative gains plateau fast; the cap is where the value already is,
-   and it stops the loop from churning the code (and the token bill) for nothing.
+   surfaces no new accepted finding. The cap is an operational bound on cost and edit churn, not an
+   empirically optimal number.
 
 **Why one at a time, not a simultaneous panel.** One-at-a-time gives the finest feedback (each stance
 sees every prior fix), catches interacting fixes earliest, keeps coverage even, and is cheapest per step.
@@ -84,18 +84,20 @@ merely renames another stance or lacks a concrete surface to inspect. The pool m
 current change, not from a reusable review checklist. Order the rotation by potential consequence and
 uncertainty, then keep the pool and its order fixed through every cycle.
 
-## Models — cheap and varied, so the loop is affordable
+## Models — adequate and cost-conscious
 
-The reviewer subagents run on **lower-end models by default**, and on **different** models across the
-rotation where the runner offers a choice. Two reasons, both load-bearing:
+Choose the least costly model that can reliably execute the assigned stance and tools. Vary models
+across the rotation where the runner offers a sensible choice, but treat variation as exploration,
+not proof of independence or extra coverage.
 
-- **Cost.** This loop re-reviews the revised state every round across up to 3 cycles. On a top-tier model
-  it bankrupts the review and no one runs it. Cheaper reviewers keep it affordable enough to use.
-- **Decorrelation.** Different models err in different ways; varying the model across the rotation
-  surfaces coverage a uniform run misses — bought for free by not paying for uniformity.
+- **Cost.** This loop rereads revised state every round. Cost-conscious routing keeps the process usable.
+- **Adequacy.** A model that cannot inspect the code, run the required tools, or support its findings
+  is false economy. Escalate that stance when evidence shows the assigned model is inadequate.
+- **Variation.** Different model choices may expose different errors, but no current evidence guarantees
+  decorrelated code-review failures. Never count model variety as correctness evidence.
 
-Escalating a specific stance or the reconciling orchestrator to a stronger model is a deliberate opt-in
-— never the default, never the whole rotation.
+Escalate a specific stance or the reconciling orchestrator when its work requires more capability;
+do not upgrade the whole rotation without evidence that the cheaper assignments are inadequate.
 
 ## Reconcile and fix — the orchestrator's round
 
@@ -114,8 +116,8 @@ sees. Aggregate findings **on evidence**, never on how confident the reviewer so
   induces conformity.
 - **Distinct stances, varied models.** If the chambers are near-duplicates, rotation just re-hits the
   same blind spot. Keep them different.
-- **Respect the cap.** Past ~3 cycles the curve is flat; more rounds burn tokens and risk over-editing
-  correct code. Stop when a rotation goes quiet.
+- **Respect the cap.** More rounds burn tokens and risk over-editing correct code. Three cycles is the
+  defined operational maximum; stop earlier when a rotation goes quiet.
 
 ## What does not belong
 

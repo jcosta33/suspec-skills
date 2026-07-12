@@ -1,132 +1,49 @@
 # Scope
 
-> **What this repo is, what it deliberately is not, and the principle behind every exclusion.**
+This repository ships portable Agent Skills in plain Markdown. It contains two kinds of guidance:
 
-Most repos define themselves by what they contain. This one is also defined by what it deliberately leaves out — and each exclusion has a reason that ties back to one of the other documents in this directory.
+- **Suspec methodology skills:** author intent artifacts, split work when needed, implement, review,
+  and preserve findings through native memories or project channels.
+- **General engineering skills:** debugging, security review, evidence, research, planning, and
+  shipping disciplines that work without Suspec.
 
----
+These are catalog groupings, not rigor levels. A task activates the skills whose triggers match.
 
-## What this repo is
+## What belongs here
 
-`suspec-skills` ships two tiers of skills, both installed globally, both repo-agnostic. The **universal disciplines** hold for any repo regardless of the Suspec workflow — each a self-contained discipline an agent loads when the task matches its description. The **Suspec methodology guides** — the artifact authoring skills (specs, audits, research, RFCs, change plans, and the rest of the `write-*` family) plus the loop skills (`implement-task`, `review-output`, `save-findings`, `spec-check`, `split-work`) — carry the methodology itself. They are Suspec-flavored but coupled to no particular repo, stack, or vendor: artifacts live beside the agent's own native artifacts and are named by explicit path.
+- one self-contained `skills/<name>/SKILL.md` per skill;
+- bundled references used directly by that skill;
+- catalog and installation documentation;
+- evidence documentation for catalog design choices; and
+- runner-neutral command slots resolved by the consuming repository.
 
-| Domain                     | Shape of skills shipped                                                                                                                                                |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Market/review methods**  | Cross-cutting methods loaded alongside the work — `market-research`, `persona-challenger`, `bulletproof`, `revolver-review` — plus the standalone evidence discipline (`empirical-proof`). |
-| **Disciplines**            | Framework-free practices that raise the floor on any task — `empirical-proof`, `concise-output`, `fix-flaky-test`.                           |
-| **Code-lifecycle**         | The fundamental coding skills — `codebase-exploration`, `debugging`, `security-review`, `git-pr`, `planning-spec`.                                                      |
-| **Suspec methodology**     | The native-placement workflow guides — the `write-*` authoring family and the loop skills `implement-task`, `review-output`, `save-findings`, `spec-check`, `split-work`.                        |
+## What stays elsewhere
 
-Every skill answers the question _"how should an agent shape its work for tasks of this type?"_ — not _"what should an engineer know about this domain?"_.
+- project-specific architecture, commands, and conventions;
+- runner-specific agent definitions;
+- executable automation, hooks, scanners, and network clients;
+- product canon and ADRs;
+- benchmark harnesses and experimental output; and
+- private work tracking.
 
----
+The catalog may instruct an agent to use an external tool already provided by the consuming
+environment. The catalog itself does not ship or silently execute that tool.
 
-## What this repo is not
+## Boundary tests
 
-Six categories are deliberately excluded. Each exclusion has a documented reason.
+Before adding material, ask:
 
-### 🚫 No engineering-domain knowledge
+1. Does it apply across repositories, or does it belong in one project's `AGENTS.md`?
+2. Can the skill work if installed alone?
+3. Is this runnable guidance, a bundled resource used by that guidance, or evidence about the
+   catalog? If none, it belongs elsewhere.
+4. Does it require code or network behavior? If yes, this Markdown-only repository is not its
+   implementation home.
+5. Does another existing skill already own the behavior? Reconcile the overlap instead of creating
+   competing instructions.
 
-```text
-Out of scope: auth-patterns, observability, caching, postmortem-format,
-              incident-response, idempotency, rate-limiting, runbooks
-```
+## Product boundary
 
-**Why.** Skills here describe _how an agent works on a task_, not _what an engineer should know about a problem_. A skill called `auth-patterns` would either:
-
-- prescribe one company's chosen pattern (couples the skill to a stack — see also the next exclusion); or
-- enumerate every possible pattern (an everything-skill, anti-pattern [\[6\]](./sources.md#6) and length-cap violation [\[2\]](./sources.md#2)[\[5\]](./sources.md#5)).
-
-Either way the failure mode is documented in the literature. The skill is rejected.
-
-The right home for this content is the consuming repo's `AGENTS.md > Architecture` and `AGENTS.md > Conventions`, which the universal skills already reference. See [Self-containment § The AGENTS.md contract](./self-containment.md#rule-2-project-specific-values-come-from-agentsmd).
-
-> **Empirical reinforcement.** ETH Zurich's evaluation of `AGENTS.md` files [\[32\]](./sources.md#32) measured this split directly. **Tool-specific commands** in the consuming repo's `AGENTS.md` produced an explicit-tool call rate of **2.5 per task when mentioned vs 0.05 when not** — a ~50× lift. **Architectural overviews and engineering-domain narrative**, by contrast, contributed almost nothing measurable; LLM-generated context files of that style cost **+20 % in tokens for –3 % in success rate**. The repo's split (universal _how-to-work_ skills here, project-specific _what-to-run_ commands in the consumer's `AGENTS.md`) is the empirically supported configuration.
-
-### 🚫 No stack-specific or vendor-specific skills
-
-```text
-Out of scope: react-19-best-practices, postgres-index-patterns, datadog-alerts,
-              snowflake-warehouse-design, aws-vpc-conventions
-```
-
-**Why.** Skills are loaded into context regardless of the project the agent is working in. A skill that speaks React 19 is dead weight in a Python service. Beyond the cost in tokens, the agent is left to disambiguate which skill applies — directive saturation [\[3\]](./sources.md#3) (discussion section).
-
-Stack-specific patterns belong in **stack-specific repos** that consumers install only when the stack is in play — user-globally-installable collections such as `vercel-labs/agent-skills`, `wshobson/agents`, and `elastic/agent-skills` complement this one without being conflated with it.
-
-### 🚫 No internal-product or vendor-specific docs
-
-```text
-Out of scope: internal product knowledge, business-logic wikis, vendor-specific runbooks
-```
-
-**Why.** Same reason as the previous two — coupling. Internal product knowledge lives in product repos; this repo is generic so it can be installed across them.
-
-### 🚫 No automation, scripts, CI, or evaluation harnesses in this repo
-
-```text
-Out of scope: scripts/validate.mjs, .github/workflows/*.yml, eval harnesses,
-              build-readme generators, plugin manifests
-```
-
-**Why.** The repo's purpose is to be a **container for skills + their surrounding documentation**, nothing more. Automation has three failure modes that work against that purpose:
-
-| Failure                                                                                      | Consequence                                                                            |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| **Drift** — automation falls out of sync with the skills it's supposed to validate.          | The signal becomes false; reviewers either chase ghosts or learn to ignore the alerts. |
-| **Lock-in** — automation chooses one runtime, one validator, one evaluation harness.         | A consumer on a different stack inherits an obstacle.                                  |
-| **Scope creep** — automation invites tooling-of-tooling (workflow workflows, eval evals, …). | The repo accretes infrastructure that has nothing to do with the skills themselves.    |
-
-If validation tooling proves load-bearing, it lives in **its own repo** consumed by the maintainer's CI — not in this repo. Reviews are reviewer-driven against the editing rules in [`AGENTS.md`](../AGENTS.md).
-
-### 🚫 No "core" / "loader" / "index" skill that other skills depend on
-
-```text
-Out of scope: methods-core, write-core, validation-core, any "loader" skill that other skills depend on
-```
-
-**Why.** This is a direct application of [Self-containment](./self-containment.md). The progressive-disclosure model [\[1\]](./sources.md#1)[\[2\]](./sources.md#2) says each skill loads on its own metadata; introducing a "core" skill that other skills assume is loaded breaks that model. The catalog demonstrates the alternative — a folder per method, each independently installable, no shared core, no cross-references.
-
-### 🚫 No skills designed to "always load"
-
-```text
-Out of scope: any skill whose description matches every task
-              ("handles all X", "use on every request",
-              "general assistance", catch-all triggers)
-```
-
-**Why.** The community catalogue [\[6\]](./sources.md#6) names this directly under three headings — _The Everything Skill_, _Description Soup_, and _Missing Exclusions_ — and Anthropic's own framing [\[17\]](./sources.md#17) draws the architectural line: skills are for **multi-step procedures** loaded on trigger; **persistent context** (facts, project conventions, project commands) belongs in `CLAUDE.md` / `AGENTS.md`. A "skill" authored to always be resident is the wrong primitive — its content lives in the consuming repo's `AGENTS.md` instead. The eager-loading bug in current Claude Code [\[34\]](./sources.md#34)[\[35\]](./sources.md#35) compounds the cost: even disciplined skills consume ~100 tokens of metadata each at session start, so an "always loaded" description multiplies a problem the consumer can already barely afford. Full case in [Activation § The "always-load" anti-pattern](./activation.md#the-always-load-anti-pattern).
-
----
-
-## The principle behind every exclusion
-
-```mermaid
-flowchart LR
-    P[The skill must be useful in any consumer repo, by itself, with no implicit dependencies.]
-    P --> E1[No engineering-domain prescriptions]
-    P --> E2[No stack or vendor lock-in]
-    P --> E3[No internal product knowledge]
-    P --> E4[No automation in this repo]
-    P --> E5[No core/loader skills]
-    P --> E6[No skills designed to 'always load']
-```
-
-Every exclusion above is a corollary of one principle: **a skill must be useful in any consumer repo, by itself, with no implicit dependencies on other skills, on this repo's tooling, or on a particular stack.**
-
-When a candidate skill is proposed, the gating question is:
-
-> _Could this skill be installed by a team using a different language, a different framework, a different CI provider, and a different agent — and still produce its intended behaviour, with no other skill in context?_
-
-If the answer is _"yes"_, the skill belongs here. If _"no"_, it belongs somewhere else — usually the consuming project's own `AGENTS.md`, a stack-specific skill repo, or an internal docs site.
-
-For the methodology tier the same question applies with one licensed assumption: a methodology skill may assume the Suspec workflow (artifacts beside the agent's native artifacts, full paths handed in the dispatch prompt, `suspec check` as the deterministic floor) — but never a particular repo, stack, vendor, or any committed workspace.
-
----
-
-## See also
-
-- [Self-containment](./self-containment.md) — the principle that drives every exclusion above.
-- [Task files](./task-files.md) — externalised state is _in scope_ (it's a workflow shape); engineering-domain knowledge is not.
-- [`AGENTS.md`](../AGENTS.md) — the editing rules a new-skill change must clear.
-- [Sources](./sources.md) — full bibliography.
+The deterministic checker is earned scaffold. Skills may describe when to run it and how to
+interpret its output, but checker implementation and machine contracts live in their own
+repositories. A project without the checker still follows the human procedure.

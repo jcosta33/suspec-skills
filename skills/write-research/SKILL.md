@@ -5,8 +5,8 @@ description: >-
   Write a research note: survey the options and evidence behind ONE decision-informing question,
   and commit to no decision. ALWAYS apply when asked for research, an options / library / API
   comparison, an evidence survey, or a recommendation feeding a later decision. Never present
-  opinion as a finding, cite a blog without its primary source, fabricate or leave a claim
-  unmarked when you could not verify it, settle an open question by asserting a choice, or write
+  opinion as a finding, ask a source to support a claim outside its competence, fabricate or leave
+  a claim unmarked when you could not verify it, settle an open question by asserting a choice, or write
   requirements. Skip when writing a spec, recording the present state of code, diagnosing a
   defect, or sizing markets / mapping competitors / synthesizing customer evidence — research
   is their upstream input, not a substitute.
@@ -23,7 +23,7 @@ The discipline is evidentiary: cite or omit. A claim that cannot survive a citat
 the document. These rules are conventions backed by review — nothing in this repository enforces
 them automatically.
 
-## The Researcher stance
+## Working principle
 
 Investigate one question in depth against primary sources. Keep observation distinct from claim,
 keep your confidence honest, and refuse to let the inquiry harden into a decision. This guide is for
@@ -44,21 +44,27 @@ an unbounded survey returns noise. One note, one question; split a double topic 
 List the sub-topics and candidate options before drilling into any one. Going depth-first on the
 first option found is how a survey silently becomes an advocacy piece for whatever you read first.
 
-### 3. Prefer primary sources, in this order
+### 3. Match sources to claims
 
-Standards documents (RFC, W3C, ISO) → peer-reviewed papers → official library or API docs → the
-library's source code (cite repo + version) → verified product behavior (you ran it; output
-recorded) → secondary commentary, only with the primary source it rests on cited too. A
-citation's authority is its source's authority; if you cite a blog, find and cite what it is
-based on. Survey at least three independent sources — a floor, not a target; the goal is
-coverage of the option space, and a recommendation grounded in one source is a single point of
-failure.
+Choose evidence by what the claim asks it to establish:
+
+- a standard or specification for what is defined;
+- official docs and versioned source for an API or supported contract;
+- direct product exercise for current behavior when feasible and lawful;
+- a study or benchmark with inspectable method and data for comparative or outcome claims;
+- a contemporaneous first-party record for what an actor announced, believed, or intended; and
+- secondary analysis for its own analysis or as a route to underlying evidence.
+
+A blog may be primary evidence for its author's announcement and weak evidence for an independent
+performance claim. Peer review does not make an indirect study fit the question. Disclose the search
+scope and stop when the relevant option and counter-evidence space is covered; no fixed source count
+establishes coverage.
 
 **When the question turns on empirical or scientific evidence** — study results, effect sizes,
 benchmark numbers, or "X is faster/safer/better" claims — open
 [`references/research-methodology.md`](./references/research-methodology.md) and grade each source
-by it before you cite: the source-tier ladder, the downgrade checks (small N, indirect setting,
-vendor-funded, single unreplicated result), and the predatory-/untrustworthy-venue screen. Carry
+by it before you cite: the claim-fit matrix and the downgrade checks (small N, indirect setting,
+conflict of interest, single unreplicated result). Carry
 the result into the finding's confidence (rule 4) with the reason it was downgraded.
 
 ### 4. Record each finding as R-NNN with its confidence
@@ -70,12 +76,12 @@ informs). A finding with no evidence field is an opinion with an id; a missing c
 how much weight the recommendation can bear. Stable ids let a spec or ADR cite the exact finding
 it rests on.
 
-### 5. Verify product-behavior claims by exercising the product
+### 5. Exercise product behavior when feasible
 
-When a finding asserts how a product behaves, run it (a curl, a sandbox script, a recorded
-session) and record the observed output as the evidence — do not read the behavior off the
-documentation. Docs and actual behavior diverge often enough that an inferred claim is a guess
-wearing a citation.
+When a finding turns on current product behavior and safe access exists, run it (a curl, sandbox
+script, or recorded session) and record the observed output. If access, cost, safety, or legality
+prevents exercise, use the strongest available contract or first-party evidence and state that the
+behavior was not independently exercised. Never imply a live trial occurred when it did not.
 
 ### 6. Mark every unverified claim `[unconfirmed]` — never fabricate
 
@@ -106,7 +112,7 @@ the reader back the question they came with.
 
 - Requirements in any form: no AC items, no SOL blocks (see write-spec's
   "structured (SOL) form") — those belong in the spec someone writes _from_ this note.
-- Opinion or "best practice" with no cited primary source.
+- Opinion or "best practice" with no evidence fitted to the claim.
 - A decision. Findings survey; they do not conclude.
 - Sources you did not actually consult.
 - Code edits — a research session is read-only on source; it produces a document.
@@ -117,10 +123,9 @@ the reader back the question they came with.
   with an evidence field that just restates the claim, no source, command, or recorded output
   behind it. It looks like a finding because it has an id, but an id does not make it checkable;
   the spec that later cites R-007 inherits a hunch dressed as established fact.
-- **Citing a blog without its primary source.** A finding rests on a vendor post or a
-  conference-talk recap, and the underlying RFC, paper, or benchmark it summarizes is never run
-  down or cited. A citation only carries the authority of its source — quote the secondary piece
-  and you inherit its spin, its missing caveats, and any number it got wrong in the retelling.
+- **Using a source outside its competence.** A vendor post is treated as independent evidence that
+  its product outperforms alternatives, or a benchmark is treated as proof of a supported API
+  contract. Refit the source to the claim and trace load-bearing downstream numbers to their origin.
 - **Settling the open question instead of surfacing options.** The note quietly picks a winner —
   "we should use X" in the body, or an Open question resolved by assertion — when its job was to
   map the decision space and hand it over intact. The person who owns the decision never sees the
@@ -131,16 +136,18 @@ the reader back the question they came with.
 - [ ] The question is stated first and the whole note answers it — no scope drift.
 - [ ] Every R-NNN finding has a non-empty evidence field and a confidence value.
 - [ ] Every claim you could not verify is marked `[unconfirmed]`; none is dressed as fact.
-- [ ] Blogs cited only alongside the primary source they rest on.
-- [ ] Product-behavior claims were exercised, with output recorded.
+- [ ] Every source is fit for the claim it supports; load-bearing downstream claims trace to their
+      origin when available.
+- [ ] Product behavior was exercised when feasible, with output recorded; otherwise the access
+      boundary is explicit.
 - [ ] Open questions are listed, not silently settled.
 - [ ] The recommendation names the findings it rests on — or names the open question blocking one.
-- [ ] For empirical/scientific claims, each source was graded against the methodology reference and the rejected ones are recorded.
+- [ ] For empirical/scientific claims, each source was appraised against the methodology reference
+      and material rejected sources are recorded.
 
 ## Bundled resources
 
-- [`references/research-methodology.md`](./references/research-methodology.md) — how to grade
-  evidence when a question turns on empirical or scientific claims: the source-tier ladder
-  (OCEBM-adapted), the downgrade/upgrade checks (GRADE-adapted), the predatory-/untrustworthy-venue
-  screen, keeping observation distinct from claim, and the auditable Rejected trail. Load it at
+- [`references/research-methodology.md`](./references/research-methodology.md) — how to appraise
+  evidence when a question turns on empirical or scientific claims: claim fit, method quality,
+  downgrade/upgrade checks, observation-versus-inference, and the auditable Rejected trail. Load it at
   rule 3 when the evidence is empirical — not needed for a plain API/feature comparison.

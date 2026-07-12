@@ -102,7 +102,7 @@ A spec with a blocking question stays `draft`.
 | `MUST NOT` | forbidden |
 | `SHOULD` | default; needs a reason or exception |
 | `SHOULD NOT` | default prohibition; needs a reason or exception |
-| `MAY` | optional |
+| `MAY` | permitted |
 
 Do not use `SHALL` as a strength word.
 

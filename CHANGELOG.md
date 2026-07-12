@@ -6,8 +6,9 @@ All notable changes to the Suspec skills catalog are recorded here. The format f
 renames a skill or breaks a skill's contract, **minor** adds a skill or non-breaking guidance,
 **patch** is a fix or wording change.
 
-The catalog is pull-updatable — you install it with `npx skills add jcosta33/suspec-skills` (pin to
-a tag or commit for stability) and re-run to re-fetch. Watch the
+The catalog is pull-updatable — install it for your runner (for example,
+`npx skills add jcosta33/suspec-skills -g -a codex`), pin to a tag or commit for stability,
+and re-run to re-fetch. Watch the
 [releases](https://github.com/jcosta33/suspec-skills/releases) and re-pull when a bump matters.
 
 ## [4.0.0] - 2026-07-10
@@ -55,7 +56,7 @@ a tag or commit for stability) and re-run to re-fetch. Watch the
 - `implement-task` — the task packet and spec arrive by absolute store path in the launch
   prompt; the spec-external `.suspec/` mode is gone.
 - README — two catalog groups (Suspec methodology / universal disciplines); global install
-  (`npx skills add jcosta33/suspec-skills -g`, or manual copy to `~/.claude/skills` +
+  (`npx skills add jcosta33/suspec-skills -g -a codex`, or manual copy to `~/.claude/skills` +
   `~/.agents/skills`) is the primary path; per-repo install stays for pinning; the zero-overlap
   rule (global = methodology, in-repo = repo-specific guides) is stated.
 

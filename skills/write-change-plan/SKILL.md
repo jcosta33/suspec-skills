@@ -2,9 +2,9 @@
 name: write-change-plan
 type: agent-guide
 description: >-
-  Write a change plan — how the codebase changes safely: baseline and target from the
-  inventory, enumerated preservation guarantees, transformation waves that each leave
-  the build green, cutover and rollback conditions, and the task split. ALWAYS apply when planning
+  Write a change plan — how the codebase changes safely: an evidenced baseline and target,
+  enumerated preservation guarantees, transformation waves that each leave
+  the build green, cutover and rollback conditions, and a task split when needed. ALWAYS apply when planning
   refactors, rewrites, migrations, upgrades, performance, or schema work. Never write
   "no behavior change" — enumerate what is preserved. Skip for small cleanups, obvious
   bug fixes, and ordinary feature work.
@@ -18,9 +18,9 @@ preserve behavior while touching risky code, needs sequencing, or will land as a
 large to interpret without a map. Skip it for an obvious bug fix or a small cleanup.
 
 A change plan has these sections, in order: **Baseline · Target · Preservation
-guarantees · Transformation waves · Cutover / rollback · Task split**. The plan sits
-beside the spec it serves. This skill is how the plan gets created — filling that shape
-well is the job; check it with `suspec check <path>`.
+guarantees · Transformation waves · Cutover / rollback · Task split (when needed)**. The plan sits
+beside the spec it serves. This skill is how the plan gets created. When the deterministic checker
+is available, run `suspec check <path>`; otherwise apply its structural checks by hand.
 
 Place the file next to your own native artifacts — the same place you keep your plans,
 notes, and memories for this work, in a folder named after the repo you are working on
@@ -32,10 +32,10 @@ The frontmatter `kind` names the transformation: refactor · rewrite · migratio
 dependency-upgrade · performance · test-infra · mechanical-cleanup · architecture-cleanup ·
 schema-change. The kind lives on the plan; the task packets keep one shape regardless.
 
-## Baseline and target come from the inventory
+## Baseline and target come from current evidence
 
-The Baseline section cites the inventory
-— it never re-derives the current state from memory. The Target state says what the code looks
+The Baseline section cites the inventory when one was needed, or direct code, test, and command
+evidence when the current map was already clear. It never derives current state from memory. The Target state says what the code looks
 like after, _including what explicitly stays unchanged_. A reviewer who can't diff these two
 sections in their head can't judge the waves between them. No inventory yet and the work is a
 rewrite or wide refactor? Write the inventory first; a plan drawn over guessed terrain plans
@@ -50,8 +50,8 @@ preserves as guarantee rows: `ID | Behavior | Verify with` — the same one veri
 requirement gets, and the review packet checks each row the same way (Pass needs pasted output).
 
 Reuse the spec's own requirement IDs via the `preserves:` frontmatter. A guarantee with no spec
-ID to point at gets a `PG-NNN` of its own — and usually signals a spec amendment is owed: you
-just found a behavior someone depends on that no spec records.
+ID to point at gets a plan-local `PG-NNN` of its own. That records preservation without inventing
+a requirement or forcing an unrelated spec amendment.
 
 For the Verify with column, prefer a check that **would fail if the behavior changed**: a
 golden-output capture taken before the change, a differential run of old vs new paths, or a
@@ -68,8 +68,9 @@ counts). A wave that can't say how it's verified isn't a wave yet — it's a hop
 per wave catches a break while it's one wave old; validating only at the end is how a
 half-finished migration becomes its own untangling project.
 
-Where external consumers exist, a wave ships a **bridge release** — old and new surfaces both
-working — rather than a flag day. Every compatibility shim a wave introduces is recorded with
+Where external consumers cannot move atomically, plan a **bridge release** with old and new surfaces
+working together. When all consumers move in one controlled cutover, a bridge may add more risk than
+it removes. Every compatibility shim a wave introduces is recorded with
 its path, what it forwards to, and a checkable removed-when condition (e.g. "grep for the old
 call returns zero"). A shim without a removal condition is permanent by default.
 
@@ -79,10 +80,9 @@ call returns zero"). A shim without a removal condition is permanent by default.
   verified, consumers moved, shims removed. Decided now, not mid-landing.
 - **Rollback criteria** — the observable conditions that send it back, written while nobody is
   defending a half-landed change.
-- **Task split** — one row per task: which wave, which guarantee and requirement IDs. Each task
-  packet then runs isolated like any other, its Scope reading "implement or
-  preserve". The plan's Review focus section is the reviewer's starting exception list, written
-  by the person who knew where the risk was before the diff existed.
+- **Task split** — when several workers or runs are needed, one row per task: which wave, which
+  guarantee and requirement IDs. For one-worker work, record `None`; do not create task packets for
+  ceremony. Review focus names risks specific to this transformation rather than a stock checklist.
 
 Everything above is a convention — nothing in this repository enforces a change plan; the
 review of each wave's tasks is where it pays off.
@@ -105,8 +105,9 @@ review of each wave's tasks is where it pays off.
   after — warmup, sample count, aggregate, hardware, input shape. Different conditions "prove"
   speedups that don't exist. Set a hard ceiling: the regression on any other metric beyond
   which the change rolls back regardless of the primary gain.
-- **Schema-change.** Waves are expand → migrate → contract; the bridge release is mandatory,
-  not optional — data has consumers you can't redeploy.
+- **Schema-change.** Use expand → migrate → contract when old and new application versions or data
+  consumers must coexist. For an atomic, reversible cutover with no mixed-version window, record why
+  a different sequence is safer. Schema shape does not decide the rollout by itself.
 
 ## Gotchas
 
@@ -129,10 +130,11 @@ review of each wave's tasks is where it pays off.
 
 ## Before you finish
 
-- [ ] Baseline cites the inventory; Target says what stays unchanged.
+- [ ] Baseline cites current evidence and any inventory used; Target says what stays unchanged.
 - [ ] Preservation guarantees enumerated — no "no behavior change" anywhere in the plan.
 - [ ] Every guarantee row has a Verify with that would fail if the behavior changed.
 - [ ] Every wave leaves the build green and names its verify step.
-- [ ] Shims have removed-when conditions; external consumers get a bridge, not a flag day.
+- [ ] Shims have removed-when conditions; coexistence strategy matches actual consumer cutover.
 - [ ] Cutover conditions and rollback criteria written.
-- [ ] Task split covers every wave; each task maps to guarantee/requirement IDs.
+- [ ] When work is split, tasks cover every wave and map to guarantee/requirement IDs; otherwise
+      Task split says `None`.

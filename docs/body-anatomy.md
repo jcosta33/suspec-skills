@@ -1,159 +1,64 @@
 # Body anatomy
 
-> **Why every `SKILL.md` body uses numbered rules with rationales, ships an `## Anti-patterns` section, sits well under the line cap, and keeps `references/` exactly one hop away.**
+A skill body is executable guidance for an agent, not a research essay or product overview. It
+must contain enough context to work alone, while keeping lookup material and fillable notes out of
+the always-read path.
 
-Activation is necessary but not sufficient. A skill that loads but isn't _acted on_ fails as silently as one that doesn't load at all. The body's structure determines whether the rules fire.
+## Size and structure
 
----
+Anthropic recommends keeping `SKILL.md` under 500 lines and using progressive disclosure for
+supporting material [[2]](./sources.md#2). This catalog treats that as a ceiling, not a target.
+Long-context research gives a reason to keep important instructions compact, but it does not
+establish a universal ideal line count [[5]](./sources.md#5).
 
-## The empirical chain
+Use the smallest structure that carries the full discipline:
 
-```mermaid
-flowchart LR
-    A[Lost in the Middle 2024<br/>U-shaped attention] --> B(Length budgets)
-    C[Anthropic best practices] --> B
-    C --> D(Numbered rules with rationale)
-    E[Skill-creation anti-patterns] --> F(Anti-patterns sections)
-    G[Progressive disclosure model] --> H(References, one hop away)
-    B --> Z[skills/*/SKILL.md body]
-    D --> Z
-    F --> Z
-    H --> Z
-```
+1. **Purpose:** the failure mode and outcome in a few sentences.
+2. **Procedure or rules:** ordered actions with short rationales where the reason affects judgment.
+3. **Refusals or gotchas:** concrete ways the procedure is commonly defeated.
+4. **Completion gate:** inspectable conditions that must be true before handoff.
+5. **Bundled resources:** direct links to this skill's own references, when any exist.
 
-Each branch maps to one design rule. The rest of this document walks each rule in turn.
+Headings may differ when the task needs a different shape. The parts matter more than uniform
+ceremony.
 
----
+## Progressive disclosure
 
-## Length: target ~200 lines, hard-cap 500
+Keep material in `SKILL.md` when the agent needs it on every activation. Move material to
+`references/` when it is:
 
-| Source                                                                             | Finding                                                                                                                                                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [\[5\]](./sources.md#5) Liu et al., _Lost in the Middle_, TACL 2024                | U-shaped attention curve: information at the _start_ and _end_ of long contexts is recovered reliably; information in the middle degrades. Verified across GPT-3.5-Turbo, Claude-1.3, MPT-30B-Instruct, LongChat-13B.                                                                                                      |
-| [\[30\]](./sources.md#30) Hong, Troynikov, Huber, _Context Rot_ (Chroma, Jul 2025) | Eighteen LLMs evaluated; performance degrades **non-uniformly** as input grows — and not only in the middle. Generalises and strengthens _Lost in the Middle_.                                                                                                                                                             |
-| [\[31\]](./sources.md#31) Gao & Peng, _More with Less_ (ByteDance, Oct 2025)       | Token-cost grows quadratically with conversation turns; a fixed turn limit at the 75th percentile cuts cost **24–68 %** with minimal solve-rate impact. Long bodies aren't just slower to read, they're super-linearly expensive to keep around.                                                                           |
-| [\[36\]](./sources.md#36) Harada et al., _Curse of Instructions_, ICLR 2025        | Joint instruction-following collapses multiplicatively with instruction count (≈ per-instruction rate to the power of N): at ten simultaneous instructions GPT-4o satisfies all of them only **~15 %** of the time. Fewer, well-separated rules in a leaner body are followed far more reliably than many packed together. |
-| [\[2\]](./sources.md#2) Anthropic best practices                                   | 500-line hard cap on `SKILL.md` bodies.                                                                                                                                                                                                                                                                                    |
-| [\[8\]](./sources.md#8) Ibryam, "Skill Authoring Patterns"                         | Practical target ~200 lines; observation that beyond 200, instructions toward the bottom are read but not consistently acted on.                                                                                                                                                                                           |
+- a fillable run-note frame;
+- a language-specific or domain-specific lookup table;
+- a detailed evasion catalog; or
+- useful only at one named step.
 
-**Applied in this repo:** every shipped skill body sits well under the 500-line hard cap, and all but one hold to the ~200-line practical target — the catalogue clusters short. The one body just over 200 is [`bulletproof`](../skills/bulletproof/SKILL.md) (~220 lines), carrying a full posture plus its procedure. The cap is a rule in [`AGENTS.md`](../AGENTS.md) (the body-length rule) — a convention checked by review; nothing in this repo enforces it.
+References stay one hop from `SKILL.md`. A bundled reference must not require another catalog
+skill or a repository-external file to make sense.
 
-> The 500-line cap is non-negotiable; the 200-line target is a forcing function. If a skill grows past 200, the next question is "what should move to `references/`?", not "should I raise the limit?".
+## Rule quality
 
----
+A rule earns its place when removing it creates a concrete failure. Explain the reason when it
+helps the agent handle an unlisted case. Avoid decorative MUST/NEVER language, duplicated summaries,
+fixed counts with no behavioral basis, and examples that merely restate the rule.
 
-## Numbered rules with brief rationales
-
-| Source                                                | Finding                                                                                                                                                                                           |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [\[2\]](./sources.md#2)                               | Bare ALL-CAPS MUST/NEVER imperatives are flagged as a yellow signal in Anthropic's `skill-creator`; pairing each rule with a one-line rationale gives the model a rubric for unanticipated cases. |
-| [\[8\]](./sources.md#8) Pattern 6 ("Explain-the-Why") | The rationale is what lets a model extend the rule to a case the author didn't anticipate.                                                                                                        |
-
-**Applied in this repo:** every body pairs each rule with one or two sentences of justification — numbered `### N. <Rule>` headings, numbered lists under `## Rules`, or hard-constraint bullets where that shape is clearer. Examples worth opening:
-
-- [`empirical-proof`](../skills/empirical-proof/SKILL.md) — rules 2–6 each pair the directive with the failure mode it prevents.
-- [`write-research`](../skills/write-research/SKILL.md) — the rules alternate the directive with its evidentiary rationale.
-- [`revolver-review`](../skills/revolver-review/SKILL.md) — the adversarial-discipline rules pair each directive with the failure mode it counters.
-
-> Bare imperative without rationale is the structural equivalent of a magic constant: works for the cases the author imagined, falls apart on the next one.
-
----
-
-## Anti-patterns sections, not just rules
-
-| Source                                                        | Finding                                                                                        |
-| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| [\[8\]](./sources.md#8) Pattern 9 ("Known Gotchas")           | Documenting failure modes seen in real runs — _"the most valuable content of a mature skill"_. |
-| [\[6\]](./sources.md#6) Skill-creation anti-pattern catalogue | Negative-example coverage is consistently load-bearing across analysed skills.                 |
-
-**Applied in this repo:** every shipped skill carries its negative examples — an `## Anti-patterns` section, a `## Refuses` / red-flags table, or both. Many also include a `## What does not belong` section that names content that should live elsewhere — the negative-space sibling.
-
-> Without negative examples, an agent has no prior for the edge cases that don't fit the happy path; it invents a fix, often wrong.
-
----
-
-## References stay exactly one hop away
-
-| Source                                                       | Finding                                                                                                                                                                                 |
-| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [\[2\]](./sources.md#2) § _Avoid deeply nested references_   | When files reference other files, Claude often partial-reads with `head -100` and misses content; the official guidance is to keep `references/` files exactly one hop from `SKILL.md`. |
-| [\[8\]](./sources.md#8) Pattern 4 ("Progressive Disclosure") | Reinforces the same rule: the agent loads the referenced file lazily; chained references are read partially.                                                                            |
-
-**Applied in this repo:** every skill with bundled resources keeps `references/*.md` exactly one level deep. No `references/` file links to another `references/` file across the repo. Verified by `Grep` over the file tree.
-
-> Reference depth turns into partial reads, which turn into silent omissions in the skill's behaviour. The cap is structural, not stylistic.
-
----
-
-## Task templates: a separate concern with its own doc
-
-A `references/task-template.md` is a structural commitment with its own diminishing-returns curve, its own cost model (the produced task file accrues across sessions), and its own decision rubric. The full empirical case — Anthropic's canonical three-file pattern [\[20\]](./sources.md#20), the InfiAgent 21x ablation [\[29\]](./sources.md#29), the 6-criterion rubric, the deliberate exemption pattern applied in this repo — lives in [Task files](./task-files.md).
-
-> **The short version:** ship a `task-template.md` only when working state is genuinely separate from the deliverable. If the deliverable _is_ the working state, or the skill is a cross-cutting method or quality gate whose discipline lives entirely in `SKILL.md`, ship none.
-
----
-
-## Progressive disclosure: metadata always, body when triggered, resources on demand
-
-The open spec [\[1\]](./sources.md#1) defines a three-stage loading model and Anthropic's docs [\[2\]](./sources.md#2) document the cost characteristics:
-
-```mermaid
-flowchart LR
-    M[1 . Metadata<br/>name + description<br/>always in context]
-    M -->|description matches user task| B[2 . Body<br/>full SKILL.md<br/>loaded on activation]
-    B -->|agent reads referenced file| R[3 . References / scripts / assets<br/>loaded on demand]
-```
-
-**Applied in this repo:**
-
-- The `description` is treated as the load-bearing artefact. See [Activation](./activation.md).
-- The body is sized for the U-curve: short enough that nothing important sits in the middle's attention trough.
-- `references/` files are kept one hop away so the on-demand load is reliable.
-
-The cross-cutting methods are the canonical example: each method skill is its own self-contained file, well under the 200-line target. Only the method the task actually calls for loads — total context cost is _lower_ than a single monolithic index would have been.
-
----
-
-## What a well-shaped body looks like
-
-A consolidated reference. The canonical skeleton (`empirical-proof` is the cleanest instance); shipped skills vary the carrier — numbered `## Rules` lists, `## Refuses` tables, hard-constraint bullets — while keeping the same parts. New contributions should match the parts, not necessarily the headings.
+Negative guidance is most useful when it names the tempting action and its consequence:
 
 ```text
----
-name: <kebab-case>
-description: <directive form, ~350–600 chars>     ← see Activation
----
-
-# Skill: <Name>
-
-## Purpose
-<2–3 sentences. The failure mode this skill prevents.>
-
-## Core rules
-### 1. <Rule>
-<rule body + 1–2 sentence rationale>
-
-### 2. <Rule>
-…
-
-## What does not belong
-<negative space — pointers to where adjacent content lives instead>
-
-## Anti-patterns
-<concrete failure modes with corrections, ❌ <pattern> → <correction>>
-
-## Bundled resources
-<one line per references/, scripts/, assets/ shipped alongside>
+Do not widen an assertion until the flake disappears; that hides the nondeterminism instead of
+removing it.
 ```
 
-The repo's [`AGENTS.md`](../AGENTS.md) carries the editing rules this template encodes.
+## Run-note templates
 
----
+A bundled `references/task-template.md` is a private execution aid, despite the historical
+filename. It is warranted when repeated experiments, checkpoints, or evidence would otherwise be
+lost across a long run. It is not required for every skill and never replaces a Suspec task packet.
+See [Task files](./task-files.md).
 
-## See also
+## Review checklist
 
-- [Activation](./activation.md) — how the body actually gets loaded in the first place.
-- [Execution](./execution.md) — once loaded, why some rules still get skipped (and the fix).
-- [Self-containment](./self-containment.md) — why bodies don't link to sibling skills.
-- [Task files](./task-files.md) — when a skill warrants a `references/task-template.md`, and when it doesn't.
-- [Sources](./sources.md) — full bibliography.
+- The body works with this skill installed alone.
+- Every section changes agent behavior or preserves needed state.
+- Important instructions are not buried in on-demand reading.
+- Bundled references are direct, scoped, and named at the step that needs them.
+- The body stays below the catalog ceiling without compressing away necessary safety detail.

@@ -4,8 +4,8 @@ type: agent-guide
 description: >-
   Implement a rewrite task: re-implement code whose behavior changes on
   purpose, proving the recorded delta with its checks and the preserved
-  non-delta with an equivalence check. ALWAYS apply when a task packet rewrites
-  a module, replaces an implementation, or redoes something wrong — behavior
+  non-delta with an equivalence check. ALWAYS apply when asked to rewrite a
+  module, replace an implementation, or redo something wrong — behavior
   deliberately changing. Never start before the delta is recorded, ship an
   unrecorded difference, or treat "rewrite" as license to redesign. Skip
   behavior-preserving refactors, API/version migrations, performance tuning,
@@ -18,20 +18,30 @@ A rewrite is riskier than a refactor because behavior is _permitted_ to change �
 change hides exactly where an intended one is allowed. The discipline forces the change onto two
 provable surfaces: the **delta** (every behavior meant to change) and the **preserved non-delta**
 (everything else). The delta is the contract; anything not on it must survive untouched. This guide
-carries the rewrite discipline standalone, and keeps this task's changes isolated in one worktree
-(or branch) so parallel tasks stay write-disjoint and the reviewer sees one clean diff. These are
-conventions the review packet inspects — nothing enforces them at edit time.
+carries the rewrite discipline standalone. When runs are parallel, isolate each in its own worktree
+or branch so their writes stay disjoint. These are conventions the review packet inspects — nothing
+enforces them at edit time.
 
 Plan the transformation first — the change plan covers baseline, waves, and rollback;
 this guide is the execution half. If your task moves _no_ observable behavior, it is a refactor; if
 only the implementation API moves while behavior holds, it is a migration; if it adds capability
 that did not exist, it is a feature. Relabel rather than proceed under the wrong discipline.
 
-**Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
-into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
-the structure from memory). It scaffolds the delta table consumed from the sources, the preservation
-ACs, the caller inventory, pasted evidence, and the self-review. The task packet itself uses the
-kit's task template.
+**Before editing, open [`references/task-template.md`](./references/task-template.md)** and instantiate
+it as run notes. Record its path separately from any input task packet and fill it as you go. These
+notes are private execution state, not a Suspec task packet.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
+**Before handoff, close the evidence loop.** These notes are scratch state, not the review index.
+When a task or spec governs the work, copy final changed files, fresh Verify evidence, scope drift,
+blocked questions, and findings into the task's `## Run summary` / `## Findings` or the spec's
+`## Execution`. If neither exists, return the same material in the direct handoff. A reviewer must
+not need this private file to find the final evidence.
 
 ## Rules
 
@@ -43,9 +53,9 @@ kit's task template.
    proves the intended change was built — and proves nothing about the regression risk it created.
    The preserved surface is exactly where an unintended change hides.
 3. **Prove the two surfaces with two different checks.**
-   - **The delta**: each changed behavior verified by its named check. For a new test, flip its
-     assertion (or comment out the path it exercises) — it must fail, then pass when restored;
-     paste both transitions.
+   - **The delta**: each changed behavior verified by its named check. A new test must fail against
+     the pre-rewrite behavior or a controlled violation of the targeted delta, then pass against the
+     intended result; paste both transitions.
    - **The non-delta**: an equivalence check that would fail if anything outside the delta changed
      — property-based, differential (keep the old path reachable behind a shim and diff the two on
      the preserved surface), or golden-output pinned before the change. A green suite that never
@@ -77,7 +87,7 @@ kit's task template.
 | Testing only the delta                                         | Add preservation checks; the regression risk lives in the non-delta |
 | "Callers are fine" with no pasted search                       | Grep the whole codebase, string forms included; paste it            |
 | Calling it a refactor though behavior changes (or the reverse) | Relabel and load the matching guide                                 |
-| A delta aspect left undecided ("probably preserved")           | Every aspect is in the delta or preserved — make the call visible   |
+| A delta aspect left undecided ("probably preserved")           | Stop; have the source record whether it changes or is preserved     |
 
 ## Self-review gate
 
@@ -108,6 +118,5 @@ Before declaring the task done:
 
 ## Bundled resources
 
-- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (the delta table as consumed
-  from the sources, preservation ACs, caller inventory, pasted evidence, self-review). The task
-  packet itself uses the kit's task template.
+- [`references/task-template.md`](./references/task-template.md) — private run notes for the delta,
+  preservation criteria, caller inventory, evidence, and self-review.

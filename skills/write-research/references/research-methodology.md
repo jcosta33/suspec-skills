@@ -1,80 +1,71 @@
-# Reference: grading evidence for a research note
+# Reference: appraising evidence for a research note
 
-Pull this up when a research question turns on **empirical or scientific evidence** — study
-results, effect sizes, benchmark numbers, safety/efficacy or "X is faster/safer/better" claims —
-not just an API-shape or library-feature comparison. It gives you a defensible way to rank what a
-source is worth and to screen out the untrustworthy ones, so a recommendation rests on the
-strongest evidence available, with its weaknesses named.
+Use this reference when a question turns on empirical results, comparative performance, safety,
+reliability, or another outcome claim. Appraise whether the evidence can support the exact claim;
+do not rank sources by venue label alone.
 
-**Honest framing.** The frameworks below — OCEBM's levels, GRADE, PRISMA's reporting discipline —
-come from *clinical* evidence appraisal. Their specifics (RCTs, patient outcomes) rarely map onto
-software or product research. What transfers is the **principle**: rank a source by how much its
-*design* can support the claim, then **downgrade** for the concrete weaknesses you can see. Use
-this as an analogue and a checklist, not a pretense that a library benchmark is a drug trial. It
-is a convention — nothing enforces it; the review packet inspects it.
+## 1. Match evidence to the claim
 
-## 1. The source-tier ladder (adapted from OCEBM 2011)
+| Claim type | Strong direct evidence | Common mismatch |
+| --- | --- | --- |
+| what a standard defines | the current standard or specification | an implementation blog paraphrasing it |
+| what an API supports | versioned official docs plus source or executable contract tests | a review or tutorial for another version |
+| how a product behaves now | safe direct exercise under recorded conditions | a marketing statement presented as observation |
+| comparative performance | a representative benchmark with method, data, variance, and matched conditions | one vendor's unreported workload |
+| causal effect | a design that controls alternatives and reports uncertainty | before/after correlation presented as causation |
+| prevalence or frequency | a disclosed sampling frame and denominator | examples collected without a population |
+| actor intent or announcement | a contemporaneous first-party record | later commentary inferring intent |
+| user experience | appropriately sampled user evidence with method disclosure | one anecdote generalized to all users |
 
-OCEBM ranks study designs into five levels per question type — Level 1 a systematic review, down
-to Level 5 mechanism-based reasoning, the likely strongest evidence furthest to the left. The
-software-research analogue, strongest first:
+A source can be strong for one row and weak for another. Official documentation is authoritative
+for its stated contract, not for independent superiority. Peer review raises confidence in process,
+not relevance to a different version, population, or workload.
 
-1. **A systematic review / meta-analysis** of the question, or an independent multi-study benchmark.
-2. **A peer-reviewed study** with a reproducible method and reported data.
-3. **A standard or specification** (RFC, W3C, ISO) — authoritative for *what is defined*, not for *what performs*.
-4. **Official first-party docs**, then **the source code** (cite repo + version).
-5. **Measured product behavior you ran yourself**, output recorded.
-6. **Mechanism-based reasoning / a single uncorroborated report / vendor commentary** — Level 5: weakest, cite only with the primary source it rests on.
+## 2. Appraise the method
 
-This re-prioritizes the guide's general rule 3 order for *empirical* questions: a standard or spec
-is authoritative for what is *defined* but says nothing about what *performs*, so for a
-performance/effect question it ranks below an independent study. A source's level is its *ceiling*,
-not its score — §2 takes it down from there.
+For each load-bearing source, record:
 
-## 2. Downgrade / upgrade checks (adapted from GRADE)
+- **provenance:** author, publisher, date, version, funding, and conflicts of interest;
+- **design:** experiment, observational study, benchmark, survey, case study, or analysis;
+- **population and setting:** who or what was measured, under which conditions;
+- **measurement:** outcome definition, instruments, baselines, and whether raw data or code exists;
+- **uncertainty:** sample size, variance or intervals, missing data, and sensitivity analysis;
+- **replication and conflict:** independent corroboration and contrary results; and
+- **directness:** how closely the source matches this decision's version, scale, users, and task.
 
-GRADE starts RCT evidence "high" and observational "low," then moves it for stated reasons.
-Start each source at its §1 tier, then **downgrade** when you can see:
+Downgrade confidence for uncontrolled confounding, selective reporting, indirect settings,
+imprecision, stale versions, undisclosed methods, conflicts of interest, or unresolved contradictory
+evidence. Upgrade only when stronger design or independent replication justifies it. Record the reason,
+not just a label.
 
-- **Study limitations** (risk of bias) — no control, cherry-picked workload, author runs the thing being measured.
-- **Inconsistency** — other sources on the same question disagree and it isn't reconciled.
-- **Indirectness** — the source's setting (version, scale, language, workload) does not match *your* question.
-- **Imprecision** — small N, one run, no variance/CI reported, a single anecdote.
-- **Reporting / publication bias** — only the favorable result is shown; the method or raw data is withheld.
-- **Conflict of interest** — vendor-funded or vendor-authored about its own product (a software-specific addition; treat as a strong downgrade unless the method is independently reproducible).
+## 3. Exercise products carefully
 
-**Upgrade** only for: a **large, consistent effect** across independent sources; a **dose-response**
-pattern; or where **plausible bias would push against** the observed effect and it holds anyway.
+When current behavior is load-bearing and safe access exists:
 
-Record the result as the finding's **confidence** (high / medium / low), and say *why* it was
-downgraded — a confidence with no reason is unauditable.
+1. record version, account level, region, flags, and date;
+2. define the exact action and expected observable before running it;
+3. capture the unedited output or screenshot; and
+4. distinguish the observed behavior from the inference drawn from it.
 
-## 3. Screen the venue before you trust it
+Do not exercise a product when doing so would violate access terms, create cost or risk without
+authorization, or expose private data. In that case, state the access boundary and rely on the
+strongest available contract evidence without claiming direct observation.
 
-Before citing a paper, run a practitioner screen for the marks of a predatory or untrustworthy
-venue — self-interest prioritized over scholarship, false or misleading information, deviation
-from best editorial practice, lack of transparency, aggressive solicitation. Apply the same logic
-to a blog, vendor page, or preprint:
+## 4. Separate observation from inference
 
-- **Accountability** — can you identify and contact the publisher/author? Is there a named, expert editorial board (or, for a blog, a named author with standing)?
-- **Process** — is the peer-review (or editorial) process stated? For OA papers, is the journal **listed in DOAJ**? Is the publisher a **COPE / OASPA** member?
-- **Transparency** — are the method and data shown, or only the conclusion?
-- **Provenance** — does the piece cite its own primary source, or assert downstream? An SEO content-farm or an unattributed "studies show" is the software predator: cite the primary or drop it.
+An observation is what the source or run exposes. An inference is what that observation means for
+the research question. Keep both visible:
 
-A source that fails the screen is **rejected** (§5), not cited with a caveat.
+```markdown
+Observation: benchmark B reports 4,200 requests/second under workload W on version V.
+Inference: this supports the target load only if W, V, hardware, and latency constraints match ours.
+Confidence: Moderate; hardware matches, request mix does not.
+```
 
-## 4. Keep observation separate from claim
+## 5. Preserve material rejections
 
-What you *saw* (the benchmark printed 4,200 req/s; the abstract states 91% pass@1) is an
-**observation**. What it *means for the question* (library A scales for our load) is a **claim**,
-and it carries the confidence from §2. Blur the two and an indirect or imprecise observation gets
-laundered into a high-confidence claim. PRISMA's reporting discipline makes this concrete: report
-the full search and the per-outcome certainty so a reader can re-judge — for a research note, that
-means the evidence field shows what you found and how, not just the conclusion.
-
-## 5. The Rejected trail (auditable)
-
-Record sources you evaluated and **rejected**, each with the reason — *predatory/untrustworthy
-venue*, *could not verify (paywalled, dead link)*, *superseded by a newer source*, or *failed the
-§2 downgrade so hard it carries no weight*. A rejection that leaves no trace invites the next
-author to re-cite the same bad source; the trail is the evidentiary audit.
+Record a rejected source when another researcher could reasonably find and reuse it. Name the source
+and the specific reason it carries no weight: wrong identity, retracted or corrected result, method
+unavailable, superseded version, population mismatch, fabricated citation, or unresolved conflict.
+Do not reject solely because a source is a preprint, blog, vendor publication, or unpopular venue;
+judge provenance, method, and claim fit.

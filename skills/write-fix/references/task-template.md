@@ -1,10 +1,17 @@
 # Run notes: {{title}}
 
-- Task packet: {{full path to this task file — handed to you by whoever dispatched the task}}
-- Bug report: {{full path to the bug report}}
-- Spec defining the broken behavior (if any): {{full path to the spec}}
+- Run notes: {{full path or stable native-artifact identifier for this file}}
+- Task packet: {{full path when dispatched from one; otherwise None}}
+- Bug report: {{full path when one exists; otherwise None}}
+- Spec defining the broken behavior: {{full path when one exists; otherwise None}}
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
 
 > **Fix task** — reproduce the defect, patch the root cause (not the symptom), bind a regression
 > test that fails before the patch and passes after, run the full suite, paste the evidence.
@@ -18,7 +25,7 @@
 > nondeterminism (shared state, timing, ordering) not the assertion, and prove it with the same loop
 > run green repeatedly. That is stabilization work, not this fix.
 
-## Scope (from the task packet)
+## Scope (from the task packet or direct intent)
 
 - In: the named defect and its ACs only.
 - Do not change: {{areas the packet rules out}}; neighboring bugs and "while I'm here" cleanup go
@@ -53,9 +60,9 @@ is what stops the next attempt from repeating a dead end.
 
 - [ ] Bug report read; reproduction re-run in this worktree, output pasted
 - [ ] Cause located at file:line — traced from the symptom, not the first suspicious line
+- [ ] Regression test added or identified on unfixed code — fails for the intended reason (output pasted)
 - [ ] Minimal patch at the cause
-- [ ] Regression test added — fails with the fix patched out (verified, output pasted)
-- [ ] Regression test passes with the fix restored (output pasted)
+- [ ] Same regression test passes after the fix (output pasted)
 - [ ] Full suite + checks clean after the final edit (output pasted)
 - [ ] No bundling; related defects recorded as findings
 - [ ] Self-review answered with pasted evidence
@@ -63,10 +70,10 @@ is what stops the next attempt from repeating a dead end.
 ## Evidence (paste actual command output — never paraphrase)
 
 - Pre-patch reproduction (the bug fires):
-- Regression test, fix patched out (goes red):
-- Regression test, fix restored (goes green):
-- Full test suite after the final edit (last lines + exit):
-- Check command (last lines + exit):
+- Regression test on unfixed code (goes red for the intended reason):
+- Same regression test after the fix (goes green):
+- Full test suite after the final edit (runner summary + exit):
+- Check command (runner summary + exit):
 
 ## Decisions
 
@@ -77,7 +84,8 @@ evidence, not a decision; it goes above.)
 
 ## Findings
 
-Neighboring bugs, refactor opportunities, missing tests elsewhere — durable ones become native memories (see save-findings).
+Neighboring bugs, refactor opportunities, missing tests elsewhere. Keep them here for review; only
+evidence-backed, durable lessons move into native memory or project channels at close.
 
 -
 
@@ -91,6 +99,11 @@ A reproduction that will not fire, a requirement the fix cannot meet as written.
 
 -
 
+## Handoff
+
+- [ ] Final evidence, summary, and findings copied into the controlling task/spec when one exists;
+      otherwise included in the direct handoff. Nothing final lives only in these private notes.
+
 ## Self-review
 
 Answer in writing, evidence pasted. A symptom-patch leaves the bug latent — close as a reviewer
@@ -98,7 +111,7 @@ hostile to "looks fine".
 
 - **Root cause:** did the patch land at the cause's file:line, or suppress a symptom elsewhere?
   Could the bug recur via a different path under the same cause?
-- **Regression test:** does it fail when the fix is patched out — verified, transition pasted? Does
+- **Regression test:** did it fail on unfixed code before the production patch — verified, transition pasted? Does
   it assert behavior, not internal state?
 - **Side effects:** did the full suite pass after the final edit, output pasted?
 - **Scope:** minimal fix only; related defects recorded as findings, not bundled; nothing outside

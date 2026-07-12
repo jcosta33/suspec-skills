@@ -18,7 +18,7 @@ map you need before drawing new boundaries.** An audit can correctly flag that a
 violates the architecture, and still leave you unable to fix it safely, because fixing it needs
 answers the audit doesn't carry: who calls this function? who subscribes to this event? what do
 callers actually rely on? An audit alone is not enough preparation for a rewrite or a major
-refactor — write the inventory first — a convention Suspec expects before rewrites; nothing enforces it.
+refactor. The trigger is uncertainty about the current map, not ceremony; nothing enforces it.
 
 The inventory sits beside the spec or change plan it serves; its shape is set out below,
 section by section.
@@ -31,16 +31,16 @@ forward — every later step names artifacts by explicit path.
 
 This guide is how to fill it well.
 
-## The stance: map, don't judge
+## The principle: map, don't judge
 
 An inventory **observes**. Three documents divide brownfield work, and mixing them dilutes all
 three:
 
-| Document    | Question                   | Stance                |
+| Document    | Question                   | Function              |
 | ----------- | -------------------------- | --------------------- |
-| Inventory   | What was built here?       | reconstructive — maps |
-| Audit       | What's broken or risky?    | adversarial — judges  |
-| Change plan | How does it change safely? | prescriptive — plans  |
+| Inventory   | What was built here?       | reconstructs          |
+| Audit       | What's broken or risky?    | assesses              |
+| Change plan | How does it change safely? | plans                  |
 
 Catch yourself writing "this is bad" → that's an audit observation. Catch yourself writing
 "we should split this" → that's the change plan. The inventory's sentences are all of the form
@@ -50,8 +50,8 @@ Catch yourself writing "this is bad" → that's an audit observation. Catch your
 
 - **Scope.** What the map covers and excludes. An inventory of everything is an inventory of
   nothing — bound it to the area the coming change will touch.
-- **Current modules.** One row per module: path, responsibility in one line, notes (quirks,
-  duplication). This is the territory list the change plan's Affected surfaces draws from.
+- **Current modules.** One row per module: path, observed responsibility, and evidence. This is the
+  territory list the change plan's Affected surfaces draws from.
 - **Current interfaces.** The load-bearing section: each function, endpoint, or event — **who
   calls it** and the **observed contract** (what callers actually get, not what a comment
   promises). Grep for callers; don't recall them. An interface row with no caller column filled
@@ -60,14 +60,12 @@ Catch yourself writing "this is bad" → that's an audit observation. Catch your
   name, a `file:line`, a pasted output. "The export job assumes `user.email` is never null —
   `export.ts:142`." A behavior row without evidence is an opinion; the change plan will turn
   these rows into preservation guarantees, so the evidence becomes the verify method.
-- **Known risks.** Factual hazards you saw while mapping — spread logic, duplicated rules,
-  coverage holes. Note them in one line each; deep judgment goes to an audit.
 - **Existing tests.** Which test files cover this area. The change plan needs to know where the
-  safety net already is — and where it isn't.
-- **Unknowns.** The most valuable section: who may depend on shapes, values, or timing you
+  safety net already is and where no test was found in the searched scope.
+- **Unknowns.** Record who may depend on shapes, values, or timing you
   _cannot see from here_ — external consumers, dynamic lookups, generated code, anything a grep
-  can't reach. Every unknown is a place the coming change can break someone invisibly; naming
-  it now is what turns "we didn't know" into "we knew and checked".
+  cannot reach. If the search exposes no unknown, state the boundary you checked and `None found`;
+  do not manufacture uncertainty.
 
 ## How to gather it
 
@@ -100,17 +98,15 @@ as a change plan built on guesses.
 - **Filled an interface row from memory.** Recalled callers inherit every drift between what
   people believe and what's deployed — the exact gap the inventory exists to close. Grep for the
   callers; an interface row with the caller column empty is a guess wearing a table.
-- **Left Unknowns empty.** An empty Unknowns section almost always means you didn't look, not
-  that nothing is unseen — external consumers, dynamic lookups, and generated code are precisely
-  where the coming change breaks someone invisibly. Naming the unknown now turns "we didn't know"
-  into "we knew and checked".
+- **Left Unknowns unexplained.** An empty section says nothing about what was checked. Name the
+  search boundary and either record the unknowns or state `None found`.
 
 ## Before you finish
 
 - [ ] Every sentence observes; nothing judges or prescribes.
 - [ ] Every interface row names its callers — found by search, not recall.
 - [ ] Every observed-behavior row carries evidence (test, `file:line`, or output).
-- [ ] Unknowns section is honestly populated — an empty one usually means you didn't look.
+- [ ] Unknowns names unresolved dependencies or states `None found` with the search boundary.
 - [ ] Scope says what's excluded, not just included.
 
 ## Next

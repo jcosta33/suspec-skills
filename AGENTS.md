@@ -1,4 +1,4 @@
-# AGENTS.md — suspec-skills
+# AGENTS.md — Suspec skills
 
 This repo is the skills catalog for the Suspec framework — the methodology
 skill family plus the universal disciplines: self-contained agent guides in
@@ -18,8 +18,8 @@ The rationale and evidence for each rule live in `docs/` (the rule names its pag
   when to ALWAYS apply, name what the skill refuses, end with a `Skip for …`
   clause naming task types (never sibling skill names).
 - **The body-length rule** (`docs/body-anatomy.md`): bodies stay under the
-  500-line hard cap, target ~200; depth moves to `references/`. Rules are
-  numbered, each with a one-line rationale.
+  500-line catalog ceiling; depth used only after activation moves to
+  `references/`. Rules include a brief rationale when it affects judgment.
 - **The forced-output rule** (`docs/execution.md`): a verification step must
   require visible output (a paste, a table, a marker in the deliverable) — a
   step that only asks the agent to "verify" gets silently skipped.
@@ -30,11 +30,12 @@ The rationale and evidence for each rule live in `docs/` (the rule names its pag
   that merely sends a different task elsewhere (`load fix-flaky-test, not this`)
   carries no dependency and needs no marker — the test is whether the skill
   still works when the named guide is absent. Artifacts are referenced by
-  role ("the spec", "the task packet"); a skill that places an artifact states
+  role ("the spec", "the task packet", "run notes"); a skill that places an artifact states
   the placement guidance — the placement paragraph, kept byte-identical
   wherever it appears across the catalog — and carries the file's full path
   forward, so every later step names artifacts by explicit path. A skill
-  never hardcodes a location. Anything else goes to the Suspec repo by name,
+  never hardcodes a location. Run-note templates identify their own path separately
+  from any input task packet. Anything else goes to the Suspec repo by name,
   never by relative path.
 - Skills name abstract command slots (`cmdTest`, `cmdLint`, `cmdValidate`, …) —
   never a concrete toolchain command; the consuming repo's `AGENTS.md` supplies

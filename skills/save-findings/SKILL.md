@@ -2,120 +2,90 @@
 name: save-findings
 type: agent-guide
 description: >-
-  Close the work by saving what it taught: sweep the task or review packet's
-  Findings section, write each durable lesson as a native harness memory with
-  its evidence, and route team-facing residue through the project's own
-  channels by hand. ALWAYS apply this skill at Close — after the review,
-  before the work is handed off — or whenever a session surfaced something a
-  future session would want to know. Never save unevidenced memories, bundle
-  lessons under one generic title, point evidence at a packet that dies
-  with the work, or drop a severe candidate (a security issue, a correctness
-  risk) as ephemeral without escalating it first. Skip mid-task; the packet's
-  Findings section is the staging area until Close.
+  Close work by preserving what it taught: collect finding candidates from the
+  active run, save each durable personal lesson through the harness's native
+  memory when available, and route team-facing residue through project channels.
+  ALWAYS apply at Close, after review and before handoff, or when a session
+  surfaces a verified lesson future work needs. Never invent a memory file,
+  save secrets or private data, preserve an unevidenced claim, bundle unrelated
+  lessons, or let a severe issue disappear as ephemeral. Skip mid-task; keep
+  candidates in the active working artifact until Close.
 ---
 
 # Saving findings
 
-An agent session ends and its context evaporates — anything not written down is gone, and the
-next session re-discovers it the expensive way. Close is where you stop that: **before closing
-the work, record every durable lesson as a native memory.** This is a convention — nothing
-enforces it; it costs one memory per lesson.
+Close turns verified lessons into retrievable state. It does not create a Suspec findings store or
+assume every harness exposes memory.
 
-## The close flow
+## Close flow
 
-1. **Sweep the staging area.** Read the packet's `## Findings` section — the task packet's when
-   one exists, the review packet's otherwise. List every candidate: facts learned, quirks hit,
-   decisions made, gotchas survived.
-2. **Decide each candidate deliberately.** Durable → a native memory. Ephemeral → it rides the
-   review packet and dies with it — drop it, knowingly. A candidate carrying real severity — a
-   security issue, a correctness risk — is never dropped as ephemeral without escalating it
-   first: an issue, an ADR, or the review packet's `## Human attention` list (see
-   review-output). The failure mode is neither saving nor dropping — candidates rotting in a
-   closed packet nobody reopens, or a severe one dying quietly because nobody escalated it.
-3. **Write each durable lesson natively.** A durable lesson becomes a native memory: write it
-   the way your harness records memories (a memory file, CLAUDE.md, whatever your runner
-   provides), one claim per memory, the evidence attached, under a searchable title. Suspec
-   adds no parallel findings store — if the lesson belongs to the team rather than to you,
-   raise it through the project's own channels (an issue, an ADR, a test).
-4. **Attach the evidence to the memory itself.** The command, the pasted output, or the
-   file:line that proves the claim lives in the memory — a memory whose proof stayed in this
-   session's context is unprovable by the next one. Link related memories where your harness
-   supports it.
-5. **Route the outgrown ones by hand.** A decision big enough to outlive the feature is an ADR
-   in the repo's decision ledger, not a memory. New intended behavior is a spec amendment, not
-   a memory. A reproduced defect is a bug report, filed as an issue. Each is written by hand,
-   like any other contribution — the memory is for reusable facts that belong to you.
+1. **Collect every candidate.** Read the active task packet's `## Findings` when work was split,
+   the review packet's findings and Human attention, the spec's current `## Execution` notes for
+   direct work, and any verified lesson surfaced in the session. The carrier varies; the sweep does
+   not.
+2. **Classify deliberately.** Mark each candidate:
+   - **ephemeral:** useful only to this completed run;
+   - **personal durable:** a verified fact, contract, or gotcha future work in this area needs;
+   - **team durable:** a decision, defect, invariant, or operational fact collaborators need; or
+   - **severe:** a security, correctness, privacy, data-loss, or compliance issue requiring explicit
+     human attention before close.
+3. **Apply the privacy gate.** Never save credentials, tokens, private keys, personal data, customer
+   data, confidential prompts, or raw output containing them. Redact evidence while preserving the
+   part that proves the claim. When redaction would make the evidence meaningless, route the finding
+   through the project's approved restricted channel instead of memory.
+4. **Use native memory when it exists.** Call the harness's actual memory capability. Save one claim
+   per memory under a searchable title, with evidence, scope, and where it does not apply. Do not
+   guess a filesystem convention or write `CLAUDE.md`, `AGENTS.md`, or another ad hoc memory file.
+5. **Use an honest fallback when native memory does not exist.** Create no substitute store. Route
+   team-durable findings through project channels. Leave personal task-local observations ephemeral;
+   do not invent a handoff section that behaves like an unsanctioned memory store. Severe candidates
+   still go to Human attention and the project's approved escalation path.
+6. **Route team residue by ownership.** Decisions go to the project's ADR process. Reproduced defects
+   go to its issue or bug-report process. Invariants that must never regress become tests when that
+   change is authorized. Operational facts use the team's documented runbook or issue channel.
 
-## What counts as durable
+## A good memory
 
-The test: _would a future session in this area want to know this?_
+```markdown
+Title: payments-sandbox-rate-limit
 
-- **Provider quirks** — "the payments sandbox rate-limits at 10 rps; the docs say 100."
-- **Hidden contracts** — "the export job assumes `user.email` is never null."
-- **Decisions with rationale** — "we retry idempotent calls only; see the PR discussion."
-- **Gotchas** — "the suite passes locally with a stale fixture; regenerate first."
+Claim: The sandbox returned HTTP 429 above the recorded request rate on 2026-07-11.
+Evidence: `<redacted command>` returned `<non-sensitive response excerpt>`; run id `<durable id>`.
+Applies to: sandbox account plan and region used by the run.
+Does not establish: production limits or behavior on another account plan.
+```
 
-What does **not** count: run logs, transcripts, "the tests passed" (that lives in the review
-packet), local environment details, anything you'd never search for again.
+The evidence must survive the working packet. Prefer durable source pointers, committed tests, issue
+links, or a redacted proving excerpt. A pointer only to transient agent context is not evidence for a
+future session.
 
-## Writing one well
+## Refuses
 
-- **One claim per memory.** Learned three things? Write three memories — a grab-bag memory is
-  unsearchable and un-retractable, and you cannot correct one claim in it without dragging the
-  others along.
-- **Evidence attached.** Paste the proving output or name it precisely — the command and its
-  result, the file:line, the PR or issue. An evidence-free memory is a rumor with a title.
-  Prefer durable pointers: the review packet dies with the work, so anything it proves must be
-  carried into the memory itself.
-- **Bound it honestly.** "Where it does not apply" is what keeps a true-in-March lesson from
-  misleading someone in November.
-- **Title you'd search for.** "payments-sandbox-rate-limit" gets found; "notes-from-task-12"
-  doesn't.
+| Temptation | Response |
+| --- | --- |
+| Save a plausible lesson with no evidence | Verify it or leave it unsaved |
+| Put several lessons in one generic memory | Split by independently correctable claim |
+| Invent a memory file or handoff store because no API exists | Route team residue; leave personal-only observations ephemeral |
+| Paste raw logs containing secrets or personal data | Redact or use an approved restricted channel |
+| Keep a team issue only in personal memory | Route it through the project's shared channel |
+| Drop a severe candidate as run noise | Put it in Human attention and escalate before close |
+| Save mid-task before the evidence settles | Keep it staged until Close |
 
 ## Memory hygiene
 
-- **A memory states what was verified, not what was assumed.** If the session didn't prove it,
-  either prove it before saving or don't save it.
-- **Agent-authored claims name their evidence.** Anything you write is a claim, not a fact,
-  until the evidence that grounds it is attached — a future session must be able to re-check
-  it without you.
-- **Correct or delete a memory when contradicted.** The moment reality disagrees with a saved
-  memory, fix it or remove it — a stale memory misleads every session that loads it.
+- Save what was verified, not what was assumed.
+- Name time, version, environment, and population bounds that can expire.
+- Correct or remove a native memory when later evidence contradicts it.
+- Never infer that native memory auto-loads; use the harness's documented retrieval behavior.
+- Do not duplicate a durable team record into personal memory unless the memory links to that record
+  and adds a genuinely personal retrieval cue.
 
-## How findings come back
+## Completion gate
 
-A native memory comes back by itself: the harness loads it into future sessions — that is the
-whole feedback loop, and it is why each memory must stand on its own text (claim, evidence,
-bounds). A team lesson comes back through the project's own surfaces — the issue tracker's
-search, the ADR ledger, a test that fails when the lesson is forgotten. When the next spec
-touches the same area, cite the issue or ADR the lesson produced in its `sources:`.
-
-## Gotchas
-
-- **Saving a memory with no evidence.** The lesson feels obviously true, so you write the claim
-  and skip the proof. When someone doubts it in November, there is nothing to re-check, and the
-  memory quietly loses the next argument it should have won.
-- **Writing memories mid-task instead of at Close.** A quirk bites you, so you save it right
-  then. The packet's `## Findings` section is the staging area until Close; premature saves
-  skip the deliberate keep-or-drop sweep and land half-baked.
-- **Packing several lessons into one memory under a generic title.** Three discoveries land in
-  "notes-from-task-12." A grab-bag is unsearchable, and no single claim in it can be corrected
-  or retracted on its own.
-- **Pointing evidence at the review packet.** The packet dies with the work; a memory whose
-  proof lived there is evidence-free by the next session. Carry the output or a durable
-  reference (PR, issue, file:line) into the memory itself.
-- **Writing a team lesson only into your own memory.** Memories are per-developer and
-  per-harness — the team never sees them. Residue that belongs to the team goes through the
-  project's own channels — an issue, an ADR, a test — written by hand.
-
-## Before you finish
-
-- [ ] Every candidate in the packet's Findings section became a native memory or was
-      deliberately dropped.
-- [ ] Each memory states one verified claim, with its evidence named in the memory itself
-      (the command, output, or file:line that proves it).
-- [ ] Each memory says where it applies _and_ where it does not, under a title you'd search
-      for.
-- [ ] Team-facing residue went through the project's own channels — an issue, an ADR, a
-      test — written by hand.
-- [ ] Any existing memory this session contradicted was corrected or deleted.
+- [ ] Every candidate was classified and accounted for.
+- [ ] Severe candidates appear in Human attention and an approved escalation path.
+- [ ] Native memories, when supported, each contain one verified claim, evidence, and bounds.
+- [ ] When memory was unavailable, no ad hoc file or handoff store was invented.
+- [ ] Team-durable findings went through project-owned channels.
+- [ ] Saved or routed material contains no secret, credential, personal, customer, or confidential
+      data outside its approved channel.

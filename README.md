@@ -4,33 +4,33 @@
 
 Each skill is a self-contained folder under [`skills/`](./skills/): one `SKILL.md` with a trigger description and the working rules, plus bundled `references/` where a skill ships a fillable session frame. No scripts, no runtime — markdown an agent loads when the work matches.
 
-The catalog has two groups:
+The catalog spans:
 
 - **The Suspec methodology** — the skills that run the Suspec loop: authoring specs and the other typed artifacts, implementing task packets, reviewing output against the spec, splitting work, saving findings. Install these **globally** — the methodology travels with you, not with any one repo.
 - **Universal disciplines** — market/review methods, evidence disciplines, and code-lifecycle fundamentals. Framework-free; each stands alone in any repo.
 
-**The zero-overlap rule:** globally installed skills carry the methodology and the universal disciplines; a repo's own `.agents/skills/` carries only repo-specific guides (its conventions, its architecture rules). The two tiers never ship the same guide — that is what keeps a repo's guides from skewing against an evolving methodology.
+**The zero-overlap rule:** globally installed skills carry the methodology and the universal disciplines; a repo's own `.agents/skills/` carries only repo-specific guides (its conventions, its architecture rules). The two surfaces never ship the same guide. That keeps repository guidance local without forking the methodology.
 
 ## Install
 
 ### Global (recommended)
 
-With the [Vercel skills CLI](https://github.com/vercel-labs/skills) (works with Claude Code, Cursor, Codex, OpenCode, Gemini CLI):
+With the [Vercel skills CLI](https://github.com/vercel-labs/skills) (works with Claude Code, Cursor, Codex, OpenCode, Gemini CLI), target the runner you use so the CLI does not fan the install out to every supported harness:
 
 ```bash
 # install the catalog at user level — available in every repo
-npx skills add jcosta33/suspec-skills -g
+npx skills add jcosta33/suspec-skills -g -a codex
+# Claude Code instead:
+npx skills add jcosta33/suspec-skills -g -a claude-code
 
-# or a single skill
-npx skills add jcosta33/suspec-skills --skill revolver-review -g
-
-# target a specific agent
-npx skills add jcosta33/suspec-skills --skill revolver-review -a claude-code
+# or a single skill for Codex
+npx skills add jcosta33/suspec-skills --skill revolver-review -g -a codex
 ```
 
 No CLI? Copy the skill folders to **both** user-level catalogs — `~/.claude/skills/` and `~/.agents/skills/` — or copy to one and symlink the other to it:
 
 ```bash
+mkdir -p ~/.agents/skills ~/.claude
 cp -R skills/* ~/.agents/skills/
 ln -s ~/.agents/skills ~/.claude/skills   # if ~/.claude/skills does not already exist
 ```
@@ -40,15 +40,16 @@ ln -s ~/.agents/skills ~/.claude/skills   # if ~/.claude/skills does not already
 To pin a specific skill version to one repo — or to ship a repo-specific guide — install into the repo instead:
 
 ```bash
-npx skills add jcosta33/suspec-skills --skill revolver-review
-# or: cp -R skills/revolver-review <your-repo>/.agents/skills/
+npx skills add jcosta33/suspec-skills --skill revolver-review -a codex
+# or:
+mkdir -p <your-repo>/.agents/skills
+cp -R skills/revolver-review <your-repo>/.agents/skills/
 ```
 
 Reserve per-repo installs for pinning; the methodology itself belongs at user level.
 
-Pin to a tag or commit for stability and re-run to re-fetch. The catalog is
-[semver](https://semver.org)-versioned ([`VERSION`](./VERSION), [`CHANGELOG.md`](./CHANGELOG.md));
-watch the [releases](https://github.com/jcosta33/suspec-skills/releases) and re-pull when a bump matters.
+Record the source commit when stability matters, and re-run the install command when you choose to
+refresh the catalog.
 
 ## The AGENTS.md contract
 
@@ -56,7 +57,7 @@ Skills name abstract command slots — `cmdTest`, `cmdLint`, `cmdTypecheck`, `cm
 
 ## Catalog — the Suspec methodology
 
-The skill family that runs the Suspec loop. Artifacts (specs, task packets, review packets) are the agent's typed working memory: they live beside the agent's own native artifacts — the same place it keeps its plans, notes, and memories, out of the repo unless the project's own governance says otherwise — and every later step names them by explicit path. Durable value becomes native memories; what belongs to the team goes through the project's own channels — an ADR, a test, an issue.
+The skill family that runs the Suspec loop. Intent, review, and findings are always present, but their carrier scales with the work: intent may remain inline or become a spec, review may be direct or use a packet, and findings become native memories or move through project channels. Specs, task splits, inventories, change plans, and deterministic checking are scaffold used when evidence from the work warrants them. Files live beside the agent's native artifacts unless project governance says otherwise, and later steps carry their full paths forward.
 
 ### The core loop
 
@@ -64,10 +65,10 @@ The skill family that runs the Suspec loop. Artifacts (specs, task packets, revi
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | `write-spec`     | turning intent into verifiable requirements — one AC per id, each with a `Verify with:` line                                   |
 | `spec-check`     | checking a spec by hand against the checks contract before work is cut from it                                                 |
-| `split-work`     | the work is too big for one run — cut task packets that cover every requirement exactly once and never collide                 |
+| `split-work`     | a spec or change plan has separately dispatchable slices — cut exact, ordered, collision-safe task packets                    |
 | `implement-task` | implementing a task packet or spec — stay in scope, run every Verify item, paste real output, self-review before handoff       |
-| `review-output`  | reviewing finished work against its spec — refute by default, re-run the checks yourself, evidence every row                   |
-| `save-findings`  | closing a task — findings ride the task or review packet; durable ones become native memories, one claim per memory with the evidence attached |
+| `review-output`  | reviewing finished work against its spec — rerun checks, evidence every row, leave the result to the human                    |
+| `save-findings`  | closing work — use native memory when supported, project channels for team residue, and no substitute store                     |
 
 ### Authoring the other artifacts
 
@@ -93,7 +94,7 @@ Per-kind execution discipline for an implementing agent — each ships a fillabl
 | `write-rewrite`       | the task replaces an implementation wholesale — the delta table drives it           |
 | `write-migration`     | the task moves callers across a boundary — callsite tracker, shim, rollback         |
 | `write-performance`   | the task chases a measured target — baseline pasted before any change               |
-| `write-testing`       | the task authors tests — every test flipped to prove it can fail                    |
+| `write-testing`       | the task authors tests — each test proven to fail for its intended violation         |
 | `write-documentation` | the task writes human-facing docs — one frame held, every example run               |
 
 ## Catalog — universal disciplines
@@ -117,33 +118,34 @@ Framework-free practices that raise the floor on any task, in any repo.
 
 | Skill                | Use it when                                                                                                                                                         |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `empirical-proof`    | any completion claim — bind it to verbatim pasted output, or it reads unverified                                                                                    |
+| `empirical-proof`    | command-backed completion claims need verbatim output; cite CI, manual, and source evidence in their native form                                                   |
 | `concise-output`     | you want terse, scannable, token-economical output — evidence-first, structure over prose, no filler (clarity still outranks brevity)                               |
 | `fix-flaky-test`     | a test that fails intermittently — reproduce by looping, fix the cause not the assertion, don't retry-loop                                                          |
 
 ### Code-lifecycle
 
-The fundamental coding skills, re-baselined from a live adoption census ([best-of-breed sources](./docs/sources.md#best-of-breed-implementations)) — each a framework-free distillation of the strongest public implementation of that fundamental.
+The fundamental coding skills, informed by inspected public [reference implementations](./docs/sources.md#code-lifecycle-reference-implementations) and kept framework-free.
 
 | Skill                  | Use it when                                                                                                                                                       |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `codebase-exploration` | mapping an unfamiliar codebase — delegate read-only recon to subagents, build a key-files map before reading, keep the orchestrator's context clean              |
 | `debugging`            | a live defect — runtime-evidence-before-hypothesis: reproduce → isolate → identify → verify; refuse a root cause until execution data localizes it               |
 | `security-review`      | a risk-bearing change — semantic data-flow review + a tunable false-positive filter + per-language footguns; drive real scanners (Semgrep/CodeQL) when present    |
-| `git-pr`               | shipping — stage→commit→push→PR, address review comments, fix failing CI by reading logs, isolate parallel work in git worktrees                                  |
+| `git-pr`               | shipping through the repo's approved flow — stage, commit, push when asked, open a PR when required, close review and CI loops                                    |
 | `planning-spec`        | before you build — plan against the project's durable principles, name what's out of scope, get an explicit human "go" before breaking the plan into steps        |
 
 ## Where to start
 
 1. **The methodology group, globally.** One `-g` install gives every repo the loop.
 2. **`revolver-review`** — load it when an agent _judges another agent's_ substantial change and you want it driven to a clean state, not a merge sign-off.
-3. **`empirical-proof`** — pair it with any completion claim to force verbatim pasted output; the fastest cure for "done" that was never actually checked.
+3. **`empirical-proof`** — bind runnable completion claims to verbatim output and every other claim to
+   exact durable evidence; the fastest cure for "done" that was never actually checked.
 4. **A code-lifecycle skill** matching the work — `debugging` for a live defect, `security-review` for a risk-bearing change, `codebase-exploration` for an unfamiliar repo, `planning-spec` before you build, `git-pr` to ship.
 5. **A cross-cutting method** when you need a focused discipline — `persona-challenger` while pressure-testing a proposal, or `market-research` for market, customer, competitor, or UX-pattern evidence synthesis.
 
 ## The science
 
-[`docs/`](./docs/) documents the empirical evidence behind every structural choice in these skills — why descriptions are directive ([activation](./docs/activation.md)), why bodies target ~200 lines under a 500-line hard cap ([body anatomy](./docs/body-anatomy.md)), why verification steps force visible output ([execution](./docs/execution.md)), why skills don't depend on each other ([self-containment](./docs/self-containment.md)), when a skill ships a task template ([task files](./docs/task-files.md)), and what deliberately stays out ([scope](./docs/scope.md)) — with the full bibliography in [sources](./docs/sources.md).
+[`docs/`](./docs/) separates specification requirements, official guidance, empirical evidence, and catalog conventions: directive descriptions ([activation](./docs/activation.md)), compact bodies and progressive disclosure ([body anatomy](./docs/body-anatomy.md)), visible evidence ([execution](./docs/execution.md)), standalone installation ([self-containment](./docs/self-containment.md)), private run-note templates ([task files](./docs/task-files.md)), and repository boundaries ([scope](./docs/scope.md)). The bibliography is in [sources](./docs/sources.md).
 
 ## Security
 
@@ -151,4 +153,4 @@ Read a skill before installing it — a skill is instructions your agent will fo
 
 ## Relationship to the Suspec framework
 
-The framework and its docs live at [jcosta33/suspec](https://github.com/jcosta33/suspec). Adopting it is installing these skills — a capable harness plus the methodology family is a complete install; the skills carry the artifact shapes and the placement guidance. [jcosta33/suspec-cli](https://github.com/jcosta33/suspec-cli) is an optional deterministic checker over artifacts it is handed — `suspec check <path>` — enforcing the checks contract documented in the Suspec repo's [`docs/reference/checks.md`](https://github.com/jcosta33/suspec/blob/main/docs/reference/checks.md). The sibling catalog [jcosta33/suspec-agents](https://github.com/jcosta33/suspec-agents) ships Claude-Code-first worker definitions for the Suspec roles — agent-neutral disciplines here, runner-specific agents there. The universal group assumes nothing about Suspec — each of those skills stands alone in any repo with an `AGENTS.md`. This catalog is curated: skill content is edited here.
+The framework and its docs live at [jcosta33/suspec](https://github.com/jcosta33/suspec). Adopting it is installing these skills; the skills carry the artifact shapes and placement guidance. [jcosta33/suspec-cli](https://github.com/jcosta33/suspec-cli) is earned deterministic scaffold over artifacts it is handed — `suspec check <path>` — enforcing the checks contract documented in the Suspec repo's [`docs/reference/checks.md`](https://github.com/jcosta33/suspec/blob/main/docs/reference/checks.md). The sibling catalog [jcosta33/suspec-agents](https://github.com/jcosta33/suspec-agents) ships runner-specific worker definitions; agent-neutral disciplines live here. The universal group assumes nothing about Suspec. Skill content is edited here.

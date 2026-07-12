@@ -5,18 +5,24 @@ description: >-
   Split a spec or change plan into task packets agents can run without colliding:
   every requirement lands in exactly one task (or, for same-behavior-per-platform/repo
   work, one task per context), tasks that write the same files are sequenced not
-  parallelized, and the dependency order is written down. ALWAYS apply this skill when
-  the work is too big for one run or several agents will work at once. Never invent new
-  requirements while splitting, and never cut a task from a requirement with an open
-  blocking question. Skip when the job fits one spec → one implementer with no task packet — most do.
+  parallelized, and the dependency order is written down. ALWAYS apply this skill when a
+  spec or change plan has multiple independently dispatchable slices — parallel/context
+  slices or sequenced waves. Never split merely because work is large, invent new
+  requirements, or cut a task from a requirement with an open blocking question. Skip
+  when the job fits one source → one implementer with no task packet — most do.
 ---
 
 # Splitting work into tasks
 
 Most work is one spec → one implementer — **no task packet**; the implementer fills the spec's
-`## Execution` section. Cut tasks only when the work is too big for one agent run, or when several
-agents will work in parallel and a collision would be expensive. The output is N task packets,
-each self-contained, plus a few lines recording the order they run in.
+`## Execution` section. Cut tasks only when a spec has multiple independently dispatchable
+parallel/context slices, or a change plan defines separately dispatchable sequenced waves. Size
+alone does not create a task packet. The output is a set of self-contained task packets plus a few
+lines recording the order they run in.
+
+**Before cutting tasks, open [`references/task-packet.md`](./references/task-packet.md)** and
+instantiate one copy per slice. Fill every placeholder from the controlling spec or change plan;
+do not reconstruct the packet shape from memory.
 
 Place the file next to your own native artifacts — the same place you keep your plans,
 notes, and memories for this work, in a folder named after the repo you are working on
@@ -44,16 +50,15 @@ it commits a guess.
 
 ## Keep each task small, single-concern, and untangled
 
-Coverage decides _what_ goes in a task; size and tangle decide whether it can be reviewed. Small,
-single-concern changes are the best-replicated result in code review — review effectiveness is best
-on a small change and the proportion of useful review comments drops as a change spreads across more
-files. So when you cut:
+Coverage decides _what_ goes in a task; size and tangle decide whether it can be reviewed. Keep each
+change small enough for a reviewer to understand as one concern; review quality drops when unrelated
+work spreads across more files. So when you cut:
 
 - **One concern per task.** Prefer more, smaller tasks over one that bundles unrelated requirements.
 - **Refactor in its own task, ahead of the behavior change.** A rename, a move, or a signature
   change that other work builds on is its own task and commit — separate from the feature or fix it
-  enables. Mixing a refactor with a behavior change is the most common way a diff becomes
-  unreviewable; the interface-defining task already goes first (see _Run order_ below), so this falls
+  enables. Mixing a refactor with a behavior change makes the diff harder to review; the
+  interface-defining task already goes first (see _Run order_ below), so this falls
   out naturally. A trivial cleanup (a local rename) may ride along.
 - **Split out the connective tissue.** When new code wires into existing code, make the high-diffusion
   wiring — the edits touching many existing files — its own task, so the reviewer judges the new logic
@@ -116,8 +121,9 @@ requirement. A packet that needs the other packets explained to it isn't disjoin
 One context carve-out (platform or repo): a spec shipping the same behavior on N platforms —
 or a requirement independently verifiable in each of N repos, the contract-test shape (an API
 honored on both sides) — may scope the same requirement id to N context tasks, write-disjoint
-by platform directory or repo. At spec level the requirement reads green only when every
-context task's packet shows Pass; per-context results never substitute for each other. The
+by platform directory or repo. At spec level the human finalizes the requirement as Pass only
+when every context's review packet records Pass for that shared id; per-context results never
+substitute for each other. The
 entry condition is strict: a behavior that only exists when both repos meet decomposes into
 per-repo requirements instead — the carve-out never covers a requirement no single task
 verifies.
@@ -176,3 +182,8 @@ turns on code, turned here on the split itself.
 - [ ] The run order is written down where the next person will look.
 - [ ] Each packet reads as self-contained: source, scope, do not change, verify — with its
       pinned spec-slice snapshot stamped with the spec id and commit it was cut against.
+
+## Bundled resources
+
+- [`references/task-packet.md`](./references/task-packet.md) — the complete task-packet shape to
+  instantiate once per independently dispatchable slice.

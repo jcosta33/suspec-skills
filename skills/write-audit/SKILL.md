@@ -15,17 +15,17 @@ description: >-
 
 An audit makes a code area legible so the work on it can be planned. It records what is true
 **today**, grounds each claim in evidence, names the risk that state carries — and stops there.
-An audit has these sections: **Scope · Observations · Risks · Open questions / unverified areas · Candidate requirements**. Do not reinvent them.
+An audit has these sections: **Scope · Observations · Risks · Open questions / unverified areas**.
 
 Audits fail in two directions: they drift into prescription (telling the reader what to build —
 a spec's job), or they stay vague (impressions and TODO-scrapes nobody can act on). The rules
-below pin the audit to its **observation-only** stance. They are conventions backed by review —
+below pin the audit to its **observation-only** boundary. They are conventions backed by review —
 nothing in this repository enforces them automatically.
 
-## The Auditor stance
+## Working principle
 
-Read the system as if it hides its flaws. Record only what _is_; assert nothing the evidence
-does not show. What the system _should_ do is intent — it belongs in a spec, not here.
+Record only what is present or what follows from identified evidence. What the system _should_ do
+is intent; it does not belong in an audit.
 
 ## Rules
 
@@ -44,8 +44,8 @@ next reader navigate straight to it; an ungrounded claim is an opinion wearing a
 
 ### 3. Run the dynamic checks; do not trust static reading
 
-Concurrency, lifecycle, resource cleanup — reading the source does not prove these. Run the
-project's test or check commands (the Commands table in the repo's `AGENTS.md`; if a command
+Concurrency, lifecycle, resource cleanup — reading the source does not prove these. When the audit
+makes a dynamic claim, run the project's test or check commands (the Commands table in the repo's `AGENTS.md`; if a command
 is missing, ask, because a guessed command silently audits the wrong thing) and paste the output. The highest-value findings are properties
 that _look_ held in the source but are not held at runtime.
 
@@ -57,28 +57,20 @@ is the only thing distinguishing a live surface from a fossil.
 
 ### 5. Name each risk with its firing condition
 
-Risks are things that _could_ go wrong but were not observed firing. Each names the failure mode
-and the condition under which it would fire — not the remedy. A risk without a trigger is
-unactionable noise; the condition lets the reader decide whether it is in scope for the work the
-audit feeds. An empty risks section means you have not finished looking.
+Risks are evidence-backed inferences about what could go wrong but was not observed firing. Each
+names the evidence, failure mode, and firing condition — not the remedy. A risk without that chain
+is unactionable noise. If no supported risk is found, say `None observed in scope`; never invent one
+to fill the section.
 
 ### 6. Calibrate severity by blast radius
 
-Tag each observation and risk Blocker / Major / Minor by _what breaks and how far the damage
-spreads_ — never by how hard the finding was to surface or how alarming it feels. A subtle
+Tag each risk Blocker / Major / Minor by _what breaks and how far the damage
+spreads_ — never by how hard it was to surface or how alarming it feels. Observations remain facts;
+they need no severity unless they themselves record a concrete failure. A subtle
 defect with a one-edge-case blast radius is Minor; an obvious gap that lets unsafe work proceed
 is a Blocker. When a call is contestable, record the reasoning inline so a reviewer can re-derive it.
 
-### 7. Recommend requirements in prose — never write them
-
-The audit's candidate-requirements section (no template ships for audits — the section shape is
-this guide) describes, in plain prose, what a future spec
-should require. Write what the spec should carry, not how to change the code. Do not write
-AC items or SOL blocks (see write-spec's "structured (SOL) form") — a requirement acquires force only when someone
-lifts it into a spec, and an audit that writes requirements lets an observation be read as an
-approved decision nobody made.
-
-### 8. Deepening a prior audit: read it closed
+### 7. Deepening a prior audit: read it closed
 
 Set the prior audit's framing aside and re-derive every finding from the code; verify that its
 cited `path:line` references still resolve. Inheriting a conclusion is how a real defect stays
@@ -88,7 +80,7 @@ hidden across two audits.
 
 - Prescriptions ("we should refactor X") or any fix, patch, or remedy design.
 - Assertions of intended behavior ("the new behavior will be Y") — that is spec material.
-- Requirements in any form: no AC items, no SOL blocks.
+- Requirements or recommendations in any form.
 - TODO-comment scrapes, surface impressions, or any claim with no evidence anchor — sharpen
   each until it cites an observable, or cut it.
 - Code edits. An audit session is read-only on source; it produces a document.
@@ -114,11 +106,10 @@ hidden across two audits.
 Walk the draft once as its harshest reviewer; fix what you find before delivering:
 
 - [ ] Every observation cites `path:line`, command output, or a grep result — none ungrounded.
-- [ ] Every observation and risk carries a severity, calibrated by blast radius, with reasoning
-      recorded for any contestable call.
-- [ ] Every risk names its firing condition.
+- [ ] Every risk names its evidence and firing condition; supported risks carry calibrated severity.
+- [ ] An empty Risks section explicitly says none were observed in scope.
 - [ ] Dynamic claims were run, not read — the output is pasted, not paraphrased.
-- [ ] No fix, no intended behavior, no requirement anywhere; recommendations are prose only.
+- [ ] No fix, intended behavior, requirement, or recommendation appears anywhere.
 - [ ] The scope section matches what you actually examined.
-- [ ] Anything durable you learned along the way is noted as a finding candidate. Findings ride
-      the review packet; durable ones become native memories (see save-findings).
+- [ ] Durable lessons are identified for later routing through native memory or project channels;
+      they are not converted into prescriptions inside the audit.

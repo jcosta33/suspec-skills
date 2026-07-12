@@ -17,26 +17,14 @@ when it has survived hostile scrutiny, and the standard for surviving is **evide
 not identity. An important claim without reliable, actionable, already-run evidence is **not accepted** —
 however confident the wording, however many voices agree, however authoritative the source sounds.
 
-The lever is not skepticism-as-mood; it is the evidence you reconcile. Unaided doubt that grounds in no
-external check discards a sound claim about as readily as a flawed one. Bulletproof is a **procedure, not
-a persona**: its worth is the reasoning it runs, not a role it plays.
-
-## Not a persona — a procedure
-
-Dropping into an identity ("act as a ruthless skeptic") is unstable and **net-negative on objective
-tasks**: the mood adds variance, not accuracy, and which persona you pick swings the result almost at
-random. What actually helps is the explicit reasoning scaffold underneath the role. So Bulletproof
-**keeps the procedure and drops the identity.**
-
-And run it as a **voice independent of whoever produced the target** — a generator favors its own output,
-so a self-issued "this holds" is inadmissible. Turn the procedure on your own work by making a
-deliberately external pass that reconciles evidence and steelmans the opposite, never by re-reading your
-own reasoning and nodding.
+The lever is a defined hostile-review procedure grounded in evidence. Unaided doubt can discard a sound
+claim as readily as a flawed one. The reviewer must be independent of whoever produced the target: a
+self-issued "this holds" is inadmissible.
 
 ## The evidence gate — the spine
 
 A judgment — "acceptable", "pass", "this holds" — is gated on **reliable, actionable, already-run
-evidence**, never on model confidence, agreement/consensus, or persona. **No evidence, no acceptance.**
+evidence**, never on model confidence, agreement, or authority. **No evidence, no acceptance.**
 
 Bulletproof is **reconcile-only**: it reads evidence that was *already produced* — pasted test output, a
 reproduction, a diff read directly, a benchmark, a cited primary source, a recorded prior decision — and
@@ -68,9 +56,8 @@ evidence reads *unsupported* — the ladder grades the evidence, the claim map g
   missing evidence requirements, conflicting constraints, untestable requirements, rollback gaps.
 - **Plan** — an implementation, rollout, or orchestration plan. Focus: missing steps, unsafe sequencing,
   hidden dependencies, missing verification, stale assumptions, over-prescription.
-- **Code / diff** — for a *finished* code change reviewed against its intent, hand off to
-  `revolver-review` (it re-runs the checks and refutes by default). Use this mode only to harden the
-  *reasoning around* a change — the risk story, the untested path, the rollback.
+- **Code / diff** — this skill hardens the reasoning around a change: the risk story, untested paths,
+  and rollback. A finished change review that edits code or reruns project checks is outside scope.
 - **Review** — a review write-up or a set of reported issues. Focus: unsupported "pass" calls, duplicate
   or low-value items, severity inflation, missing evidence, conclusions beyond the evidence.
 - **Finding** — a single reported issue. Focus: reproduction, evidence, severity calibration,
@@ -157,7 +144,7 @@ The default is to accept each of these at face value. Each is a red flag with a 
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | Confident prose offered as proof ("clearly", "obviously", "well-established").  | Reject; demand the artifact — the output, the source, the diff.                            |
 | Agreement / consensus offered as correctness ("everyone agrees", "3 of 3 say"). | Reject; agreement is not an evidence signal — voices can err in the same direction.        |
-| Authority or persona standing in for evidence ("as an expert, trust me").       | Reject; identity is not evidence — grade the claim on what backs it.                       |
+| Authority or role standing in for evidence ("as an expert, trust me").          | Reject; identity is not evidence — grade the claim on what backs it.                       |
 | "Should never happen", "harmless", "edge case unlikely to fire".                | Reject as an assurance; investigate the assumption, then judge on evidence.                |
 | A nitpick pile while a high-impact risk sits unaddressed.                        | Reorder; fatal flaws first, low-severity last or unstated.                                 |
 | Fake balance — a pro invented to look even-handed.                              | Drop it; only evidence-backed points earn a place.                                         |
@@ -166,17 +153,6 @@ The default is to accept each of these at face value. Each is a red flag with a 
 | Running the project's build/test commands to manufacture the missing evidence.  | Refuse; reconcile-only — record the gap and propose the disconfirming test instead.        |
 | An important claim with an empty evidence field.                                | Needs evidence, never Acceptable.                                                          |
 | A confident verdict offered while the evidence is incomplete.                   | Downgrade to Needs evidence and name exactly what is missing.                              |
-
-## Relationship to neighboring skills
-
-- **`revolver-review`** — owns reviewing a **finished code diff or PR** against its stated intent,
-  refute-by-default, re-running the checks in a clean checkout. When the target is a code change, use
-  that skill; Bulletproof is the broader hardening protocol for claims, decisions, specs, and plans, and
-  hands code-diff review to it.
-- **`persona-challenger`** — pressure-tests a **live, uncommitted proposal**. Bulletproof overlaps with
-  it (both ground every challenge externally and both run as a voice separate from the author) but is
-  broader and always emits the fixed structured report with kill criteria. Whether the two eventually
-  merge, or one is renamed, is a separate decision — this skill does not settle or fold it.
 
 ## Read-only is enforced by the runner, not by this list
 
@@ -193,7 +169,7 @@ frontmatter as intent and set the enforcement where the runner enforces it.
   reviewer who floods low-confidence flags gets tuned out.
 - **Fake balance.** Inventing a counter-point to look even-handed. Only evidence-backed points earn a
   place; a manufactured pro is noise.
-- **Persona drift.** Sliding into a contrarian voice. The value is the procedure — contrarian tone raises
+- **Contrarian drift.** Sliding into performative opposition. The value is the procedure — heated tone raises
   heat, not accuracy.
 - **Refuting a checkable fact from memory.** A count, a version, whether a file or symbol exists — waved
   off from recall. Query the live source first; "it's not there" is a finding only after the lookup
@@ -205,7 +181,7 @@ frontmatter as intent and set the enforcement where the runner enforces it.
 
 ## What does not belong
 
-- Presenting itself as a persona or personality; auto-triggering; writing the code or the fix; running
+- Auto-triggering; writing the code or the fix; running
   the project's commands to generate evidence (reconcile-only); issuing a ship/merge/accept verdict
   (a human owns that); inventing evidence or a source; a style-preference nitpick dressed as critical;
   fake balance; a confident verdict on incomplete evidence (say "needs evidence" instead); a verdict on a

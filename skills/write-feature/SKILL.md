@@ -2,11 +2,10 @@
 name: write-feature
 type: agent-guide
 description: >-
-  Implement a feature task: build net-new behavior for a task packet's
-  requirements, mapping every AC to a part of the change before coding, with
-  pasted evidence per AC. ALWAYS apply when a task packet adds capability that
-  did not exist, or acceptance criteria for new behavior are named — even with
-  no spec. Do not code before surveying existing patterns, invent a requirement
+  Implement a feature task: build net-new behavior, mapping every requirement
+  to a part of the change before coding, with pasted evidence per requirement.
+  ALWAYS apply when asked to add capability that did not exist, or when
+  acceptance criteria for new behavior are named. Do not code before surveying existing patterns, invent a requirement
   to resolve an ambiguity, or refactor in passing. Skip defect fixes,
   behavior-preserving refactors, deliberate rewrites, migrations, performance
   tuning, and test-only work.
@@ -17,23 +16,35 @@ description: >-
 Features fail when the builder improvises around the spec — building past it, smuggling in "while
 I'm here" cleanup, or declaring done on a green suite that never exercised the new behavior. This
 guide carries the feature discipline standalone: build exactly what the requirements name, reuse
-before you invent, let nothing leave your hand unverified, and keep this task's changes isolated in
-one worktree (or branch) so parallel tasks stay write-disjoint and the reviewer sees one clean diff.
-These are conventions the review packet inspects — nothing enforces them at edit time.
+before you invent, and let nothing leave your hand unverified. When runs are parallel, isolate each
+in its own worktree or branch so their writes stay disjoint. These are conventions the review packet
+inspects — nothing enforces them at edit time.
 
 A feature adds capability that did not exist. Repairing a defect, restructuring without a behavior
 change, deliberately changing existing behavior, moving between APIs, and tuning a bottleneck are
-different kinds with their own guides in this kit.
+different kinds with their own guides in this catalog.
 
-**Before you start, open [`references/task-template.md`](./references/task-template.md)** and copy it
-into your task file — it is the session frame for this work; fill it in as you go (don't reconstruct
-the structure from memory). It scaffolds the plan, progress checklist, decisions, pasted evidence,
-and the self-review. The task packet itself uses the kit's task template.
+**Before editing, open [`references/task-template.md`](./references/task-template.md)** and instantiate
+it as run notes. Record its path separately from any input task packet and fill it as you go. These
+notes are private execution state, not a Suspec task packet.
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
+
+**Before handoff, close the evidence loop.** These notes are scratch state, not the review index.
+When a task or spec governs the work, copy final changed files, fresh Verify evidence, scope drift,
+blocked questions, and findings into the task's `## Run summary` / `## Findings` or the spec's
+`## Execution`. If neither exists, return the same material in the direct handoff. A reviewer must
+not need this private file to find the final evidence.
 
 ## Rules
 
-1. **Read the packet and its sources first.** The task packet fixes your scope — the AC list, the
-   do-not-change areas, the Verify checklist; the spec says why. Resolve project commands from the
+1. **Read the controlling intent and its sources first.** When a task packet exists, it fixes the
+   scoped ACs, do-not-change areas, and Verify checklist; otherwise use the direct request and any
+   spec. Resolve project commands from the
    code repo's `AGENTS.md` Commands table; if a command you need is undefined, ask — never guess.
 2. **Map every AC to a concrete part of the change before coding.** Each AC gets a named step in
    your plan. An AC you did not map before coding is one you discover unmet at self-review — or
@@ -51,15 +62,15 @@ and the self-review. The task packet itself uses the kit's task template.
 6. **Run the checks after every batch, not only at the end**, and paste output as you go. Catching
    a violation at batch 3 is cheaper than at batch 12, and pasting as you go means the evidence
    exists before the claim that depends on it.
-7. **Tests are part of the deliverable, and each must fire for the right reason.** Every AC has a
-   corresponding test (or an explicitly noted follow-up task). Prove each test means something by
-   **flipping its assertion** (or commenting out the production path it exercises): it must fail;
-   restore it: it must pass — paste both transitions. A test that still passes when flipped
-   exercises nothing; a green suite that never ran the new behavior proves nothing about it.
+7. **Tests are part of the deliverable, and each must fire for the right reason.** Every AC has its
+   named verification; when that is a new test, capture it failing against the pre-feature state or
+   a controlled violation of the targeted behavior, then passing after implementation. Do not
+   mechanically invert assertions: prove the behavior path, not merely that the assertion operator
+   can fail.
 8. **Paste real output for every Verify item, after your final edit.** Command, exit status,
    summary lines — fenced, unmodified. "Tests passed" with no output is unverified.
 9. **Close with the summary and findings.** Changed files, commands with output, anything unmet as
-   written, out-of-scope edits if any, and finding candidates in the packet's `## Findings`
+   written, out-of-scope edits if any, and finding candidates in the run notes' `## Findings`
    section. No review result on your own work.
 
 ## Refuses
@@ -71,7 +82,7 @@ and the self-review. The task packet itself uses the kit's task template.
 | A new helper that duplicates an existing one                        | Reuse the existing one, or record why it does not fit               |
 | An opportunistic refactor of a file the build merely passed through | Keep the diff to the task's areas; raise the cleanup separately     |
 | An AC declared met with no evidence for its check                   | Run the bound check; paste the output — uncovered until then        |
-| A green suite standing in for the new behavior                      | Flip the new tests' assertions; paste the fail-then-pass transition |
+| A green suite standing in for the new behavior                      | Trigger the targeted violation; paste the fail-then-pass transition |
 | Quietly switching to fixing or refactoring mid-build                | Surface the concern; the feature scope holds for the whole task     |
 
 ## Self-review gate
@@ -81,7 +92,7 @@ Before declaring the task done:
 - [ ] Every AC maps to a part of the diff you can point at — and no part of the diff exists
       without an AC (or a listed exception) behind it.
 - [ ] Every Verify item ran after your final edit, output pasted.
-- [ ] Every new test was flipped — failed when flipped, passed when restored — and a
+- [ ] Every new test failed for its targeted violation and passed after implementation; a
       representative transition is pasted.
 - [ ] Every ambiguity you met was surfaced, not resolved by a guess.
 - [ ] New helpers or patterns carry a recorded reason an existing one did not fit.
@@ -104,6 +115,5 @@ Failure modes that show up at run time, not in the rules:
 
 ## Bundled resources
 
-- [`references/task-template.md`](./references/task-template.md) — a working-notes scaffold for the run (plan, progress, decisions,
-  pasted evidence, self-review). The task packet itself uses the kit's task template; this scaffold
-  is where you keep state while working.
+- [`references/task-template.md`](./references/task-template.md) — private run notes for plan,
+  progress, decisions, evidence, and self-review.

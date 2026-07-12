@@ -1,9 +1,18 @@
 # Flaky-test working notes: {{title}}
 
+- Run notes: {{full path or stable native-artifact identifier for this file}}
+- Task packet: {{full path when dispatched from one; otherwise None}}
+- Spec: {{full path when one exists; otherwise None}}
 - Test file: `{{path}}:{{test name}}`
 - Failing-run evidence that named it flaky (logs / CI links): `{{paths or URLs}}`
 - Worktree / branch: {{branch}}
 - Created: {{YYYY-MM-DD}} · Status: active
+
+Place the file next to your own native artifacts — the same place you keep your plans,
+notes, and memories for this work, in a folder named after the repo you are working on
+(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
+unless the project's own governance says otherwise, and carry the file's full path
+forward — every later step names artifacts by explicit path.
 
 > **Flaky-test work** — reproduce before fixing. Name the category. Fix the cause, never the
 > assertion. Reject sleep-as-fix and quarantine-as-fix. Prove the fix with a loop run, not one
@@ -20,8 +29,8 @@
 
 ## Flake category
 
-Pick exactly one. A mixed-category flake splits into separate fixes — each category root-causes
-differently.
+Mark every category supported by evidence. Split independent causes; keep interacting categories
+together only when they form one demonstrated mechanism.
 
 - [ ] Timing / ordering — a timeout, an unbounded poll, an operation-order assumption, an
       order-dependent shared fixture
@@ -34,10 +43,11 @@ differently.
 
 ## Reproduction protocol
 
-The exact command looped to fire the flake — from the project's loop mechanism, not guessed.
+Record the exact command, repetition count, seeds, concurrency, load, environment, and stop
+condition before running it. Resolve the loop mechanism from the project; do not guess.
 
 ```bash
-{{loop command — e.g. test runner --repeat=500 --testNamePattern="<name>"}}
+{{loop command}}
 ```
 
 ## Reproduction evidence (paste verbatim)
@@ -69,13 +79,13 @@ The cause is never the assertion; symptom and cause must not be the same stateme
 ## Progress checklist
 
 - [ ] Flake reproduced; failure rate measured; evidence pasted
-- [ ] Exactly one category named; mixed flakes split
+- [ ] Evidenced category or interacting categories named; independent causes split
 - [ ] Cause found at file:line in production code or test setup — not the assertion
 - [ ] Fix at the cause — no sleep, timeout bump, try/catch swallow, widened assertion, or
       quarantine
-- [ ] One-line note added at the cause site naming the failure mode
-- [ ] Fix loop run executed — same shape that reproduced the flake, every run passing, pasted
-- [ ] A production-side cause is recorded with this test as its regression guard
+- [ ] Non-obvious invariant documented at the cause site when needed
+- [ ] Post-fix protocol executed under conditions no easier than reproduction; output pasted
+- [ ] Any production-side cause was fixed in scope or remains an explicit blocker
 - [ ] Self-review answered
 
 ## Fix (the change you made)
@@ -87,25 +97,26 @@ RNG, isolated fixture, waited on a real contract, etc.
 
 ## Fix evidence (paste verbatim)
 
-The loop output after the fix — same conditions that reproduced it, every run passing.
+The output after the fix under the predefined post-fix protocol and conditions no easier than the
+reproducing run.
 
 ```text
 {{paste}}
 ```
 
-- Loop runs after fix: {{n}} · Failures: 0 · From {{%}} to 0
+- Loop runs after fix: {{n}} · Failures observed: {{n}} · Residual-risk note:
 
 ## Notes for downstream
 
-A production-code race or leak (its fix is separate work, guarded by this test), a sibling test
-touching the same shared state — worth carrying forward.
+An out-of-scope production race or leak, a sibling test touching the same shared state, or another
+verified follow-up worth carrying forward.
 
 -
 
 ## Blocked questions
 
-A flake resisting 1000× reproduction goes here with the conditions already tried; CI-only
-conditions you cannot recreate are reported as Blocked, never as a silent pass.
+A flake that does not fire under the predefined reproduction protocol goes here with the conditions
+already tried; CI-only conditions you cannot recreate are reported as Blocked, never as a silent pass.
 
 -
 
@@ -113,16 +124,22 @@ conditions you cannot recreate are reported as Blocked, never as a silent pass.
 
 -
 
+## Handoff
+
+- [ ] Final evidence, summary, and findings copied into the controlling task/spec when one exists;
+      otherwise included in the direct handoff. Nothing final lives only in these private notes.
+
 ## Self-review gate
 
 Answer in writing, evidence pasted.
 
 - **Reproduced first:** over how many loops, at what failure rate, under conditions no easier than
   where it originally failed?
-- **Category:** exactly one named; any mixed flake split?
+- **Category:** are interacting categories evidenced and independent causes split?
 - **Cause vs symptom:** is the fix at the cause — not the assertion, not a sleep, not a swallow,
   not quarantine? If a wait was used, on which documented contract?
-- **Fix evidence:** the same loop shape passed with zero failures, output pasted?
-- **Handoff:** cause documented inline; a production-side cause carried forward?
+- **Fix evidence:** did the predefined post-fix protocol observe no failures under conditions no
+  easier than reproduction, with residual risk stated without claiming zero probability?
+- **Handoff:** is any non-obvious invariant documented and every out-of-scope production cause explicit?
 - **Honesty:** did you verify with a loop, or did one green tick end the session? You did not sign
   off on your own fix as if a second reviewer had.
