@@ -15,22 +15,24 @@ catalog is present.
 4. **Resolve project facts locally.** Commands, paths, stack details, and conventions come from the
    consuming repository's `AGENTS.md` or equivalent project documentation. Missing commands are
    questions, not invitations to guess.
-5. **Name artifacts by role and full path.** Once an artifact exists, carry its resolved full path
-   through prompts and notes. Do not hardcode a universal storage directory.
+5. **Name artifacts by role and absolute path.** Ordinary Suspec artifacts use
+   `~/.agents/artifacts/<workspace>/`. Resolve `~` and carry the resulting absolute path
+   through prompts and notes.
 
 ## Artifact placement
 
 Methodology skills that create an artifact use this paragraph verbatim:
 
-Place the file next to your own native artifacts — the same place you keep your plans,
-notes, and memories for this work, in a folder named after the repo you are working on
-(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
-unless the project's own governance says otherwise, and carry the file's full path
-forward — every later step names artifacts by explicit path.
+Place the file under `~/.agents/artifacts/<workspace>/`, resolving `~` to the absolute
+home path and deriving `<workspace>` from the repository or working-directory basename. Keep it
+out of the repository and carry its absolute path forward. If the workspace name or target path
+conflicts with unrelated work, stop for a structured human choice; never overwrite. If the root is
+unwritable, offer grant access and retry, another agent-neutral user directory, or cancel. Never
+fall back to vendor storage, the repository, or a temporary directory.
 
-This is placement guidance, not a new storage system. Project governance can choose an in-repo
-location. Native harness artifacts remain valid when no filesystem path is exposed; the agent must
-then use the harness's stable identifier wherever a path would otherwise be named.
+This is a passive workspace convention, not a managed storage system. It creates no registry,
+resolver, configuration, lifecycle state, or cleanup mechanism. Plan Mode, vendor-native plans,
+native memory, source code, build output, and harness-managed state remain native.
 
 ## Command contract
 
@@ -44,4 +46,4 @@ not assume `npm`, `pytest`, `cargo`, or any other toolchain.
 - Every linked file ships inside this folder.
 - Sibling references are nonessential and marked conditional when they carry enrichment.
 - Project commands and paths are resolved from the project.
-- Created artifacts use native placement and are carried forward by stable full path or identifier.
+- Ordinary Suspec artifacts use agent-neutral placement and are carried forward by absolute path.

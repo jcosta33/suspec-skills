@@ -23,9 +23,9 @@ contributors can tell which claims are binding and which remain design choices.
 - A completion claim is paired with visible evidence. Commands come from the consuming
   repository, not from this catalog.
 - Each skill works when installed alone.
-- Specs, task packets, and reviews use the agent's native artifact location unless project
-  governance places them elsewhere. Execution run notes are private working state, not task
-  packets or project records.
+- Ordinary Suspec artifacts use `~/.agents/artifacts/<workspace>/`; native plans and memory
+  remain native. Execution run notes are private working state, not task packets or project
+  records.
 - Suspec always has intent, review, and findings. Specs, task splits, inventories, change plans,
   and deterministic checkers are scaffold used when the work earns them.
 

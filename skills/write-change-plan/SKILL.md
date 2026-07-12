@@ -24,11 +24,12 @@ guarantees · Transformation waves · Cutover / rollback · Task split (when nee
 beside the spec it serves. This skill is how the plan gets created. When the deterministic checker
 is available, run `suspec check <path>`; otherwise apply its structural checks by hand.
 
-Place the file next to your own native artifacts — the same place you keep your plans,
-notes, and memories for this work, in a folder named after the repo you are working on
-(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
-unless the project's own governance says otherwise, and carry the file's full path
-forward — every later step names artifacts by explicit path.
+Place the file under `~/.agents/artifacts/<workspace>/`, resolving `~` to the absolute
+home path and deriving `<workspace>` from the repository or working-directory basename. Keep it
+out of the repository and carry its absolute path forward. If the workspace name or target path
+conflicts with unrelated work, stop for a structured human choice; never overwrite. If the root is
+unwritable, offer grant access and retry, another agent-neutral user directory, or cancel. Never
+fall back to vendor storage, the repository, or a temporary directory.
 
 The frontmatter `kind` names the transformation: refactor · rewrite · migration ·
 dependency-upgrade · performance · test-infra · mechanical-cleanup · architecture-cleanup ·

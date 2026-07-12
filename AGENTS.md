@@ -32,9 +32,10 @@ The rationale and evidence for each rule live in `docs/` (the rule names its pag
   still works when the named guide is absent. Artifacts are referenced by
   role ("the spec", "the task packet", "run notes"); a skill that places an artifact states
   the placement guidance — the placement paragraph, kept byte-identical
-  wherever it appears across the catalog — and carries the file's full path
-  forward, so every later step names artifacts by explicit path. A skill
-  never hardcodes a location. Run-note templates identify their own path separately
+  wherever it appears across the catalog — and carries the file's absolute path
+  forward, so every later step names artifacts by explicit path. Ordinary Suspec
+  artifacts use `~/.agents/artifacts/<workspace>/`; native plans and memory do not.
+  Run-note templates identify their own path separately
   from any input task packet. Anything else goes to the Suspec repo by name,
   never by relative path.
 - Skills name abstract command slots (`cmdTest`, `cmdLint`, `cmdValidate`, …) —

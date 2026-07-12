@@ -11,6 +11,14 @@ The catalog is pull-updatable — install it for your runner (for example,
 and re-run to re-fetch. Watch the
 [releases](https://github.com/jcosta33/suspec-skills/releases) and re-pull when a bump matters.
 
+## [Unreleased]
+
+### Changed
+
+- Ordinary Suspec artifacts use `~/.agents/artifacts/<workspace>/` so local agents share one
+  transient file without repository changes, copies, or symlinks. Full-path handoffs remain.
+- `promote-artifact` remains durable-only; it does not relocate files between transient roots.
+
 ## [4.0.0] - 2026-07-10
 
 ### Changed

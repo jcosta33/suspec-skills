@@ -1,7 +1,7 @@
 ---
 name: promote-artifact
 type: agent-guide
-description: Promote a whole transient artifact into a project-native durable destination. Apply only when explicitly asked to promote, preserve, make permanent, or commit an artifact. Discover destinations, present structured choices, sanitize private content, move by default, repair references, validate, and optionally commit when selected. Never create a registry, Suspec store, lifecycle state, CLI/MCP surface, or implicit push. Skip extracting individual lessons; use save-findings for that.
+description: Promote a whole transient artifact into a project-native durable destination. Apply only when explicitly asked to promote, preserve, make permanent, or commit an artifact. Discover destinations, present structured choices, sanitize private content, move by default, repair references, validate, and optionally commit when selected. Never relocate between transient roots, create a registry, add lifecycle state, expose CLI/MCP surface, or push implicitly. Skip extracting individual lessons and ordinary transient relocation.
 ---
 
 # Promote artifact
@@ -22,3 +22,4 @@ description: Promote a whole transient artifact into a project-native durable de
 7. Commit only when selected. Never push implicitly.
 
 Create no promotion registry, state field, owned directory, CLI verb, MCP tool, or lifecycle record.
+Promotion crosses the transient-to-durable boundary; it never relocates between transient roots.

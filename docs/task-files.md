@@ -16,10 +16,10 @@ separately. It never labels its own path as the task packet.
 
 ## Placement
 
-Run notes live beside the agent's native plans, notes, and memories. The agent chooses the location
-and carries its full path or stable harness identifier through the session. Do not prescribe a
-universal directory, edit `.gitignore`, or commit private run notes unless project governance
-explicitly asks for them.
+Run notes live under `~/.agents/artifacts/<workspace>/`. Resolve `~`, derive
+`<workspace>` from the repository or working-directory basename, and carry the absolute
+path through the session. Do not edit `.gitignore` or commit private run notes; use explicit
+durable promotion when the whole document must enter a project channel.
 
 ## When a template helps
 
@@ -42,7 +42,7 @@ Every execution run-note template begins with its own identity and any dispatch 
 ```markdown
 # Run notes: {{title}}
 
-- Run notes: {{full path or stable native-artifact identifier for this file}}
+- Run notes: {{absolute path to this file}}
 - Task packet: {{full path, when the work was dispatched from one; otherwise None}}
 ```
 
@@ -65,6 +65,6 @@ file set.
 
 - The instantiated file identifies itself as run notes.
 - Task packet and spec inputs are separate fields and may be `None`.
-- Placement uses native artifact storage, not a hardcoded directory.
+- Placement uses the agent-neutral artifact workspace, never the repository.
 - Every section preserves state the skill actually consumes later.
 - The template does not duplicate a durable project artifact.

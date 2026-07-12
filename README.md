@@ -57,7 +57,7 @@ Skills name abstract command slots — `cmdTest`, `cmdLint`, `cmdTypecheck`, `cm
 
 ## Catalog — the Suspec methodology
 
-The skill family that runs the Suspec loop. Intent, review, and findings are always present, but their carrier scales with the work: intent may remain inline or become a spec, review may be direct or use a packet, and findings become native memories or move through project channels. Specs, task splits, inventories, change plans, and deterministic checking are scaffold used when evidence from the work warrants them. Files live beside the agent's native artifacts unless project governance says otherwise, and later steps carry their full paths forward.
+The skill family that runs the Suspec loop. Intent, review, and findings are always present, but their carrier scales with the work: intent may remain inline or become a spec, review may be direct or use a packet, and findings become native memories or move through project channels. Specs, task splits, inventories, change plans, and deterministic checking are scaffold used when evidence from the work warrants them. Ordinary artifacts live under `~/.agents/artifacts/<workspace>/`, and later steps carry their absolute paths forward.
 
 ### The core loop
 
@@ -113,7 +113,7 @@ Cross-cutting methods loaded _alongside_ the work — they change what the agent
 | `demolition`         | explicit one-sided advocacy against an idea or design, quarantined from evidence and findings                                                       |
 | `revolver`           | broad risk-derived inspection over any target; complete rotations, inspect by default, refine only when requested                                    |
 | `triple-check`       | exactly three fresh top-tier passes for narrow depth; fixed snapshot by default                                                                      |
-| `promote-artifact`   | explicitly moving a whole artifact into a project-native durable destination, repairing references, never implicitly pushing                         |
+| `promote-artifact`   | explicitly moving a whole artifact from transient space into a project-native durable destination, repairing references, never implicitly pushing |
 
 ### Disciplines
 

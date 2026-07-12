@@ -15,6 +15,15 @@ description: >-
 
 `DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
 
+## Artifact placement
+
+Place the file under `~/.agents/artifacts/<workspace>/`, resolving `~` to the absolute
+home path and deriving `<workspace>` from the repository or working-directory basename. Keep it
+out of the repository and carry its absolute path forward. If the workspace name or target path
+conflicts with unrelated work, stop for a structured human choice; never overwrite. If the root is
+unwritable, offer grant access and retry, another agent-neutral user directory, or cancel. Never
+fall back to vendor storage, the repository, or a temporary directory.
+
 An audit makes a code area legible so the work on it can be planned. It records what is true
 **today**, grounds each claim in evidence, names the risk that state carries — and stops there.
 An audit has these sections: **Scope · Observations · Risks · Open questions / unverified areas**.

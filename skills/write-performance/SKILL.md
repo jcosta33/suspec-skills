@@ -33,11 +33,12 @@ optimizing — get the target before you start.
 it as run notes. Record its path separately from any input task packet and fill it as you go. These
 notes are private execution state, not a Suspec task packet.
 
-Place the file next to your own native artifacts — the same place you keep your plans,
-notes, and memories for this work, in a folder named after the repo you are working on
-(or wherever fits your harness best). You choose the exact spot; keep it out of the repo
-unless the project's own governance says otherwise, and carry the file's full path
-forward — every later step names artifacts by explicit path.
+Place the file under `~/.agents/artifacts/<workspace>/`, resolving `~` to the absolute
+home path and deriving `<workspace>` from the repository or working-directory basename. Keep it
+out of the repository and carry its absolute path forward. If the workspace name or target path
+conflicts with unrelated work, stop for a structured human choice; never overwrite. If the root is
+unwritable, offer grant access and retry, another agent-neutral user directory, or cancel. Never
+fall back to vendor storage, the repository, or a temporary directory.
 
 **Before handoff, close the evidence loop.** These notes are scratch state, not the review index.
 When a task or spec governs the work, copy final changed files, fresh Verify evidence, scope drift,

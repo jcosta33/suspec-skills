@@ -8,6 +8,15 @@ description: Fact-check every explicit and load-bearing implied claim in an impo
 
 `DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
 
+## Artifact placement
+
+Place the file under `~/.agents/artifacts/<workspace>/`, resolving `~` to the absolute
+home path and deriving `<workspace>` from the repository or working-directory basename. Keep it
+out of the repository and carry its absolute path forward. If the workspace name or target path
+conflicts with unrelated work, stop for a structured human choice; never overwrite. If the root is
+unwritable, offer grant access and retry, another agent-neutral user directory, or cancel. Never
+fall back to vendor storage, the repository, or a temporary directory.
+
 ## Contract
 
 - Target: any claim-bearing artifact or change.
