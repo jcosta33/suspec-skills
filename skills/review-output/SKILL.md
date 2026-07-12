@@ -1,7 +1,12 @@
 ---
 name: review-output
 type: agent-guide
-description: Reconcile finished work against its spec: independently rerun checks, assess every scoped requirement as Supported, Unsupported, Unverified, or Blocked, and present the human decision picker. ALWAYS apply when reviewing a finished task, diff, or PR against a spec. Never review your own implementation, edit the target, issue acceptance, or hide waivers. Skip spec conformance, present-state audits, and original implementation.
+description: >-
+  Reconcile finished work against its spec: independently rerun checks, assess every scoped
+  requirement as Supported, Unsupported, Unverified, or Blocked, and present the human decision
+  picker. ALWAYS apply when reviewing a finished task, diff, or PR against a spec. Never review your
+  own implementation, edit the target, issue acceptance, or hide waivers. Skip spec conformance,
+  present-state audits, and original implementation.
 ---
 
 # Review output
