@@ -1,0 +1,61 @@
+---
+name: sus-task
+description: Split a spec or change plan into self-contained Suspec task packets that cannot collide. ALWAYS apply when approved work has independently dispatchable parallel slices, repository/platform contexts, or sequenced transformation waves. Map every source obligation exactly once, prove write disjointness before parallelizing, and record dependency order. Never split for size alone, invent requirements, or dispatch a blocked decision.
+---
+
+# Sus Task
+
+Most work needs no packet. Split only when dispatch buys real independence.
+
+Ordinary conversation and direct action create no task packet. Write one only when requested or
+required as a live workflow input.
+
+## Entry
+
+The controlling spec or change plan must be approved enough to dispatch. Read it and every source it
+names. Do not cut a packet from an unresolved blocking decision.
+
+Use task packets only for:
+
+- independently dispatchable parallel slices;
+- one requirement implemented independently per platform or repository; or
+- separately dispatchable transformation waves.
+
+Size alone proves nothing. One source and one implementer need no packet.
+
+## Place
+
+Resolve `~/.agents/artifacts/<workspace>/` to an absolute path, deriving `<workspace>` from the
+repository or working-directory basename. Write every packet under that resolved directory. Never
+write into the repository, vendor storage, or an OS temporary directory. Never overwrite unrelated
+work. Stop with structured choices on workspace or filename collision. On blocked writes offer:
+grant access and retry; choose another agent-neutral user directory; cancel.
+
+Instantiate [`references/task-packet.md`](./references/task-packet.md) once per slice. Carry every
+artifact by absolute path.
+
+## Cut
+
+1. List every source requirement, guarantee, and wave.
+2. Assign each obligation to exactly one packet. A platform/repository carve-out may repeat one ID
+   only when each context independently verifies the whole obligation.
+3. Copy each assigned requirement and `Verify with:` line verbatim into its packet. Stamp the source
+   ID and state identifier. Re-cut after a material source change.
+4. Give each packet one concern, explicit scope, do-not-change boundaries, affected write areas,
+   verification, and agent instructions. `## Verify` is the only home for pasted evidence;
+   `## Run summary` cites those entries without duplicating output.
+5. Compare every pair of affected areas. Unknown scope conflicts with everything.
+6. Parallelize only when neither task depends on the other, writes or reads the other's files,
+   shares a public interface/schema/generated surface, or touches shared build/CI configuration.
+7. Sequence interface-defining work first. Put the complete run order and this packet's dependency
+   position in every packet. Create no separate run-order artifact.
+8. Review coverage both ways: no source obligation uncovered, duplicated, weakened, or invented.
+
+If the split exposes a missing decision, investigate discoverable facts, then stop with the native
+picker: three real options by default, two when binary, recommendation first, one-sentence tradeoffs,
+automatic `Other`. Never ask a bare question or bury the choice in a packet.
+
+Write each fact once. Return only the clickable packet paths when the split is complete. The packets
+remain live through implementation and review. Ask Delete, Leave, or Promote only after every packet
+and sidecar has been fully actioned and no downstream step needs the set. Recommend from state,
+explain each option in one sentence, and include `Other`. Never choose for the human.

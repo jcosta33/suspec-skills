@@ -1,49 +1,20 @@
-# Self-containment
+# Self-Containment
 
-Skills install independently. Every `SKILL.md` must remain complete when no other skill from this
-catalog is present.
+Every skill must work when it is the only catalog skill installed.
 
 ## Rules
 
-1. **Restate load-bearing discipline inline.** A rule required for this skill to work cannot live
-   only in a sibling skill.
-2. **Use conditional sibling pointers only as enrichment.** A pointer may say "if installed" when
-   the current body already carries everything required. A plain task-routing mention is also fine
-   when removing it would not break the procedure.
-3. **Keep bundled links inside the skill folder.** `SKILL.md` may link directly to its own
-   `references/`. Product evidence and repository meta-docs do not belong in installed skill text.
-4. **Resolve project facts locally.** Commands, paths, stack details, and conventions come from the
-   consuming repository's `AGENTS.md` or equivalent project documentation. Missing commands are
-   questions, not invitations to guess.
-5. **Name artifacts by role and absolute path.** Ordinary Suspec artifacts use
-   `~/.agents/artifacts/<workspace>/`. Resolve `~` and carry the resulting absolute path
-   through prompts and notes.
+- Carry every load-bearing instruction in `SKILL.md` or that skill's own bundled reference.
+- Never require another catalog skill, external decision record, shared boilerplate, or
+  repository-relative source.
+- Route adjacent work by task type, never by another command name.
+- Use artifact roles and absolute paths, never assumed vendor folders or implicit shared context.
+- State placement in every skill that writes a transient artifact.
+- State lifecycle close in every skill that owns a transient artifact through completion.
+- References stay inside the skill directory and are linked directly from `SKILL.md`.
 
-## Artifact placement
+## Isolation Test
 
-Methodology skills that create an artifact use this paragraph verbatim:
-
-Place the file under `~/.agents/artifacts/<workspace>/`, resolving `~` to the absolute
-home path and deriving `<workspace>` from the repository or working-directory basename. Keep it
-out of the repository and carry its absolute path forward. If the workspace name or target path
-conflicts with unrelated work, stop for a structured human choice; never overwrite. If the root is
-unwritable, offer grant access and retry, another agent-neutral user directory, or cancel. Never
-fall back to vendor storage, the repository, or a temporary directory.
-
-This is a passive workspace convention, not a managed storage system. It creates no registry,
-resolver, configuration, lifecycle state, or cleanup mechanism. Plan Mode, vendor-native plans,
-native memory, source code, build output, and harness-managed state remain native.
-
-## Command contract
-
-Skills name abstract command purposes such as test, lint, typecheck, validate, benchmark, or
-dependency checks. The consuming repository maps those purposes to concrete commands. A skill must
-not assume `npm`, `pytest`, `cargo`, or any other toolchain.
-
-## Review checklist
-
-- Installing only this folder leaves no missing instruction.
-- Every linked file ships inside this folder.
-- Sibling references are nonessential and marked conditional when they carry enrichment.
-- Project commands and paths are resolved from the project.
-- Ordinary Suspec artifacts use agent-neutral placement and are carried forward by absolute path.
+Copy one skill directory into an empty catalog. Its metadata must activate correctly; every linked
+reference must resolve; its method must run without another Suspec skill, repo document, alias, or
+hidden convention.

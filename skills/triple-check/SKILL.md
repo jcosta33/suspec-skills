@@ -1,36 +1,44 @@
 ---
 name: triple-check
-type: agent-guide
-description: Run exactly three fresh, target-derived, top-tier inspection passes for narrow depth. ALWAYS apply when asked to triple-check, deeply inspect, or obtain three independent high-end checks of code, a diff, artifact, plan, or system. Default to a fixed read-only snapshot with peer reports hidden. Refine only when explicitly requested; reviewers never edit and the orchestrator applies evidence-backed fixes between fresh passes.
+description: Run exactly three fresh, target-derived, top-tier inspection passes for narrow depth. ALWAYS apply when asked to triple-check, deeply inspect, or obtain three independent high-end checks of code, a diff, artifact, plan, or system. Default to a fixed read-only snapshot with peer reports hidden. Refine only when explicitly requested. Reviewers never edit or issue a ship verdict.
 ---
 
 # Triple-check
 
-`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
-
-## Artifact placement
-
-Place the file under `~/.agents/artifacts/<workspace>/`, resolving `~` to the absolute
-home path and deriving `<workspace>` from the repository or working-directory basename. Keep it
-out of the repository and carry its absolute path forward. If the workspace name or target path
-conflicts with unrelated work, stop for a structured human choice; never overwrite. If the root is
-unwritable, offer grant access and retry, another agent-neutral user directory, or cancel. Never
-fall back to vendor storage, the repository, or a temporary directory.
+Three fresh minds. No shared story.
 
 ## Contract
 
-- Exactly three fresh passes.
-- Each stance is derived from the target and materially distinct.
-- Each pass uses a top-tier model adequate for the target.
-- Default mode is `inspect`; `refine` requires explicit request.
-- Produce one `type: inspection`, `method: triple-check` artifact.
+- Pin the target state.
+- Derive exactly three materially distinct stances from the target's highest-consequence risks.
+- Use a top-tier model adequate for each pass.
+- Default to read-only `inspect`. Use `refine` only on explicit request.
+- Write one `type: inspection`, `method: triple-check` artifact.
 
-## Method
+Before creating the artifact, prove the harness can dispatch three fresh contexts. If it cannot,
+stop with structured choices: enable fresh dispatch and retry; run three separate clean tasks and
+return their reports; cancel. Recommend the best available option, explain each in one sentence,
+and include `Other`. Never simulate independence in one context.
 
-1. Pin the target state and derive three deep stances from its highest-consequence risks.
-2. Dispatch pass one with no peer report.
-3. Inspect mode: keep the same snapshot and hide every peer report through pass three.
-4. Refine mode: verify pass findings; the orchestrator applies accepted fixes, pins the new state,
-   and dispatches the next fresh pass without prior reviewer prose.
-5. Complete all three passes even if an earlier pass is quiet.
-6. Reconcile by evidence. Preserve disagreements and evidence gaps. Never issue a ship verdict.
+## Place
+
+Resolve `~/.agents/artifacts/<workspace>/` to an absolute path, deriving `<workspace>` from the
+repository or working-directory basename. Write under that resolved directory. Never write into the
+repository, vendor storage, or an OS temporary directory. Never overwrite unrelated work. Stop with
+structured choices on a collision or blocked write.
+
+## Passes
+
+1. Dispatch pass one with no peer report.
+2. In inspect mode, hold the snapshot fixed and hide all peer reports through pass three.
+3. In refine mode, verify findings, apply only evidence-backed fixes, pin the revised state, and
+   dispatch the next fresh pass without prior prose.
+4. Complete all three passes even when an earlier pass is quiet.
+5. Reconcile by evidence. Preserve real disagreement and evidence gaps.
+
+Never vote, merge three opinions into false certainty, or issue a ship verdict. Record each finding
+once. Return only the clickable artifact path.
+
+After the artifact and sidecars are fully actioned and no downstream step needs them, ask once:
+Delete, Leave, or Promote. Recommend from state, explain each option in one sentence, and include
+`Other`. Never choose for the human.

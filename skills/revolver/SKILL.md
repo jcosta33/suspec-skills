@@ -1,40 +1,47 @@
 ---
 name: revolver
-type: agent-guide
-description: Run a purpose-agnostic breadth inspection over code, diffs, artifacts, plans, or systems. Derive every distinct target-justified stance with no default menu or numeric floor, complete each rotation, and stop after a quiet rotation or the hard three-cycle cap. ALWAYS apply when asked for a Revolver inspection, broad adversarial audit, or many-angle check. Default to read-only inspect mode; refine only when explicitly requested. Reviewers never edit; the orchestrator applies evidence-backed fixes.
+description: Run a broad, purpose-agnostic inspection over code, diffs, artifacts, plans, or systems. ALWAYS apply when asked for a Revolver inspection, broad adversarial audit, or many-angle check. Derive every stance from the target, complete each rotation, and stop after a quiet rotation or three cycles. Default to fixed-snapshot inspect mode; refine only when explicitly requested. Reviewers never edit or issue a ship verdict.
 ---
 
 # Revolver
 
-`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
-
-## Artifact placement
-
-Place the file under `~/.agents/artifacts/<workspace>/`, resolving `~` to the absolute
-home path and deriving `<workspace>` from the repository or working-directory basename. Keep it
-out of the repository and carry its absolute path forward. If the workspace name or target path
-conflicts with unrelated work, stop for a structured human choice; never overwrite. If the root is
-unwritable, offer grant access and retry, another agent-neutral user directory, or cancel. Never
-fall back to vendor storage, the repository, or a temporary directory.
+Breadth comes from distinct attack surfaces, not a canned persona list.
 
 ## Contract
 
-- Target: code, diff, artifact, plan, or existing system.
-- Default mode: `inspect`.
-- Refine mode: explicit request only.
-- Output: one `type: inspection`, `method: revolver` artifact; round logs may use sidecars.
-- Authority: reviewers report evidence-backed findings; only the orchestrator edits.
+- Pin the target state.
+- Derive every materially distinct stance justified by requirements, trust boundaries, failure
+  modes, changed surfaces, users, and operating conditions. Use no default menu or numeric floor.
+- Default to read-only `inspect`. Use `refine` only on explicit request.
+- Write one `type: inspection`, `method: revolver` artifact. Round logs may use sidecars.
+- Reviewers report findings. The orchestrator alone applies verified fixes.
 
-## Rotation
+Before creating the artifact, prove the harness can dispatch fresh reviewer contexts. If it cannot,
+stop with structured choices: enable fresh dispatch and retry; run each stance in a separate clean
+task and return the reports; cancel. Recommend the best available option, explain each in one
+sentence, and include `Other`. Never simulate independence in one context.
 
-1. Pin the target state.
-2. Derive every distinct stance justified by requirements, trust boundaries, failure modes,
-   changed surfaces, users, and operating conditions. Never use a default stance menu or numeric floor.
-3. Run one fresh reviewer at a time on a cost-conscious model adequate for that stance.
-4. Give each reviewer the target, stance, scope, and evidence rules. Do not expose prior reviewer prose.
-5. In inspect mode, keep the snapshot fixed. In refine mode, the orchestrator verifies each finding,
-   applies accepted fixes, and pins the revised state before the next reviewer.
-6. Complete the rotation. Start another only if the completed rotation found something new.
-7. Stop after a quiet rotation or three cycles, whichever comes first.
+## Place
 
-Reconcile duplicate findings by evidence, not vote. Never issue a ship verdict.
+Resolve `~/.agents/artifacts/<workspace>/` to an absolute path, deriving `<workspace>` from the
+repository or working-directory basename. Write under that resolved directory. Never write into the
+repository, vendor storage, or an OS temporary directory. Never overwrite unrelated work. Stop with
+structured choices on a collision or blocked write.
+
+## Rotate
+
+1. Dispatch one fresh reviewer per stance on the cheapest model adequate for that stance.
+2. Give it the target, stance, scope, and evidence rules. Hide prior reviewer prose.
+3. In inspect mode, keep the snapshot fixed.
+4. In refine mode, verify findings, apply only evidence-backed fixes, and pin the revised state
+   before dispatching the next reviewer.
+5. Finish the entire rotation.
+6. Start another rotation only when the completed rotation found something new.
+7. Stop after one quiet rotation or three cycles, whichever comes first.
+
+Reconcile duplicates and disagreements through evidence, never vote. Record findings once. Never
+issue a ship verdict.
+
+Return only the clickable artifact path. After the artifact and sidecars are fully actioned and no
+downstream step needs them, ask once: Delete, Leave, or Promote. Recommend from state, explain each
+option in one sentence, and include `Other`. Never choose for the human.

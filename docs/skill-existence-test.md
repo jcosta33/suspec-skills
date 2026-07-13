@@ -1,35 +1,26 @@
-# Skill existence test
+# Skill Existence Test
 
-A skill ships only when it has a distinct intent, trigger, procedure, output, and prevented
-failure. Sharing evidence or handoff rules does not create overlap; activating two procedures for
-the same intent does.
+A skill survives only when it has a distinct intent, trigger, procedure, output, and prevented
+failure. Familiar work with strong ecosystem alternatives does not belong here unless Suspec adds a
+unique contract.
 
-## Inspection boundaries
+| Skill | Distinct failure prevented |
+| --- | --- |
+| `bulletproof` | Load-bearing claims pass without active verification. |
+| `demolition` | One-sided advocacy masquerades as evidence. |
+| `dissect` | A change proceeds on a partial call-path story. |
+| `disrespec` | Artifacts and chat repeat the same payload. |
+| `revolver` | A broad target receives one narrow review frame. |
+| `triple-check` | A high-risk narrow target receives shallow or correlated review. |
+| `promote` | A transient document is copied into permanence without sanitization or reference repair. |
+| `remember` | Verified lessons vanish or become an invented memory store. |
+| `sus-spec` | Undecided intent becomes implementation or unverifiable requirements. |
+| `sus-task` | Parallel packets collide, duplicate scope, or drop obligations. |
+| `sus-review` | Authors accept their own work or evidence gaps disappear. |
+| `sus-inventory` | Structural change starts without a current contract map. |
+| `sus-change-plan` | Structural work has no preservation, cutover, or rollback proof. |
+| `sus-audit` | Present-state risk is mixed with prescriptions and unsupported impressions. |
+| `sus-research` | Sources outrun their competence and uncertainty hardens into a decision. |
 
-| Skill | Intent | Prevented failure |
-|---|---|---|
-| `bulletproof` | verify every load-bearing claim | confidence or authority mistaken for evidence |
-| `demolition` | make the strongest one-sided case against a target | advocacy mistaken for a finding |
-| `revolver` | broad inspection across every target-justified risk stance | narrow review missing a separate risk surface |
-| `triple-check` | deep inspection through three fresh top-tier passes | breadth substituting for depth on consequential risk |
-
-## Workflow boundaries
-
-| Skill | Intent | Prevented failure |
-|---|---|---|
-| `spec-check` | check spec conformance without editing | implementation inheriting a malformed contract |
-| `review-output` | assess finished work against a spec | acceptance based on worker claims |
-| `write-audit` | record present state without prescription | current behavior confused with intended behavior |
-| `implement-task` | execute an unclassified task packet | a generic task escaping packet scope |
-| specialized implementation skill | execute one classified change kind | generic procedure missing the change kind's proof obligation |
-
-`implement-task` never co-activates with a specialized implementation skill.
-
-## Durability boundaries
-
-| Skill | Intent | Prevented failure |
-|---|---|---|
-| `save-findings` | preserve one extracted lesson | durable knowledge disappearing with run state |
-| `promote-artifact` | preserve a whole document | useful context lost or copied into a drifting second version |
-
-Any proposed removal that survives these distinctions stops for a structured human choice.
+Re-run this table whenever a command overlaps another or its prevented failure becomes native,
+generic, or obsolete.

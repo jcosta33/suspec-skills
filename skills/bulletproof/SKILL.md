@@ -1,39 +1,75 @@
 ---
 name: bulletproof
-type: agent-guide
-description: Fact-check every explicit and load-bearing implied claim in an important target through code inspection, primary sources, and non-mutating checks. ALWAYS apply when asked to bulletproof, fact-check, validate claims, cross-examine evidence, or harden a claim, decision, spec, plan, diff, review, or finding. The target is read-only; active evidence generation is allowed. Produce claim assessments, never an accept/ship verdict. Skip broad risk discovery without a claim set, persuasive advocacy, and implementation.
+description: Fact-check every explicit and load-bearing implied claim in an important target, or preserve compact command proof after code or validation work. ALWAYS apply when asked to bulletproof, fact-check, validate, cross-examine, or harden a claim, decision, spec, plan, diff, review, or finding. Inspect code, consult primary sources, and run non-mutating checks. Never edit the target, implement the change, issue an accept/ship verdict, author or revise a spec, or substitute factual verification for structural requirements conformance. Skip broad risk discovery without a claim set and one-sided advocacy.
 ---
 
 # Bulletproof
 
-`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
-
-## Artifact placement
-
-Place the file under `~/.agents/artifacts/<workspace>/`, resolving `~` to the absolute
-home path and deriving `<workspace>` from the repository or working-directory basename. Keep it
-out of the repository and carry its absolute path forward. If the workspace name or target path
-conflicts with unrelated work, stop for a structured human choice; never overwrite. If the root is
-unwritable, offer grant access and retry, another agent-neutral user directory, or cancel. Never
-fall back to vendor storage, the repository, or a temporary directory.
+Trust nothing that can be checked.
 
 ## Contract
 
-- Target: any claim-bearing artifact or change.
-- Mutation: never edit the target.
-- Evidence: inspect code, consult primary sources, and run non-mutating checks needed to test claims.
-- Output: one `type: inspection`, `method: bulletproof` artifact.
-- Authority: assess claims; never accept or ship the target.
+- Pin the target and one stable state identifier for a claim-set verification.
+- Keep a verification target read-only. Active evidence generation is allowed.
+- Assess every explicit claim and every implied claim carrying the conclusion.
+- Use `Supported`, `Unsupported`, `Unverified`, or `Blocked`. Never accept or ship.
+- A substantive claim-set verification writes one `type: inspection`, `method: bulletproof`
+  artifact.
+
+Do not create an artifact for ordinary conversation. Create one only for a substantive verification
+run or when the user requests it.
+
+## Place
+
+Resolve `~/.agents/artifacts/<workspace>/` to an absolute path, deriving `<workspace>` from the
+repository or working-directory basename. Write under that resolved directory. Never write into the
+repository, vendor storage, or an OS temporary directory. Never overwrite unrelated work. On a
+workspace or filename collision, present distinct human-readable choices. If the root is
+unwritable, offer: grant access and retry; choose another agent-neutral user directory; cancel.
 
 ## Method
 
-1. Pin the target and state identifier.
-2. Enumerate every explicit claim and every implied claim on which the conclusion depends.
-3. Define what evidence would support and falsify each claim.
-4. Inspect authoritative local sources first. Use primary external sources for external facts.
-5. Run non-mutating checks when existing evidence is absent or stale.
-6. Record `Supported`, `Unsupported`, `Unverified`, or `Blocked` per claim with exact evidence.
-7. Link large raw output through evidence receipts. Do not convert confidence, consensus, or
-   authority into support.
+1. Extract every claim. Include assumptions without which the conclusion fails.
+2. State what would support and falsify each claim.
+3. Inspect authoritative local sources first. Search primary external sources for external facts.
+4. Run safe, non-mutating checks when existing evidence is absent, stale, or indirect.
+5. Record one row per claim: `ID | Assessment | Evidence`.
+6. Resolve disagreement through evidence, never confidence, authority, consensus, or vote.
 
-Stop when every claim has an assessment. Do not add a ship verdict.
+If the claim set or boundary remains materially ambiguous after investigation, stop with a native
+picker: three genuine options by default, two when binary, recommendation first, one-sentence
+tradeoff each, and automatic `Other`. Without a picker, render the same numbered options plus
+`Other`. Never ask a bare question. Ask dependent decisions sequentially. A deferred choice blocks
+dependent verification.
+
+## Proof
+
+Record short decisive output once. When raw output would dominate the artifact, write an adjacent
+`evidence-<slug>.md` receipt containing:
+
+- stable `E-NNN` anchors;
+- exact command and working directory;
+- state identifier and exit status; and
+- untouched raw output.
+
+Map each supported claim to an anchor. One run may support several claims. In the inspection keep
+only the decisive verbatim excerpt and receipt link. Never paraphrase command output into proof,
+duplicate a run per claim, or present rerunnable upstream output as current evidence.
+
+## Implementation Proof
+
+After code or validation work, record each decisive run once with its exact command, working
+directory, state identifier, numeric exit status, and decisive untouched raw output. Use the
+existing task packet when one governs; otherwise put the compact record in chat. Do not create an
+inspection or any other artifact solely for implementation proof.
+
+This proof path records what ran. It does not edit the target, implement work, assess a substantive
+claim set, or issue a verdict. A substantive claim-set verification still follows the full method
+and writes its inspection.
+
+## Close
+
+Stop when every claim is assessed. Return only the clickable artifact path unless blocked or
+verification failed. After the artifact and sidecars have been fully actioned and no downstream step
+needs them, ask once what to do with the complete set: Delete, Leave, or Promote. Recommend from the
+current state, explain each option in one sentence, and include `Other`. Never choose for the human.

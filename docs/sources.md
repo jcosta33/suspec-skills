@@ -1,241 +1,89 @@
 # Sources
 
-> **Every claim in this directory cites at least one entry below. A claim without a citation is opinion, not finding** — cribbed from this catalog's [`write-research`](../skills/write-research/SKILL.md) guide. Where a primary source was unavailable, the most authoritative secondary source is cited and labelled.
-
----
-
-## Research and measured reports
-
-<a id="3"></a>
-**[3] Why Claude Code Skills Don't Activate — And How to Fix It.** Ivan Seleznov, Medium, Feb 2026. Practitioner experiment comparing description variants in Claude Code, with session-log verification and published data and analysis. Useful evidence for testing directive descriptions and exclusions in that environment, not a peer-reviewed or cross-harness guarantee. <https://github.com/SeleznovIvan/claude-skills-test> · <https://medium.com/@ivan.seleznov1/why-claude-code-skills-dont-activate-and-how-to-fix-it-86f679409af1>
-
-<a id="4"></a>
-**[4] Claude Skills Have Two Reliability Problems, Not One.** Marc Bara, Medium, Mar 2026. Practitioner analysis distinguishing activation failure from skipped steps inside an already-loaded skill and proposing visible output as a guard. Treat as design guidance, not a measured prevalence result. <https://medium.com/@marc.bara.iniesta/claude-skills-have-two-reliability-problems-not-one-299401842ca8>
-
-<a id="5"></a>
-**[5] Lost in the Middle: How Language Models Use Long Contexts.** Liu, Lin, Hewitt, et al., _Transactions of the Association for Computational Linguistics_, vol. 12, 2024. The U-shaped attention curve in long context; tested on GPT-3.5-Turbo, Claude-1.3, MPT-30B-Instruct, LongChat-13B. <https://aclanthology.org/2024.tacl-1.9/>
-
-<a id="24"></a>
-**[24] Show Your Work: Scratchpads for Intermediate Computation with Language Models.** Nye, Andreassen, Gur-Ari, et al., ICLR 2022 (preprint Nov 2021). Foundational evidence that letting a model emit intermediate steps to a "scratchpad" improves accuracy on multi-step problems even when the model must predict many more tokens — individual prediction steps become easier. <https://arxiv.org/abs/2112.00114>
-
-<a id="25"></a>
-**[25] Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning.** Wang, Xu, Lan, et al., ACL 2023. Devise an explicit plan before execution, then carry out subtasks; outperforms vanilla zero-shot CoT across arithmetic, commonsense, and symbolic reasoning benchmarks. <https://arxiv.org/abs/2305.04091>
-
-<a id="26"></a>
-**[26] Tree of Thoughts: Deliberate Problem Solving with Large Language Models.** Yao, Yu, Zhao, et al., NeurIPS 2023. Multiple reasoning paths with self-evaluation and backtracking; on Game of 24, GPT-4 jumps from 4 % (CoT) to **74 % (ToT)**. <https://arxiv.org/abs/2305.10601>
-
-<a id="27"></a>
-**[27] Reflexion: Language Agents with Verbal Reinforcement Learning.** Shinn, Cassano, Berman, et al., NeurIPS 2023. Verbal self-reflection between trials acts as a "semantic gradient signal"; **91 % pass@1 on HumanEval (vs 80 % GPT-4 baseline, +11 pp)**. Foundation for the iteration-trail discipline used in `write-fix` and `fix-flaky-test`. <https://arxiv.org/abs/2303.11366>
-
-<a id="28"></a>
-**[28] PAACE: A Plan-Aware Automated Agent Context Engineering Framework.** Yuksel, preprint Dec 2025. _"Modern agentic failures are overwhelmingly context failures, not model failures."_ Plan-aware context selection over flat retrieval. <https://arxiv.org/abs/2511.21345>. _Secondary citation_ — preprint metadata only; full text not yet verified line-by-line.
-
-<a id="30"></a>
-**[30] Context Rot: How Increasing Input Tokens Impacts LLM Performance.** Hong, Troynikov, Huber, _Chroma technical report_, July 2025. Eighteen LLMs evaluated; performance degrades non-uniformly as input grows, including in the _middle_ and _end_ of long contexts. Stronger and broader than the original Lost in the Middle finding. <https://research.trychroma.com/context-rot>
-
-<a id="31"></a>
-**[31] More with Less: An Empirical Study of Turn-Control Strategies for Efficient Coding Agents.** Gao & Peng, ByteDance, Oct 2025. Quadratic token-cost growth with conversation turns; a fixed turn limit at the 75th percentile cuts cost **24–68 %** with minimal solve-rate impact. Evidence that long task files have super-linear cost. <https://arxiv.org/abs/2510.27502>
-
-<a id="32"></a>
-**[32] Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?** Gloaguen, Mündler, Müller, Raychev, Vechev (ETH Zürich SRI Lab), Feb 2026. LLM-generated context files cost +20 % with –3 % success on SWE-bench Lite; developer-written context files yield ~+4 % success at +19 % cost. Repository-specific tools are used **2.5 times per instance when mentioned in the context file vs <0.05 times when not** — a ~50× lift on the directly addressable signal. Validates the `AGENTS.md > Commands` contract design and the minimalism principle (commands beat narrative). Code and benchmark: <https://github.com/eth-sri/agentbench>. <https://arxiv.org/abs/2602.11988>
-
-<a id="33"></a>
-**[33] On the Impact of AGENTS.md Files on the Efficiency of AI Coding Agents.** Lulla, Mohsenimofidi, Galster, Zhang, Baltes, Treude, Jan 2026. Paired same-task / same-repository study over 124 pull requests across 10 repositories. Presence of `AGENTS.md` is associated with **lower median wall-clock runtime (≈28.6 %)** and **reduced output token consumption (≈16.6 %)** while task-completion behaviour stays comparable. Companion to [\[32\]](#32) — efficiency gains without performance regression. <https://arxiv.org/abs/2601.20404>
-
-<a id="36"></a>
-**[36] Curse of Instructions: Large Language Models Cannot Follow Multiple Instructions at Once.** Harada et al., ICLR 2025. ManyIFEval (up to ten verifiable instructions) across GPT-4o, Claude-3.5-Sonnet, Gemini-1.5, Gemma2, and Llama3.1: the probability of satisfying _all_ instructions is closely predicted by the per-instruction success rate raised to the instruction count — joint compliance collapses multiplicatively. At ten simultaneous instructions GPT-4o satisfies all of them only **~15 %** of the time (31 % with instruction-level chain-of-thought); Claude-3.5-Sonnet **~44 %** (58 %). The peer-reviewed grounding for lean bodies and few, well-separated rules. <https://openreview.net/forum?id=R6q67CDBCH>
-
-<a id="37"></a>
-**[37] Large Language Models Cannot Self-Correct Reasoning Yet.** Huang, Chen, Mishra, et al. (Google DeepMind), ICLR 2024. Without external feedback, intrinsic self-correction degrades reasoning accuracy — GPT-4 on GSM8K falls **95.5 % → 91.5 % → 89.0 %** across rounds, driven by _answer-flipping_ (a model changes correct answers to incorrect more often than the reverse, because it cannot judge its own reasoning); prior reported gains depended on oracle labels. Grounds independent evidence requirements in inspection methods. <https://arxiv.org/abs/2310.01798>
-
-<a id="38"></a>
-**[38] CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing.** Gou, Shao, Gong, et al., ICLR 2024. Self-correction works when the critique is grounded in external tools (interpreter, search); ablations show the gains vanish or go negative once the external feedback is removed. Pairs with [\[37\]](#37) and [\[27\]](#27) to draw the help/hurt boundary for adversarial critique. <https://arxiv.org/abs/2305.11738>
-
-<a id="39"></a>
-**[39] Self-Refine: Iterative Refinement with Self-Feedback.** Madaan, Tandon, Gupta, et al., NeurIPS 2023. A single model iteratively critiques and refines its own output; ~20 % average gain across seven tasks — but the average is dominated by preference metrics and is ~0 on the one objectively verifiable task (GSM8K), consistent with [\[37\]](#37). <https://arxiv.org/abs/2303.17651>
-
-<a id="40"></a>
-**[40] Towards Understanding Sycophancy in Language Models.** Sharma, Tong, Korbak, et al. (Anthropic), ICLR 2024. Five SOTA assistants from three organisations consistently match a user's stated belief over the truth, a behaviour partly induced by human-preference training. A failure mode the challenger stance must defend against. <https://arxiv.org/abs/2310.13548>
-
-<a id="41"></a>
-**[41] Self-Preference Bias in LLM-as-a-Judge.** Wataoka, Takahashi, Ri, NeurIPS 2024 (Safe Generative AI Workshop). An LLM scoring outputs favours its own generations; GPT-4 shows the highest self-preference of the eight models measured. With [\[40\]](#40), the reason a challenge carries weight only from a voice separate from the proposer. <https://arxiv.org/abs/2410.21819>
-
-<a id="42"></a>
-**[42] GRADE handbook.** GRADE Working Group, gradepro.org. Defines the four certainty levels (high / moderate / low / very low), anchors the starting grade to study design (randomized trials start high, observational starts low), and fixes the five downgrade domains (risk of bias, inconsistency, indirectness, imprecision, publication bias, each ↓1–2 levels) and three upgrade criteria (large effect, dose-response, confounding working against the effect). The transferable evidence-grading kernel for the academic research mode. <https://gdt.gradepro.org/app/handbook/handbook.html>
-
-<a id="43"></a>
-**[43] GRADE: an emerging consensus on rating quality of evidence and strength of recommendations.** Guyatt, Oxman, Vist, et al., _BMJ_ 336:924, 2008. The foundational GRADE paper; states verbatim that RCT-based evidence "begins as high quality" and observational "start[s] with a low quality rating," with the five downgrade and three upgrade factors. <https://pmc.ncbi.nlm.nih.gov/articles/PMC2335261/>
-
-<a id="44"></a>
-**[44] OCEBM Levels of Evidence (2011).** OCEBM Levels of Evidence Working Group (Howick, Chalmers, Glasziou, Greenhalgh, Heneghan, et al.), Oxford Centre for Evidence-Based Medicine. A five-level study-design hierarchy per question type (Level 1 systematic review → Level 5 mechanism-based reasoning); "the likely strongest evidence is furthest to the left, each column to the right likely weaker." A level may be graded down (quality, imprecision, indirectness, inconsistency, very small effect) or up (large effect), and "a systematic review is generally better than an individual study." <https://www.cebm.ox.ac.uk/resources/levels-of-evidence/ocebm-levels-of-evidence>
-
-<a id="45"></a>
-**[45] The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.** Page, McKenzie, Bossuyt, et al., _BMJ_ 372:n71, 2021. A 27-item reporting checklist; item 7 requires presenting the full search strategy for every database, register, and website (the PRISMA-S extension asks for it "copied and pasted exactly as run"); new items 15 and 22 require reporting the method and result of a certainty assessment (GRADE) per outcome; complete reporting "allows readers to assess … the trustworthiness of the findings." <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8005924/>
-
-<a id="46"></a>
-**[46] scite: A smart citation index that displays the context of citations and classifies their intent.** Nicholson, Mordaunt, Lopez, et al., _Quantitative Science Studies_ 2(3):882–898, 2021 (MIT Press). A SciBERT model classifies each citation as supporting, contrasting/disputing, or mentioning — because "a citation that disputes a paper is treated the same as a citation that supports it" by raw counts. Citation volume cannot tell corroboration from contestation; read the context. (An independent evaluation found the automated labels imperfect — treat intent labels as hints to verify.) <https://direct.mit.edu/qss/article/2/3/882/102990/scite-A-smart-citation-index-that-displays-the>
-
-<a id="47"></a>
-**[47] Evaluating the accuracy of GPT-4o-generated citations in mental-health literature reviews.** _JMIR Mental Health_ 12:e80371, 2025. In a controlled experiment GPT-4o fabricated **19.9 %** of citations, and **45.4 %** of the real (non-fabricated) ones contained bibliographic errors (the figure is the paper's Results; its Discussion states the 54.6 % accurate complement); fabrication rose with topic obscurity (6 % for a high-visibility topic vs ~28–29 % for specialized ones, P=.001). The measured baseline that mandates quote-and-DOI verification, scaled to topic obscurity. <https://mental.jmir.org/2025/1/e80371>
-
-<a id="48"></a>
-**[48] Correlated Errors in Large Language Models.** Kim, Garg, Peng, Garg. **ICML 2025**, arXiv:2506.07962. Across 350+ models, models **agree ~60 % of the time when both are wrong**, and error-correlation persists across architectures/providers and *grows* with capability — an "algorithmic monoculture" that undermines majority voting, ensembling, and LLM-as-judge. <https://arxiv.org/abs/2506.07962>. Grounds: agreement is not a correctness signal — resolve reviewer disagreement by independent re-checking and voting, not by debate (which propagates the shared error).
-
-<a id="49"></a>
-**[49] The Impact of Code Review Coverage and Participation on Software Quality** (Qt, VTK, ITK). McIntosh, Kamei, Adams, Hassan. **MSR 2014**, DOI 10.1145/2597073.2597076. Coverage and participation each independently bear on quality: low coverage adds up to **two** post-release defects, low **participation up to five** — "coverage alone does not guarantee" quality. <https://doi.org/10.1145/2597073.2597076>. Grounds: substantive engagement (re-running the checks, reading the callers), not a sign-off, is what a review buys.
-
-<a id="50"></a>
-**[50] Let Me Speak Freely? A Study on the Impact of Format Restrictions on Performance of LLMs.** Tam, Wu, Tsai, Lin, Lee, Chen. **EMNLP 2024 (Industry)**, arXiv:2408.02442. Format restriction **during reasoning degrades** it (JSON-mode worst on GSM8K); the same structure helps classification/extraction; parse-error rates ~0 %, so the loss is reasoning-order compression, not malformed output. <https://arxiv.org/abs/2408.02442>. Grounds: reason free-form, then emit the structured artifact — never constrain the reasoning to the output shape.
-
-<a id="66"></a>
-**[66] Using LLMs for Market Research.** Brand, Israeli, Ngwe, Harvard Business School Marketing Unit Working Paper No. 23-062, posted Mar 2023; revised Oct 2025. Shows plausible willingness-to-pay estimates from GPT responses in comparable contexts, but also that fine-tuning did **not** improve alignment for new product categories or customer-segment differences. <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4395751>. Grounds: synthetic respondents can explore hypotheses, not replace real segment-matched evidence.
-
-<a id="67"></a>
-**[67] Revolutionizing Marketing Research with a Large Language Model: A Hybrid AI-Human Approach.** Arora, Chakraborty, Nishimura, SSRN, Jan 2024. Replicates qualitative and quantitative studies with GPT-4 against a Fortune 500 food-company context; synthetic respondents helped qualitative generation and basic analysis, while quantitative quality improved with few-shot/RAG context. <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4683054>. Grounds: LLMs are collaborators in a research workflow, not standalone market evidence.
-
-<a id="68"></a>
-**[68] Large Language Models for Market Research: A Data-Augmentation Approach.** Wang, Zhang, Zhang, _Marketing Science_, published online Mar 2026. Real-data + LLM-data augmentation in conjoint analysis produced robust estimators and 24.9%–79.8% data/cost savings; naive substitution exacerbated bias and failed to save data. <https://doi.org/10.1287/mksc.2025.0009>. Grounds: use synthetic data as calibrated augmentation, not direct substitution.
-
-<a id="69"></a>
-**[69] Using large language models to generate silicon samples in consumer and marketing research: Challenges, opportunities, and guidelines.** Sarstedt, Adler, Rau, Schmitt, _Psychology & Marketing_ 41(6), 2024. Reviews evidence comparing silicon and human samples; results vary by domain, with stronger use cases in upstream pretesting/pilots and heavier caveats for main studies. <https://doi.org/10.1002/mar.21982>. Grounds: downgrade confidence when market evidence is synthetic, domain-mismatched, or uncalibrated.
-
----
-
-## Specifications and official guidance
-
-<a id="1"></a>
-**[1] Open Agent Skills specification.** agentskills.io. Defines `SKILL.md`, frontmatter rules, the 1024-character `description` cap, file layout, and the progressive-disclosure model. <https://agentskills.io/specification>
-
-<a id="2"></a>
-**[2] Skill authoring best practices.** Claude API Docs (Anthropic). Official guidance: 500-line body cap, third-person descriptions, progressive disclosure, the _Explain-the-Why_ pattern, evaluation-driven development, anti-patterns. <https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/best-practices>
-
-<a id="9"></a>
-**[9] Optimizing skill descriptions.** agentskills.io. Open-spec guidance: imperative phrasing, user-intent framing, explicit context lists, conciseness. <https://agentskills.io/skill-creation/optimizing-descriptions>
-
-<a id="16"></a>
-**[16] Equipping agents for the real world with Agent Skills.** Anthropic Engineering, originally published 2025-10-16; updated with the open-standard release notice 2025-12-18. The original design rationale for the spec. <https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills>
-
-<a id="17"></a>
-**[17] Extend Claude with skills.** Claude Code docs. Skill loading model in Claude Code specifically. <https://docs.anthropic.com/en/docs/claude-code/skills>
-
-<a id="19"></a>
-**[19] agents.md.** The open `AGENTS.md` convention adopted by Cursor, Codex, Claude Code, OpenCode, and others; basis for Suspec's `AGENTS.md` Commands-table contract (a repo adds the table to its own `AGENTS.md` by hand). <https://agents.md>
-
-<a id="20"></a>
-**[20] Effective context engineering for AI agents.** Anthropic Engineering, Sep 29 2025. Official guidance on context as a finite resource, just-in-time retrieval, compaction, and structured note-taking through examples such as a to-do list or `NOTES.md`. It does not prescribe a fixed three-file pattern. <https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents>
-
-<a id="21"></a>
-**[21] Effective harnesses for long-running agents.** Anthropic Engineering, Nov 2025. First-party guidance using an initializer, a coding agent, a progress file, a feature list, git history, and end-to-end tests to preserve state and leave each session in a recoverable condition. <https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents>
-
-<a id="22"></a>
-**[22] Harness design for long-running application development.** Anthropic Engineering, Mar 2026. Three-agent harness (Planner + Generator + Evaluator) with structured-artefact handoffs; sprint contracts (success criteria graded against pre-committed rubrics) negotiated before the Generator writes code; context resets via clearing-and-handoff rather than compaction. <https://www.anthropic.com/engineering/harness-design-long-running-apps>
-
-<a id="23"></a>
-**[23] Todo Lists / Tasks system.** Anthropic, Claude Code v2.1.16, Jan 2026. Disk-persistent task tracking for multi-session work, with dependency declaration and cross-session collaboration. Validates the externalised-task-file pattern at vendor scale. <https://docs.anthropic.com/en/docs/claude-code/changelog>
-
-<a id="64"></a>
-**[64] ICC/ESOMAR International Code on Market, Opinion and Social Research and Data Analytics.** ICC/ESOMAR, 2025 edition. The professional code for market/opinion/social research and data analytics; emphasizes legality, honesty, transparency, privacy, accountability, fit-for-purpose methods, method/source/limitation disclosure, and human oversight for AI/synthetic data. <https://iccwbo.org/news-publications/business-solutions/iccesomar-international-code-market-opinion-social-research-data-analytics/>
-
-<a id="65"></a>
-**[65] AAPOR Disclosure Standards.** American Association for Public Opinion Research. Requires disclosure of sponsor, population, sample source, mode, dates, sample size, weighting, processing/quality checks, precision limits, limitations, and response/disposition details for survey/public-opinion evidence. <https://aapor.org/standards-and-ethics/disclosure-standards/>. Grounds: survey claims need method disclosure before they can carry decision weight.
-
----
-
-## Practitioner analyses and pattern catalogues
-
-<a id="6"></a>
-**[6] Skill Creation Anti-Patterns.** _Some Claude Skills_. Catalogue: Reference Illusion, Description Soup, Template Theater, The Everything Skill, Tool Overload, Missing Exclusions. <https://someclaudeskills.com/docs/skills/skill_coach/references/anti-patterns/>. _Secondary source._
-
-<a id="8"></a>
-**[8] Skill Authoring Patterns from Anthropic's Best Practices.** Bilgin Ibryam, _Generative Programmer_, Apr 2026. Distils Anthropic's docs and the `skill-creator` source into 14 named patterns covering discovery, context economy, instruction calibration, workflow control, and executable code. Cites the `skill-creator` `SKILL.md` (Anthropic's own dogfooded skill) directly, plus practitioner writing from Hassid, Pachaar, Tort Mario, Xu, and Siva. <https://generativeprogrammer.com/p/skill-authoring-patterns-from-anthropics>
-
-<a id="34"></a>
-**[34] Plugin skills load full SKILL.md content at startup, not frontmatter-only.** `anthropics/claude-code` issue #44371, Apr 2026. Reproduction evidence reports full plugin skill bodies loaded at startup and substantial cold-start and context cost. This documents an implementation gap between the reported Claude Code behavior and the progressive-disclosure model in the open specification [[1]](#1); it is an open issue, not a stable cross-harness contract. <https://github.com/anthropics/claude-code/issues/44371>
-
-<a id="51"></a>
-**[51] Lessons from Building Static Analysis Tools at Google.** Sadowski, Aftandilian, Eagle, Miller-Cushon, Jaspan. **Communications of the ACM 61(4), 2018**, DOI 10.1145/3188720 (restated in *Software Engineering at Google*, ch. 20). A review-time check must produce **< 10 % effective false positives** — an "effective false positive" is one the developer takes no positive action on; technical correctness is secondary. <https://doi.org/10.1145/3188720>. _Authoritative engineering field report, not peer-reviewed primary research._ Grounds: a review finding carries a false-positive risk; a noisy reviewer gets ignored, so flag with a precision budget, not maximal recall.
-
-<a id="52"></a>
-**[52] Overreliance on AI: Literature Review.** Passi, Vorvoreanu, et al. **Microsoft Research / Aether, June 2022.** A research literature review (secondary synthesis): the **presence of explanations can increase over-reliance**, and **more detailed explanations can make it worse** — explanations often persuade rather than help a person evaluate. <https://www.microsoft.com/en-us/research/publication/overreliance-on-ai-literature-review/>. _Authoritative vendor research synthesis — guidance, not a single measured study._ Grounds: justify a finding to make checking cheap, not to convince; lead with evidence, keep the prose short.
-
----
-
-## Reference implementations and ecosystem
-
-<a id="10"></a>
-**[10] vercel-labs/skills CLI README.** Vercel Labs. Confirms `npx skills add <repo> -g` for cross-agent user-global install. <https://github.com/vercel-labs/skills>
-
-<a id="11"></a>
-**[11] anthropics/skills.** Anthropic's reference skills repo (PDF, DOCX, XLSX, `skill-creator`); Claude Code marketplace install path. <https://github.com/anthropics/skills>
-
-<a id="12"></a>
-**[12] vercel-labs/agent-skills.** Vercel's official skills; reference for repo layout. <https://github.com/vercel-labs/agent-skills>
-
-<a id="13"></a>
-**[13] elastic/agent-skills.** Elastic's official Elasticsearch / Kibana skills; example of `claude plugin install` distribution. <https://github.com/elastic/agent-skills>
-
-<a id="14"></a>
-**[14] wshobson/agents.** "Intelligent automation and multi-agent orchestration for Claude Code" — 78 plugins, ~150 specialised skills, modular plugin marketplace. <https://github.com/wshobson/agents>
-
-<a id="15"></a>
-**[15] addyosmani/agent-skills.** "Production-grade engineering skills for AI coding agents" — Gemini CLI user-global install path. <https://github.com/addyosmani/agent-skills>
-
-<a id="18"></a>
-**[18] `agentskills/agentskills` `skills-ref` library.** Reference validator implementing the open spec. <https://github.com/agentskills/agentskills/tree/main/skills-ref>. _Summary citation_ — README and source layout were inspected, not the full source.
-
----
-
-## Code-lifecycle reference implementations
-
-<a id="best-of-breed-implementations"></a>
-
-These public implementations informed the code-lifecycle skills. They are design references, not
-empirical proof that a technique works or a popularity ranking. Each linked repository was inspected
-for the named procedure.
-
-<a id="53"></a>
-**[53] oil-oil/codex-explore-skill.** Delegate reconnaissance and build a key-files map before reading deeply; reference for `codebase-exploration`. <https://github.com/oil-oil/codex-explore-skill>
-
-<a id="54"></a>
-**[54] shannonbay/setup-structure-index.** Example of a lightweight structure index for repeated
-codebase orientation; informs reuse of an existing project-owned map in `codebase-exploration`, not
-creation of a parallel documentation surface. <https://github.com/shannonbay/setup-structure-index>
-
-<a id="55"></a>
-**[55] obra/superpowers.** `systematic-debugging` and `using-git-worktrees`; references for `debugging` and `git-pr`. <https://github.com/obra/superpowers>
-
-<a id="56"></a>
-**[56] getsentry/skills.** Ground debugging in observed live trace and runtime context; reference for `debugging`. <https://github.com/getsentry/skills>
-
-<a id="57"></a>
-**[57] anthropics/claude-code-security-review.** Semantic PR-diff analysis and configurable false-positive filtering; reference for `security-review`. <https://github.com/anthropics/claude-code-security-review>
-
-<a id="58"></a>
-**[58] agamm/claude-code-owasp.** Per-language security review guidance; reference for `security-review` and its language notes. <https://github.com/agamm/claude-code-owasp>
-
-<a id="59"></a>
-**[59] gadievron/raptor.** Harness that orchestrates security tools; reference for scanner-driven review. <https://github.com/gadievron/raptor>
-
-<a id="60"></a>
-**[60] openai/skills.** Shipping, review-comment, and CI workflows; reference for `git-pr`. <https://github.com/openai/skills>
-
-<a id="61"></a>
-**[61] github/spec-kit.** Planning against project principles; reference for `planning-spec`. <https://github.com/github/spec-kit>
-
-<a id="62"></a>
-**[62] glittercowboy/get-shit-done.** Explicit out-of-scope tracking; reference for `planning-spec`. <https://github.com/glittercowboy/get-shit-done>
-
-<a id="63"></a>
-**[63] snarktank/ai-dev-tasks.** Human approval between planning and task breakdown; reference for `planning-spec`. <https://github.com/snarktank/ai-dev-tasks>
-
-The false-positive-budget claim in `security-review` (drop low-signal classes or get muted) is grounded in
-the peer-reviewed entry [\[51\]](#51) (Sadowski et al., Google static-analysis study), not in the tool repos above.
-
----
-
-## Citation discipline for this directory
-
-- Primary sources are preferred. Where one is cited as primary, the original study, paper, or specification is the single source of truth.
-- Secondary sources are labelled _secondary_ and accompanied by an explanation if the primary was unavailable.
-- Dead links are replaced; if no replacement exists, the entry is annotated `[archived]`.
-- New citations land alongside the change they justify — never after the fact. A new source materialises in the same PR as the design choice it grounds; reviewers can trace every claim back to the entry that introduced it.
+Primary and official sources outrank summaries. A source supports only claims inside its competence.
+
+## Skill Format And Context Economy
+
+- **Open Agent Skills specification.** Defines `SKILL.md`, frontmatter, description limits, layout,
+  and progressive disclosure. <https://agentskills.io/specification>
+- **Agent Skills authoring best practices, Anthropic.** Official guidance on concise bodies,
+  progressive disclosure, calibrated instruction freedom, and evaluation.
+  <https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/best-practices>
+- **Optimizing skill descriptions, Agent Skills.** Guidance on imperative, intent-based discovery
+  metadata. <https://agentskills.io/skill-creation/optimizing-descriptions>
+- **Effective context engineering for AI agents, Anthropic.** Treats context as finite and favors
+  just-in-time retrieval and compact external state.
+  <https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents>
+- **Curse of Instructions: Large Language Models Cannot Follow Multiple Instructions at Once.**
+  Harada et al., ICLR 2025. Measures collapsing joint compliance as instruction count grows.
+  <https://openreview.net/forum?id=R6q67CDBCH>
+- **Lost in the Middle: How Language Models Use Long Contexts.** Liu et al., TACL 2024. Measures
+  position-dependent failures in long contexts. <https://aclanthology.org/2024.tacl-1.9/>
+- **Let Me Speak Freely?** Tam et al., EMNLP Industry 2024. Finds that forcing structured formats
+  during reasoning can degrade reasoning even when structured output remains useful afterward.
+  <https://arxiv.org/abs/2408.02442>
+
+## Evidence And Inspection
+
+- **Large Language Models Cannot Self-Correct Reasoning Yet.** Huang et al., ICLR 2024. Finds that
+  intrinsic self-correction without external feedback can degrade accuracy.
+  <https://arxiv.org/abs/2310.01798>
+- **CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing.** Gou et al.,
+  ICLR 2024. Measures gains when critique uses external tool feedback.
+  <https://arxiv.org/abs/2305.11738>
+- **Correlated Errors in Large Language Models.** Kim et al., ICML 2025. Measures substantial
+  agreement among models when they are wrong, undermining agreement as proof.
+  <https://arxiv.org/abs/2506.07962>
+- **Towards Understanding Sycophancy in Language Models.** Sharma et al., ICLR 2024. Measures model
+  preference for a user's stated belief over truth. <https://arxiv.org/abs/2310.13548>
+- **Self-Preference Bias in LLM-as-a-Judge.** Wataoka et al., NeurIPS Safe Generative AI Workshop
+  2024. Measures judges favoring their own generations. <https://arxiv.org/abs/2410.21819>
+- **The Impact of Code Review Coverage and Participation on Software Quality.** McIntosh et al.,
+  MSR 2014. Connects both review coverage and participation with post-release quality.
+  <https://doi.org/10.1145/2597073.2597076>
+- **Evaluating the accuracy of GPT-4o-generated citations in mental-health literature reviews.**
+  JMIR Mental Health 2025. Reports fabricated citations and bibliographic errors, supporting direct
+  citation verification. <https://mental.jmir.org/2025/1/e80371>
+
+## Research Method
+
+- **GRADE handbook.** Defines evidence-certainty levels and explicit downgrade/upgrade factors.
+  <https://gdt.gradepro.org/app/handbook/handbook.html>
+- **GRADE: an emerging consensus on rating quality of evidence and strength of recommendations.**
+  Guyatt et al., BMJ 2008. Foundational account of evidence-quality grading.
+  <https://pmc.ncbi.nlm.nih.gov/articles/PMC2335261/>
+- **PRISMA 2020 statement.** Page et al., BMJ 2021. Defines transparent reporting for systematic
+  evidence searches and synthesis. <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8005924/>
+- **ICC/ESOMAR International Code on Market, Opinion and Social Research and Data Analytics.**
+  Professional requirements for legality, transparency, privacy, method disclosure, and human
+  oversight. <https://iccwbo.org/news-publications/business-solutions/iccesomar-international-code-market-opinion-social-research-data-analytics/>
+- **AAPOR Disclosure Standards.** Requires population, sample, mode, dates, weighting, quality
+  checks, precision limits, and limitations for survey evidence.
+  <https://aapor.org/standards-and-ethics/disclosure-standards/>
+- **Using LLMs for Market Research.** Brand, Israeli, and Ngwe. Tests synthetic consumer responses
+  and records failures to generalize across categories and segments.
+  <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4395751>
+- **Large Language Models for Market Research: A Data-Augmentation Approach.** Wang, Zhang, and
+  Zhang, Marketing Science 2026. Reports benefits from calibrated augmentation and bias from naive
+  substitution. <https://doi.org/10.1287/mksc.2025.0009>
+- **Using large language models to generate silicon samples in consumer and marketing research.**
+  Sarstedt et al., Psychology & Marketing 2024. Reviews domain-dependent strengths and limits of
+  synthetic samples. <https://doi.org/10.1002/mar.21982>
+
+## Distribution And Design References
+
+- **Vercel skills CLI.** Documents global and per-agent installation.
+  <https://github.com/vercel-labs/skills>
+- **agentskills/agentskills.** Hosts the open specification and reference validator.
+  <https://github.com/agentskills/agentskills>
+- **oil-oil/codex-explore-skill.** Design reference for delegated codebase reconnaissance and
+  compact key-file maps. <https://github.com/oil-oil/codex-explore-skill>
+- **shannonbay/setup-structure-index.** Design reference for reusable codebase structure maps.
+  <https://github.com/shannonbay/setup-structure-index>
+
+## Citation Discipline
+
+- Verify identity, title, date, and locator before citing.
+- Label secondary sources and use them only for their analysis or to locate primary evidence.
+- Record contradictory evidence and material rejected sources.
+- Replace dead links or mark them unavailable; never silently retain an unverifiable claim.

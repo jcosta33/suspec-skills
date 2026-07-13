@@ -1,36 +1,40 @@
 ---
 name: demolition
-type: agent-guide
-description: Produce an explicitly one-sided persuasive destruction of an idea, design, claim, or concept. Apply only when the user explicitly requests Demolition or asks for an advocacy exercise whose purpose is to attack the target at all costs. Speculation is allowed; fabricated sources, quotations, incidents, and test output are forbidden. The artifact is quarantined from evidence and findings until independently verified. Never target a person.
+description: Destroy an idea, design, claim, concept, code change, or plan through an explicitly one-sided advocacy exercise. Apply only when the user explicitly requests demolition or asks for an attack-at-all-costs argument. Speculation is allowed; fabricated sources, quotations, incidents, user reports, commands, and test output are forbidden. Never target a person or present the result as evidence.
 ---
 
 # Demolition
 
-`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
-
-## Artifact placement
-
-Place the file under `~/.agents/artifacts/<workspace>/`, resolving `~` to the absolute
-home path and deriving `<workspace>` from the repository or working-directory basename. Keep it
-out of the repository and carry its absolute path forward. If the workspace name or target path
-conflicts with unrelated work, stop for a structured human choice; never overwrite. If the root is
-unwritable, offer grant access and retry, another agent-neutral user directory, or cancel. Never
-fall back to vendor storage, the repository, or a temporary directory.
+Attack the target. Do not pretend the attack is truth.
 
 ## Contract
 
 - Explicit invocation only.
-- Target ideas, designs, claims, concepts, code, or plans; never people.
-- Produce one `type: inspection`, `method: demolition` artifact.
-- The first body line must be exactly: `Advocacy exercise, not evidence.`
-- Nothing in the artifact becomes a finding until another method verifies it.
+- Target ideas, designs, claims, concepts, code, or plans. Never people.
+- Write one `type: inspection`, `method: demolition` artifact.
+- Make the first body line exactly: `Advocacy exercise, not evidence.`
+- Nothing in the artifact becomes a finding until independently verified.
+
+## Place
+
+Resolve `~/.agents/artifacts/<workspace>/` to an absolute path, deriving `<workspace>` from the
+repository or working-directory basename. Write under that resolved directory. Never write into the
+repository, vendor storage, or an OS temporary directory. Never overwrite unrelated work. On a
+workspace or filename collision, present distinct human-readable choices. If the root is
+unwritable, offer: grant access and retry; choose another agent-neutral user directory; cancel.
 
 ## Method
 
 1. Pin the target and its strongest claimed value.
-2. Construct the strongest persuasive case that the target should be rejected.
-3. Exploit assumptions, edge cases, opportunity cost, failure narratives, and alternative frames.
+2. Build the strongest case for rejection.
+3. Exploit assumptions, edge cases, opportunity costs, failure narratives, and hostile frames.
 4. Label speculation. Cite only sources actually checked.
-5. Never invent a quotation, source, incident, user report, command, or test result.
-6. End without balance, recommendation, evidence assessment, or ship verdict. This is advocacy,
-   deliberately quarantined from truth claims.
+5. Never invent evidence-shaped material.
+6. End without balance, recommendation, assessment, or ship verdict.
+
+Write each point once. Cut scene-setting, repeated source material, decorative sections, and a
+conclusion that restates the attack. Return only the clickable artifact path.
+
+After the artifact is fully actioned and no downstream step needs it, ask once what to do with the
+artifact and sidecars: Delete, Leave, or Promote. Recommend from the current state, explain each
+option in one sentence, and include `Other`. Never choose for the human.

@@ -1,35 +1,32 @@
 ---
 name: disrespec
-type: agent-guide
-description: Maximize clarity per token in Markdown artifacts. ALWAYS apply when any Suspec skill creates or revises a Markdown artifact, or when explicitly invoked. State each fact once; remove filler, repeated source material, empty sections, and chat restatement. After successful creation, return only clickable artifact links. Preserve full detail only for raw evidence, blockers, failed creation, incomplete verification, and irreversible-action confirmation. Skip source code, raw evidence blocks, commit messages, and repository-native PR formats.
+description: Maximize clarity per token in a Markdown artifact. ALWAYS apply when explicitly asked to compress, sharpen, or strip waste from an artifact, and whenever a Suspec artifact is being created or revised. State each fact once. Remove filler, repetition, copied source material, empty sections, and chat restatement. Never replace a requested action with a document about it. Skip source code, raw evidence, commit messages, and repository-native pull-request forms.
 ---
 
 # Disrespec
 
-Respect the reader's attention and the user's wallet.
+Make every token pay rent.
 
-## Method
+## Cut
 
-1. Keep only information that changes understanding, execution, verification, or a decision.
-2. State each fact once. Link source material instead of repeating it.
-3. Delete filler, ceremony, confidence language, decorative summaries, and empty sections.
-4. Prefer a table for repeated records and a list for independent items. Use prose only when
-   relationships between facts matter.
-5. Preserve commands, paths, identifiers, quotations, security warnings, raw evidence, and the
-   order of irreversible steps exactly.
-6. Put short evidence once. Move raw output that would dominate the artifact to an adjacent
-   `evidence-<slug>.md` receipt; keep only the decisive verbatim excerpt and anchor link in the
-   governing artifact.
-7. After successful artifact creation or revision, chat returns only clickable artifact links.
+1. List the payload: facts, decisions, requirements, findings, assessments, commands, paths,
+   identifiers, links, quotations, warnings, and raw evidence.
+2. Give each payload item one home. Delete every duplicate, including summaries and chat restatement.
+3. Delete every section with no unique fact, decision, action, or evidence.
+4. Merge consequences and classifications into the record they qualify.
+5. Delete any sentence that changes no understanding, action, verification, or decision.
+6. Use tables for repeated records, bullets for independent facts, and prose only for relationships.
+7. Replace copied source material with a decisive excerpt and link. Move dominating raw output to an
+   adjacent evidence receipt.
 
-Explain in chat only when creation failed, verification is incomplete, a decision blocks work, or
-an irreversible action awaits confirmation.
+Do not lose commands, paths, identifiers, anchors, quotations, warnings, or irreversible order.
+Compare the result against the payload list, then cut again.
 
-## Artifact spine
+Do not create an artifact merely because the user spoke. Act directly unless the user requested a
+document or the active workflow needs one. Never relocate an existing artifact. When an artifact is
+the deliverable, return only its absolute clickable path. Explain only a blocker, failed creation,
+incomplete verification, or irreversible confirmation.
 
-Every Suspec artifact writer carries this exact line:
-
-`DISRESPEC-SPINE: One fact once. No filler, repeated source material, empty sections, or chat restatement; after successful creation return only clickable artifact links, except for blockers, failed creation, incomplete verification, or irreversible-action confirmation.`
-
-Do not apply this method to source code, raw evidence blocks, commit messages, or
-repository-native pull-request formats.
+At true lifecycle close, when no downstream step needs the transient artifact set, ask once: Delete,
+Leave, or Promote. Recommend from state, give one-sentence tradeoffs, include every artifact and
+sidecar path, and include `Other`. Never choose for the human or treat silence as Leave.
