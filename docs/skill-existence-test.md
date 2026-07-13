@@ -1,27 +1,25 @@
-# Skill Existence Test
+# Skill existence test
 
-A skill survives only when it has a distinct intent, trigger, procedure, output, and prevented
-failure. Familiar work with strong ecosystem alternatives does not belong here unless Suspec adds a
-unique contract.
+Keep a skill only when it owns a distinct intent, trigger, procedure, output, and prevented failure.
+Strong generic alternatives disqualify familiar work unless Suspec adds a unique contract.
 
-| Skill | Distinct failure prevented |
-| --- | --- |
-| `bulletproof` | Load-bearing claims pass without active verification. |
-| `demolition` | One-sided advocacy masquerades as evidence. |
-| `dissect` | A change proceeds on a partial call-path story. |
-| `disrespec` | Artifacts and chat repeat the same payload. |
-| `fork-me` | Ambiguity becomes an agent guess or an open-ended interrogation. |
-| `revolver` | A broad target receives one narrow review frame. |
-| `triple-check` | A high-risk narrow target receives shallow or correlated review. |
-| `promote` | A transient document is copied into permanence without sanitization or reference repair. |
-| `remember` | Verified lessons vanish or become an invented memory store. |
-| `sus-spec` | Undecided intent becomes implementation or unverifiable requirements. |
-| `sus-task` | Spec-governed parallel packets collide, duplicate scope, or drop obligations. |
-| `sus-review` | Authors accept their own work or evidence gaps disappear. |
-| `sus-inventory` | Structural change starts without a current contract map. |
-| `sus-change-plan` | Structural work has no preservation, cutover, or rollback proof. |
-| `sus-audit` | Present-state risk is mixed with prescriptions and unsupported impressions. |
-| `sus-research` | Sources outrun their competence and uncertainty hardens into a decision. |
+| Skill             | Failure prevented                                              |
+| ----------------- | -------------------------------------------------------------- |
+| `bulletproof`     | load-bearing claims escape active verification                 |
+| `demolition`      | advocacy masquerades as evidence                               |
+| `dissect`         | change proceeds from a partial code-path story                 |
+| `disrespec`       | Markdown wastes context through repetition                     |
+| `fork-me`         | ambiguity becomes guessing or open interrogation               |
+| `revolver`        | broad work receives one narrow review frame                    |
+| `triple-check`    | narrow high-risk work receives shallow or correlated review    |
+| `promote`         | transient content enters permanence unsanitized or broken      |
+| `remember`        | verified lessons vanish or create a parallel memory store      |
+| `sus-spec`        | undecided intent becomes unverifiable implementation           |
+| `sus-task`        | parallel packets collide, duplicate, or drop scope             |
+| `sus-review`      | authors accept their work or evidence gaps disappear           |
+| `sus-inventory`   | structural work starts without a current map                   |
+| `sus-change-plan` | structural work lacks preservation, cutover, or rollback proof |
+| `sus-audit`       | present risk mixes with unsupported prescription               |
+| `sus-research`    | sources exceed competence and uncertainty becomes decision     |
 
-Re-run this table whenever a command overlaps another or its prevented failure becomes native,
-generic, or obsolete.
+Re-run this test when a skill overlaps, becomes native, or loses its distinct failure.

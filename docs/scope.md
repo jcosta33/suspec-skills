@@ -1,23 +1,14 @@
 # Scope
 
-This repository ships portable Agent Skills in Markdown.
+This repository owns:
 
-It owns:
-
-- universal verification, attack, dissection, compression, ambiguity, promotion, and memory
-  commands;
-- authors for the current Suspec artifact types;
-- bundled references required by one skill; and
+- universal verification, attack, dissection, compression, ambiguity, promotion, and memory methods;
+- authors for Suspec artifact types;
+- references required by one skill;
 - catalog design evidence.
 
-It does not own:
+It does not own implementation, debugging, testing, security, Git, documentation, agents,
+orchestration, project policy, runtime checks, MCP, storage, registries, cleanup, hooks, executables,
+or network clients.
 
-- implementation, debugging, testing, security, Git, or documentation workflows already served by
-  general agent ecosystems;
-- agent definitions or orchestration;
-- the Suspec checks runtime or MCP adapter;
-- project-specific commands, architecture, or policy;
-- artifact storage, registries, lifecycle state, or cleanup automation; or
-- scripts, hooks, executables, network clients, or package runtime.
-
-The catalog conditions agents. It does not replace project governance or native harness features.
+The catalog conditions agents; project governance and native harness features remain authoritative.

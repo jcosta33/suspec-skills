@@ -1,16 +1,14 @@
-# Body Anatomy
+# Body anatomy
 
-A skill body is executable conditioning, not a product essay.
+A skill body is executable conditioning.
 
-## Rule
+- Open with its non-negotiable stance.
+- Keep only boundaries, method, proof, refusals, and close behavior that change execution.
+- Use hard verbs.
+- Delete encouragement, scene-setting, default behavior, repeated rationale, and conclusions.
+- State each fact once.
+- Move optional domain detail into one-level-deep bundled references.
+- Keep every reference inside the skill directory.
+- Stay below the specification body ceiling.
 
-- Start with the command's non-negotiable stance.
-- State boundary, method, proof, refusal, and close behavior only where each changes execution.
-- Use hard verbs. Delete encouragement, scene-setting, repeated rationale, and conclusions.
-- Keep one fact in one place.
-- Put optional domain detail in a bundled reference loaded only when the task needs it.
-- Keep references one level below `SKILL.md`; no reference may require another skill or repo file.
-- Stay below the open specification's body ceiling.
-
-Rationale earns space only when it prevents the model from following a tempting wrong path. One
-sentence is normally enough.
+Keep rationale only when it prevents a tempting wrong action.

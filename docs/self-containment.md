@@ -1,20 +1,14 @@
-# Self-Containment
+# Self-containment
 
-Every skill must work when it is the only catalog skill installed.
+Every skill must work as the only installed Suspec skill.
 
-## Rules
+- Carry load-bearing instructions in its `SKILL.md` or bundled references.
+- Depend on no sibling, external decision record, shared boilerplate, repository file, alias, or
+  hidden convention.
+- Route adjacent work by task type.
+- Use roles and absolute paths.
+- Keep references inside the skill directory and link them directly.
+- State placement and close only in artifact authors.
 
-- Carry every load-bearing instruction in `SKILL.md` or that skill's own bundled reference.
-- Never require another catalog skill, external decision record, shared boilerplate, or
-  repository-relative source.
-- Route adjacent work by task type, never by another command name.
-- Use artifact roles and absolute paths, never assumed vendor folders or implicit shared context.
-- Only artifact authors state placement and lifecycle close.
-- Cross-cutting conditioning may co-activate but cannot carry a writer's core contract.
-- References stay inside the skill directory and are linked directly from `SKILL.md`.
-
-## Isolation Test
-
-Copy one skill directory into an empty catalog. Its metadata must activate correctly; every linked
-reference must resolve; its method must run without another Suspec skill, repo document, alias, or
-hidden convention.
+Isolation test: copy one skill directory into an empty catalog, validate metadata and links, then run
+the method without any other Suspec content.
