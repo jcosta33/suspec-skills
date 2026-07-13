@@ -7,11 +7,6 @@ description: Maximize clarity per token in a supplied Markdown artifact. ALWAYS 
 
 Make every token pay rent.
 
-Investigate discoverable facts before asking. Every material choice uses the native picker:
-recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
-and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
-Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
-
 ## Cut
 
 1. List the payload: facts, decisions, requirements, findings, assessments, commands, paths,

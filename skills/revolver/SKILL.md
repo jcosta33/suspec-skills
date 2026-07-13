@@ -7,11 +7,6 @@ description: Drive a broad, purpose-agnostic check over code, diffs, artifacts, 
 
 Breadth comes from distinct attack surfaces, not a canned persona list.
 
-Investigate discoverable facts before asking. Every material choice uses the native picker:
-recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
-and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
-Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
-
 ## Contract
 
 - Create no artifact or sidecar. Keep round state in the orchestrator and return a compact chat
@@ -24,8 +19,7 @@ Never ask a bare question. Batch only independent choices; ask dependent choices
 - Run one fresh, read-only reviewer at a time. The orchestrator alone addresses findings.
 
 Before the first stance, prove the harness can dispatch fresh reviewer contexts. If it cannot,
-stop for a material choice: enable fresh dispatch and retry; run each stance in a separate clean
-task and return the reports; cancel. Never simulate independence in one context.
+report the blocker and stop. Never simulate independence in one context.
 
 ## Rotate
 
@@ -35,9 +29,9 @@ task and return the reports; cancel. Never simulate independence in one context.
 3. Adjudicate every finding before dispatching the next reviewer:
    - supported: apply the legitimate fix when mutation is allowed, then verify it;
    - refuted: reject it with decisive evidence;
-   - unverified or blocked: stop for a structured human choice.
-4. Never carry an unresolved material finding into the next stance. An explicit human deferral
-   counts as addressed; silence does not.
+   - unverified or blocked: report the blocker and stop.
+4. Never carry an unresolved material finding into the next stance. A previously recorded human
+   deferral counts as addressed; silence does not.
 5. Pin the addressed target. The next stance reviews that state, including every prior fix.
 6. Finish the full pool. One complete rotation is mandatory.
 7. Start another rotation only when the completed rotation produced a new supported finding.

@@ -7,11 +7,6 @@ description: Run exactly three fresh, target-derived, top-tier inspection passes
 
 Three fresh minds. No shared story.
 
-Investigate discoverable facts before asking. Every material choice uses the native picker:
-recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
-and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
-Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
-
 ## Contract
 
 - Pin the target state.
@@ -22,19 +17,19 @@ Never ask a bare question. Batch only independent choices; ask dependent choices
   `target: <path-or-stable-identifier>`. Add `mode: refine` only when refine was explicitly
   requested.
 - A substantive run requires that artifact. An explicit no-write or chat-only request conflicts
-  with this method. Stop and ask whether to allow the artifact or cancel. Never write against the
-  refusal or simulate Triple-check in chat.
+  with this method. Report the conflict and stop. Never write against the refusal or simulate
+  Triple-check in chat.
 
 Before creating the artifact, prove the harness can dispatch three fresh contexts. If it cannot,
-stop for a material choice: enable fresh dispatch and retry; run three separate clean tasks and
-return their reports; cancel. Never simulate independence in one context.
+report the blocker and stop. Never simulate independence in one context.
 
 ## Place
 
 Resolve `~/.agents/artifacts/<workspace>/` to an absolute path, deriving `<workspace>` from the
 repository or working-directory basename. Write under that resolved directory. Never write into the
-repository, vendor storage, or an OS temporary directory. Never overwrite unrelated work. Stop with
-structured choices on a collision or blocked write.
+repository, vendor storage, or an OS temporary directory. Never overwrite unrelated work. Choose a
+distinct human-readable workspace or filename on collision. If the root is unwritable, report failed
+creation and stop.
 
 ## Passes
 

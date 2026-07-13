@@ -11,9 +11,7 @@ Do not explore. Establish reachability.
 
 - Pin one question, symbol, workflow, or subsystem and the exact repository state.
 - Stay read-only.
-- Do not turn a targeted trace into a whole-system inventory, risk audit, or proposal.
-- Do not persist a document. A persistent current-state map requested by the user or required by the
-  active workflow is inventory-authoring work.
+- Bound the return to that target.
 
 ## Trace
 
@@ -54,4 +52,4 @@ Flow: <entry -> decisive branches -> terminal effects>
 Evidence: <commands needed to prove tests or negative searches, with exits>
 ```
 
-Do not repeat the table in prose or turn the map into a file.
+Return the table once. Add no prose recap.

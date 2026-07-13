@@ -7,11 +7,6 @@ description: Destroy an idea, design, claim, concept, code change, or plan throu
 
 Attack the target. Do not pretend the attack is truth.
 
-Investigate discoverable facts before asking. Every material choice uses the native picker:
-recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
-and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
-Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
-
 ## Contract
 
 - Explicit invocation only.
@@ -25,9 +20,9 @@ Never ask a bare question. Batch only independent choices; ask dependent choices
 
 Resolve `~/.agents/artifacts/<workspace>/` to an absolute path, deriving `<workspace>` from the
 repository or working-directory basename. Write under that resolved directory. Never write into the
-repository, vendor storage, or an OS temporary directory. Never overwrite unrelated work. On a
-workspace or filename collision, present distinct human-readable choices. If the root is
-unwritable, offer: grant access and retry; choose another agent-neutral user directory; cancel.
+repository, vendor storage, or an OS temporary directory. Never overwrite unrelated work. Choose a
+distinct human-readable workspace or filename on collision. If the root is unwritable, report failed
+creation and stop.
 
 ## Method
 

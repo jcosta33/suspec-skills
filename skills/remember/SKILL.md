@@ -7,11 +7,6 @@ description: Preserve a verified lesson after work settles. ALWAYS apply when th
 
 Save signal. Drop residue.
 
-Investigate discoverable facts before asking. Every material choice uses the native picker:
-recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
-and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
-Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
-
 ## Method
 
 1. Collect candidates from the completed run.
