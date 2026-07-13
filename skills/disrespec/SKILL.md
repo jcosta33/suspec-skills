@@ -27,6 +27,10 @@ document or the active workflow needs one. Never relocate an existing artifact. 
 the deliverable, return only its absolute clickable path. Explain only a blocker, failed creation,
 incomplete verification, or irreversible confirmation.
 
-At true lifecycle close, when no downstream step needs the transient artifact set, ask once: Delete,
-Leave, or Promote. Recommend from state, give one-sentence tradeoffs, include every artifact and
-sidecar path, and include `Other`. Never choose for the human or treat silence as Leave.
+When co-activated inside another artifact workflow, its artifact owner or final consumer owns the
+single disposition prompt; Disrespec never prompts again. Prompt only after the artifact lifecycle
+is fully actioned, when explicitly invoked as the sole artifact workflow, no owner exists, no
+earlier disposition prompt occurred, and no downstream step needs the transient artifact set. Then
+ask once: Delete, Leave, or Promote.
+Recommend from state, give one-sentence tradeoffs, include every artifact and sidecar path, and
+include `Other`. Never choose for the human or treat silence as Leave.

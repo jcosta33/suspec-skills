@@ -17,6 +17,11 @@ as a live workflow input.
   the spec.
 - Refuse review of work you implemented.
 - Keep the target read-only.
+- Before creating the artifact, prove the harness can dispatch one fresh independent reviewer
+  context with no implementation history or prior review prose. If it cannot, stop with structured
+  choices: enable fresh dispatch and retry; run the review in a separate clean task and return it;
+  cancel. Recommend the best available option, explain each in one sentence, and include `Other`.
+  Never simulate independence in the current context.
 - Start one artifact with this minimal frontmatter:
 
   ```yaml

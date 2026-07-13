@@ -1,6 +1,6 @@
 ---
 name: sus-task
-description: Split an approved spec into self-contained Suspec task packets that cannot collide. ALWAYS apply when spec-governed work has independently dispatchable parallel slices, repository/platform contexts, or sequenced transformation waves. Map every scoped spec obligation exactly once, prove write disjointness before parallelizing, and record dependency order. A change plan may add wave context but never replace the spec. Never split for size alone, invent requirements, or dispatch a blocked decision.
+description: Split a governing spec whose status is exactly ready into self-contained Suspec task packets that cannot collide. ALWAYS apply when ready spec-governed work has independently dispatchable parallel slices, repository/platform contexts, or sequenced transformation waves. Map every scoped spec obligation exactly once, prove write disjointness before parallelizing, and record dependency order. A change plan may add wave context but never replace the spec. Never split for size alone, invent requirements, or dispatch any other spec status or a blocked decision.
 ---
 
 # Sus Task
@@ -12,9 +12,10 @@ required as a live workflow input.
 
 ## Entry
 
-The governing spec must be approved enough to dispatch. Read it and every source it names. A change
-plan may supply additional source and wave context, but it never replaces the spec. Do not cut a
-packet from an unresolved blocking decision.
+Before dispatch, require the governing spec frontmatter to contain exactly `status: ready`. Any
+other or missing status blocks dispatch. Read the spec and every source it names. A change plan may
+supply additional source and wave context, but it never replaces the spec. Do not cut a packet from
+an unresolved blocking decision.
 
 Use task packets only for:
 

@@ -1,6 +1,6 @@
 ---
 name: bulletproof
-description: Fact-check every explicit and load-bearing implied claim in an important target, or preserve compact command proof after code or validation work. ALWAYS apply when asked to bulletproof, fact-check, validate, cross-examine, or harden a claim, decision, spec, plan, diff, review, or finding. Inspect code, consult primary sources, and run non-mutating checks. Never edit the target, implement the change, issue an accept/ship verdict, author or revise a spec, or substitute factual verification for structural requirements conformance. Skip broad risk discovery without a claim set and one-sided advocacy.
+description: Fact-check an explicit claim set or the claims inside a completed review artifact, or preserve compact command proof after code or validation work. ALWAYS apply when asked to bulletproof, fact-check, validate, cross-examine, or harden those claims. Inspect code, consult primary sources, and run non-mutating checks. Never edit the target, implement the change, issue an accept/ship verdict, author or revise a spec, or review completed work or diffs for requirements conformance. Skip broad risk discovery without a claim set, requirements-conformance review, and one-sided advocacy.
 ---
 
 # Bulletproof
@@ -9,6 +9,10 @@ Trust nothing that can be checked.
 
 ## Contract
 
+- Require an explicit claim set, or a completed review artifact whose claims are the target. A diff
+  may supply evidence for a claim; it is not itself a claim set.
+- Do not assess completed work or a diff against governing requirements. That is an independent
+  requirements-conformance review, not fact-checking.
 - Pin the target and one stable state identifier for a claim-set verification.
 - Keep a verification target read-only. Active evidence generation is allowed.
 - Assess every explicit claim and every implied claim carrying the conclusion.
