@@ -1,6 +1,6 @@
 ---
 name: sus-task
-description: Split a spec or change plan into self-contained Suspec task packets that cannot collide. ALWAYS apply when approved work has independently dispatchable parallel slices, repository/platform contexts, or sequenced transformation waves. Map every source obligation exactly once, prove write disjointness before parallelizing, and record dependency order. Never split for size alone, invent requirements, or dispatch a blocked decision.
+description: Split an approved spec into self-contained Suspec task packets that cannot collide. ALWAYS apply when spec-governed work has independently dispatchable parallel slices, repository/platform contexts, or sequenced transformation waves. Map every scoped spec obligation exactly once, prove write disjointness before parallelizing, and record dependency order. A change plan may add wave context but never replace the spec. Never split for size alone, invent requirements, or dispatch a blocked decision.
 ---
 
 # Sus Task
@@ -12,14 +12,15 @@ required as a live workflow input.
 
 ## Entry
 
-The controlling spec or change plan must be approved enough to dispatch. Read it and every source it
-names. Do not cut a packet from an unresolved blocking decision.
+The governing spec must be approved enough to dispatch. Read it and every source it names. A change
+plan may supply additional source and wave context, but it never replaces the spec. Do not cut a
+packet from an unresolved blocking decision.
 
 Use task packets only for:
 
 - independently dispatchable parallel slices;
 - one requirement implemented independently per platform or repository; or
-- separately dispatchable transformation waves.
+- separately dispatchable transformation waves from a change plan that supplements the spec.
 
 Size alone proves nothing. One source and one implementer need no packet.
 
@@ -36,11 +37,14 @@ artifact by absolute path.
 
 ## Cut
 
-1. List every source requirement, guarantee, and wave.
+1. List every scoped spec requirement. When a change plan supplements the spec, also list its
+   preservation guarantees and waves.
 2. Assign each obligation to exactly one packet. A platform/repository carve-out may repeat one ID
    only when each context independently verifies the whole obligation.
-3. Copy each assigned requirement and `Verify with:` line verbatim into its packet. Stamp the source
-   ID and state identifier. Re-cut after a material source change.
+3. Copy each assigned requirement block and its `Verify with:` or `VERIFY BY` line verbatim into its
+   packet. Scope may contain `AC-`, `C-`, `I-`, or `IF-` IDs. Name the source spec and include its ID
+   in `source`; add a change-plan ID only when used. Stamp the source state identifier. Re-cut after
+   a material source change.
 4. Give each packet one concern, explicit scope, do-not-change boundaries, affected write areas,
    verification, and agent instructions. `## Verify` is the only home for pasted evidence;
    `## Run summary` cites those entries without duplicating output.

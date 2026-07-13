@@ -12,7 +12,8 @@ format: sol
 
 ## Blocks
 
-Each block starts at column zero:
+Use only these bundled forms. Every block header and body line shown flush-left starts at column
+zero; indent only declaration list values:
 
 ```text
 REQ AC-001:
@@ -55,7 +56,8 @@ Allowed strength words: `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, `MAY`.
 
 - `REQ` IDs use `AC-NNN`; `CONSTRAINT` IDs use `C-NNN`; `INVARIANT` IDs use `I-NNN`;
   `INTERFACE` IDs use `IF-NNN`; and `QUESTION` IDs use `Q-NNN`. Every ID appears exactly once.
-- One block carries one independently verifiable obligation.
+- One block carries one independently verifiable obligation; split obligations that can pass or
+  fail independently.
 - `REQ`, `CONSTRAINT`, and `INVARIANT` contain at least one deliberate strength phrase;
   `INTERFACE` uses declarations instead.
 - Every non-question block contains one non-empty `VERIFY BY` line.

@@ -40,7 +40,7 @@ with `npx skills remove`, then reinstall; never remove unrelated publishers' ski
 | Skill | Artifact |
 | --- | --- |
 | [`sus-spec`](./skills/sus-spec/SKILL.md) | Intent and verifiable requirements. |
-| [`sus-task`](./skills/sus-task/SKILL.md) | Collision-safe dispatch packets for genuinely split work. |
+| [`sus-task`](./skills/sus-task/SKILL.md) | Collision-safe, spec-governed packets for genuinely split work. |
 | [`sus-review`](./skills/sus-review/SKILL.md) | Independent requirement assessments and human decision capture. |
 | [`sus-inventory`](./skills/sus-inventory/SKILL.md) | Evidence-bound map of current code and dependencies. |
 | [`sus-change-plan`](./skills/sus-change-plan/SKILL.md) | Structural transformation, preservation, cutover, and rollback. |

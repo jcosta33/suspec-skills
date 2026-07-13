@@ -15,7 +15,7 @@ unique contract.
 | `promote` | A transient document is copied into permanence without sanitization or reference repair. |
 | `remember` | Verified lessons vanish or become an invented memory store. |
 | `sus-spec` | Undecided intent becomes implementation or unverifiable requirements. |
-| `sus-task` | Parallel packets collide, duplicate scope, or drop obligations. |
+| `sus-task` | Spec-governed parallel packets collide, duplicate scope, or drop obligations. |
 | `sus-review` | Authors accept their own work or evidence gaps disappear. |
 | `sus-inventory` | Structural change starts without a current contract map. |
 | `sus-change-plan` | Structural work has no preservation, cutover, or rollback proof. |

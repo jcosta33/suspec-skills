@@ -41,7 +41,7 @@ Use frontmatter with `type: spec`, a unique `id`, `title`, `status`, `owner`, an
 `## Intent` and `## Requirements` are mandatory and non-empty. Add `Non-goals`, `Open questions`,
 `Affected areas`, or `Dropped from sources` only when each carries unique information.
 
-Each requirement:
+In plain Markdown, each requirement:
 
 - uses a `### AC-NNN` heading with one stable identifier;
 - states one independently verifiable obligation;
@@ -54,7 +54,9 @@ first. A mechanism belongs only when compatibility or a public contract makes th
 observable; state the reason.
 
 Plain Markdown requirements are the default. When rigid machine-readable clauses earn their cost,
-set `format: sol` and follow [`references/sol-grammar.md`](./references/sol-grammar.md).
+set `format: sol`; use the bundled flush-left `REQ`, `CONSTRAINT`, `INVARIANT`, or `INTERFACE`
+forms and `VERIFY BY` syntax in [`references/sol-grammar.md`](./references/sol-grammar.md). In either
+format, keep one independently verifiable obligation per requirement or block.
 
 ## Check
 
@@ -63,8 +65,10 @@ explicitly requested. Factual or load-bearing claim verification is a separate r
 does not activate this skill.
 
 1. Run the project's deterministic artifact checker when available.
-2. Confirm frontmatter, unique IDs, non-empty Intent, one requirement per ID, one strength word per
-   requirement, and one real `Verify with:` line per requirement.
+2. Confirm frontmatter, unique IDs, non-empty Intent, and one obligation per requirement or block.
+   For plain Markdown, require `### AC-NNN`, one deliberate strength word, and one real
+   `Verify with:` line per requirement. For `format: sol`, require the bundled flush-left block
+   forms and one non-empty `VERIFY BY` line per non-question block.
 3. Reject placeholders, unresolved blocking questions at `status: ready`, broken sources, and vague
    requirements with no same-line observable criterion.
 4. Run the leverage test: every section must improve clarity, scope, execution context,

@@ -15,6 +15,9 @@ and re-run to re-fetch. Watch the
 
 ### Changed
 
+- `sus-spec` now distinguishes plain Markdown requirements from flush-left SOL blocks, and
+  `sus-task` requires a governing spec, supports all requirement ID classes, and records CI proof
+  as `CI: https://...`.
 - Ordinary Suspec artifacts use `~/.agents/artifacts/<workspace>/` so local agents share one
   transient file without repository changes, copies, or symlinks. Full-path handoffs remain.
 - `promote-artifact` remains durable-only; it does not relocate files between transient roots.
