@@ -19,6 +19,7 @@ sus-review
 sus-spec
 sus-task
 triple-check'
+choice_protocol_skills='promote sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task'
 actual=$(find "$ROOT/skills" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
 test "$actual" = "$expected" || {
   echo "skill topology drift" >&2
@@ -78,14 +79,22 @@ for file in "$ROOT"/skills/*/SKILL.md; do
     done
   done
 
-  if grep -qiE 'picker|structured choices|human-readable choices|Delete, Leave, or Promote' "$file"; then
+  case " $choice_protocol_skills " in
+    *" $name "*)
     protocol='Investigate discoverable facts before asking. Every material choice uses the native picker: recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs, and automatic `Other`. Without a native picker, render the same numbered options plus `Other`. Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.'
     flattened=$(tr '\n' ' ' < "$file")
     printf '%s\n' "$flattened" | grep -Fq "$protocol" || {
       echo "complete choice protocol missing in $name" >&2
       exit 1
     }
-  fi
+    ;;
+    *)
+      if grep -Fq 'Every material choice uses the native picker:' "$file"; then
+        echo "irrelevant global choice protocol in $name" >&2
+        exit 1
+      fi
+      ;;
+  esac
 done
 
 artifact_creators='bulletproof demolition sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task triple-check'
