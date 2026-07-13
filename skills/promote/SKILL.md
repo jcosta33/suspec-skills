@@ -23,4 +23,5 @@ Move the document. Do not write a document about the move.
 
 Never relocate between transient roots. Never invent a destination when the project has none; stop
 with structured choices instead. Create no promotion report, registry, state field, owned directory,
-CLI verb, MCP tool, or lifecycle record. Return only the durable absolute path or the blocker.
+CLI verb, MCP tool, or lifecycle record. Return only the clickable durable absolute path or the
+blocker.

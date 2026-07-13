@@ -13,8 +13,9 @@ as a live workflow input.
 ## Contract
 
 - Pin the target state and governing artifact paths.
-- Read the spec at its explicit companion path first. A task packet narrows IDs; it never replaces
-  the spec.
+- Read the spec at its explicit companion path first. Require exactly `status: ready`; a missing or
+  different status blocks review before artifact creation. A task packet narrows IDs; it never
+  replaces the spec.
 - Refuse review of work you implemented.
 - Keep the target read-only.
 - Before creating the artifact, prove the harness can dispatch one fresh independent reviewer

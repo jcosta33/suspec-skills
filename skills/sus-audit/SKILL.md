@@ -1,6 +1,6 @@
 ---
 name: sus-audit
-description: Write an evidence-bound audit of what is true in a code area now and the risk that state carries. ALWAYS apply when asked for a code audit, technical-debt survey, cleanup assessment, benchmark report, quality assessment, or a fresh pass over a prior audit. Stay observation-only. Never prescribe fixes, assert intended behavior, write requirements, or leave a claim without exact evidence.
+description: Write an evidence-bound audit of what is true in a code area now and the risk that state carries. ALWAYS apply when asked for a present-state code audit, technical-debt survey, cleanup assessment, benchmark of one existing implementation, quality assessment, or a fresh pass over a prior audit. Stay observation-only. Never prescribe fixes, assert intended behavior, write requirements, or leave a claim without exact evidence. Skip multi-stance inspections and decision-informing comparisons or option research.
 ---
 
 # Sus Audit

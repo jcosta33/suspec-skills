@@ -1,6 +1,6 @@
 ---
 name: sus-research
-description: Write a decision-informing research artifact with traceable evidence. ALWAYS apply when asked to research, compare options, evaluate APIs or products, size a market, map competitors, study customers, synthesize reviews, inspect UX patterns, or assess positioning. Match sources to claims, separate observation from inference, preserve uncertainty, and recommend without deciding. Never fabricate, turn synthetic output into market fact, or write requirements.
+description: Write a decision-informing research artifact with traceable evidence. ALWAYS apply when asked to research, compare options, evaluate APIs or products, size a market, map competitors, study customers, synthesize reviews, inspect UX patterns, or assess positioning. Match sources to claims, separate observation from inference, preserve uncertainty, and recommend without deciding. Never fabricate, turn synthetic output into market fact, write requirements, or replace a present-state code audit or multi-stance inspection.
 ---
 
 # Sus Research
