@@ -11,4 +11,5 @@ It does not own implementation, debugging, testing, security, Git, documentation
 orchestration, project policy, runtime checks, MCP, storage, registries, cleanup, hooks, executables,
 or network clients.
 
-The catalog conditions agents; project governance and native harness features remain authoritative.
+The catalog conditions agents. Project governance and native harness features stay authoritative; the
+catalog does not impersonate either one or a runtime.

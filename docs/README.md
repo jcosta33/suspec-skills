@@ -1,5 +1,8 @@
 # Catalog design
 
+A catalog is not improved by getting bigger. These rules decide what earns installation and what gets
+deleted.
+
 | Document                                  | Owns                                    |
 | ----------------------------------------- | --------------------------------------- |
 | [Activation](activation.md)               | discovery metadata and overlap          |

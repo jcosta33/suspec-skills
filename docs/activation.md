@@ -1,6 +1,6 @@
 # Activation
 
-A skill description must justify loading its body.
+A skill description spends context. It must justify the charge.
 
 State:
 
@@ -13,4 +13,4 @@ Open with the work. Use `ALWAYS apply` only for a genuine automatic trigger. Rou
 sibling skill. Stay within the Agent Skills description limit.
 
 Test one direct trigger, one implicit trigger, one near miss, and one request where loading wastes
-context. Neighboring descriptions must not claim the same request.
+context. Neighboring descriptions must not fight over the same request.

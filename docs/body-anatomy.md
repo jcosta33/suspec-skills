@@ -1,6 +1,6 @@
 # Body anatomy
 
-A skill body is executable conditioning.
+A skill body is executable conditioning. Soft prose leaves room to ignore the method.
 
 - Open with its non-negotiable stance.
 - Keep only boundaries, method, proof, refusals, and close behavior that change execution.
@@ -11,4 +11,4 @@ A skill body is executable conditioning.
 - Keep every reference inside the skill directory.
 - Stay below the specification body ceiling.
 
-Keep rationale only when it prevents a tempting wrong action.
+Keep rationale only when it prevents a tempting wrong action. Commentary is not a method.

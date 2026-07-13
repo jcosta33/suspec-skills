@@ -1,6 +1,7 @@
 # AGENTS.md — suspec-skills
 
-This repository ships independently installable Markdown skills.
+This repository ships independently installable Markdown skills. A skill that works only beside its
+siblings is broken.
 
 ## Edit contract
 

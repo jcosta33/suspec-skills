@@ -1,7 +1,8 @@
 # Skill existence test
 
 Keep a skill only when it owns a distinct intent, trigger, procedure, output, and prevented failure.
-Strong generic alternatives disqualify familiar work unless Suspec adds a unique contract.
+Otherwise it is branded prompt bloat. Strong generic alternatives disqualify familiar work unless
+Suspec adds a unique contract.
 
 | Skill             | Failure prevented                                              |
 | ----------------- | -------------------------------------------------------------- |

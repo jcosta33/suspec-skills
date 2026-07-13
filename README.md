@@ -1,8 +1,8 @@
 # suspec-skills
 
 Portable Markdown skills for explicit decisions, evidence-bound work, and ruthless economy. Every
-folder under [`skills/`](./skills/) installs independently. No runtime, registry, or vendor is
-required.
+folder under [`skills/`](./skills/) stands alone. No runtime, registry, vendor, or hidden family
+meeting required.
 
 ## Install
 
@@ -42,7 +42,8 @@ skills.
 | [`sus-audit`](./skills/sus-audit/SKILL.md)             | evidenced present-state risks              |
 | [`sus-research`](./skills/sus-research/SKILL.md)       | decision-informing evidence                |
 
-Only `sus-*` skills create Suspec artifacts. They use absolute paths under
+Only `sus-*` skills create Suspec artifacts. Universal methods do work, not paperwork. Artifact
+authors use absolute paths under
 `~/.agents/artifacts/<workspace>/` and close exhausted sets through Delete, Leave, or Promote.
 
 Each skill carries its own load-bearing rules. Agents assess and recommend; humans own intent,
@@ -53,5 +54,6 @@ waivers, irreversible actions, and acceptance. Catalog design and evidence live 
 
 ## Security
 
-Inspect instructions before installation. Installed payloads contain Markdown only: no scripts,
-executables, hooks, or network clients. Repository shell scripts lint the source catalog.
+Inspect instructions before installation. You are installing words into an agent's head; act
+accordingly. Payloads contain Markdown only: no scripts, executables, hooks, or network clients.
+Repository shell scripts lint the source catalog.
