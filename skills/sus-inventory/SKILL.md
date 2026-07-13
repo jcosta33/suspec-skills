@@ -47,4 +47,5 @@ non-empty transient artifact set exists, no earlier disposition prompt occurred,
 step needs any transient artifact or sidecar created or consumed by the active work, ask once about
 the complete transient set: Delete, Leave, or Promote. Repository-native and other durable inputs
 never enter disposition. Recommend from state, explain each option in one sentence, include every
-transient path, and include `Other`. Never choose for the human.
+transient path, and include `Other`. Never choose for the human. Without a picker, render the same
+numbered options plus `Other`. Never ask a bare question.
