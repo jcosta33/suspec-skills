@@ -10,6 +10,7 @@ unique contract.
 | `demolition` | One-sided advocacy masquerades as evidence. |
 | `dissect` | A change proceeds on a partial call-path story. |
 | `disrespec` | Artifacts and chat repeat the same payload. |
+| `fork-me` | Ambiguity becomes an agent guess or an open-ended interrogation. |
 | `revolver` | A broad target receives one narrow review frame. |
 | `triple-check` | A high-risk narrow target receives shallow or correlated review. |
 | `promote` | A transient document is copied into permanence without sanitization or reference repair. |

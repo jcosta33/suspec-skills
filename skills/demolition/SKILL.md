@@ -1,45 +1,21 @@
 ---
 name: demolition
-description: Destroy an idea, design, claim, concept, code change, or plan through an explicitly one-sided advocacy exercise. Apply only when the user explicitly requests demolition or asks for an attack-at-all-costs argument. Speculation is allowed; fabricated sources, quotations, incidents, user reports, commands, and test output are forbidden. Never target a person or present the result as evidence.
+description: Destroy an idea, design, claim, change, or plan through explicit one-sided advocacy. Apply only when the user requests Demolition or an attack-at-all-costs case. Speculate freely. Fabricated evidence is forbidden. Attack ideas, never people. Treat nothing produced as evidence without independent verification.
 ---
 
 # Demolition
 
-Attack the target. Do not pretend the attack is truth.
+Attack without mercy. Counterfeit nothing.
 
-## Contract
+Start exactly:
 
-- Explicit invocation only.
-- Target ideas, designs, claims, concepts, code, or plans. Never people.
-- Write one artifact with `type: inspection`, `method: demolition`, and
-  `target: <path-or-stable-identifier>`.
-- Make the first body line exactly: `Advocacy exercise, not evidence.`
-- Nothing in the artifact becomes a finding until independently verified.
+`Advocacy exercise, not evidence.`
 
-## Place
-
-Resolve `~/.agents/artifacts/<workspace>/` to an absolute path, deriving `<workspace>` from the
-repository or working-directory basename. Write under that resolved directory. Never write into the
-repository, vendor storage, or an OS temporary directory. Never overwrite unrelated work. Choose a
-distinct human-readable workspace or filename on collision. If the root is unwritable, report failed
-creation and stop.
-
-## Method
-
-1. Pin the target and its strongest claimed value.
+1. Pin the target and its strongest promise.
 2. Build the strongest case for rejection.
-3. Exploit assumptions, edge cases, opportunity costs, failure narratives, and hostile frames.
-4. Label speculation. Cite only sources actually checked.
-5. Never invent evidence-shaped material.
-6. End without balance, recommendation, assessment, or ship verdict.
+3. Exploit assumptions, edge cases, opportunity costs, failure paths, and hostile frames.
+4. Mark speculation. Cite only checked sources.
+5. End at the attack. Add no balance or verdict.
 
-Write each point once. Cut scene-setting, repeated source material, decorative sections, and a
-conclusion that restates the attack. When a downstream consumer remains, return only the clickable
-absolute artifact path. At true lifecycle close, skip the path-only handoff and issue the
-disposition choice instead.
-
-If this skill is the final consumer, a non-empty transient artifact set exists, no earlier
-disposition prompt occurred, and no downstream step needs any transient artifact or sidecar created
-or consumed by the active work, ask once about the complete transient set: Delete, Leave, or
-Promote. Repository-native and other durable inputs never enter disposition. Include every transient
-path. Never choose for the human.
+Write each attack once. Cut scene-setting and recap. Fabricated sources, quotes, incidents, users,
+commands, and test output are disqualifying.

@@ -11,16 +11,15 @@ This repository ships portable, self-contained Agent Skills in plain Markdown. E
   observable triggers, refusals, and adjacent task types it skips.
 - Every skill works when installed alone. Never require another catalog skill, external decision
   record, shared boilerplate, or hidden repository context.
-- Write commands as hard, concise instructions. Keep one fact in one place. Cut rationale the model
-  does not need to execute correctly.
-- Investigate discoverable facts before asking. Material ambiguity gets structured choices:
-  recommendation first, genuine alternatives, one-sentence tradeoffs, and `Other`.
-- Ordinary conversation and direct action create no Suspec artifact. Create one only when requested
-  or required as a live workflow input.
+- Make every command ruthless and economical. Use hard, memorable imperatives. Cut filler, soft
+  framing, default behavior, announcement labels, inert negatives, and repeated mechanics.
+- Route every ambiguity through at least three clear options, recommendation first. Keep the full
+  picker procedure in its owner skill only.
+- Only `sus-*` author skills create Suspec artifacts.
 - Artifact writers resolve `~/.agents/artifacts/<workspace>/` to an absolute path before writing,
   never using the repository, vendor storage, or an OS temporary directory.
-- Ask Delete, Leave, or Promote only at true lifecycle close, after no downstream step needs the
-  complete artifact-and-sidecar set.
+- After a Suspec artifact is fully actioned and unused, require Delete, Leave, or Promote for it and
+  its sidecars.
 - Skills name abstract command slots when needed. The consuming repository supplies actual commands.
 - Skill payloads are Markdown only. Repository checks may use shell scripts; installed skills never do.
 - Add or remove the matching `README.md` catalog row with every skill directory change.

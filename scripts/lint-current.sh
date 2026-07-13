@@ -8,6 +8,7 @@ expected='bulletproof
 demolition
 disrespec
 dissect
+fork-me
 promote
 remember
 revolver
@@ -74,9 +75,8 @@ for document in "$ROOT/README.md" "$ROOT/AGENTS.md" $(find "$ROOT/docs" "$ROOT/s
   done
 done
 
-choice_protocol_skills='promote sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task'
-artifact_creators='bulletproof demolition sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task triple-check'
-artifact_handlers='bulletproof demolition disrespec sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task triple-check'
+artifact_creators='sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task'
+universal_methods='bulletproof demolition disrespec dissect fork-me promote remember revolver triple-check'
 
 for file in "$ROOT"/skills/*/SKILL.md; do
   folder=$(dirname "$file")
@@ -104,48 +104,40 @@ for file in "$ROOT"/skills/*/SKILL.md; do
     done
   done
 
-  case " $choice_protocol_skills " in
-    *" $name "*)
-      require_regex "$file" 'native picker' "choice protocol lacks native picker"
-      require_regex "$file" 'recommendation first' "choice protocol lacks recommendation order"
-      require_regex "$file" 'three genuine options.*two when binary' "choice protocol lacks option counts"
-      require_regex "$file" 'one-sentence tradeoffs' "choice protocol lacks tradeoffs"
-      require_regex "$file" 'automatic `Other`' "choice protocol lacks Other"
-      require_regex "$file" 'Without a native picker' "choice protocol lacks fallback"
-      require_regex "$file" 'Never ask a bare question' "choice protocol permits bare questions"
-      require_regex "$file" 'Batch only independent choices' "choice protocol lacks dependency order"
-      ;;
-    *)
-      if grep -Fq 'Every material choice uses the native picker:' "$file"; then
-        echo "irrelevant generic choice protocol in $name" >&2
-        exit 1
-      fi
-      ;;
-  esac
+  if [ "$name" != fork-me ] && grep -Eqi 'at least three materially different options|harness-native picker and its `Other`|batch independent forks' "$file"; then
+    echo "ambiguity protocol duplicated outside fork-me: $name" >&2
+    exit 1
+  fi
+
+  if grep -Eqi 'Create no artifact|Do not create an artifact|Keep round state in the orchestrator|Ordinary conversation and direct action create no|Never author, place, or relocate|Never create a sidecar' "$file"; then
+    echo "inert negative instruction in $name" >&2
+    exit 1
+  fi
 
   case " $artifact_creators " in
     *" $name "*)
       grep -Fq '~/.agents/artifacts/<workspace>/' "$file" || { echo "neutral root missing in $name" >&2; exit 1; }
-      for word in absolute repository vendor temporary overwrite collision; do
+      for word in absolute repository vendor temporary collision; do
         require_regex "$file" "$word" "incomplete artifact placement in $name"
       done
       require_regex "$file" '(unwritable|blocked writes?)' "incomplete blocked-write handling in $name"
+      for word in Delete Leave Promote sidecar 'fully actioned' 'downstream step' 'human disposition'; do
+        require_regex "$file" "$word" "incomplete lifecycle disposition in $name"
+      done
       ;;
   esac
 
-  case " $artifact_handlers " in
+  case " $universal_methods " in
     *" $name "*)
-      for word in Delete Leave Promote sidecar 'final consumer' 'non-empty transient artifact set' \
-        'no earlier disposition prompt' 'no downstream step' 'created or consumed by the active work'; do
-        require_regex "$file" "$word" "incomplete lifecycle disposition in $name"
-      done
-      require_regex "$file" 'durable (documents|inputs).*never enter disposition' "durable input may enter disposition in $name"
-      require_regex "$file" '(Never choose|do not choose|human chooses)' "agent may choose disposition in $name"
+      if grep -Eq '~/.agents/artifacts/<workspace>/|fully actioned.*sidecars|type:[[:space:]]+(inspection|spec|task|review|inventory|change-plan|audit|research)' "$file"; then
+        echo "artifact authorship leaked into universal method: $name" >&2
+        exit 1
+      fi
       ;;
   esac
 done
 
-writer_types='bulletproof:inspection demolition:inspection triple-check:inspection sus-spec:spec sus-task:task sus-review:review sus-inventory:inventory sus-change-plan:change-plan sus-audit:audit sus-research:research'
+writer_types='sus-spec:spec sus-task:task sus-review:review sus-inventory:inventory sus-change-plan:change-plan sus-audit:audit sus-research:research'
 for pair in $writer_types; do
   writer=${pair%%:*}
   expected_type=${pair#*:}
@@ -156,47 +148,57 @@ for pair in $writer_types; do
   }
 done
 
-for method in bulletproof demolition triple-check; do
-  actual_methods=$(declaration_values "$ROOT/skills/$method" method)
-  test "$actual_methods" = "$method" || { echo "inspection method drift in $method: $actual_methods" >&2; exit 1; }
+for method in $universal_methods; do
+  test -z "$(declaration_values "$ROOT/skills/$method" type)" || {
+    echo "universal method owns an artifact type: $method" >&2
+    exit 1
+  }
 done
 
 revolver="$ROOT/skills/revolver/SKILL.md"
-require_regex "$revolver" 'Create no artifact or sidecar' 'Revolver may persist output'
 require_regex "$revolver" 'at least six materially distinct stances' 'Revolver stance floor missing'
-require_regex "$revolver" 'one fresh, read-only reviewer at a time' 'Revolver reviewer sequence missing'
-require_regex "$revolver" '(Adjudicate|address).*finding.*before.*next reviewer' 'Revolver resolution order missing'
-require_regex "$revolver" 'full (pool|rotation).*mandatory|complete rotation is mandatory' 'Revolver full rotation missing'
+require_regex "$revolver" 'one fresh reviewer at a time' 'Revolver reviewer sequence missing'
+require_regex "$revolver" '(Kill|address).*finding.*before.*next stance' 'Revolver resolution order missing'
+require_regex "$revolver" 'Finish the full pool' 'Revolver full rotation missing'
 require_regex "$revolver" 'quiet rotation.*three cycles|three cycles.*quiet rotation' 'Revolver stop bounds missing'
-require_regex "$revolver" '(unverified|blocked).*report the blocker and stop' 'Revolver blocker stop missing'
-test -z "$(declaration_values "$ROOT/skills/revolver" type)" || { echo "Revolver owns an artifact type" >&2; exit 1; }
+require_regex "$revolver" 'supported: apply the fix and verify' 'Revolver remediation missing'
+require_regex "$revolver" 'human decision: stop until selected' 'Revolver decision stop missing'
 
 triple="$ROOT/skills/triple-check/SKILL.md"
 require_regex "$triple" 'exactly three materially distinct stances' 'Triple-check pass count missing'
-require_regex "$triple" 'top-tier model' 'Triple-check model tier missing'
-require_regex "$triple" 'fixed read-only snapshot|hold the snapshot fixed' 'Triple-check fixed snapshot missing'
-require_regex "$triple" 'refine only when explicitly requested|Use `refine` only on explicit request' 'Triple-check refine boundary missing'
-require_regex "$triple" 'hide all peer reports|no peer report' 'Triple-check independence missing'
+require_regex "$triple" 'fresh top-tier reviewer' 'Triple-check model tier missing'
+require_regex "$triple" 'no peer prose' 'Triple-check independence missing'
+require_regex "$triple" 'supported: apply the fix and run decisive verification' 'Triple-check remediation missing'
+require_regex "$triple" 'unresolved real defect blocks the next pass' 'Triple-check resolution order missing'
+require_regex "$triple" 'Complete exactly three passes' 'Triple-check completion missing'
+
+fork_me="$ROOT/skills/fork-me/SKILL.md"
+require_regex "$fork_me" 'ALWAYS apply whenever.*ambiguous' 'Fork-me activation boundary missing'
+require_regex "$fork_me" 'at least three materially different options' 'Fork-me option floor missing'
+require_regex "$fork_me" 'recommendation first' 'Fork-me recommendation order missing'
+require_regex "$fork_me" 'reason and cost in one plain sentence' 'Fork-me explanation contract missing'
+require_regex "$fork_me" 'harness-native picker.*`Other`' 'Fork-me picker contract missing'
+require_regex "$fork_me" 'Freeze dependent work until selection' 'Fork-me execution block missing'
 
 bulletproof="$ROOT/skills/bulletproof/SKILL.md"
 require_regex "$bulletproof" 'Verification:' 'Bulletproof verification mode missing'
 require_regex "$bulletproof" 'Implementation proof:' 'Bulletproof implementation-proof mode missing'
-require_regex "$bulletproof" 'Never edit the target|Neither mode edits the target' 'Bulletproof may edit target'
+require_regex "$bulletproof" 'Freeze the verification target' 'Bulletproof may edit target'
 require_regex "$bulletproof" 'Supported.*Unsupported.*Unverified.*Blocked' 'Bulletproof assessments missing'
 
 demolition="$ROOT/skills/demolition/SKILL.md"
 grep -Fq 'Advocacy exercise, not evidence.' "$demolition" || { echo "Demolition quarantine banner missing" >&2; exit 1; }
-require_regex "$demolition" 'Explicit invocation only' 'Demolition activation boundary missing'
-require_regex "$demolition" 'Never invent evidence-shaped material' 'Demolition fabrication boundary missing'
+require_regex "$demolition" 'Apply only when the user requests' 'Demolition activation boundary missing'
+require_regex "$demolition" 'Fabricated sources.*test output are disqualifying' 'Demolition fabrication boundary missing'
 
 dissect="$ROOT/skills/dissect/SKILL.md"
-require_regex "$dissect" 'Stay read-only' 'Dissect mutation boundary missing'
-require_regex "$dissect" 'Return the smallest map' 'Dissect bounded return missing'
+require_regex "$dissect" 'Trace it to bedrock' 'Dissect hard method missing'
+require_regex "$dissect" 'Return only:' 'Dissect bounded return missing'
 
 disrespec="$ROOT/skills/disrespec/SKILL.md"
-require_regex "$disrespec" 'Edit only an artifact path supplied' 'Disrespec target boundary missing'
-require_regex "$disrespec" 'Never author, place, or relocate' 'Disrespec may create artifacts'
-require_regex "$disrespec" 'Never create a sidecar' 'Disrespec may create sidecars'
+require_regex "$disrespec" 'Edit the supplied Markdown in place' 'Disrespec target boundary missing'
+require_regex "$disrespec" 'delete default behavior' 'Disrespec default-behavior economy missing'
+require_regex "$disrespec" 'Replace weak verbs.*hard imperatives' 'Disrespec ruthless-language rule missing'
 
 review="$ROOT/skills/sus-review/SKILL.md"
 require_regex "$review" 'Requirement coverage' 'Review coverage missing'

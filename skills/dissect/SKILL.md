@@ -1,45 +1,29 @@
 ---
 name: dissect
-description: Dissect an unfamiliar or high-risk code path before changing or judging it. ALWAYS apply when architecture, callers, control flow, data flow, state, side effects, failures, configuration, tests, or hidden coupling are not already proven. Trace the target to closure and mark every unknown edge. Return a compact evidence map, never a friendly tour. Skip when one known file or symbol fully contains the task or a persisted whole-area inventory is requested or required by the active workflow.
+description: Cut an unfamiliar or dangerous code path open before changing or judging it. ALWAYS apply when callers, flow, state, effects, failures, configuration, tests, or coupling remain unproven. Trace one bounded target to closure. Mark every unknown edge. Skip contained work and whole-area inventory.
 ---
 
 # Dissect
 
-Do not explore. Establish reachability.
+Trace it to bedrock.
 
-## Boundary
-
-- Pin one question, symbol, workflow, or subsystem and the exact repository state.
-- Stay read-only.
-- Bound the return to that target.
-
-## Trace
-
-1. Find every entry point: API, command, route, event, job, callback, registry, generated binding,
+1. Freeze one question, symbol, workflow, or subsystem and repository state.
+2. Find every entry: API, command, route, event, job, callback, registry, generated binding,
    and configuration key.
-2. Trace inbound reachability. Include direct callers, dynamic dispatch, string registration,
-   reflection, generated call sites, and external boundaries.
-3. Trace outbound control flow to every terminal result. Include branches, retries, fallbacks,
-   cleanup, cancellation, error translation, and asynchronous continuation.
-4. Trace data and state: origin, validation, normalization, mutation, persistence, caches, shared
-   state, and externally visible effects.
-5. Trace failure paths: invalid input, partial state, concurrency, time, resource exhaustion,
-   dependency failure, and recovery.
-6. Inspect tests, types, schemas, configuration, documentation, generated files, and build/runtime
-   wiring around the path.
-7. Close every edge with `file:line` evidence. Mark anything else `Unknown` and name the missing
-   evidence.
+3. Trace inbound callers, including dynamic dispatch, string registration, reflection, and generated
+   call sites.
+4. Trace every branch to terminal effects, including retries, fallbacks, cleanup, cancellation,
+   error translation, and asynchronous continuation.
+5. Trace data, mutation, persistence, caches, shared state, and external effects.
+6. Trace invalid input, partial state, concurrency, time, exhaustion, dependency failure, and
+   recovery.
+7. Inspect tests, types, schemas, configuration, documentation, generated files, and runtime wiring.
+8. Close every edge with `file:line` evidence. Mark every gap `Unknown` and name missing proof.
 
-A negative claim requires the search command and result. A symbol search never proves complete
-reachability. Environment, process state, time, randomness, network state, and shared services remain
-unknown unless pinned. Record exact boundary operators; `>` and `>=` are different contracts.
+Negative claims require the search command and result. Symbol search does not prove reachability.
+Record exact boundary operators.
 
-Delegate only independent questions with disjoint scope. Demand compact path-to-role results. Read
-every load-bearing source yourself before acting.
-
-## Return
-
-Return the smallest map that closes the question:
+Return only:
 
 ```text
 Question: <one sentence>
@@ -49,7 +33,5 @@ Flow: <entry -> decisive branches -> terminal effects>
 | Path:line | Proven edge, state, effect, or boundary | Unknown |
 | --- | --- | --- |
 
-Evidence: <commands needed to prove tests or negative searches, with exits>
+Evidence: <decisive commands and exits>
 ```
-
-Return the table once. Add no prose recap.

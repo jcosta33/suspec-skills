@@ -2,17 +2,14 @@
 
 ## Decisions
 
-Investigate discoverable facts before interrupting the human. Agents own reversible,
-convention-bound details. Humans own material behavior, public contracts, security tradeoffs,
-costly choices, conflicting authority, waivers, irreversible actions, and acceptance.
+Resolve facts. Expose every ambiguity. Agents own reversible conventions. Humans own intent,
+material behavior, public contracts, security, costly tradeoffs, conflicting authority, waivers,
+irreversible actions, and acceptance.
 
-Use the harness-native picker: recommendation first, three genuine options by default, two when
-binary, one-sentence tradeoff each, automatic `Other`. Without a picker, render the same numbered
-choices plus `Other`. Never ask a bare question. Batch only independent decisions. Deferral blocks
-dependent work.
+The ambiguity command owns picker mechanics: at least three genuine options, recommendation first,
+plain reasons and costs, automatic `Other`. Deferral blocks dependent work.
 
-Carry this protocol only in workflows that transfer a material decision. Fixed commands execute or
-name the concrete blocker and stop; they do not manufacture choices.
+Fixed commands execute until ambiguity appears.
 
 ## Evidence
 
@@ -32,6 +29,5 @@ confirmation.
 At true lifecycle close, prompt only for a non-empty transient artifact-and-sidecar set created or
 consumed by the active work, with no earlier prompt and no downstream consumer. Repository-native
 and other durable inputs never enter disposition. Require one human choice: Delete, Leave, or
-Promote. Recommend from current state and explain each option in one sentence. Without a picker,
-render the same numbered options plus `Other`. Never ask a bare question, choose for the human, or
-treat silence as Leave.
+Promote. Recommend from current state and explain each option in one sentence. An unavailable picker
+blocks disposition. Never choose for the human or treat silence as Leave.

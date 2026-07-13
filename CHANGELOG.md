@@ -15,21 +15,24 @@ and re-run to re-fetch. Watch the
 
 ### Changed
 
-- The catalog surface is `bulletproof`, `demolition`, `dissect`, `disrespec`, `promote`, `remember`,
-  `revolver`, `triple-check`, `sus-audit`, `sus-change-plan`, `sus-inventory`, `sus-research`,
-  `sus-review`, `sus-spec`, and `sus-task`. Each skill installs alone; no aliases ship.
+- The catalog surface is `bulletproof`, `demolition`, `dissect`, `disrespec`, `fork-me`, `promote`,
+  `remember`, `revolver`, `triple-check`, `sus-audit`, `sus-change-plan`, `sus-inventory`,
+  `sus-research`, `sus-review`, `sus-spec`, and `sus-task`. Each skill installs alone; no aliases
+  ship.
 - `sus-spec` now distinguishes plain Markdown requirements from flush-left SOL blocks, and
   `sus-task` requires a governing spec, supports all requirement ID classes, and records CI proof
   as `CI: https://...`.
 - Ordinary Suspec artifacts use `~/.agents/artifacts/<workspace>/` so local agents share one
   transient file without repository changes, copies, or symlinks. Full-path handoffs remain.
 - `promote` remains durable-only; it does not relocate files between transient roots.
-- `revolver` creates no artifact. It derives at least six target-specific stances, runs one fresh
-  reviewer at a time, and requires every finding to be addressed before the next stance sees the
-  current target.
-- Fixed commands execute or report a concrete blocker without carrying irrelevant decision-picker
-  boilerplate. `dissect` now states its bounded return directly instead of warning against unrelated
-  artifact workflows.
+- Only `sus-*` artifact authors create artifacts. Universal methods return through chat, native
+  memory, target edits, or durable relocation.
+- `fork-me` owns every ambiguity: at least three plain options, recommendation first, native picker,
+  dependent work blocked until selection.
+- `revolver` runs at least six sequential stances. `triple-check` runs exactly three fresh top-tier
+  passes. Both resolve each finding before the next reviewer sees the target.
+- Every skill now uses ruthless, economical instructions: hard imperatives without filler, default
+  behavior, inert negatives, or duplicated mechanics.
 - Released sections remain byte-for-byte historical; current corrections stay under Unreleased.
 
 ## [4.0.0] - 2026-07-10

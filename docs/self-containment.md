@@ -9,8 +9,8 @@ Every skill must work when it is the only catalog skill installed.
   repository-relative source.
 - Route adjacent work by task type, never by another command name.
 - Use artifact roles and absolute paths, never assumed vendor folders or implicit shared context.
-- State placement in every skill that writes a transient artifact.
-- State lifecycle close in every skill that owns a transient artifact through completion.
+- Only artifact authors state placement and lifecycle close.
+- Cross-cutting conditioning may co-activate but cannot carry a writer's core contract.
 - References stay inside the skill directory and are linked directly from `SKILL.md`.
 
 ## Isolation Test

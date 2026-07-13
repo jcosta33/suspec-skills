@@ -4,7 +4,8 @@ This repository ships portable Agent Skills in Markdown.
 
 It owns:
 
-- universal inspection, compression, promotion, and memory commands;
+- universal verification, attack, dissection, compression, ambiguity, promotion, and memory
+  commands;
 - authors for the current Suspec artifact types;
 - bundled references required by one skill; and
 - catalog design evidence.

@@ -1,33 +1,22 @@
 ---
 name: sus-review
-description: Reconcile finished work against a Suspec spec or scoped task. ALWAYS apply when asked to review completed work, a diff, branch, or pull request against its governing requirements. Use an independent reviewer, rerun verification, assess every scoped ID as Supported, Unsupported, Unverified, or Blocked, and capture the human decision. Never review your own implementation, edit the target, hide waivers, or issue acceptance.
+description: Put finished work on trial against its governing Suspec spec or task. ALWAYS apply to conformance review of completed work, diffs, branches, and pull requests. Use an independent reviewer, rerun proof, assess every scoped ID, expose waivers, and capture the human decision. Authors cannot review themselves or grant acceptance.
 ---
 
 # Sus Review
 
-Evidence decides assessment. The human decides acceptance.
-
-Investigate discoverable facts before asking. Every material choice uses the native picker:
-recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
-and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
-Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
-
-Ordinary conversation and direct action create no review. Write one only when requested or required
-as a live workflow input.
+Evidence judges conformance. Humans judge acceptance.
 
 ## Contract
 
-- Pin the target state and governing artifact paths.
-- Read the spec at its explicit companion path first. Require exactly `status: ready`; a missing or
-  different status blocks review before artifact creation. A task packet narrows IDs; it never
-  replaces the spec.
-- Refuse review of work you implemented.
-- Keep the target read-only.
+- Freeze target state and governing paths.
+- Read the companion spec first. Require exactly `status: ready`. A task narrows IDs; it cannot
+  replace the spec.
+- Reject self-review. Freeze the target.
 - A task opened explicitly as the clean-review fallback, with no implementation history or prior
-  review prose, is already the independent reviewer: execute here and do not dispatch again.
+  review prose, is the independent reviewer: execute here.
   Otherwise, before creating the artifact, prove the harness can dispatch one fresh independent
-  reviewer. If it cannot, stop with structured choices: enable fresh dispatch and retry; open a
-  separate clean review task; cancel. Never simulate independence in a contaminated context.
+  reviewer. If it cannot, stop for human selection. Contaminated context is not independence.
 - Start one artifact with this minimal frontmatter:
 
   ```yaml
@@ -39,21 +28,18 @@ as a live workflow input.
   ---
   ```
 
-  Add `task` or `pr` only when that locator exists. Never put `spec` or `target` in frontmatter;
-  record the explicit companion spec path and pinned target state in the body.
+  Add `task` or `pr` only when present. Put companion spec path and frozen target state in the body.
 
 ## Place
 
-Resolve `~/.agents/artifacts/<workspace>/` to an absolute path, deriving `<workspace>` from the
-repository or working-directory basename. Write under that resolved directory. Never write into the
-repository, vendor storage, or an OS temporary directory. Never overwrite unrelated work. Stop with
-structured choices on a collision or blocked write.
+Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
+repository or working-directory basename. Write there. A collision, ambiguous workspace, or blocked
+write requires human selection. Repository, vendor, and OS temporary paths are invalid.
 
 ## Assess
 
 1. Enumerate every scoped requirement and preservation guarantee.
-2. Rerun every applicable verification item after the final relevant change. Treat worker evidence
-   as a claim, not proof.
+2. Rerun every applicable verification after the final relevant change. Worker evidence is a claim.
 3. Read the diff and its callers. Check behavior, scope, preservation, trust boundaries, and
    unrequested changes.
 4. Use this exact coverage shape, with exactly one data row per scoped ID:
@@ -73,12 +59,11 @@ structured choices on a collision or blocked write.
    - `Unsupported`: evidence disproves it.
    - `Unverified`: evidence is absent, stale, indirect, or cannot run.
    - `Blocked`: an external condition prevents assessment.
-5. Add findings, changed files, open decisions, or plan coverage only when they carry unique facts.
+5. Add sections only for unique facts.
 6. Keep short raw output once. Move dominating output to an adjacent evidence receipt with stable
    anchors, command, working directory, state identifier, exit status, and untouched output.
 
-Never infer support from a green unrelated suite, author confidence, or majority agreement. Never
-write a ship verdict.
+Unrelated green suites, author confidence, and votes prove nothing. Emit no ship verdict.
 
 ## Decision
 
@@ -89,17 +74,9 @@ After assessment, present a state-aware native picker:
   Defer. Never offer plain Accept.
 - Any Blocked row: Request changes or Defer. Never offer either acceptance option.
 
-Only the human selection changes `decision` to `accepted`, `changes-requested`, or `deferred`.
+Only human selection changes `decision` to `accepted`, `changes-requested`, or `deferred`.
 Add `waivers` only when the human explicitly accepts while waiving named unsupported or unverified
 IDs. `waivers` is an optional string list such as `waivers: [AC-002]`; never write it as a scalar.
-Ordinary acceptance and every pending review omit `waivers`.
-When a downstream consumer remains after the choice is recorded, return only the clickable absolute
-review path. At true lifecycle close, skip the path-only handoff and issue the disposition choice
-instead.
-
-The review remains live while requested changes or acceptance work continues. If this skill is the
-final consumer, a non-empty transient artifact set exists, no earlier disposition prompt occurred,
-and no downstream step needs any transient artifact or sidecar created or consumed by the active
-work, ask once about the complete transient set: Delete, Leave, or Promote. Repository-native and
-other durable inputs never enter disposition. Include every transient path. Never choose for the
-human.
+Ordinary acceptance and pending reviews omit `waivers`.
+Hand off the absolute path. After the artifact is fully actioned and no downstream step needs it,
+require one human disposition for it and its sidecars: Delete, Leave, or Promote.

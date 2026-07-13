@@ -1,55 +1,30 @@
 ---
 name: revolver
-description: Drive a broad, purpose-agnostic check over code, diffs, artifacts, plans, or systems. ALWAYS apply when asked for Revolver, a broad adversarial audit, or a many-angle check that must be resolved as it runs. Derive at least six distinct stances from the target, run one fresh reviewer at a time, and address every finding before the next reviewer sees the current target. Complete a full rotation; stop after a quiet rotation or three cycles. Create no artifact. Reviewers never edit or issue a ship verdict.
+description: Hammer code, diffs, artifacts, plans, or systems from every relevant angle. ALWAYS apply when asked for Revolver, a broad adversarial audit, or a many-angle check resolved as it runs. Derive at least six target-specific stances. Run one fresh reviewer at a time. Resolve every finding before the next shot. Complete a full rotation; stop after a quiet rotation or three cycles.
 ---
 
 # Revolver
 
-Breadth comes from distinct attack surfaces, not a canned persona list.
+Six shots minimum. Every finding dies before the next.
 
-## Contract
-
-- Create no artifact or sidecar. Keep round state in the orchestrator and return a compact chat
-  outcome.
-- Pin the starting target state.
-- Derive at least six materially distinct stances from requirements, trust boundaries, failure
-  modes, changed surfaces, users, and operating conditions. Use no canned menu or fixed upper limit.
-- State each stance's falsification question and target evidence. Reject duplicates. Order the pool
-  by consequence and uncertainty, then keep it fixed through the run.
-- Run one fresh, read-only reviewer at a time. The orchestrator alone addresses findings.
-
-Before the first stance, prove the harness can dispatch fresh reviewer contexts. If it cannot,
-report the blocker and stop. Never simulate independence in one context.
-
-## Rotate
-
-1. Dispatch one fresh reviewer per stance on the cheapest model adequate for that stance.
-2. Give it the current target, one stance, scope, and the discipline below. Hide all prior reviewer
-   prose.
-3. Adjudicate every finding before dispatching the next reviewer:
-   - supported: apply the legitimate fix when mutation is allowed, then verify it;
+1. Freeze the target state.
+2. Derive at least six materially distinct stances from requirements, trust boundaries, failure
+   modes, changed surfaces, users, and operating conditions. Reject duplicates. Use no fixed upper
+   limit.
+3. Give each stance one falsification question and target evidence. Order the pool by consequence
+   and uncertainty; keep it fixed through the run.
+4. Dispatch one fresh reviewer at a time on the cheapest adequate model. Give it the current target,
+   one stance, and no prior reviewer prose.
+5. Kill every finding before the next stance:
+   - supported: apply the fix and verify it;
    - refuted: reject it with decisive evidence;
-   - unverified or blocked: report the blocker and stop.
-4. Never carry an unresolved material finding into the next stance. A previously recorded human
-   deferral counts as addressed; silence does not.
-5. Pin the addressed target. The next stance reviews that state, including every prior fix.
-6. Finish the full pool. One complete rotation is mandatory.
-7. Start another rotation only when the completed rotation produced a new supported finding.
-8. Stop after one quiet rotation or three cycles, whichever comes first.
+   - human decision: stop until selected;
+   - unverified or blocked: name the missing evidence or capability and stop.
+6. Freeze the addressed target for the next stance.
+7. Finish the full pool. Repeat only after a productive rotation.
+8. Stop after one quiet rotation or three cycles.
 
-## Reviewer discipline
+Reviewers attack claims, callers, and companion surfaces. They return only actionable findings:
+location, consequence, evidence, minimal fix. The orchestrator fixes; reviewers stay independent.
 
-Inject this into every reviewer prompt:
-
-- Refute claims until evidence supports them. Rerun non-mutating checks when possible.
-- Read callers, dependencies, unchanged companion surfaces, and failure paths. Do not review only
-  the presented diff.
-- Report only actionable findings with location, consequence, decisive evidence, and a minimal fix
-  direction. Drop vague concerns and praise.
-- Never edit, read peer prose, or issue a ship verdict.
-
-Reconcile duplicates and disagreements through evidence, never vote. Record findings once. Never
-issue a ship verdict.
-
-Return only the material changes, verification, rejected false positives that affect trust, and any
-unresolved human choice. Do not dump stance transcripts or repeat the target.
+Return material fixes and verification, consequential refutations, and unresolved human decisions.

@@ -1,41 +1,32 @@
 ---
 name: sus-spec
-description: Author, revise, or check the structural requirements conformance of a Suspec spec. ALWAYS apply when asked to write or revise a spec, requirements, or acceptance criteria, or when unresolved intent must become a durable contract before non-trivial work can proceed. Survey the project, halt on material ambiguity, write observable requirements with verification, and check required structure. Never prescribe implementation, guess intent, fact-check factual or load-bearing claims, or create ceremony for small clear work.
+description: Forge decided intent into a verifiable Suspec spec. ALWAYS apply when asked to write, revise, or structurally check a spec, requirements, or acceptance criteria, and when unresolved intent must govern non-trivial work. Survey reality, stop on ambiguity, and write observable obligations with proof. Skip small clear work, factual verification, and implementation design.
 ---
 
 # Sus Spec
 
-A spec converts decided intent into a contract. Nothing more.
-
-Investigate discoverable facts before asking. Every material choice uses the native picker:
-recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
-and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
-Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
+A spec is decided intent under test. Nothing else belongs.
 
 ## Gate
 
-Do not create a spec for ordinary conversation, a lookup, a one-line cleanup, a defect with an
-obvious existing contract, or work already precise enough to execute safely. Create one when the
-user requests it or unresolved intent must govern non-trivial work.
+Enter on explicit request or when undecided intent must govern non-trivial work. Small clear work
+does not earn a spec.
 
 Before writing:
 
-1. Read project instructions, current code, durable decisions, related artifacts, and open issues.
-2. State the goal, audience, success condition, boundary, and source material.
-3. Separate discoverable facts from human-owned choices. Investigate facts first.
-4. Decide reversible, convention-bound details. Stop on material behavior, public contracts,
-   security tradeoffs, costly choices, conflicting authority, or irreversible actions.
+1. Read project rules, current code, durable decisions, related artifacts, and open issues.
+2. Lock goal, audience, success, boundary, and sources.
+3. Burn down facts. Expose human-owned choices.
+4. Resolve reversible conventions. Freeze on material behavior, public contracts, security,
+   costly tradeoffs, conflicting authority, and irreversible actions.
 
-Stop for every blocking choice. A deferred decision leaves the spec `draft` and blocks dependent
-work.
+Every unresolved choice keeps `status: draft` and blocks dependent work.
 
 ## Place
 
-Resolve `~/.agents/artifacts/<workspace>/` to an absolute path, deriving `<workspace>` from the
-repository or working-directory basename. Write under that resolved directory. Never write into the
-repository, vendor storage, or an OS temporary directory. Never overwrite unrelated work. On a
-workspace or filename collision, present distinct human-readable choices. If the root is
-unwritable, offer: grant access and retry; choose another agent-neutral user directory; cancel.
+Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
+repository or working-directory basename. Write there. A collision, ambiguous workspace, or blocked
+write requires human selection. Repository, vendor, and OS temporary paths are invalid.
 
 ## Shape
 
@@ -54,23 +45,21 @@ sources:
 ---
 ```
 
-`sources` is always a list. File-shaped entries are absolute or relative to the spec file; bare
-tracker and decision IDs remain valid. The `SPEC-`-prefixed `id` is unique.
+Keep `sources` a list. Use absolute paths or paths relative to the spec; tracker and decision IDs
+remain bare. Make the `SPEC-` ID unique.
 
-`## Intent` and `## Requirements` are mandatory and non-empty. Add `Non-goals`, `Open questions`,
-`Affected areas`, or `Dropped from sources` only when each carries unique information.
+Require non-empty `## Intent` and `## Requirements`. Add optional sections only for unique payload.
 
 In plain Markdown, each requirement:
 
-- uses a `### AC-NNN` heading with one stable identifier;
-- states one independently verifiable obligation;
-- uses `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, or `MAY` deliberately;
-- describes observable behavior, not a preferred mechanism; and
-- ends with a concrete `Verify with:` line.
+- one stable `### AC-NNN` ID;
+- one independently verifiable obligation;
+- one deliberate `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, or `MAY`;
+- observable behavior; and
+- one concrete `Verify with:` line.
 
-Split obligations that can pass or fail independently. Order the highest-consequence requirements
-first. A mechanism belongs only when compatibility or a public contract makes the mechanism itself
-observable; state the reason.
+Split independently failing obligations. Put consequence first. Name a mechanism only when
+compatibility or public contract makes it observable; state why.
 
 Plain Markdown requirements are the default. When rigid machine-readable clauses earn their cost,
 set `format: sol`; use the bundled flush-left `REQ`, `CONSTRAINT`, `INVARIANT`, or `INTERFACE`
@@ -79,28 +68,19 @@ format, keep one independently verifiable obligation per requirement or block.
 
 ## Check
 
-Checking here means structural requirements conformance and is read-only unless revision was
-explicitly requested. Factual or load-bearing claim verification is a separate read-only task and
-does not activate this skill.
+Check structure. Revise only when requested. Factual verification is separate.
 
-1. Run the project's deterministic artifact checker when available.
-2. Confirm frontmatter, unique IDs, non-empty Intent, and one obligation per requirement or block.
+1. Run the deterministic artifact checker when available.
+2. Demand valid frontmatter, unique IDs, non-empty Intent, and one obligation per requirement.
    For plain Markdown, require `### AC-NNN`, one deliberate strength word, and one real
    `Verify with:` line per requirement. For `format: sol`, require the bundled flush-left block
    forms and one non-empty `VERIFY BY` line per non-question block.
-3. Reject placeholders, unresolved blocking questions at `status: ready`, broken sources, and vague
+3. Reject placeholders, blocking questions at `status: ready`, broken sources, and vague
    requirements with no same-line observable criterion.
-4. Run the leverage test: every section must improve clarity, scope, execution context,
-   verification, reviewability, or durable memory. Cut empty ceremony.
+4. Cut any section that improves neither clarity, scope, execution, verification, review, nor
+   durable memory.
 5. In check-only mode, report exact errors without editing. In write/revise mode, fix them and rerun.
 
-Write each fact once. Do not restate source material or repeat the spec in chat. When a downstream
-consumer remains, return only the clickable absolute artifact path unless blocked or verification
-failed. At true lifecycle close, skip the path-only handoff and issue the disposition choice instead.
-
-The spec remains live while implementation, task dispatch, or review needs it. If this skill is the
-final consumer, a non-empty transient artifact set exists, no earlier disposition prompt occurred,
-and no downstream step needs any transient artifact or sidecar created or consumed by the active
-work, ask once about the complete transient set: Delete, Leave, or Promote. Repository-native and
-other durable inputs never enter disposition. Include every transient path. Never choose for the
-human.
+Write each fact once. Hand off the absolute path. After the artifact is fully actioned and no
+downstream step needs it, require one human disposition for it and its sidecars: Delete, Leave, or
+Promote.

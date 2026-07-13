@@ -30,6 +30,7 @@ with `npx skills remove`, then reinstall; never remove unrelated publishers' ski
 | [`demolition`](./skills/demolition/SKILL.md) | Run an explicit one-sided attack quarantined from evidence. |
 | [`dissect`](./skills/dissect/SKILL.md) | Trace a code path, state, and hidden coupling to closure. |
 | [`disrespec`](./skills/disrespec/SKILL.md) | Remove every wasted token from a Markdown artifact. |
+| [`fork-me`](./skills/fork-me/SKILL.md) | Force every ambiguity into explicit human selection. |
 | [`revolver`](./skills/revolver/SKILL.md) | Resolve broad risk through at least six sequential target-derived stances. |
 | [`triple-check`](./skills/triple-check/SKILL.md) | Inspect deeply through exactly three independent top-tier passes. |
 | [`promote`](./skills/promote/SKILL.md) | Move a transient artifact into a project-owned durable destination. |
@@ -49,8 +50,8 @@ with `npx skills remove`, then reinstall; never remove unrelated publishers' ski
 
 ## Artifact Boundary
 
-Ordinary conversation and direct action create no Suspec artifact. For a requested artifact, or one
-needed to govern later work, resolve this directory template to an absolute path before writing:
+Only `sus-*` artifact authors create Suspec artifacts. They resolve this directory template
+to an absolute path before writing:
 
 ```text
 ~/.agents/artifacts/<workspace>/
@@ -65,11 +66,13 @@ it does not create a Suspec store.
 
 - Skills install independently and contain every load-bearing rule they need.
 - Discoverable facts are investigated before the human is interrupted.
-- Material choices use structured options with a recommendation and tradeoffs.
+- Every ambiguity becomes at least three clear options with a recommendation.
 - Artifacts state each fact once and are not repeated in chat.
 - Evidence is exact, current, and mapped to the claim it supports.
 - Agents assess evidence and recommend. Humans own intent, waivers, irreversible actions, and final
   acceptance.
+- Skill prose is ruthless and economical: hard imperatives, no filler, no default behavior, no
+  inert negatives.
 
 The rationale and evidence are under [`docs/`](./docs/). Framework canon and deterministic artifact
 checks live in [Suspec](https://github.com/jcosta33/suspec) and
