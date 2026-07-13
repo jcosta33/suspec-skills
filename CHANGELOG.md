@@ -27,6 +27,9 @@ and re-run to re-fetch. Watch the
 - `revolver` creates no artifact. It derives at least six target-specific stances, runs one fresh
   reviewer at a time, and requires every finding to be addressed before the next stance sees the
   current target.
+- Fixed commands execute or report a concrete blocker without carrying irrelevant decision-picker
+  boilerplate. `dissect` now states its bounded return directly instead of warning against unrelated
+  artifact workflows.
 - Released sections remain byte-for-byte historical; current corrections stay under Unreleased.
 
 ## [4.0.0] - 2026-07-10

@@ -11,6 +11,9 @@ binary, one-sentence tradeoff each, automatic `Other`. Without a picker, render 
 choices plus `Other`. Never ask a bare question. Batch only independent decisions. Deferral blocks
 dependent work.
 
+Carry this protocol only in workflows that transfer a material decision. Fixed commands execute or
+name the concrete blocker and stop; they do not manufacture choices.
+
 ## Evidence
 
 Completion claims require visible proof. Record command, working directory, state identifier, exit
