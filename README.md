@@ -30,7 +30,7 @@ with `npx skills remove`, then reinstall; never remove unrelated publishers' ski
 | [`demolition`](./skills/demolition/SKILL.md) | Run an explicit one-sided attack quarantined from evidence. |
 | [`dissect`](./skills/dissect/SKILL.md) | Trace a code path, state, and hidden coupling to closure. |
 | [`disrespec`](./skills/disrespec/SKILL.md) | Remove every wasted token from a Markdown artifact. |
-| [`revolver`](./skills/revolver/SKILL.md) | Inspect broadly through target-derived fresh stances. |
+| [`revolver`](./skills/revolver/SKILL.md) | Resolve broad risk through at least six sequential target-derived stances. |
 | [`triple-check`](./skills/triple-check/SKILL.md) | Inspect deeply through exactly three independent top-tier passes. |
 | [`promote`](./skills/promote/SKILL.md) | Move a transient artifact into a project-owned durable destination. |
 | [`remember`](./skills/remember/SKILL.md) | Preserve verified lessons through native memory or project channels. |

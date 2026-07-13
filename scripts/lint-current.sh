@@ -88,8 +88,8 @@ for file in "$ROOT"/skills/*/SKILL.md; do
   fi
 done
 
-artifact_creators='bulletproof demolition revolver sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task triple-check'
-artifact_handlers='bulletproof demolition disrespec revolver sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task triple-check'
+artifact_creators='bulletproof demolition sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task triple-check'
+artifact_handlers='bulletproof demolition disrespec sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task triple-check'
 for name in $artifact_creators; do
   file="$ROOT/skills/$name/SKILL.md"
   grep -Fq '~/.agents/artifacts/<workspace>/' "$file" || {
@@ -109,7 +109,7 @@ for name in $artifact_handlers; do
   }
 done
 
-for method in revolver triple-check; do
+for method in triple-check; do
   method_text=$(tr '\n' ' ' < "$ROOT/skills/$method/SKILL.md" | tr -s ' ')
   for phrase in 'A substantive run requires that artifact.' \
     'An explicit no-write or chat-only request conflicts with this method.' \
@@ -119,6 +119,16 @@ for method in revolver triple-check; do
       exit 1
     }
   done
+done
+revolver_text=$(tr '\n' ' ' < "$ROOT/skills/revolver/SKILL.md" | tr -s ' ')
+for phrase in 'Create no artifact or sidecar.' 'at least six materially distinct stances' \
+  'Adjudicate every finding before dispatching the next reviewer' \
+  'Never carry an unresolved material finding into the next stance.' \
+  'One complete rotation is mandatory.'; do
+  printf '%s\n' "$revolver_text" | grep -Fq "$phrase" || {
+    echo "revolver sequential-resolution contract missing: $phrase" >&2
+    exit 1
+  }
 done
 grep -Fq 'Skip targeted code-path tracing without an explicit three-pass request.' \
   "$ROOT/skills/triple-check/SKILL.md" || {

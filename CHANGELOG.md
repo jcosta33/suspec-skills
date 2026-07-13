@@ -24,6 +24,9 @@ and re-run to re-fetch. Watch the
 - Ordinary Suspec artifacts use `~/.agents/artifacts/<workspace>/` so local agents share one
   transient file without repository changes, copies, or symlinks. Full-path handoffs remain.
 - `promote` remains durable-only; it does not relocate files between transient roots.
+- `revolver` creates no artifact. It derives at least six target-specific stances, runs one fresh
+  reviewer at a time, and requires every finding to be addressed before the next stance sees the
+  current target.
 - Released sections remain byte-for-byte historical; current corrections stay under Unreleased.
 
 ## [4.0.0] - 2026-07-10
