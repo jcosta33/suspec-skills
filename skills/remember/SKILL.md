@@ -7,9 +7,10 @@ description: Preserve a verified lesson after work settles. ALWAYS apply when th
 
 Save signal. Drop residue.
 
-Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
-options plus `Other`.
-Never ask a bare question.
+Investigate discoverable facts before asking. Every material choice uses the native picker:
+recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
+and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
+Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
 
 ## Method
 
@@ -34,6 +35,5 @@ After every lesson is accounted for, prompt only when Remember is the final cons
 transient artifact set created or consumed by the active work, no earlier disposition prompt
 occurred, and no downstream step needs any member or sidecar. Repository-native and other durable
 inputs never enter disposition. Otherwise leave the single prompt to the artifact owner or later
-final consumer. When eligible, ask once: Delete, Leave, or Promote. Recommend from state, explain
-each option in one sentence, include every transient path, and include `Other`. Never choose for the
-human or treat silence as Leave.
+final consumer. When eligible, ask once: Delete, Leave, or Promote. Include every transient path.
+Never choose for the human or treat silence as Leave.

@@ -7,9 +7,10 @@ description: Run exactly three fresh, target-derived, top-tier inspection passes
 
 Three fresh minds. No shared story.
 
-Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
-options plus `Other`.
-Never ask a bare question.
+Investigate discoverable facts before asking. Every material choice uses the native picker:
+recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
+and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
+Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
 
 ## Contract
 
@@ -22,9 +23,8 @@ Never ask a bare question.
   requested.
 
 Before creating the artifact, prove the harness can dispatch three fresh contexts. If it cannot,
-stop with structured choices: enable fresh dispatch and retry; run three separate clean tasks and
-return their reports; cancel. Recommend the best available option, explain each in one sentence,
-and include `Other`. Never simulate independence in one context.
+stop for a material choice: enable fresh dispatch and retry; run three separate clean tasks and
+return their reports; cancel. Never simulate independence in one context.
 
 ## Place
 
@@ -43,11 +43,11 @@ structured choices on a collision or blocked write.
 5. Reconcile by evidence. Preserve real disagreement and evidence gaps.
 
 Never vote, merge three opinions into false certainty, or issue a ship verdict. Record each finding
-once. Return only the clickable artifact path.
+once. When a downstream consumer remains, return only the clickable absolute artifact path. At true
+lifecycle close, skip the path-only handoff and issue the disposition choice instead.
 
 If this skill is the final consumer, a non-empty transient artifact set exists, no earlier
 disposition prompt occurred, and no downstream step needs any transient artifact or sidecar created
 or consumed by the active work, ask once about the complete transient set: Delete, Leave, or
-Promote. Repository-native and other durable inputs never enter disposition. Recommend from state,
-explain each option in one sentence, include every transient path, and include `Other`. Never choose
-for the human.
+Promote. Repository-native and other durable inputs never enter disposition. Include every transient
+path. Never choose for the human.

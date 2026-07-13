@@ -7,9 +7,10 @@ description: Write a decision-informing research artifact with traceable evidenc
 
 One question. Evidence fit for the claim. No counterfeit certainty.
 
-Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
-options plus `Other`.
-Never ask a bare question.
+Investigate discoverable facts before asking. Every material choice uses the native picker:
+recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
+and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
+Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
 
 Ordinary conversation and direct action create no research artifact. Write one only when requested
 or required as a live workflow input.
@@ -20,9 +21,8 @@ State the decision the research informs, the audience or segment, scope, time ho
 evidence would change the direction. Map candidate options and counter-evidence before drilling into
 the first attractive answer.
 
-Investigate discoverable facts before asking. If a material scope choice remains, use the native
-picker: three genuine options by default, two when binary, recommendation first, one-sentence
-tradeoff each, automatic `Other`. A deferred choice blocks dependent research.
+If a material scope choice remains after investigation, stop for that choice. A deferred choice
+blocks dependent research.
 
 ## Place
 
@@ -71,10 +71,11 @@ The recommendation cites its finding IDs and commits nothing. If evidence cannot
 the exact open question or test that would unblock it. Never settle intent, write requirements, or
 edit the researched target.
 
-Write each fact once. Return only the clickable artifact path unless blocked or verification failed.
-If this skill is the final consumer, a non-empty transient artifact set exists, no earlier
+Write each fact once. When a downstream consumer remains, return only the clickable absolute
+artifact path unless blocked or verification failed. At true lifecycle close, skip the path-only
+handoff and issue the disposition choice instead. If this skill is the final consumer, a non-empty
+transient artifact set exists, no earlier
 disposition prompt occurred, and no downstream step needs any transient artifact or sidecar created
 or consumed by the active work, ask once about the complete transient set: Delete, Leave, or
-Promote. Repository-native and other durable inputs never enter disposition. Recommend from state,
-explain each option in one sentence, include every transient path, and include `Other`. Never choose
-for the human.
+Promote. Repository-native and other durable inputs never enter disposition. Include every transient
+path. Never choose for the human.

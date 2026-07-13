@@ -7,9 +7,10 @@ description: Run a broad, purpose-agnostic inspection over code, diffs, artifact
 
 Breadth comes from distinct attack surfaces, not a canned persona list.
 
-Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
-options plus `Other`.
-Never ask a bare question.
+Investigate discoverable facts before asking. Every material choice uses the native picker:
+recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
+and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
+Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
 
 ## Contract
 
@@ -23,9 +24,8 @@ Never ask a bare question.
 - Reviewers report findings. The orchestrator alone applies verified fixes.
 
 Before creating the artifact, prove the harness can dispatch fresh reviewer contexts. If it cannot,
-stop with structured choices: enable fresh dispatch and retry; run each stance in a separate clean
-task and return the reports; cancel. Recommend the best available option, explain each in one
-sentence, and include `Other`. Never simulate independence in one context.
+stop for a material choice: enable fresh dispatch and retry; run each stance in a separate clean
+task and return the reports; cancel. Never simulate independence in one context.
 
 ## Place
 
@@ -48,9 +48,10 @@ structured choices on a collision or blocked write.
 Reconcile duplicates and disagreements through evidence, never vote. Record findings once. Never
 issue a ship verdict.
 
-Return only the clickable artifact path. If this skill is the final consumer, a non-empty transient
-artifact set exists, no earlier disposition prompt occurred, and no downstream step needs any
-transient artifact or sidecar created or consumed by the active work, ask once about the complete
-transient set: Delete, Leave, or Promote. Repository-native and other durable inputs never enter
-disposition. Recommend from state, explain each option in one sentence, include every transient
-path, and include `Other`. Never choose for the human.
+When a downstream consumer remains, return only the clickable absolute artifact path. At true
+lifecycle close, skip the path-only handoff and issue the disposition choice instead. Prompt only
+when this skill is the final consumer, a non-empty transient artifact set exists, no earlier
+disposition prompt occurred, and no downstream step needs any transient artifact or sidecar created
+or consumed by the active work. Ask once about the complete transient set: Delete, Leave, or Promote.
+Repository-native and other durable inputs never enter disposition. Include every transient path.
+Never choose for the human.

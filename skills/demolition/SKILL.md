@@ -7,9 +7,10 @@ description: Destroy an idea, design, claim, concept, code change, or plan throu
 
 Attack the target. Do not pretend the attack is truth.
 
-Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
-options plus `Other`.
-Never ask a bare question.
+Investigate discoverable facts before asking. Every material choice uses the native picker:
+recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
+and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
+Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
 
 ## Contract
 
@@ -38,11 +39,12 @@ unwritable, offer: grant access and retry; choose another agent-neutral user dir
 6. End without balance, recommendation, assessment, or ship verdict.
 
 Write each point once. Cut scene-setting, repeated source material, decorative sections, and a
-conclusion that restates the attack. Return only the clickable artifact path.
+conclusion that restates the attack. When a downstream consumer remains, return only the clickable
+absolute artifact path. At true lifecycle close, skip the path-only handoff and issue the
+disposition choice instead.
 
 If this skill is the final consumer, a non-empty transient artifact set exists, no earlier
 disposition prompt occurred, and no downstream step needs any transient artifact or sidecar created
 or consumed by the active work, ask once about the complete transient set: Delete, Leave, or
-Promote. Repository-native and other durable inputs never enter disposition. Recommend from state,
-explain each option in one sentence, include every transient path, and include `Other`. Never choose
-for the human.
+Promote. Repository-native and other durable inputs never enter disposition. Include every transient
+path. Never choose for the human.

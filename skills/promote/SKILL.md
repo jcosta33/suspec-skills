@@ -7,9 +7,10 @@ description: Move a whole transient artifact into a project-owned durable destin
 
 Move the document. Do not write a document about the move.
 
-Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
-options plus `Other`.
-Never ask a bare question.
+Investigate discoverable facts before asking. Every material choice uses the native picker:
+recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
+and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
+Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
 
 ## Method
 
@@ -18,11 +19,10 @@ Never ask a bare question.
    return it unchanged.
 3. Scan for secrets, private paths, transient state, raw prompts, personal data, and stale links.
    If sensitive content exists, stop with a binary choice: **Sanitize and retry** or **Cancel**.
-   Recommend sanitization only when removal preserves the artifact's purpose; explain both options
-   in one sentence. Change nothing until the human selects.
-4. Present real project-owned destinations through the native picker: recommendation first,
-   one-sentence tradeoff per option, automatic `Other`. Use three options by default and two when
-   genuinely binary. Offer commit as a separate selected behavior where relevant.
+   Recommend sanitization only when removal preserves the artifact's purpose.
+   Change nothing until the human selects.
+4. Present real project-owned destinations as the material choice. Offer commit as a separate
+   selected behavior where relevant.
 5. Move by default. Copy only when the human explicitly needs both versions.
 6. Repair references. Validate links, format, and project checks.
 7. Commit only when selected. Never push implicitly.

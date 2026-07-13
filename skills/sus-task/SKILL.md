@@ -7,9 +7,10 @@ description: Split a governing spec whose status is exactly ready into self-cont
 
 Most work needs no packet. Split only when dispatch buys real independence.
 
-Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
-options plus `Other`.
-Never ask a bare question.
+Investigate discoverable facts before asking. Every material choice uses the native picker:
+recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
+and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
+Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
 
 Ordinary conversation and direct action create no task packet. Write one only when requested or
 required as a live workflow input.
@@ -60,14 +61,13 @@ artifact by absolute path.
    position in every packet. Create no separate run-order artifact.
 8. Review coverage both ways: no source obligation uncovered, duplicated, weakened, or invented.
 
-If the split exposes a missing decision, investigate discoverable facts, then stop with the native
-picker: three real options by default, two when binary, recommendation first, one-sentence tradeoffs,
-automatic `Other`. Never bury the choice in a packet.
+If the split exposes a missing decision after investigation, stop for that material choice. Never
+bury the choice in a packet.
 
-Write each fact once. Return only the clickable packet paths when the split is complete. The packets
-remain live through implementation and review. If this skill is the final consumer, a non-empty
+Write each fact once. While implementation or review still needs the packets, return only their
+clickable absolute paths. At true lifecycle close, skip the path-only handoff and issue the
+disposition choice instead. If this skill is the final consumer, a non-empty
 transient artifact set exists, no earlier disposition prompt occurred, and no downstream step needs
 any transient artifact or sidecar created or consumed by the active work, ask once about the
 complete transient set: Delete, Leave, or Promote. Repository-native and other durable inputs never
-enter disposition. Recommend from state, explain each option in one sentence, include every
-transient path, and include `Other`. Never choose for the human.
+enter disposition. Include every transient path. Never choose for the human.

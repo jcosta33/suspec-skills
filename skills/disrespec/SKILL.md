@@ -7,9 +7,10 @@ description: Maximize clarity per token in a supplied Markdown artifact. ALWAYS 
 
 Make every token pay rent.
 
-Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
-options plus `Other`.
-Never ask a bare question.
+Investigate discoverable facts before asking. Every material choice uses the native picker:
+recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
+and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
+Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
 
 ## Cut
 
@@ -20,21 +21,22 @@ Never ask a bare question.
 4. Merge consequences and classifications into the record they qualify.
 5. Delete any sentence that changes no understanding, action, verification, or decision.
 6. Use tables for repeated records, bullets for independent facts, and prose only for relationships.
-7. Replace copied source material with a decisive excerpt and link. Move dominating raw output to an
-   adjacent evidence receipt.
+7. Replace copied source material with a decisive excerpt and link. Preserve existing evidence
+   receipt links. If extraction needs a new receipt, leave the raw output untouched and return that
+   work to the artifact owner. Never create a sidecar.
 
 Do not lose commands, paths, identifiers, anchors, quotations, warnings, or irreversible order.
 Compare the result against the payload list, then cut again.
 
 Edit only an artifact path supplied by the user or active workflow. Never author, place, or relocate
-an artifact. If no target exists, stop; this method cuts documents, it does not create them. Return
-only the edited artifact's absolute clickable path. Explain only a blocker, failed edit, incomplete
-verification, or irreversible confirmation.
+an artifact. If no target exists, stop; this method cuts documents, it does not create them. When a
+downstream consumer remains, return only the edited artifact's absolute clickable path. At true
+lifecycle close, skip the path-only handoff and issue the disposition choice instead. Explain only
+a blocker, failed edit, incomplete verification, or irreversible confirmation.
 
 When co-activated inside another artifact workflow, its final consumer owns the single disposition
 prompt; Disrespec never prompts again. Prompt only when a non-empty transient artifact set exists,
 this skill is the final consumer, no earlier disposition prompt occurred, and no downstream step
 needs any artifact or sidecar created or consumed by the active work. Repository-native and other
-durable documents never enter disposition. Then ask once: Delete, Leave, or Promote. Recommend from
-state, give one-sentence tradeoffs, include every transient artifact and sidecar path, and include
-`Other`. Never choose for the human or treat silence as Leave.
+durable documents never enter disposition. Then ask once: Delete, Leave, or Promote. Include every
+transient artifact and sidecar path. Never choose for the human or treat silence as Leave.

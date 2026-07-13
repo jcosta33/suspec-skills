@@ -31,13 +31,12 @@ jobs:
     if: github.event_name != 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
-      - { name: suspec-skills, uses: actions/checkout@v4, with: { path: family/suspec-skills, fetch-depth: 0 } }
-      - { name: suspec, uses: actions/checkout@v4, with: { repository: jcosta33/suspec, ref: "${{ inputs.canon_ref || 'main' }}", path: family/suspec } }
+      - { name: suspec-skills, uses: actions/checkout@v4, with: { path: repo, fetch-depth: 0 } }
 
       - name: Released changelog history
         env:
           SUSPEC_SKILLS_HISTORY_BASE: "${{ github.event.pull_request.base.sha || github.event.before }}"
-        run: sh family/suspec/scripts/lint-released-changelog.sh "$GITHUB_WORKSPACE/family"
+        run: sh repo/scripts/lint-released-changelog.sh
 
   method-gates:
     if: github.event_name == 'workflow_dispatch'

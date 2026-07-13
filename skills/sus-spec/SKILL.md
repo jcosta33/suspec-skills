@@ -7,9 +7,10 @@ description: Author, revise, or check the structural requirements conformance of
 
 A spec converts decided intent into a contract. Nothing more.
 
-Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
-options plus `Other`.
-Never ask a bare question.
+Investigate discoverable facts before asking. Every material choice uses the native picker:
+recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
+and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
+Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
 
 ## Gate
 
@@ -25,10 +26,8 @@ Before writing:
 4. Decide reversible, convention-bound details. Stop on material behavior, public contracts,
    security tradeoffs, costly choices, conflicting authority, or irreversible actions.
 
-Use the native picker for every blocking choice: three genuine options by default, two when binary,
-recommendation first, one-sentence tradeoff each, automatic `Other`. Batch only independent
-decisions; ask dependent ones sequentially. A deferred decision leaves the spec `draft` and blocks
-dependent work.
+Stop for every blocking choice. A deferred decision leaves the spec `draft` and blocks dependent
+work.
 
 ## Place
 
@@ -95,12 +94,13 @@ does not activate this skill.
    verification, reviewability, or durable memory. Cut empty ceremony.
 5. In check-only mode, report exact errors without editing. In write/revise mode, fix them and rerun.
 
-Write each fact once. Do not restate source material or repeat the spec in chat. Return only the
-clickable artifact path unless blocked or verification failed.
+Write each fact once. Do not restate source material or repeat the spec in chat. When a downstream
+consumer remains, return only the clickable absolute artifact path unless blocked or verification
+failed. At true lifecycle close, skip the path-only handoff and issue the disposition choice instead.
 
 The spec remains live while implementation, task dispatch, or review needs it. If this skill is the
 final consumer, a non-empty transient artifact set exists, no earlier disposition prompt occurred,
 and no downstream step needs any transient artifact or sidecar created or consumed by the active
 work, ask once about the complete transient set: Delete, Leave, or Promote. Repository-native and
-other durable inputs never enter disposition. Recommend from state, give one-sentence tradeoffs,
-include every transient path, and include `Other`. Never choose for the human.
+other durable inputs never enter disposition. Include every transient path. Never choose for the
+human.

@@ -7,9 +7,10 @@ description: Reconcile finished work against a Suspec spec or scoped task. ALWAY
 
 Evidence decides assessment. The human decides acceptance.
 
-Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
-options plus `Other`.
-Never ask a bare question.
+Investigate discoverable facts before asking. Every material choice uses the native picker:
+recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
+and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
+Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
 
 Ordinary conversation and direct action create no review. Write one only when requested or required
 as a live workflow input.
@@ -25,8 +26,7 @@ as a live workflow input.
 - Before creating the artifact, prove the harness can dispatch one fresh independent reviewer
   context with no implementation history or prior review prose. If it cannot, stop with structured
   choices: enable fresh dispatch and retry; run the review in a separate clean task and return it;
-  cancel. Recommend the best available option, explain each in one sentence, and include `Other`.
-  Never simulate independence in the current context.
+  cancel. Never simulate independence in the current context.
 - Start one artifact with this minimal frontmatter:
 
   ```yaml
@@ -79,18 +79,19 @@ write a ship verdict.
 ## Decision
 
 After assessment, present a state-aware native picker. Use Accept, Request changes, and Defer; add
-Accept with waivers only when unsupported or unverified IDs exist. Put the evidence-backed
-recommendation first, explain each option in one sentence, and rely on automatic `Other`.
+Accept with waivers only when unsupported or unverified IDs exist.
 
 Only the human selection changes `decision` to `accepted`, `changes-requested`, or `deferred`.
 Add `waivers` only when the human explicitly accepts while waiving named unsupported or unverified
 IDs. `waivers` is an optional string list such as `waivers: [AC-002]`; never write it as a scalar.
 Ordinary acceptance and every pending review omit `waivers`.
-Return only the clickable review path after recording the choice.
+When a downstream consumer remains after the choice is recorded, return only the clickable absolute
+review path. At true lifecycle close, skip the path-only handoff and issue the disposition choice
+instead.
 
 The review remains live while requested changes or acceptance work continues. If this skill is the
 final consumer, a non-empty transient artifact set exists, no earlier disposition prompt occurred,
 and no downstream step needs any transient artifact or sidecar created or consumed by the active
 work, ask once about the complete transient set: Delete, Leave, or Promote. Repository-native and
-other durable inputs never enter disposition. Recommend from state, explain each option in one
-sentence, include every transient path, and include `Other`. Never choose for the human.
+other durable inputs never enter disposition. Include every transient path. Never choose for the
+human.

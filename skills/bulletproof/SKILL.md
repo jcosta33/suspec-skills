@@ -7,22 +7,26 @@ description: Fact-check an explicit claim set or the claims inside a completed r
 
 Trust nothing that can be checked.
 
-Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
-options plus `Other`.
-Never ask a bare question.
+Investigate discoverable facts before asking. Every material choice uses the native picker:
+recommendation first, three genuine options by default or two when binary, one-sentence tradeoffs,
+and automatic `Other`. Without a native picker, render the same numbered options plus `Other`.
+Never ask a bare question. Batch only independent choices; ask dependent choices sequentially.
 
 ## Contract
 
-- Require an explicit claim set, or a completed review artifact whose claims are the target. A diff
-  may supply evidence for a claim; it is not itself a claim set.
-- Do not assess completed work or a diff against governing requirements. That is an independent
-  requirements-conformance review, not fact-checking.
-- Pin the target and one stable state identifier for a claim-set verification.
-- Keep a verification target read-only. Active evidence generation is allowed.
-- Assess every explicit claim and every implied claim carrying the conclusion.
-- Use `Supported`, `Unsupported`, `Unverified`, or `Blocked`. Never accept or ship.
-- A substantive claim-set verification writes one artifact with `type: inspection`,
-  `method: bulletproof`, and `target: <path-or-stable-identifier>`.
+Choose one mode:
+
+- **Verification:** require an explicit claim set, or a completed review artifact whose claims are
+  the target. A diff may supply evidence; it is not itself a claim set. Pin the target and one stable
+  state identifier. Keep it read-only. Assess every explicit claim and every implied claim carrying
+  the conclusion as `Supported`, `Unsupported`, `Unverified`, or `Blocked`. A substantive run writes
+  one artifact with `type: inspection`, `method: bulletproof`, and
+  `target: <path-or-stable-identifier>`.
+- **Implementation proof:** after code or validation work, preserve the decisive command facts.
+  No claim set or assessment is required. Create no artifact solely for this mode.
+
+Neither mode edits the target, implements work, checks completed work against governing
+requirements, or accepts or ships anything.
 
 Do not create an artifact for ordinary conversation. Create one only for a substantive verification
 run or when the user requests it.
@@ -35,7 +39,7 @@ repository, vendor storage, or an OS temporary directory. Never overwrite unrela
 workspace or filename collision, present distinct human-readable choices. If the root is
 unwritable, offer: grant access and retry; choose another agent-neutral user directory; cancel.
 
-## Method
+## Verify Claims
 
 1. Extract every claim. Include assumptions without which the conclusion fails.
 2. State what would support and falsify each claim.
@@ -44,10 +48,8 @@ unwritable, offer: grant access and retry; choose another agent-neutral user dir
 5. Record one row per claim: `ID | Assessment | Evidence`.
 6. Resolve disagreement through evidence, never confidence, authority, consensus, or vote.
 
-If the claim set or boundary remains materially ambiguous after investigation, stop with a native
-picker: three genuine options by default, two when binary, recommendation first, one-sentence
-tradeoff each, and automatic `Other`. Ask dependent decisions sequentially. A deferred choice
-blocks dependent verification.
+If the claim set or boundary remains materially ambiguous after investigation, stop for a material
+choice. A deferred choice blocks dependent verification.
 
 ## Proof
 
@@ -76,12 +78,14 @@ and writes its inspection.
 
 ## Close
 
-Stop when every claim is assessed. For a compact check with no inspection artifact, return the
-assessment rows and decisive evidence once in chat. When an inspection was written, return only its
-clickable path unless blocked or verification failed. If this skill is the final consumer and a
-non-empty transient artifact set exists, no earlier disposition prompt occurred, and no downstream
-step needs any transient artifact or sidecar created or consumed by the active work, ask once about
-the complete transient set:
-Delete, Leave, or Promote. Repository-native and other durable inputs never enter disposition.
-Recommend from state, explain each option in one sentence, include every transient path, and include
-`Other`. Never choose for the human.
+Verification stops when every claim is assessed.
+Implementation proof stops when every required run has one complete command record. For
+implementation proof with no inspection artifact, return the decisive evidence once in chat. When a
+downstream consumer still needs an inspection, return only its clickable absolute path. At true
+lifecycle close, skip the path-only handoff and issue the disposition choice instead.
+
+Prompt only when this skill is the final consumer, a non-empty transient artifact set exists, no
+earlier disposition prompt occurred, and no downstream step needs any transient artifact or sidecar
+created or consumed by the active work. Ask once about the complete transient set: Delete, Leave, or
+Promote. Repository-native and other durable inputs never enter disposition. Include every transient
+path. Never choose for the human.
