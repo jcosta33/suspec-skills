@@ -7,6 +7,10 @@ description: Write a reconstructive inventory of an unfamiliar or change-critica
 
 Map the terrain. Do not grade it.
 
+Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
+options plus `Other`.
+Never ask a bare question.
+
 Ordinary conversation and direct action create no inventory. Write one only when requested or
 required as a live workflow input.
 
@@ -37,7 +41,7 @@ claims. A zero-caller or no-match claim requires the command and result. Every s
 
 If the scope remains materially ambiguous after investigation, use a native picker with three real
 options by default, two when binary, recommendation first, one-sentence tradeoffs, and automatic
-`Other`. Without a picker, render the same numbered options plus `Other`. Never ask a bare question.
+`Other`.
 
 Refuse severity, findings, prescriptions, target architecture, and implementation steps. Write each
 fact once. Return only the clickable artifact path.
@@ -47,5 +51,4 @@ non-empty transient artifact set exists, no earlier disposition prompt occurred,
 step needs any transient artifact or sidecar created or consumed by the active work, ask once about
 the complete transient set: Delete, Leave, or Promote. Repository-native and other durable inputs
 never enter disposition. Recommend from state, explain each option in one sentence, include every
-transient path, and include `Other`. Never choose for the human. Without a picker, render the same
-numbered options plus `Other`. Never ask a bare question.
+transient path, and include `Other`. Never choose for the human.

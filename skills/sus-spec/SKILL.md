@@ -7,6 +7,10 @@ description: Author, revise, or check the structural requirements conformance of
 
 A spec converts decided intent into a contract. Nothing more.
 
+Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
+options plus `Other`.
+Never ask a bare question.
+
 ## Gate
 
 Do not create a spec for ordinary conversation, a lookup, a one-line cleanup, a defect with an
@@ -22,10 +26,9 @@ Before writing:
    security tradeoffs, costly choices, conflicting authority, or irreversible actions.
 
 Use the native picker for every blocking choice: three genuine options by default, two when binary,
-recommendation first, one-sentence tradeoff each, automatic `Other`. Without a picker, render the
-same numbered options plus `Other`. Never ask a bare question. Batch only independent decisions;
-ask dependent ones sequentially. A deferred decision leaves the spec `draft` and blocks dependent
-work.
+recommendation first, one-sentence tradeoff each, automatic `Other`. Batch only independent
+decisions; ask dependent ones sequentially. A deferred decision leaves the spec `draft` and blocks
+dependent work.
 
 ## Place
 
@@ -100,5 +103,4 @@ final consumer, a non-empty transient artifact set exists, no earlier dispositio
 and no downstream step needs any transient artifact or sidecar created or consumed by the active
 work, ask once about the complete transient set: Delete, Leave, or Promote. Repository-native and
 other durable inputs never enter disposition. Recommend from state, give one-sentence tradeoffs,
-include every transient path, and include `Other`. Never choose for the human. Without a picker,
-render the same numbered options plus `Other`. Never ask a bare question.
+include every transient path, and include `Other`. Never choose for the human.

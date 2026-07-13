@@ -7,6 +7,10 @@ description: Preserve a verified lesson after work settles. ALWAYS apply when th
 
 Save signal. Drop residue.
 
+Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
+options plus `Other`.
+Never ask a bare question.
+
 ## Method
 
 1. Collect candidates from the completed run.
@@ -32,5 +36,4 @@ occurred, and no downstream step needs any member or sidecar. Repository-native 
 inputs never enter disposition. Otherwise leave the single prompt to the artifact owner or later
 final consumer. When eligible, ask once: Delete, Leave, or Promote. Recommend from state, explain
 each option in one sentence, include every transient path, and include `Other`. Never choose for the
-human or treat silence as Leave. Without a picker, render the same numbered options plus `Other`.
-Never ask a bare question.
+human or treat silence as Leave.

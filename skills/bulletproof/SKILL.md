@@ -7,6 +7,10 @@ description: Fact-check an explicit claim set or the claims inside a completed r
 
 Trust nothing that can be checked.
 
+Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
+options plus `Other`.
+Never ask a bare question.
+
 ## Contract
 
 - Require an explicit claim set, or a completed review artifact whose claims are the target. A diff
@@ -42,9 +46,8 @@ unwritable, offer: grant access and retry; choose another agent-neutral user dir
 
 If the claim set or boundary remains materially ambiguous after investigation, stop with a native
 picker: three genuine options by default, two when binary, recommendation first, one-sentence
-tradeoff each, and automatic `Other`. Without a picker, render the same numbered options plus
-`Other`. Never ask a bare question. Ask dependent decisions sequentially. A deferred choice blocks
-dependent verification.
+tradeoff each, and automatic `Other`. Ask dependent decisions sequentially. A deferred choice
+blocks dependent verification.
 
 ## Proof
 
@@ -77,9 +80,8 @@ Stop when every claim is assessed. For a compact check with no inspection artifa
 assessment rows and decisive evidence once in chat. When an inspection was written, return only its
 clickable path unless blocked or verification failed. If this skill is the final consumer and a
 non-empty transient artifact set exists, no earlier disposition prompt occurred, and no downstream
-step needs any transient artifact
-or sidecar created or consumed by the active work, ask once about the complete transient set:
+step needs any transient artifact or sidecar created or consumed by the active work, ask once about
+the complete transient set:
 Delete, Leave, or Promote. Repository-native and other durable inputs never enter disposition.
 Recommend from state, explain each option in one sentence, include every transient path, and include
-`Other`. Never choose for the human. Without a picker, render the same numbered options plus
-`Other`. Never ask a bare question.
+`Other`. Never choose for the human.

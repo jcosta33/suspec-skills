@@ -7,6 +7,10 @@ description: Destroy an idea, design, claim, concept, code change, or plan throu
 
 Attack the target. Do not pretend the attack is truth.
 
+Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
+options plus `Other`.
+Never ask a bare question.
+
 ## Contract
 
 - Explicit invocation only.
@@ -41,5 +45,4 @@ disposition prompt occurred, and no downstream step needs any transient artifact
 or consumed by the active work, ask once about the complete transient set: Delete, Leave, or
 Promote. Repository-native and other durable inputs never enter disposition. Recommend from state,
 explain each option in one sentence, include every transient path, and include `Other`. Never choose
-for the human. Without a picker, render the same numbered options plus `Other`. Never ask a bare
-question.
+for the human.

@@ -1,11 +1,15 @@
 ---
 name: disrespec
-description: Maximize clarity per token in a Markdown artifact. ALWAYS apply when explicitly asked to compress, sharpen, or strip waste, and when an artifact is observably bloated, repetitive, copied, or structurally wasteful enough to need a dedicated edit. State each fact once. Remove filler, repetition, copied source material, empty sections, and chat restatement. Never activate merely because another skill writes an artifact, replace a requested action with a document about it, or touch source code, raw evidence, commit messages, or repository-native pull-request forms.
+description: Maximize clarity per token in a supplied Markdown artifact. ALWAYS apply when explicitly asked to compress, sharpen, or strip waste, and when an artifact is observably bloated, repetitive, copied, or structurally wasteful enough to need a dedicated edit. State each fact once. Remove filler, repetition, copied source material, empty sections, and chat restatement. Never author or place a new artifact, activate merely because another skill writes one, replace a requested action with a document about it, or touch source code, raw evidence, commit messages, or repository-native pull-request forms.
 ---
 
 # Disrespec
 
 Make every token pay rent.
+
+Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
+options plus `Other`.
+Never ask a bare question.
 
 ## Cut
 
@@ -22,10 +26,10 @@ Make every token pay rent.
 Do not lose commands, paths, identifiers, anchors, quotations, warnings, or irreversible order.
 Compare the result against the payload list, then cut again.
 
-Do not create an artifact merely because the user spoke. Act directly unless the user requested a
-document or the active workflow needs one. Never relocate an existing artifact. When an artifact is
-the deliverable, return only its absolute clickable path. Explain only a blocker, failed creation,
-incomplete verification, or irreversible confirmation.
+Edit only an artifact path supplied by the user or active workflow. Never author, place, or relocate
+an artifact. If no target exists, stop; this method cuts documents, it does not create them. Return
+only the edited artifact's absolute clickable path. Explain only a blocker, failed edit, incomplete
+verification, or irreversible confirmation.
 
 When co-activated inside another artifact workflow, its final consumer owns the single disposition
 prompt; Disrespec never prompts again. Prompt only when a non-empty transient artifact set exists,
@@ -34,4 +38,3 @@ needs any artifact or sidecar created or consumed by the active work. Repository
 durable documents never enter disposition. Then ask once: Delete, Leave, or Promote. Recommend from
 state, give one-sentence tradeoffs, include every transient artifact and sidecar path, and include
 `Other`. Never choose for the human or treat silence as Leave.
-Without a picker, render the same numbered options plus `Other`. Never ask a bare question.

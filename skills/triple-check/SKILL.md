@@ -7,6 +7,10 @@ description: Run exactly three fresh, target-derived, top-tier inspection passes
 
 Three fresh minds. No shared story.
 
+Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
+options plus `Other`.
+Never ask a bare question.
+
 ## Contract
 
 - Pin the target state.
@@ -20,8 +24,7 @@ Three fresh minds. No shared story.
 Before creating the artifact, prove the harness can dispatch three fresh contexts. If it cannot,
 stop with structured choices: enable fresh dispatch and retry; run three separate clean tasks and
 return their reports; cancel. Recommend the best available option, explain each in one sentence,
-and include `Other`. Without a picker, render the same numbered options plus `Other`. Never ask a
-bare question or simulate independence in one context.
+and include `Other`. Never simulate independence in one context.
 
 ## Place
 
@@ -47,5 +50,4 @@ disposition prompt occurred, and no downstream step needs any transient artifact
 or consumed by the active work, ask once about the complete transient set: Delete, Leave, or
 Promote. Repository-native and other durable inputs never enter disposition. Recommend from state,
 explain each option in one sentence, include every transient path, and include `Other`. Never choose
-for the human. Without a picker, render the same numbered options plus `Other`. Never ask a bare
-question.
+for the human.

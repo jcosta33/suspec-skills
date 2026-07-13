@@ -7,6 +7,10 @@ description: Reconcile finished work against a Suspec spec or scoped task. ALWAY
 
 Evidence decides assessment. The human decides acceptance.
 
+Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
+options plus `Other`.
+Never ask a bare question.
+
 Ordinary conversation and direct action create no review. Write one only when requested or required
 as a live workflow input.
 
@@ -76,8 +80,7 @@ write a ship verdict.
 
 After assessment, present a state-aware native picker. Use Accept, Request changes, and Defer; add
 Accept with waivers only when unsupported or unverified IDs exist. Put the evidence-backed
-recommendation first, explain each option in one sentence, and rely on automatic `Other`. Without a
-picker, render the same numbered options plus `Other`. Never ask a bare question.
+recommendation first, explain each option in one sentence, and rely on automatic `Other`.
 
 Only the human selection changes `decision` to `accepted`, `changes-requested`, or `deferred`.
 Add `waivers` only when the human explicitly accepts while waiving named unsupported or unverified
@@ -90,5 +93,4 @@ final consumer, a non-empty transient artifact set exists, no earlier dispositio
 and no downstream step needs any transient artifact or sidecar created or consumed by the active
 work, ask once about the complete transient set: Delete, Leave, or Promote. Repository-native and
 other durable inputs never enter disposition. Recommend from state, explain each option in one
-sentence, include every transient path, and include `Other`. Never choose for the human. Without a
-picker, render the same numbered options plus `Other`. Never ask a bare question.
+sentence, include every transient path, and include `Other`. Never choose for the human.

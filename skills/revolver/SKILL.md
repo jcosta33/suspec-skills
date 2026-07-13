@@ -7,6 +7,10 @@ description: Run a broad, purpose-agnostic inspection over code, diffs, artifact
 
 Breadth comes from distinct attack surfaces, not a canned persona list.
 
+Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
+options plus `Other`.
+Never ask a bare question.
+
 ## Contract
 
 - Pin the target state.
@@ -21,8 +25,7 @@ Breadth comes from distinct attack surfaces, not a canned persona list.
 Before creating the artifact, prove the harness can dispatch fresh reviewer contexts. If it cannot,
 stop with structured choices: enable fresh dispatch and retry; run each stance in a separate clean
 task and return the reports; cancel. Recommend the best available option, explain each in one
-sentence, and include `Other`. Without a picker, render the same numbered options plus `Other`.
-Never ask a bare question or simulate independence in one context.
+sentence, and include `Other`. Never simulate independence in one context.
 
 ## Place
 
@@ -50,5 +53,4 @@ artifact set exists, no earlier disposition prompt occurred, and no downstream s
 transient artifact or sidecar created or consumed by the active work, ask once about the complete
 transient set: Delete, Leave, or Promote. Repository-native and other durable inputs never enter
 disposition. Recommend from state, explain each option in one sentence, include every transient
-path, and include `Other`. Never choose for the human. Without a picker, render the same numbered
-options plus `Other`. Never ask a bare question.
+path, and include `Other`. Never choose for the human.

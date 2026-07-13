@@ -1,6 +1,6 @@
 ---
 name: dissect
-description: Dissect an unfamiliar or high-risk code path before changing or judging it. ALWAYS apply when architecture, callers, control flow, data flow, state, side effects, failures, configuration, tests, or hidden coupling are not already proven. Trace the target to closure and mark every unknown edge. Return a compact evidence map, never a friendly tour. Skip when one known file or symbol fully contains the task or the user requested a persisted whole-area inventory.
+description: Dissect an unfamiliar or high-risk code path before changing or judging it. ALWAYS apply when architecture, callers, control flow, data flow, state, side effects, failures, configuration, tests, or hidden coupling are not already proven. Trace the target to closure and mark every unknown edge. Return a compact evidence map, never a friendly tour. Skip when one known file or symbol fully contains the task or a persisted whole-area inventory is requested or required by the active workflow.
 ---
 
 # Dissect
@@ -12,7 +12,8 @@ Do not explore. Establish reachability.
 - Pin one question, symbol, workflow, or subsystem and the exact repository state.
 - Stay read-only.
 - Do not turn a targeted trace into a whole-system inventory, risk audit, or proposal.
-- Do not persist a document. A requested persistent current-state map is inventory-authoring work.
+- Do not persist a document. A persistent current-state map requested by the user or required by the
+  active workflow is inventory-authoring work.
 
 ## Trace
 

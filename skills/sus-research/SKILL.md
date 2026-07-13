@@ -7,6 +7,10 @@ description: Write a decision-informing research artifact with traceable evidenc
 
 One question. Evidence fit for the claim. No counterfeit certainty.
 
+Every choice uses the native picker with automatic `Other`. Without one, render the same numbered
+options plus `Other`.
+Never ask a bare question.
+
 Ordinary conversation and direct action create no research artifact. Write one only when requested
 or required as a live workflow input.
 
@@ -18,8 +22,7 @@ the first attractive answer.
 
 Investigate discoverable facts before asking. If a material scope choice remains, use the native
 picker: three genuine options by default, two when binary, recommendation first, one-sentence
-tradeoff each, automatic `Other`. Without a picker, render the same numbered options plus `Other`.
-Never ask a bare question. A deferred choice blocks dependent research.
+tradeoff each, automatic `Other`. A deferred choice blocks dependent research.
 
 ## Place
 
@@ -74,5 +77,4 @@ disposition prompt occurred, and no downstream step needs any transient artifact
 or consumed by the active work, ask once about the complete transient set: Delete, Leave, or
 Promote. Repository-native and other durable inputs never enter disposition. Recommend from state,
 explain each option in one sentence, include every transient path, and include `Other`. Never choose
-for the human. Without a picker, render the same numbered options plus `Other`. Never ask a bare
-question.
+for the human.
