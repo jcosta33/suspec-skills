@@ -26,10 +26,12 @@ as a live workflow input.
 - Start one artifact with this minimal frontmatter:
 
   ```yaml
+  ---
   type: review
   id: REVIEW-{{slug}}
   reviewer: {{reviewer}}
   decision: pending
+  ---
   ```
 
   Add `task` or `pr` only when that locator exists. Never put `spec` or `target` in frontmatter;
@@ -79,11 +81,13 @@ picker, render the same numbered choices plus `Other`. Never ask a bare question
 
 Only the human selection changes `decision` to `accepted`, `changes-requested`, or `deferred`.
 Add `waivers` only when the human explicitly accepts while waiving named unsupported or unverified
-IDs, and record exactly those IDs. Ordinary acceptance and every pending review omit `waivers`.
+IDs. `waivers` is an optional string list such as `waivers: [AC-002]`; never write it as a scalar.
+Ordinary acceptance and every pending review omit `waivers`.
 Return only the clickable review path after recording the choice.
 
 The review remains live while requested changes or acceptance work continues. If this skill is the
-final consumer, no earlier disposition prompt occurred, and no downstream step needs any artifact
-or sidecar created or consumed by the active work, ask once about the complete set: Delete, Leave,
-or Promote. Recommend from state, explain each option in one sentence, and include `Other`. Never
-choose for the human.
+final consumer, a non-empty transient artifact set exists, no earlier disposition prompt occurred,
+and no downstream step needs any transient artifact or sidecar created or consumed by the active
+work, ask once about the complete transient set: Delete, Leave, or Promote. Repository-native and
+other durable inputs never enter disposition. Recommend from state, explain each option in one
+sentence, include every transient path, and include `Other`. Never choose for the human.

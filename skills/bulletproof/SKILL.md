@@ -74,7 +74,9 @@ and writes its inspection.
 ## Close
 
 Stop when every claim is assessed. Return only the clickable artifact path unless blocked or
-verification failed. If this skill is the final consumer, no earlier disposition prompt occurred,
-and no downstream step needs any artifact or sidecar created or consumed by the active work, ask
-once about the complete set: Delete, Leave, or Promote. Recommend from state, explain each option in
-one sentence, and include `Other`. Never choose for the human.
+verification failed. If this skill is the final consumer, a non-empty transient artifact set
+exists, no earlier disposition prompt occurred, and no downstream step needs any transient artifact
+or sidecar created or consumed by the active work, ask once about the complete transient set:
+Delete, Leave, or Promote. Repository-native and other durable inputs never enter disposition.
+Recommend from state, explain each option in one sentence, include every transient path, and include
+`Other`. Never choose for the human.

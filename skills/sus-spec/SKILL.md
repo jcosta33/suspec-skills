@@ -37,7 +37,24 @@ unwritable, offer: grant access and retry; choose another agent-neutral user dir
 
 ## Shape
 
-Use frontmatter with `type: spec`, a unique `SPEC-`-prefixed `id`, `title`, `status`, `owner`, and `sources`.
+Use this minimal frontmatter shape:
+
+```yaml
+---
+type: spec
+id: SPEC-{{slug}}
+title: {{title}}
+status: draft
+owner: {{owner}}
+sources:
+  - ISSUE-123
+  - /absolute/path/to/source.md
+---
+```
+
+`sources` is always a list. File-shaped entries are absolute or relative to the spec file; bare
+tracker and decision IDs remain valid. The `SPEC-`-prefixed `id` is unique.
+
 `## Intent` and `## Requirements` are mandatory and non-empty. Add `Non-goals`, `Open questions`,
 `Affected areas`, or `Dropped from sources` only when each carries unique information.
 
@@ -79,7 +96,8 @@ Write each fact once. Do not restate source material or repeat the spec in chat.
 clickable artifact path unless blocked or verification failed.
 
 The spec remains live while implementation, task dispatch, or review needs it. If this skill is the
-final consumer, no earlier disposition prompt occurred, and no downstream step needs any artifact
-or sidecar created or consumed by the active work, ask once about the complete set: Delete, Leave,
-or Promote. Recommend from state, give one-sentence tradeoffs, include all paths, and include
-`Other`. Never choose for the human.
+final consumer, a non-empty transient artifact set exists, no earlier disposition prompt occurred,
+and no downstream step needs any transient artifact or sidecar created or consumed by the active
+work, ask once about the complete transient set: Delete, Leave, or Promote. Repository-native and
+other durable inputs never enter disposition. Recommend from state, give one-sentence tradeoffs,
+include every transient path, and include `Other`. Never choose for the human.

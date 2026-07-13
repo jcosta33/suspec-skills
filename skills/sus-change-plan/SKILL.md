@@ -32,6 +32,22 @@ structured choices on collision or blocked writes.
 
 ## Shape
 
+Use this minimal frontmatter shape:
+
+```yaml
+---
+type: change-plan
+id: CHANGE-{{slug}}
+kind: refactor
+preserves:
+  - SPEC-feature#AC-001
+  - PG-001
+---
+```
+
+`preserves` is always a list. Use the full `SPEC-id#AC-NNN` for a governing requirement and
+`PG-NNN` for a plan-local guarantee.
+
 Write only these load-bearing sections:
 
 1. **Baseline:** current state with direct evidence and any map used.
@@ -61,8 +77,9 @@ Use frontmatter `kind` to name the transformation. Reuse governing requirement I
 Run the deterministic artifact checker when available. Write every fact once. Return only the
 clickable artifact path.
 
-The plan remains live through execution and review. If this skill is the final consumer, no earlier
-disposition prompt occurred, and no downstream step needs any artifact or sidecar created or
-consumed by the active work, ask once about the complete set: Delete, Leave, or Promote. Recommend
-from state, explain each option in one sentence, include the complete path set, and include `Other`.
-Never choose for the human.
+The plan remains live through execution and review. If this skill is the final consumer, a
+non-empty transient artifact set exists, no earlier disposition prompt occurred, and no downstream
+step needs any transient artifact or sidecar created or consumed by the active work, ask once about
+the complete transient set: Delete, Leave, or Promote. Repository-native and other durable inputs
+never enter disposition. Recommend from state, explain each option in one sentence, include every
+transient path, and include `Other`. Never choose for the human.
