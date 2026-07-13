@@ -23,10 +23,11 @@ as a live workflow input.
   replaces the spec.
 - Refuse review of work you implemented.
 - Keep the target read-only.
-- Before creating the artifact, prove the harness can dispatch one fresh independent reviewer
-  context with no implementation history or prior review prose. If it cannot, stop with structured
-  choices: enable fresh dispatch and retry; run the review in a separate clean task and return it;
-  cancel. Never simulate independence in the current context.
+- A task opened explicitly as the clean-review fallback, with no implementation history or prior
+  review prose, is already the independent reviewer: execute here and do not dispatch again.
+  Otherwise, before creating the artifact, prove the harness can dispatch one fresh independent
+  reviewer. If it cannot, stop with structured choices: enable fresh dispatch and retry; open a
+  separate clean review task; cancel. Never simulate independence in a contaminated context.
 - Start one artifact with this minimal frontmatter:
 
   ```yaml
@@ -65,6 +66,9 @@ structured choices on a collision or blocked write.
    | {{scoped ID}} | {{assessment}} | {{exact evidence}} |
    ```
 
+   Keep this as one contiguous GFM table: the delimiter immediately follows the header, every row
+   stays together, and structured `verify` blocks follow all rows.
+
    - `Supported`: decisive current evidence proves it.
    - `Unsupported`: evidence disproves it.
    - `Unverified`: evidence is absent, stale, indirect, or cannot run.
@@ -78,8 +82,12 @@ write a ship verdict.
 
 ## Decision
 
-After assessment, present a state-aware native picker. Use Accept, Request changes, and Defer; add
-Accept with waivers only when unsupported or unverified IDs exist.
+After assessment, present a state-aware native picker:
+
+- All rows Supported: Accept, Request changes, or Defer.
+- Unsupported or Unverified rows and no Blocked row: Accept with named waivers, Request changes, or
+  Defer. Never offer plain Accept.
+- Any Blocked row: Request changes or Defer. Never offer either acceptance option.
 
 Only the human selection changes `decision` to `accepted`, `changes-requested`, or `deferred`.
 Add `waivers` only when the human explicitly accepts while waiving named unsupported or unverified

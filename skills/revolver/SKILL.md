@@ -21,6 +21,9 @@ Never ask a bare question. Batch only independent choices; ask dependent choices
 - Write one artifact with `type: inspection`, `method: revolver`, and
   `target: <path-or-stable-identifier>`. Add `mode: refine` only when refine was explicitly
   requested. Round logs may use sidecars.
+- A substantive run requires that artifact. An explicit no-write or chat-only request conflicts
+  with this method. Stop and ask whether to allow the artifact or cancel. Never write against the
+  refusal or simulate Revolver in chat.
 - Reviewers report findings. The orchestrator alone applies verified fixes.
 
 Before creating the artifact, prove the harness can dispatch fresh reviewer contexts. If it cannot,

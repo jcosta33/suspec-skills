@@ -1,6 +1,6 @@
 ---
 name: triple-check
-description: Run exactly three fresh, target-derived, top-tier inspection passes for narrow depth. ALWAYS apply when asked to triple-check, deeply inspect, or obtain three independent high-end checks of code, a diff, artifact, plan, or system. Default to a fixed read-only snapshot with peer reports hidden. Refine only when explicitly requested. Reviewers never edit or issue a ship verdict.
+description: Run exactly three fresh, target-derived, top-tier inspection passes for narrow depth. ALWAYS apply when asked to triple-check or obtain exactly three independent high-end checks of code, a diff, artifact, plan, or system. Default to a fixed read-only snapshot with peer reports hidden. Refine only when explicitly requested. Skip targeted code-path tracing without an explicit three-pass request. Reviewers never edit or issue a ship verdict.
 ---
 
 # Triple-check
@@ -21,6 +21,9 @@ Never ask a bare question. Batch only independent choices; ask dependent choices
 - Write one artifact with `type: inspection`, `method: triple-check`, and
   `target: <path-or-stable-identifier>`. Add `mode: refine` only when refine was explicitly
   requested.
+- A substantive run requires that artifact. An explicit no-write or chat-only request conflicts
+  with this method. Stop and ask whether to allow the artifact or cancel. Never write against the
+  refusal or simulate Triple-check in chat.
 
 Before creating the artifact, prove the harness can dispatch three fresh contexts. If it cannot,
 stop for a material choice: enable fresh dispatch and retry; run three separate clean tasks and

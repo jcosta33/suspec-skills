@@ -109,6 +109,31 @@ for name in $artifact_handlers; do
   }
 done
 
+for method in revolver triple-check; do
+  method_text=$(tr '\n' ' ' < "$ROOT/skills/$method/SKILL.md" | tr -s ' ')
+  for phrase in 'A substantive run requires that artifact.' \
+    'An explicit no-write or chat-only request conflicts with this method.' \
+    'Never write against the refusal'; do
+    printf '%s\n' "$method_text" | grep -Fq "$phrase" || {
+      echo "$method no-write conflict missing: $phrase" >&2
+      exit 1
+    }
+  done
+done
+grep -Fq 'Skip targeted code-path tracing without an explicit three-pass request.' \
+  "$ROOT/skills/triple-check/SKILL.md" || {
+  echo "triple-check overlaps targeted dissection" >&2
+  exit 1
+}
+for phrase in 'is already the independent reviewer: execute here and do not dispatch again.' \
+  'Any Blocked row: Request changes or Defer. Never offer either acceptance option.' \
+  'Never offer plain Accept.' 'Keep this as one contiguous GFM table:'; do
+  grep -Fq "$phrase" "$ROOT/skills/sus-review/SKILL.md" || {
+    echo "sus-review state or fallback contract missing: $phrase" >&2
+    exit 1
+  }
+done
+
 stale='concise-output|revolver-review|codebase-exploration|promote-artifact|save-findings|empirical-proof|implement-task|market-research|planning-spec|write-spec|spec-check|split-work|review-output|security-review|fix-flaky-test|git-pr|write-audit|write-bug-report|write-change-plan|write-documentation|write-feature|write-fix|write-inventory|write-migration|write-performance|write-prd|write-refactor|write-research|write-rewrite|write-rfc|write-testing'
 if grep -RniE "(^|[^[:alnum:]-])($stale)([^[:alnum:]-]|$)" \
   "$ROOT/README.md" "$ROOT/AGENTS.md" "$ROOT/docs" "$ROOT/skills"; then
