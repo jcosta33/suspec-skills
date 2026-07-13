@@ -20,7 +20,8 @@ Investigate facts before asking. Decide reversible convention-bound details. Sto
 behavior, public contracts, security tradeoffs, costly choices, conflicting authority, or
 irreversible actions. Use the native picker: three genuine options by default, two when binary,
 recommendation first, one-sentence tradeoff each, automatic `Other`. Ask dependent choices
-sequentially. A deferred choice blocks dependent waves.
+sequentially. Without a picker, render the same numbered options plus `Other`. Never ask a bare
+question. A deferred choice blocks dependent waves.
 
 ## Place
 
@@ -58,7 +59,7 @@ Write only these load-bearing sections:
 5. **Cutover / rollback:** observable entry, completion, abort, and restoration conditions.
 6. **Task split:** dispatchable wave ownership and dependencies when needed; otherwise `None`.
 
-Use frontmatter `kind` to name the transformation. Reuse governing requirement IDs under
+Use frontmatter `kind` to name the transformation. Reuse full governing requirement refs under
 `preserves`; mint plan-local `PG-NNN` only for preserved behavior with no requirement ID.
 
 ## Hard Rules

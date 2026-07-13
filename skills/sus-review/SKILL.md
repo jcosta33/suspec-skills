@@ -77,7 +77,7 @@ write a ship verdict.
 After assessment, present a state-aware native picker. Use Accept, Request changes, and Defer; add
 Accept with waivers only when unsupported or unverified IDs exist. Put the evidence-backed
 recommendation first, explain each option in one sentence, and rely on automatic `Other`. Without a
-picker, render the same numbered choices plus `Other`. Never ask a bare question.
+picker, render the same numbered options plus `Other`. Never ask a bare question.
 
 Only the human selection changes `decision` to `accepted`, `changes-requested`, or `deferred`.
 Add `waivers` only when the human explicitly accepts while waiving named unsupported or unverified

@@ -34,3 +34,4 @@ needs any artifact or sidecar created or consumed by the active work. Repository
 durable documents never enter disposition. Then ask once: Delete, Leave, or Promote. Recommend from
 state, give one-sentence tradeoffs, include every transient artifact and sidecar path, and include
 `Other`. Never choose for the human or treat silence as Leave.
+Without a picker, render the same numbered options plus `Other`. Never ask a bare question.

@@ -26,7 +26,9 @@ confirmation.
 
 ## Close
 
-Do not ask about disposition while any downstream step needs the artifacts. At true lifecycle
-close, present the complete artifact-and-sidecar set and require one human choice: Delete, Leave, or
-Promote. Recommend from current state and explain each option in one sentence. Never choose for the
-human or treat silence as Leave.
+At true lifecycle close, prompt only for a non-empty transient artifact-and-sidecar set created or
+consumed by the active work, with no earlier prompt and no downstream consumer. Repository-native
+and other durable inputs never enter disposition. Require one human choice: Delete, Leave, or
+Promote. Recommend from current state and explain each option in one sentence. Without a picker,
+render the same numbered options plus `Other`. Never ask a bare question, choose for the human, or
+treat silence as Leave.

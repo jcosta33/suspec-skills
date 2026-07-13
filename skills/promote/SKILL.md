@@ -16,7 +16,8 @@ Move the document. Do not write a document about the move.
    Block promotion while sensitive content remains.
 4. Present real project-owned destinations through the native picker: recommendation first,
    one-sentence tradeoff per option, automatic `Other`. Use three options by default and two when
-   genuinely binary. Offer commit as a separate selected behavior where relevant.
+   genuinely binary. Without a picker, render the same numbered options plus `Other`. Never ask a
+   bare question. Offer commit as a separate selected behavior where relevant.
 5. Move by default. Copy only when the human explicitly needs both versions.
 6. Repair references. Validate links, format, and project checks.
 7. Commit only when selected. Never push implicitly.

@@ -24,6 +24,7 @@ and re-run to re-fetch. Watch the
 - Ordinary Suspec artifacts use `~/.agents/artifacts/<workspace>/` so local agents share one
   transient file without repository changes, copies, or symlinks. Full-path handoffs remain.
 - `promote` remains durable-only; it does not relocate files between transient roots.
+- Released sections remain byte-for-byte historical; current corrections stay under Unreleased.
 
 ## [4.0.0] - 2026-07-10
 
@@ -38,7 +39,7 @@ and re-run to re-fetch. Watch the
   memory, evidence attached, searchable title, written the way the harness records memories.
   Ephemeral findings ride the review packet. The finding artifact and its triage flow are gone.
 - **Checking is path-explicit**: a spec or change plan is checked with `suspec check <path>`; a
-  review packet with `suspec check <review-path> --spec <spec-path> [--task <task-path>]`. Task
+  review packet with `suspec check <review-path> --spec <spec-path> --task <task-path>`. Task
   templates and core-loop skills hand every artifact over by explicit full path.
 
 ## [3.0.0] - 2026-07-09
@@ -70,7 +71,7 @@ and re-run to re-fetch. Watch the
 - `implement-task` — the task packet and spec arrive by absolute store path in the launch
   prompt; the spec-external `.suspec/` mode is gone.
 - README — two catalog groups (Suspec methodology / universal disciplines); global install
-  (`npx skills add jcosta33/suspec-skills -g -a codex`, or manual copy to `~/.claude/skills` +
+  (`npx skills add jcosta33/suspec-skills -g`, or manual copy to `~/.claude/skills` +
   `~/.agents/skills`) is the primary path; per-repo install stays for pinning; the zero-overlap
   rule (global = methodology, in-repo = repo-specific guides) is stated.
 
@@ -136,16 +137,18 @@ As of 2.0.0 the catalog ships: `bulletproof`, `codebase-exploration`, `concise-o
 
 ## [1.0.0] - 2026-06-22
 
-First versioned release. The catalog shipped cross-cutting conditioning and evidence
-skills, plus the code-authoring depth guides `write-feature`, `write-fix`, `write-refactor`, `write-rewrite`,
+First versioned release. The catalog ships **14 skills**: the cross-cutting conditioning stances
+`persona-skeptic`, `persona-challenger`, `persona-surveyor`, and `empirical-proof`; the
+code-authoring depth guides `write-feature`, `write-fix`, `write-refactor`, `write-rewrite`,
 `write-migration`, `write-performance`, `write-testing`, `write-documentation`, `fix-flaky-test`;
 and `implement-task`.
 
 This baseline reflects two recent decisions:
 
-- **[Suspec ADR-0093](https://github.com/jcosta33/suspec/blob/main/docs/adrs/0093-collapse-1to1-personas.md)** — authoring disciplines live in their work guides; the catalog focuses on cross-cutting
-  stances and evidence discipline, each grounding-first (a stance's leverage is the external evidence it
-  forces, not a role label).
+- **[Swarm ADR-0093](https://github.com/jcosta33/swarm/blob/main/docs/adrs/0093-collapse-1to1-personas.md)** — the four 1:1 authoring personas (architect / auditor / researcher / documentarian) were
+  collapsed into their work guides (single source); the catalog keeps only the cross-cutting trio
+  plus `empirical-proof`, each rebuilt grounding-first (a stance's leverage is the external
+  evidence it forces, not a role label).
 - **Reference-load wiring** — every guide that bundles a `references/` file now carries a Rule-0
   load directive (a point-of-need 1-hop link; top-of-body for the work guides), so the reference is
   actually loaded rather than merely listed.

@@ -38,7 +38,8 @@ write `None observed in scope` instead of inventing one.
 
 If the audit boundary remains materially ambiguous after investigation, use the native picker:
 three real options by default, two when binary, recommendation first, one-sentence tradeoffs,
-automatic `Other`. Never ask a bare question.
+automatic `Other`. Without a picker, render the same numbered options plus `Other`. Never ask a bare
+question.
 
 Refuse fixes, target states, requirements, recommendations, and code edits. Write each fact once.
 Return only the clickable artifact path.

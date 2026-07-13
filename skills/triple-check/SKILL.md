@@ -20,7 +20,8 @@ Three fresh minds. No shared story.
 Before creating the artifact, prove the harness can dispatch three fresh contexts. If it cannot,
 stop with structured choices: enable fresh dispatch and retry; run three separate clean tasks and
 return their reports; cancel. Recommend the best available option, explain each in one sentence,
-and include `Other`. Never simulate independence in one context.
+and include `Other`. Without a picker, render the same numbered options plus `Other`. Never ask a
+bare question or simulate independence in one context.
 
 ## Place
 

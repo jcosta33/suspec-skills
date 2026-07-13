@@ -26,9 +26,11 @@ Save signal. Drop residue.
 Do not duplicate a team record into personal memory unless the memory links to it and adds a useful
 retrieval cue. Correct or remove native memory when later evidence disproves it.
 
-After every lesson is accounted for, ask about a transient artifact set only when Remember is its
-final consumer, the set has reached true lifecycle close, and no earlier disposition prompt
-occurred. Otherwise leave the single prompt to the artifact owner or later final consumer. Never
-issue a second prompt. When eligible, ask once: Delete, Leave, or Promote. Recommend from state,
-explain each option in one sentence, include the complete path set, and include `Other`. Never
-choose for the human or treat silence as Leave.
+After every lesson is accounted for, prompt only when Remember is the final consumer of a non-empty
+transient artifact set created or consumed by the active work, no earlier disposition prompt
+occurred, and no downstream step needs any member or sidecar. Repository-native and other durable
+inputs never enter disposition. Otherwise leave the single prompt to the artifact owner or later
+final consumer. When eligible, ask once: Delete, Leave, or Promote. Recommend from state, explain
+each option in one sentence, include every transient path, and include `Other`. Never choose for the
+human or treat silence as Leave. Without a picker, render the same numbered options plus `Other`.
+Never ask a bare question.

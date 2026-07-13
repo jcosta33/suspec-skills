@@ -73,9 +73,11 @@ and writes its inspection.
 
 ## Close
 
-Stop when every claim is assessed. Return only the clickable artifact path unless blocked or
-verification failed. If this skill is the final consumer, a non-empty transient artifact set
-exists, no earlier disposition prompt occurred, and no downstream step needs any transient artifact
+Stop when every claim is assessed. For a compact check with no inspection artifact, return the
+assessment rows and decisive evidence once in chat. When an inspection was written, return only its
+clickable path unless blocked or verification failed. If this skill is the final consumer and a
+non-empty transient artifact set exists, no earlier disposition prompt occurred, and no downstream
+step needs any transient artifact
 or sidecar created or consumed by the active work, ask once about the complete transient set:
 Delete, Leave, or Promote. Repository-native and other durable inputs never enter disposition.
 Recommend from state, explain each option in one sentence, include every transient path, and include

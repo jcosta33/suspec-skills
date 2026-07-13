@@ -58,7 +58,8 @@ artifact by absolute path.
 
 If the split exposes a missing decision, investigate discoverable facts, then stop with the native
 picker: three real options by default, two when binary, recommendation first, one-sentence tradeoffs,
-automatic `Other`. Never ask a bare question or bury the choice in a packet.
+automatic `Other`. Without a picker, render the same numbered options plus `Other`. Never ask a bare
+question or bury the choice in a packet.
 
 Write each fact once. Return only the clickable packet paths when the split is complete. The packets
 remain live through implementation and review. If this skill is the final consumer, a non-empty

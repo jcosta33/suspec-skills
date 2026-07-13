@@ -37,7 +37,7 @@ claims. A zero-caller or no-match claim requires the command and result. Every s
 
 If the scope remains materially ambiguous after investigation, use a native picker with three real
 options by default, two when binary, recommendation first, one-sentence tradeoffs, and automatic
-`Other`. Never ask a bare question.
+`Other`. Without a picker, render the same numbered options plus `Other`. Never ask a bare question.
 
 Refuse severity, findings, prescriptions, target architecture, and implementation steps. Write each
 fact once. Return only the clickable artifact path.

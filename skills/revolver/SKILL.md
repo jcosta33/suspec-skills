@@ -21,7 +21,8 @@ Breadth comes from distinct attack surfaces, not a canned persona list.
 Before creating the artifact, prove the harness can dispatch fresh reviewer contexts. If it cannot,
 stop with structured choices: enable fresh dispatch and retry; run each stance in a separate clean
 task and return the reports; cancel. Recommend the best available option, explain each in one
-sentence, and include `Other`. Never simulate independence in one context.
+sentence, and include `Other`. Without a picker, render the same numbered options plus `Other`.
+Never ask a bare question or simulate independence in one context.
 
 ## Place
 

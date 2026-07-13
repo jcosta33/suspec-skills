@@ -18,8 +18,8 @@ the first attractive answer.
 
 Investigate discoverable facts before asking. If a material scope choice remains, use the native
 picker: three genuine options by default, two when binary, recommendation first, one-sentence
-tradeoff each, automatic `Other`. Never ask a bare question. A deferred choice blocks dependent
-research.
+tradeoff each, automatic `Other`. Without a picker, render the same numbered options plus `Other`.
+Never ask a bare question. A deferred choice blocks dependent research.
 
 ## Place
 
