@@ -43,6 +43,8 @@ automatic `Other`. Never ask a bare question.
 Refuse fixes, target states, requirements, recommendations, and code edits. Write each fact once.
 Return only the clickable artifact path.
 
-Keep the audit while downstream planning or review needs it. After the full workflow is actioned,
-ask once what to do with the audit and sidecars: Delete, Leave, or Promote. Recommend from state,
-explain each option in one sentence, and include `Other`. Never choose for the human.
+Keep the audit while downstream planning or review needs it. If this skill is the final consumer,
+no earlier disposition prompt occurred, and no downstream step needs any artifact or sidecar
+created or consumed by the active work, ask once about the complete set: Delete, Leave, or Promote.
+Recommend from state, explain each option in one sentence, and include `Other`. Never choose for the
+human.

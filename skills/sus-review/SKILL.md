@@ -82,7 +82,8 @@ Add `waivers` only when the human explicitly accepts while waiving named unsuppo
 IDs, and record exactly those IDs. Ordinary acceptance and every pending review omit `waivers`.
 Return only the clickable review path after recording the choice.
 
-The review remains live while requested changes or acceptance work continues. Ask Delete, Leave,
-or Promote only when the governing workflow and complete artifact-and-sidecar set are fully actioned
-and no downstream step needs them. Recommend from state, explain each option in one sentence, and
-include `Other`. Never choose for the human.
+The review remains live while requested changes or acceptance work continues. If this skill is the
+final consumer, no earlier disposition prompt occurred, and no downstream step needs any artifact
+or sidecar created or consumed by the active work, ask once about the complete set: Delete, Leave,
+or Promote. Recommend from state, explain each option in one sentence, and include `Other`. Never
+choose for the human.

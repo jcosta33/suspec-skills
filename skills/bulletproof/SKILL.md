@@ -17,8 +17,8 @@ Trust nothing that can be checked.
 - Keep a verification target read-only. Active evidence generation is allowed.
 - Assess every explicit claim and every implied claim carrying the conclusion.
 - Use `Supported`, `Unsupported`, `Unverified`, or `Blocked`. Never accept or ship.
-- A substantive claim-set verification writes one `type: inspection`, `method: bulletproof`
-  artifact.
+- A substantive claim-set verification writes one artifact with `type: inspection`,
+  `method: bulletproof`, and `target: <path-or-stable-identifier>`.
 
 Do not create an artifact for ordinary conversation. Create one only for a substantive verification
 run or when the user requests it.
@@ -74,6 +74,7 @@ and writes its inspection.
 ## Close
 
 Stop when every claim is assessed. Return only the clickable artifact path unless blocked or
-verification failed. After the artifact and sidecars have been fully actioned and no downstream step
-needs them, ask once what to do with the complete set: Delete, Leave, or Promote. Recommend from the
-current state, explain each option in one sentence, and include `Other`. Never choose for the human.
+verification failed. If this skill is the final consumer, no earlier disposition prompt occurred,
+and no downstream step needs any artifact or sidecar created or consumed by the active work, ask
+once about the complete set: Delete, Leave, or Promote. Recommend from state, explain each option in
+one sentence, and include `Other`. Never choose for the human.

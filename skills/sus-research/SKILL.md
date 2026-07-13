@@ -69,6 +69,7 @@ the exact open question or test that would unblock it. Never settle intent, writ
 edit the researched target.
 
 Write each fact once. Return only the clickable artifact path unless blocked or verification failed.
-After the research is fully actioned and no downstream step needs it, ask once: Delete, Leave, or
-Promote. Recommend from state, explain each option in one sentence, include every sidecar, and
-include `Other`. Never choose for the human.
+If this skill is the final consumer, no earlier disposition prompt occurred, and no downstream step
+needs any artifact or sidecar created or consumed by the active work, ask once about the complete
+set: Delete, Leave, or Promote. Recommend from state, explain each option in one sentence, include
+every sidecar, and include `Other`. Never choose for the human.

@@ -11,7 +11,8 @@ Attack the target. Do not pretend the attack is truth.
 
 - Explicit invocation only.
 - Target ideas, designs, claims, concepts, code, or plans. Never people.
-- Write one `type: inspection`, `method: demolition` artifact.
+- Write one artifact with `type: inspection`, `method: demolition`, and
+  `target: <path-or-stable-identifier>`.
 - Make the first body line exactly: `Advocacy exercise, not evidence.`
 - Nothing in the artifact becomes a finding until independently verified.
 
@@ -35,6 +36,7 @@ unwritable, offer: grant access and retry; choose another agent-neutral user dir
 Write each point once. Cut scene-setting, repeated source material, decorative sections, and a
 conclusion that restates the attack. Return only the clickable artifact path.
 
-After the artifact is fully actioned and no downstream step needs it, ask once what to do with the
-artifact and sidecars: Delete, Leave, or Promote. Recommend from the current state, explain each
-option in one sentence, and include `Other`. Never choose for the human.
+If this skill is the final consumer, no earlier disposition prompt occurred, and no downstream step
+needs any artifact or sidecar created or consumed by the active work, ask once about the complete
+set: Delete, Leave, or Promote. Recommend from state, explain each option in one sentence, and
+include `Other`. Never choose for the human.

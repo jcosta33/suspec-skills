@@ -1,0 +1,23 @@
+name: method-gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  method-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - { name: suspec-skills, uses: actions/checkout@v4, with: { path: family/suspec-skills } }
+      - { name: suspec, uses: actions/checkout@v4, with: { repository: jcosta33/suspec, path: family/suspec } }
+      - { name: suspec-agents, uses: actions/checkout@v4, with: { repository: jcosta33/suspec-agents, path: family/suspec-agents } }
+      - { name: suspec-cli, uses: actions/checkout@v4, with: { repository: jcosta33/suspec-cli, path: family/suspec-cli } }
+      - { name: suspec-mcp, uses: actions/checkout@v4, with: { repository: jcosta33/suspec-mcp, path: family/suspec-mcp } }
+
+      - name: Method gates
+        run: sh family/suspec/scripts/lint-all.sh "$GITHUB_WORKSPACE/family"

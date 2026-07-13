@@ -61,7 +61,8 @@ Use frontmatter `kind` to name the transformation. Reuse governing requirement I
 Run the deterministic artifact checker when available. Write every fact once. Return only the
 clickable artifact path.
 
-The plan remains live through execution and review. After the full workflow is actioned and no downstream step needs it,
-ask once about the complete plan-and-sidecar set: Delete, Leave, or
-Promote. Recommend from state, explain each option in one sentence, include the complete path set,
-and include `Other`. Never choose for the human.
+The plan remains live through execution and review. If this skill is the final consumer, no earlier
+disposition prompt occurred, and no downstream step needs any artifact or sidecar created or
+consumed by the active work, ask once about the complete set: Delete, Leave, or Promote. Recommend
+from state, explain each option in one sentence, include the complete path set, and include `Other`.
+Never choose for the human.

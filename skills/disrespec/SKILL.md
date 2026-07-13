@@ -1,6 +1,6 @@
 ---
 name: disrespec
-description: Maximize clarity per token in a Markdown artifact. ALWAYS apply when explicitly asked to compress, sharpen, or strip waste from an artifact, and whenever a Suspec artifact is being created or revised. State each fact once. Remove filler, repetition, copied source material, empty sections, and chat restatement. Never replace a requested action with a document about it. Skip source code, raw evidence, commit messages, and repository-native pull-request forms.
+description: Maximize clarity per token in a Markdown artifact. ALWAYS apply when explicitly asked to compress, sharpen, or strip waste, and when an artifact is observably bloated, repetitive, copied, or structurally wasteful enough to need a dedicated edit. State each fact once. Remove filler, repetition, copied source material, empty sections, and chat restatement. Never activate merely because another skill writes an artifact, replace a requested action with a document about it, or touch source code, raw evidence, commit messages, or repository-native pull-request forms.
 ---
 
 # Disrespec
@@ -27,10 +27,9 @@ document or the active workflow needs one. Never relocate an existing artifact. 
 the deliverable, return only its absolute clickable path. Explain only a blocker, failed creation,
 incomplete verification, or irreversible confirmation.
 
-When co-activated inside another artifact workflow, its artifact owner or final consumer owns the
-single disposition prompt; Disrespec never prompts again. Prompt only after the artifact lifecycle
-is fully actioned, when explicitly invoked as the sole artifact workflow, no owner exists, no
-earlier disposition prompt occurred, and no downstream step needs the transient artifact set. Then
-ask once: Delete, Leave, or Promote.
+When co-activated inside another artifact workflow, its final consumer owns the single disposition
+prompt; Disrespec never prompts again. Prompt only when this skill is the final consumer, no earlier
+disposition prompt occurred, and no downstream step needs any artifact or sidecar created or
+consumed by the active work. Then ask once: Delete, Leave, or Promote.
 Recommend from state, give one-sentence tradeoffs, include every artifact and sidecar path, and
 include `Other`. Never choose for the human or treat silence as Leave.

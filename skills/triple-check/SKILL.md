@@ -13,7 +13,9 @@ Three fresh minds. No shared story.
 - Derive exactly three materially distinct stances from the target's highest-consequence risks.
 - Use a top-tier model adequate for each pass.
 - Default to read-only `inspect`. Use `refine` only on explicit request.
-- Write one `type: inspection`, `method: triple-check` artifact.
+- Write one artifact with `type: inspection`, `method: triple-check`, and
+  `target: <path-or-stable-identifier>`. Add `mode: refine` only when refine was explicitly
+  requested.
 
 Before creating the artifact, prove the harness can dispatch three fresh contexts. If it cannot,
 stop with structured choices: enable fresh dispatch and retry; run three separate clean tasks and
@@ -39,6 +41,7 @@ structured choices on a collision or blocked write.
 Never vote, merge three opinions into false certainty, or issue a ship verdict. Record each finding
 once. Return only the clickable artifact path.
 
-After the artifact and sidecars are fully actioned and no downstream step needs them, ask once:
-Delete, Leave, or Promote. Recommend from state, explain each option in one sentence, and include
-`Other`. Never choose for the human.
+If this skill is the final consumer, no earlier disposition prompt occurred, and no downstream step
+needs any artifact or sidecar created or consumed by the active work, ask once about the complete
+set: Delete, Leave, or Promote. Recommend from state, explain each option in one sentence, and
+include `Other`. Never choose for the human.

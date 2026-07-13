@@ -37,7 +37,7 @@ unwritable, offer: grant access and retry; choose another agent-neutral user dir
 
 ## Shape
 
-Use frontmatter with `type: spec`, a unique `id`, `title`, `status`, `owner`, and `sources`.
+Use frontmatter with `type: spec`, a unique `SPEC-`-prefixed `id`, `title`, `status`, `owner`, and `sources`.
 `## Intent` and `## Requirements` are mandatory and non-empty. Add `Non-goals`, `Open questions`,
 `Affected areas`, or `Dropped from sources` only when each carries unique information.
 
@@ -78,7 +78,8 @@ does not activate this skill.
 Write each fact once. Do not restate source material or repeat the spec in chat. Return only the
 clickable artifact path unless blocked or verification failed.
 
-The spec remains live while implementation, task dispatch, or review needs it. Only after the full
-workflow is actioned and no downstream step needs the spec or sidecars, ask once: Delete, Leave, or
-Promote. Recommend from state, give one-sentence tradeoffs, include all paths, and include `Other`.
-Never choose for the human.
+The spec remains live while implementation, task dispatch, or review needs it. If this skill is the
+final consumer, no earlier disposition prompt occurred, and no downstream step needs any artifact
+or sidecar created or consumed by the active work, ask once about the complete set: Delete, Leave,
+or Promote. Recommend from state, give one-sentence tradeoffs, include all paths, and include
+`Other`. Never choose for the human.

@@ -61,6 +61,7 @@ picker: three real options by default, two when binary, recommendation first, on
 automatic `Other`. Never ask a bare question or bury the choice in a packet.
 
 Write each fact once. Return only the clickable packet paths when the split is complete. The packets
-remain live through implementation and review. Ask Delete, Leave, or Promote only after every packet
-and sidecar has been fully actioned and no downstream step needs the set. Recommend from state,
-explain each option in one sentence, and include `Other`. Never choose for the human.
+remain live through implementation and review. If this skill is the final consumer, no earlier
+disposition prompt occurred, and no downstream step needs any artifact or sidecar created or
+consumed by the active work, ask once about the complete set: Delete, Leave, or Promote. Recommend
+from state, explain each option in one sentence, and include `Other`. Never choose for the human.
