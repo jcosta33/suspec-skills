@@ -28,8 +28,9 @@ the deliverable, return only its absolute clickable path. Explain only a blocker
 incomplete verification, or irreversible confirmation.
 
 When co-activated inside another artifact workflow, its final consumer owns the single disposition
-prompt; Disrespec never prompts again. Prompt only when this skill is the final consumer, no earlier
-disposition prompt occurred, and no downstream step needs any artifact or sidecar created or
-consumed by the active work. Then ask once: Delete, Leave, or Promote.
-Recommend from state, give one-sentence tradeoffs, include every artifact and sidecar path, and
-include `Other`. Never choose for the human or treat silence as Leave.
+prompt; Disrespec never prompts again. Prompt only when a non-empty transient artifact set exists,
+this skill is the final consumer, no earlier disposition prompt occurred, and no downstream step
+needs any artifact or sidecar created or consumed by the active work. Repository-native and other
+durable documents never enter disposition. Then ask once: Delete, Leave, or Promote. Recommend from
+state, give one-sentence tradeoffs, include every transient artifact and sidecar path, and include
+`Other`. Never choose for the human or treat silence as Leave.
