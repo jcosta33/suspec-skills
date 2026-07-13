@@ -27,7 +27,7 @@ permissions:
   contents: read
 
 jobs:
-  history:
+  local-gates:
     if: github.event_name != 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
@@ -37,6 +37,9 @@ jobs:
         env:
           SUSPEC_SKILLS_HISTORY_BASE: "${{ github.event.pull_request.base.sha || github.event.before }}"
         run: sh repo/scripts/lint-released-changelog.sh
+
+      - name: Current catalog surfaces
+        run: sh repo/scripts/lint-current.sh repo
 
   method-gates:
     if: github.event_name == 'workflow_dispatch'

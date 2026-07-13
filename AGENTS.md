@@ -22,11 +22,12 @@ This repository ships portable, self-contained Agent Skills in plain Markdown. E
 - Ask Delete, Leave, or Promote only at true lifecycle close, after no downstream step needs the
   complete artifact-and-sidecar set.
 - Skills name abstract command slots when needed. The consuming repository supplies actual commands.
-- Markdown only. No scripts, executables, or runtime dependencies.
+- Skill payloads are Markdown only. Repository checks may use shell scripts; installed skills never do.
 - Add or remove the matching `README.md` catalog row with every skill directory change.
 - Preserve historical `CHANGELOG.md` entries.
 
 ## Verification
 
-This repository has no runtime. Verify by reviewing Markdown, links, frontmatter, final directory
-membership, standalone references, and searches for stale names or forbidden dependencies.
+Run `sh scripts/lint-current.sh` and `sh scripts/lint-released-changelog.sh`. The first checks current
+Markdown, links, frontmatter, exact membership, standalone references, and stale names. The second
+protects released history.

@@ -77,5 +77,6 @@ checks live in [Suspec](https://github.com/jcosta33/suspec) and
 
 ## Security
 
-Read instructions before installing them. This catalog contains Markdown only: no scripts,
-executables, hooks, or network calls.
+Read instructions before installing them. Every installed skill payload contains Markdown only: no
+scripts, executables, hooks, or network calls. Repository-only shell scripts enforce catalog history
+and current-surface rules.
