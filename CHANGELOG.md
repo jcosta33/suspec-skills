@@ -27,8 +27,8 @@ and re-run to re-fetch. Watch the
 - `promote` remains durable-only; it does not relocate files between transient roots.
 - Only `sus-*` artifact authors create artifacts. Universal methods return through chat, native
   memory, target edits, or durable relocation.
-- `fork-me` owns every ambiguity: at least three plain options, recommendation first, native picker,
-  dependent work blocked until selection.
+- `fork-me` owns every ambiguity: at least three plain options, recommendation first, native picker
+  or numbered text fallback, dependent work blocked until selection.
 - `revolver` runs at least six sequential stances. `triple-check` runs exactly three fresh top-tier
   passes. Both resolve each finding before the next reviewer sees the target.
 - Every skill now uses ruthless, economical instructions: hard imperatives without filler, default

@@ -383,6 +383,7 @@ require_regex "$fork_me" 'at least three materially different options' 'Fork-me 
 require_regex "$fork_me" 'recommendation first' 'Fork-me recommendation order missing'
 require_regex "$fork_me" 'reason and cost in one plain sentence' 'Fork-me explanation contract missing'
 require_regex "$fork_me" 'harness-native picker.*`Other`' 'Fork-me picker contract missing'
+require_regex "$fork_me" 'unavailable.*same numbered.*`Other`' 'Fork-me text fallback missing'
 require_regex "$fork_me" 'Freeze dependent work until selection' 'Fork-me execution block missing'
 
 bulletproof="$ROOT/skills/bulletproof/SKILL.md"
