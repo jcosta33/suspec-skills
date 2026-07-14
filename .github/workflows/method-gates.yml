@@ -10,10 +10,6 @@ on:
         description: suspec ref for an integration snapshot
         required: false
         default: main
-      agents_ref:
-        description: suspec-agents ref for an integration snapshot
-        required: false
-        default: main
       cli_ref:
         description: suspec-cli ref for an integration snapshot
         required: false
@@ -47,7 +43,6 @@ jobs:
     steps:
       - { name: suspec-skills, uses: actions/checkout@v4, with: { path: family/suspec-skills } }
       - { name: suspec, uses: actions/checkout@v4, with: { repository: jcosta33/suspec, ref: "${{ inputs.canon_ref || 'main' }}", path: family/suspec } }
-      - { name: suspec-agents, uses: actions/checkout@v4, with: { repository: jcosta33/suspec-agents, ref: "${{ inputs.agents_ref || 'main' }}", path: family/suspec-agents } }
       - { name: suspec-cli, uses: actions/checkout@v4, with: { repository: jcosta33/suspec-cli, ref: "${{ inputs.cli_ref || 'main' }}", path: family/suspec-cli } }
       - { name: suspec-mcp, uses: actions/checkout@v4, with: { repository: jcosta33/suspec-mcp, ref: "${{ inputs.mcp_ref || 'main' }}", path: family/suspec-mcp } }
 

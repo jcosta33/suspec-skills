@@ -9,6 +9,8 @@ siblings is broken.
   `references/`.
 - Keep frontmatter `name` and directive `description`.
 - Preserve standalone operation and Markdown-only payloads.
+- Use untitled inline Markdown links with simple destinations. Reference-style, angle-wrapped,
+  fragmented, and nested-parenthesis destinations are rejected.
 - Update the README catalog row with every skill addition or removal.
 - Preserve released `CHANGELOG.md` history.
 - Follow [catalog design](docs/README.md) for activation, body, execution, scope, self-containment,

@@ -13,8 +13,11 @@ Save signal. Burn residue.
 4. Save one personal claim per native memory under a searchable title. Include evidence, scope, and
    what it does not establish.
 5. Without native memory, leave personal-only observations ephemeral.
-6. Route team facts to project channels: decisions, issues, tests, or runbooks.
+6. For a team fact, present concrete project channels and a recommendation. Write only the human-selected
+   destination: decision, issue, test, runbook, or maintained documentation.
 7. Escalate severe correctness, security, privacy, data-loss, and compliance issues.
 
-Link rather than duplicate an existing team record. Correct or remove memory disproved by later
-evidence.
+Link rather than duplicate an existing team record. Correct or remove disproved personal memory
+automatically when reversible. Correct or remove a team record only with project authority and human
+selection. Read every write, correction, and removal through its native surface. Return the confirmed
+destination or state that nothing was saved. Failed persistence stays blocked.

@@ -24,7 +24,15 @@ additional source and wave context. Re-cut this packet after a material source c
 
 ## Scope
 
-- {{requirement-id}} - {{source obligation, unchanged}}
+List assigned requirement IDs only. The snapshot above owns their text.
+
+- {{requirement-id}}
+
+## Preservation scope
+
+Omit without a change plan. Otherwise copy every preservation guarantee this packet could violate:
+
+- {{PG-NNN or governing requirement ref}} - {{behavior}} - Verify with: {{exact check}}
 
 ## Do not change
 
@@ -41,7 +49,9 @@ edit. `ready` and `running` packets may retain pending evidence. Before setting 
 `review-ready` or `closed`, every Verify entry must contain one of: an exact command with numeric
 exit status and fenced decisive raw output; `CI: https://...`; or a justified `n/a`.
 
-### {{requirement-id}}
+Repeat for every assigned requirement and preservation guarantee.
+
+### {{requirement-or-preservation-id}}
 
 - Command: `{{exact source check}}`
 - Working directory: `{{absolute path}}`
@@ -80,13 +90,13 @@ exit status and fenced decisive raw output; `CI: https://...`; or a justified `n
 
 - Status: not started
 - Changed files: none
-- Verify evidence: {{requirement-id}} - pending
+- Verify evidence: {{requirement-or-preservation-id}} - pending
 - Scope drift: none
 - Blocked questions: none
 
 ## Self-review
 
 - [ ] Every changed file is in Affected Areas or listed as an exception.
-- [ ] Every scoped ID has fresh final evidence.
+- [ ] Every scoped requirement and preservation ID has fresh final evidence.
 - [ ] Findings and blockers are recorded.
 - [ ] No self-assessment or acceptance was issued.

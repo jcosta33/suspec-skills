@@ -1,6 +1,6 @@
 ---
 name: sus-spec
-description: Forge decided intent into a verifiable Suspec spec. ALWAYS apply when asked to write, revise, or structurally check a spec, requirements, or acceptance criteria, and when unresolved intent must govern non-trivial work. Survey reality, stop on ambiguity, and write observable obligations with proof. Skip small clear work, factual verification, and implementation design.
+description: Forge decided intent into a verifiable Suspec spec. ALWAYS apply when asked to write, revise, or structurally check a spec, requirements, or acceptance criteria, and when the human selects a Suspec spec workflow for unresolved intent. Survey reality, stop on ambiguity, and write observable obligations with proof. Skip direct implementation, small clear work, factual verification, and implementation design.
 ---
 
 # Sus Spec
@@ -9,8 +9,8 @@ A spec is decided intent under test. Nothing else belongs.
 
 ## Gate
 
-Enter on explicit request or when undecided intent must govern non-trivial work. Small clear work
-does not earn a spec.
+Enter on explicit request or after the human selects a Suspec spec workflow for unresolved intent.
+Direct implementation does not earn a spec.
 
 Before writing:
 
@@ -25,8 +25,10 @@ Every unresolved choice keeps `status: draft` and blocks dependent work.
 ## Place
 
 Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
-repository or working-directory basename. Write there. A collision, ambiguous workspace, or blocked
-write requires human selection. Repository, vendor, and OS temporary paths are invalid.
+repository or working-directory basename. Write there; keep linked sidecars beside it. A collision
+or ambiguous workspace requires human-readable name choices. A blocked write requires: grant access
+and retry, choose another agent-neutral user directory, or cancel. Never overwrite or fall back to a
+repository, vendor directory, or temporary path.
 
 ## Shape
 
@@ -70,7 +72,7 @@ format, keep one independently verifiable obligation per requirement or block.
 
 Check structure. Revise only when requested. Factual verification is separate.
 
-1. Run the deterministic artifact checker when available.
+1. If the `suspec` executable is available, run `suspec check <absolute-spec-path>`.
 2. Demand valid frontmatter, unique IDs, non-empty Intent, and one obligation per requirement.
    For plain Markdown, require `### AC-NNN`, one deliberate strength word, and one real
    `Verify with:` line per requirement. For `format: sol`, require the bundled flush-left block
@@ -81,6 +83,8 @@ Check structure. Revise only when requested. Factual verification is separate.
    durable memory.
 5. In check-only mode, report exact errors without editing. In write/revise mode, fix them and rerun.
 
-Write each fact once. Hand off the absolute path. After the artifact is fully actioned and no
+Write each fact once. Hand off absolute paths for the spec and every sidecar. After the artifact is fully actioned and no
 downstream step needs it, require one human disposition for it and its sidecars: Delete, Leave, or
 Promote.
+Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
+reports survivors.

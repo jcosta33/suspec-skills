@@ -28,12 +28,18 @@ Return one table:
 | --- | --- | --- |
 ```
 
-Ambiguous boundaries and missing evidence block assessment. Name the exact gap.
+Give every identifiable claim one row:
+
+- `Supported`: decisive evidence establishes it.
+- `Unsupported`: decisive evidence contradicts it.
+- `Unverified`: available evidence cannot establish or contradict it.
+- `Blocked`: required evidence exists but cannot be obtained.
+
+Name the exact gap for `Unverified` and `Blocked`.
 
 ## Implementation Proof
 
-Record each decisive run once: command, working directory, state identifier, numeric exit, and
-untouched decisive output. Put it in the governing task packet when present; otherwise return it in
-chat.
+Return each decisive run once in chat: command, working directory, state identifier, numeric exit,
+and untouched decisive output.
 
 Freeze the verification target. Acceptance and requirement conformance are outside this method.

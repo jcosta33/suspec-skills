@@ -1,18 +1,32 @@
 ---
 name: sus-inventory
-description: Reconstruct an unfamiliar or change-critical code area from evidence. ALWAYS apply before a rewrite, major refactor, migration, replacement, or brownfield handoff when modules, interfaces, callers, behavior, tests, or dependencies remain unproven. Map reality without judgment or prescription. Skip small isolated work with a proven map.
+description: Reconstruct an unfamiliar or change-critical code area from evidence. ALWAYS apply when asked for an inventory or when the human selects a Suspec inventory workflow for a durable current-state map before wide change. Map reality without judgment or prescription. Skip direct implementation and small isolated work with a proven map.
 ---
 
 # Sus Inventory
 
 Map reality. Invent nothing. Prescribe nothing.
 
+Enter on explicit inventory request or after the human selects a Suspec inventory workflow for a
+durable current-state map.
+
 ## Place
 
 Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
 repository or working-directory basename. Write there with `type: inventory` and a unique `INV-`
-ID. A collision, ambiguous workspace, or blocked write requires human selection. Repository,
-vendor, and OS temporary paths are invalid.
+ID; keep linked sidecars beside it. A collision or ambiguous workspace requires human-readable name
+choices. A blocked write requires: grant access and retry, choose another agent-neutral user
+directory, or cancel. Never overwrite or fall back to a repository, vendor directory, or temporary
+path.
+
+Start with:
+
+```yaml
+---
+type: inventory
+id: INV-{{slug}}
+---
+```
 
 ## Map
 
@@ -34,5 +48,7 @@ no-match claims require command and result. Every sentence must fit:
 Ambiguous scope blocks mapping.
 
 Strip severity, prescriptions, target architecture, and implementation steps. Write each fact once.
-Hand off the absolute path. After the artifact is fully actioned and no downstream step needs it,
+Hand off absolute paths for the inventory and every sidecar. After the artifact is fully actioned and no downstream step needs it,
 require one human disposition for it and its sidecars: Delete, Leave, or Promote.
+Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
+reports survivors.

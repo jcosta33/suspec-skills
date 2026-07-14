@@ -10,11 +10,12 @@ meeting required.
 npx skills add jcosta33/suspec-skills -g -a codex
 npx skills add jcosta33/suspec-skills -g -a claude-code
 npx skills add jcosta33/suspec-skills --skill revolver -g -a codex
+npx skills add https://github.com/jcosta33/suspec-skills/tree/<commit> -g -a codex
 ```
 
-Pin a source revision when stability matters. Re-running `add` updates present entries but does not
-prune removed names. Remove only obsolete Suspec entries before reinstalling; preserve unrelated
-skills.
+The last form pins a commit. Re-running `add` updates present entries but does not prune removed
+names. Inspect `overwrites:` before confirming. Compare any existing folder with the source tree;
+cancel on mismatch. Remove a retired entry only after the same comparison. Name alone proves nothing.
 
 ## Universal methods
 

@@ -1,6 +1,6 @@
 ---
 name: sus-change-plan
-description: Plan structural change without losing behavior. ALWAYS apply to refactors, rewrites, migrations, upgrades, performance changes, schema changes, and wide architecture cleanup. Prove the baseline, enumerate preservation, cut green waves, and lock cutover and rollback. Reject vague "no behavior change" claims.
+description: Plan structural change without losing behavior. ALWAYS apply when asked to plan a refactor, rewrite, migration, upgrade, performance change, schema change, or wide architecture cleanup, and when the human selects a Suspec change-plan workflow. Prove the baseline, enumerate preservation, cut green waves, and lock cutover and rollback. Skip direct implementation. Reject vague "no behavior change" claims.
 ---
 
 # Sus Change Plan
@@ -9,8 +9,11 @@ Unproven preservation is accidental destruction.
 
 ## Entry
 
+Enter on explicit plan request or after the human selects a Suspec change-plan workflow.
+
 Read project rules, durable decisions, current source, tests, and current-state maps. Reconstruct a
-missing map before wide change. Small cleanup, obvious fixes, and ordinary features earn no plan.
+missing map before wide change. Skip only when the change is isolated, the current map is proven,
+and no behavior-preservation, staged-cutover, or rollback risk exists.
 
 Resolve reversible conventions. Ambiguity in behavior, public contracts, security, cost, authority,
 or irreversible action blocks dependent waves.
@@ -19,8 +22,10 @@ or irreversible action blocks dependent waves.
 
 Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
 repository or working-directory basename. Write there with `type: change-plan` and a unique
-`CHANGE-` ID. A collision, ambiguous workspace, or blocked write requires human selection.
-Repository, vendor, and OS temporary paths are invalid.
+`CHANGE-` ID; keep linked sidecars beside it. A collision or ambiguous workspace requires
+human-readable name choices. A blocked write requires: grant access and retry, choose another
+agent-neutral user directory, or cancel. Never overwrite or fall back to a repository, vendor
+directory, or temporary path.
 
 ## Shape
 
@@ -65,6 +70,11 @@ Use frontmatter `kind` to name the transformation. Reuse full governing requirem
   samples, statistic, target, and regression ceilings.
 - Use schema coexistence only when consumers cannot cut over atomically.
 
-Run the deterministic artifact checker when available. Write each fact once. Hand off the absolute
-path. After the artifact is fully actioned and no downstream step needs it, require one human
-disposition for it and its sidecars: Delete, Leave, or Promote.
+If the `suspec` executable is available, run `suspec check <absolute-change-plan-path>`. Otherwise,
+verify the frontmatter and required sections, resolve every `preserves` ID against the source spec or
+plan guarantees, and require each transformation wave to name verification. Write each fact once.
+Hand off absolute paths for the change plan and every sidecar. After the artifact is fully actioned
+and no downstream step needs it, require one human disposition for it and its sidecars: Delete,
+Leave, or Promote.
+Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
+reports survivors.

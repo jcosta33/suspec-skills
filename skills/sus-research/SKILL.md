@@ -18,8 +18,19 @@ Ambiguous scope blocks dependent research.
 
 Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
 repository or working-directory basename. Write there with `type: research` and a unique
-`RESEARCH-` ID. A collision, ambiguous workspace, or blocked write requires human selection.
-Repository, vendor, and OS temporary paths are invalid.
+`RESEARCH-` ID; keep linked sidecars beside it. A collision or ambiguous workspace requires
+human-readable name choices. A blocked write requires: grant access and retry, choose another
+agent-neutral user directory, or cancel. Never overwrite or fall back to a repository, vendor
+directory, or temporary path.
+
+Start with:
+
+```yaml
+---
+type: research
+id: RESEARCH-{{slug}}
+---
+```
 
 ## Evidence
 
@@ -59,6 +70,8 @@ table with named criteria. Preserve disconfirming evidence and material rejected
 Tie the recommendation to finding IDs. When evidence cannot support direction, name the exact
 question or test that unlocks it. Keep intent and requirements human-owned.
 
-Write each fact once. Hand off the absolute path. After the artifact is fully actioned and no
+Write each fact once. Hand off absolute paths for the research artifact and every sidecar. After the artifact is fully actioned and no
 downstream step needs it, require one human disposition for it and its sidecars: Delete, Leave, or
 Promote.
+Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
+reports survivors.

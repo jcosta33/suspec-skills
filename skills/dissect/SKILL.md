@@ -33,5 +33,5 @@ Flow: <entry -> decisive branches -> terminal effects>
 | Path:line | Proven edge, state, effect, or boundary | Unknown |
 | --- | --- | --- |
 
-Evidence: <decisive commands and exits>
+Evidence: <command; working directory; state identifier; numeric exit; untouched decisive output>
 ```

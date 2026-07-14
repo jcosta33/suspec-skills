@@ -1,6 +1,6 @@
 ---
 name: sus-audit
-description: Audit present code and expose its risk with exact evidence. ALWAYS apply to present-state code audits, debt surveys, cleanup assessments, single-implementation benchmarks, quality assessments, and fresh passes over prior audits. Observe and prove. Strip prescriptions, intended behavior, and unsupported claims. Skip multi-angle attacks and option research.
+description: Audit present code and expose its risk with exact evidence. ALWAYS apply to debt surveys, cleanup assessments, single-implementation benchmarks, present-state quality assessments, and fresh passes over prior audits when no governing spec or task defines conformance. Observe and prove. Strip prescriptions, intended behavior, and unsupported claims. Skip rotating adversarial attacks and option research.
 ---
 
 # Sus Audit
@@ -11,8 +11,19 @@ Observe. Prove. Prescribe nothing.
 
 Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
 repository or working-directory basename. Write there with `type: audit` and a unique `AUDIT-` ID.
-A collision, ambiguous workspace, or blocked write requires human selection. Repository, vendor,
-and OS temporary paths are invalid.
+A collision or ambiguous workspace requires human-readable name choices. A blocked write requires:
+grant access and retry, choose another agent-neutral user directory, or cancel. Never overwrite or
+fall back to a repository, vendor directory, or temporary path. Keep linked sidecars beside the
+audit.
+
+Start with:
+
+```yaml
+---
+type: audit
+id: AUDIT-{{slug}}
+---
+```
 
 ## Method
 
@@ -33,6 +44,8 @@ write `None observed in scope` instead of inventing one.
 
 Ambiguous boundaries block the audit.
 
-Strip fixes, target states, requirements, and recommendations. Write each fact once. Hand off the
-absolute path. After the artifact is fully actioned and no downstream step needs it, require one
+Strip fixes, target states, requirements, and recommendations. Write each fact once. Hand off
+absolute paths for the audit and every sidecar. After the artifact is fully actioned and no downstream step needs it, require one
 human disposition for it and its sidecars: Delete, Leave, or Promote.
+Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
+reports survivors.

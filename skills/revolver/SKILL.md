@@ -15,8 +15,10 @@ Six shots minimum. Every finding dies before the next.
    and uncertainty; keep it fixed through the run.
 4. Dispatch one fresh reviewer at a time on the cheapest adequate model. Give it the current target,
    one stance, and no prior reviewer prose.
+   If fresh dispatch is unavailable, stop. Self-review is not fresh.
 5. Kill every finding before the next stance:
-   - supported: apply the fix and verify it;
+   - supported: apply the fix and verify it when settled authority determines the fix; otherwise
+     stop as a human decision;
    - refuted: reject it with decisive evidence;
    - human decision: stop until selected;
    - unverified or blocked: name the missing evidence or capability and stop.
@@ -24,7 +26,12 @@ Six shots minimum. Every finding dies before the next.
 7. Finish the full pool. Repeat only after a productive rotation.
 8. Stop after one quiet rotation or three cycles.
 
+One cycle is one full pool rotation. Productive means a supported finding was fixed and verified.
+Quiet means no actionable finding survived verification.
+
 Reviewers attack claims, callers, and companion surfaces. They return only actionable findings:
 location, consequence, evidence, minimal fix. The orchestrator fixes; reviewers stay independent.
 
 Return material fixes and verification, consequential refutations, and unresolved human decisions.
+For each decisive run, include command, working directory, state identifier, numeric exit, and
+untouched decisive output once.
