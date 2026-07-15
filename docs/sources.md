@@ -2,6 +2,16 @@
 
 Primary and official sources outrank summaries. A source supports only claims inside its competence.
 
+## Maintenance
+
+- Update this file in the same change as any externally grounded skill or design rule.
+- State what each source supports and where its authority ends.
+- Lead with primary research, specifications, and official vendor documentation.
+- Label secondary and practitioner material as bounded hypotheses.
+- Record harness, model, version, and date for local activation or composition evidence. Never
+  generalize one setup into a portable guarantee.
+- Remove a source when its claim leaves or the source no longer supports it.
+
 ## Skill Format And Context Economy
 
 - **OpenAI Codex skill documentation.** Official discovery model, shared metadata budget,
@@ -21,9 +31,12 @@ Primary and official sources outrank summaries. A source supports only claims in
 - **Anthropic skill-creator.** Official reference workflow for concise bodies, progressive
   disclosure, description evaluation, and iterative testing.
   <https://github.com/anthropics/skills/tree/main/skills/skill-creator>
-- **Frontify skills authoring notes.** Practitioner synthesis on activation, body structure, and
-  execution. Useful design hypotheses; its small activation experiment does not establish universal
-  wording or length rules. <https://github.com/Frontify/skills/tree/main/docs>
+- **Frontify skills authoring notes.** Practitioner synthesis on
+  [activation](https://github.com/Frontify/skills/blob/main/docs/activation.md),
+  [body anatomy](https://github.com/Frontify/skills/blob/main/docs/body-anatomy.md),
+  [execution](https://github.com/Frontify/skills/blob/main/docs/execution.md), and
+  [source handling](https://github.com/Frontify/skills/blob/main/docs/sources.md). Useful design
+  hypotheses; its small activation experiment does not establish universal wording or length rules.
 - **OpenCode Agent Skills.** Official description of on-demand loading from available skill metadata
   through the native skill tool. <https://opencode.ai/docs/skills>
 - **Claude Code skill activation experiment, Ivan Seleznov.** Open practitioner experiment where

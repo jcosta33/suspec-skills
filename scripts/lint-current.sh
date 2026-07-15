@@ -49,6 +49,21 @@ test "$catalog_rows" = "$expected_catalog_rows" || {
   exit 1
 }
 
+expected_docs='README.md
+activation.md
+body-anatomy.md
+execution.md
+scope.md
+self-containment.md
+skill-existence-test.md
+sources.md'
+actual_docs=$(find "$ROOT/docs" -mindepth 1 -maxdepth 1 -type f -name '*.md' -exec basename {} \; | sort)
+test "$actual_docs" = "$expected_docs" || {
+  echo "design docs manifest drift" >&2
+  printf 'expected:\n%s\nactual:\n%s\n' "$expected_docs" "$actual_docs" >&2
+  exit 1
+}
+
 if find "$ROOT/skills" -type f ! -name '*.md' | grep -q .; then
   echo "skill payload contains a non-Markdown file" >&2
   exit 1
@@ -280,6 +295,44 @@ for document in "$ROOT/README.md" "$ROOT/AGENTS.md" $(find "$ROOT/docs" "$ROOT/s
     }
   done
 done
+
+require_literal "$ROOT/docs/activation.md" 'Use exactly three sentences:' \
+  'activation anatomy contract missing'
+require_literal "$ROOT/docs/activation.md" 'Test intended semantic handoffs' \
+  'semantic activation test missing'
+require_literal "$ROOT/docs/activation.md" 'Treat results as local evidence' \
+  'activation evidence limit missing'
+require_literal "$ROOT/docs/body-anatomy.md" '`Method` is mandatory.' \
+  'body anatomy contract missing'
+require_literal "$ROOT/docs/body-anatomy.md" 'Use hard verbs.' \
+  'ruthless body language missing'
+require_literal "$ROOT/docs/self-containment.md" 'Every skill must survive as the only installed Suspec skill.' \
+  'standalone contract missing'
+require_literal "$ROOT/docs/self-containment.md" '## Semantic composition' \
+  'semantic composition contract missing'
+require_literal "$ROOT/docs/scope.md" 'universal verification, campaign coordination' \
+  'catalog scope contract missing'
+for skill in $expected; do
+  require_literal "$ROOT/docs/skill-existence-test.md" "\`$skill\`" \
+    "existence test omits $skill"
+done
+for heading in '## Maintenance' '## Skill Format And Context Economy' '## Evidence And Inspection' \
+  '## Campaign Coordination' '## Research Method'; do
+  require_literal "$ROOT/docs/sources.md" "$heading" 'source ledger section missing'
+done
+for source in \
+  'https://developers.openai.com/codex/skills' \
+  'https://agentskills.io/specification' \
+  'https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices' \
+  'https://github.com/Frontify/skills/blob/main/docs/activation.md' \
+  'https://github.com/Frontify/skills/blob/main/docs/body-anatomy.md' \
+  'https://github.com/Frontify/skills/blob/main/docs/execution.md' \
+  'https://github.com/Frontify/skills/blob/main/docs/sources.md'; do
+  require_literal "$ROOT/docs/sources.md" "$source" 'source ledger coverage missing'
+done
+require_literal "$ROOT/AGENTS.md" \
+  'Update `docs/sources.md` in the same change whenever an externally grounded skill or design rule' \
+  'source maintenance edit contract missing'
 
 artifact_creators='sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task'
 universal_methods='bulletproof campaign demolition disrespec dissect fork-me promote remember revolver triple-check'

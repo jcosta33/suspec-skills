@@ -42,6 +42,8 @@ and re-run to re-fetch. Watch the
   behavior, inert negatives, or duplicated mechanics.
 - Descriptions now contain selection metadata only: action, target, semantic triggers, and real near
   misses. They never name themselves or leak body instructions.
+- Catalog design docs are now a gated contract, and externally grounded method changes must update
+  the bounded source ledger in the same change.
 - Released sections remain byte-for-byte historical; current corrections stay under Unreleased.
 
 ## [4.0.0] - 2026-07-10

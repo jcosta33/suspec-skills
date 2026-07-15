@@ -11,4 +11,4 @@ deleted.
 | [Self-containment](self-containment.md)   | isolated installation                   |
 | [Existence test](skill-existence-test.md) | catalog utility                         |
 | [Scope](scope.md)                         | repository boundaries                   |
-| [Sources](sources.md)                     | supporting evidence                     |
+| [Sources](sources.md)                     | evidence, limits, and maintenance       |

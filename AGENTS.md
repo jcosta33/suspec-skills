@@ -12,6 +12,8 @@ siblings is broken.
 - Use untitled inline Markdown links with simple destinations. Reference-style, angle-wrapped,
   fragmented, and nested-parenthesis destinations are rejected.
 - Update the README catalog row with every skill addition or removal.
+- Update `docs/sources.md` in the same change whenever an externally grounded skill or design rule
+  changes. Remove sources when their claims leave.
 - Preserve released `CHANGELOG.md` history.
 - Follow [catalog design](docs/README.md) for activation, body, execution, scope, self-containment,
   and existence rules.
