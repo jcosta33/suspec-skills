@@ -16,6 +16,9 @@ identifier, exit status, and decisive raw output. Map source evidence to identit
 locator, and decisive excerpt. Keep short output once. Move dominating output into anchored receipts.
 Never paraphrase proof or reuse it after relevant edits.
 
+A critical gate with no observable trace is an assertion. Require decisive output when omission could
+masquerade as completion. Do not manufacture ceremony for work already visible.
+
 ## Handoff
 
 When an artifact is the deliverable, return its absolute link without reciting it in chat. Explain

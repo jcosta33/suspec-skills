@@ -9,6 +9,7 @@ A skill body is executable conditioning. Soft prose leaves room to ignore the me
 - State each fact once.
 - Move optional domain detail into one-level-deep bundled references.
 - Keep every reference inside the skill directory.
-- Stay below the specification body ceiling.
+- Split the body before it reaches the official 500-line guidance.
 
-Keep rationale only when it prevents a tempting wrong action. Commentary is not a method.
+Numbering, rationales, examples, and anti-pattern sections are tools, not ritual. Keep them only when
+they change execution. Commentary is not a method.

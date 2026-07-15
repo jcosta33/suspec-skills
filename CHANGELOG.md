@@ -34,6 +34,8 @@ and re-run to re-fetch. Watch the
   snapshot, then reconciles and repairs once.
 - Every skill now uses ruthless, economical instructions: hard imperatives without filler, default
   behavior, inert negatives, or duplicated mechanics.
+- Descriptions now trigger on semantic need, never their own names. Authoring guidance keeps proven
+  activation, context, and observable-proof rules without mandatory clause or section boilerplate.
 - Released sections remain byte-for-byte historical; current corrections stay under Unreleased.
 
 ## [4.0.0] - 2026-07-10

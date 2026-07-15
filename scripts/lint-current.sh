@@ -240,6 +240,16 @@ for file in "$ROOT"/skills/*/SKILL.md; do
     echo "invalid skill frontmatter: $name" >&2
     exit 1
   }
+  description=$(awk '/^description:[[:space:]]+/ { sub(/^description:[[:space:]]+/, ""); print; exit }' "$file")
+  if printf '%s\n' "$description" | grep -Eqi "(^|[^[:alnum:]-])$name([^[:alnum:]-]|$)"; then
+    echo "skill description names itself: $name" >&2
+    exit 1
+  fi
+  lines=$(wc -l < "$file" | tr -d '[:space:]')
+  if [ "$lines" -gt 500 ]; then
+    echo "skill body exceeds 500 lines: $name" >&2
+    exit 1
+  fi
   grep -Fq "\`$name\`" "$ROOT/README.md" || { echo "catalog omits skill: $name" >&2; exit 1; }
 
   find "$folder" -mindepth 1 -type d -print | while IFS= read -r path; do
@@ -289,6 +299,14 @@ for file in "$ROOT"/skills/*/SKILL.md; do
       echo "external skill dependency in $name: $document" >&2
       exit 1
     fi
+    case "${document#"$folder"/}" in
+      references/*)
+        if relative_links < "$document" | grep -q .; then
+          echo "nested bundled reference in $name: $document" >&2
+          exit 1
+        fi
+        ;;
+    esac
     for sibling in $expected; do
       [ "$sibling" = "$name" ] && continue
       if grep -nE "(^|[^[:alnum:]-])$sibling([^[:alnum:]-]|$)" "$document"; then
@@ -405,7 +423,7 @@ require_regex "$bulletproof" 'Supported.*Unsupported.*Unverified.*Blocked' 'Bull
 
 demolition="$ROOT/skills/demolition/SKILL.md"
 grep -Fq 'Advocacy exercise, not evidence.' "$demolition" || { echo "Demolition quarantine banner missing" >&2; exit 1; }
-require_regex "$demolition" 'Apply only when the user requests' 'Demolition activation boundary missing'
+require_regex "$demolition" 'Apply only when.*explicitly required' 'Demolition activation boundary missing'
 require_regex "$demolition" 'Fabricated sources.*test output are disqualifying' 'Demolition fabrication boundary missing'
 
 dissect="$ROOT/skills/dissect/SKILL.md"

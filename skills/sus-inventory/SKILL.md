@@ -1,6 +1,6 @@
 ---
 name: sus-inventory
-description: Reconstruct an unfamiliar or change-critical code area from evidence. ALWAYS apply when asked for an inventory or when the human selects a Suspec inventory workflow for a durable current-state map before wide change. Map reality without judgment or prescription. Skip direct implementation and small isolated work with a proven map.
+description: Reconstruct an unfamiliar or change-critical code area from evidence. ALWAYS apply when wide change needs a durable current-state map before work begins. Map reality without judgment or prescription. Skip direct implementation and small isolated work with a proven map.
 ---
 
 # Sus Inventory

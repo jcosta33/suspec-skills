@@ -1,6 +1,6 @@
 ---
 name: revolver
-description: Hammer code, diffs, artifacts, plans, or systems through every target-justified review stance. ALWAYS apply when asked for Revolver, a broad adversarial audit, or sequential review and repair until quiet. Build the complete non-duplicate stance pool, run one fresh reviewer at a time, kill every finding before the next, and stop after a quiet rotation or three cycles.
+description: Hammer code, diffs, artifacts, plans, or systems through every target-justified review stance. ALWAYS apply when exhaustive multi-angle review or sequential review and repair until quiet is required. Build the complete non-duplicate stance pool, run one fresh reviewer at a time, kill every finding before the next, and stop after a quiet rotation or three cycles.
 ---
 
 # Revolver

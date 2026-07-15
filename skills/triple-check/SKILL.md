@@ -1,6 +1,6 @@
 ---
 name: triple-check
-description: Hit code, diffs, artifacts, plans, or systems with exactly three fresh top-tier reviewers in parallel. ALWAYS apply when asked to Triple-check or run a fast parallel review. All three inspect one frozen snapshot, independently and blind. Reconcile once, fix every supported defect, verify, and leave only refutations and human decisions.
+description: Hit code, diffs, artifacts, plans, or systems with exactly three fresh top-tier reviewers in parallel. ALWAYS apply when fast parallel scrutiny is required. All three inspect one frozen snapshot, independently and blind. Reconcile once, fix every supported defect, verify, and leave only refutations and human decisions.
 ---
 
 # Triple-check

@@ -1,6 +1,6 @@
 ---
 name: remember
-description: Preserve verified lessons after work settles. ALWAYS apply when asked to remember or when completed work exposes a durable fact, invariant, defect, decision, or operational constraint future work needs. Use native memory for personal lessons and project-owned channels for team facts. Reject secrets, weak claims, and unsettled observations.
+description: Preserve verified lessons after work settles. ALWAYS apply when a lesson must survive the session or completed work exposes a durable fact, invariant, defect, decision, or operational constraint future work needs. Use native memory for personal lessons and project-owned channels for team facts. Reject secrets, weak claims, and unsettled observations.
 ---
 
 # Remember

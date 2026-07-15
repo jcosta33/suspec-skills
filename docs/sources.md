@@ -8,9 +8,17 @@ Primary and official sources outrank summaries. A source supports only claims in
   and progressive disclosure. <https://agentskills.io/specification>
 - **Agent Skills authoring best practices, Anthropic.** Official guidance on concise bodies,
   progressive disclosure, calibrated instruction freedom, and evaluation.
-  <https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/best-practices>
+  <https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices>
 - **Optimizing skill descriptions, Agent Skills.** Guidance on imperative, intent-based discovery
   metadata. <https://agentskills.io/skill-creation/optimizing-descriptions>
+- **Claude Code skill activation experiment, Ivan Seleznov.** Open practitioner experiment where
+  directive plus bypass-blocking descriptions improved activation across three skills. One unpinned
+  Claude Code setup; it does not isolate each clause, test exclusions or length, or prove portability.
+  <https://github.com/SeleznovIvan/claude-skills-test>
+- **Claude Skills Have Two Reliability Problems, Not One, Marc Bara.** Practitioner account of
+  skipped late-stage checks and the observable-output countermeasure. It explicitly reports no
+  controlled execution study; use it as a failure hypothesis, not proof.
+  <https://medium.com/@marc.bara.iniesta/claude-skills-have-two-reliability-problems-not-one-299401842ca8>
 - **Effective context engineering for AI agents, Anthropic.** Treats context as finite and favors
   just-in-time retrieval and compact external state.
   <https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents>
