@@ -1,6 +1,6 @@
 ---
 name: promote
-description: Move transient working material into project-owned permanence. Apply only when that material must become durable. Skip transient relocation and already-durable material.
+description: Move transient working material into project-owned permanence. Use only when transient material must become durable. Do not use for transient relocation or already-durable material.
 ---
 
 # Promote
@@ -25,6 +25,12 @@ Move the document. Leave no broken trail.
    versions.
 7. Commit only when selected. Never push implicitly.
 
+## Output
+
+Return the durable absolute path or the blocker.
+
+## Boundaries
+
 Reject transient-to-transient moves and invented destinations. On failure, restore every removed
 source and repaired reference, remove the destination, then verify rollback. Report anything rollback
-could not restore. Return the durable absolute path or the blocker.
+could not restore.

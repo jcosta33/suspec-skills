@@ -2,14 +2,17 @@
 
 A skill description spends context. Make it earn rent.
 
-Name the work, never the skill. Explicit invocation already solved discovery. State the action,
-target, semantic triggers, and real near misses. Omit dead clauses.
+Front-load the work. Harnesses preload descriptions, Codex may truncate them, and explicit invocation
+already solved discovery.
 
-Selection metadata only. Put procedure, sequencing, evidence, safety, output, and completion rules in
-the body.
+Use exactly three sentences:
 
-Use `ALWAYS apply` only for a genuine automatic trigger. Exclude task types only where overlap exists;
-never name a sibling. Stay within the Agent Skills limit.
+1. Action and target.
+2. `Use when ...`, or `Use only when ...` for explicit-only work.
+3. `Do not use for ...` with genuine near misses.
+
+Name the work, never the skill. Keep procedure, sequencing, evidence, safety, output, and completion
+rules in the body. Delete `ALWAYS`, `Skip`, dead exclusions, and sibling names.
 
 Test direct, implicit, near-miss, and wasteful-loading prompts on every harness-model combination you
 claim to support. Treat results as local evidence, not a law of language models.

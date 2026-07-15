@@ -1,13 +1,13 @@
 ---
 name: sus-review
-description: Review finished work against its governing Suspec spec or task. ALWAYS apply to conformance review of completed work, diffs, branches, and pull requests. Skip present-state audits without a governing artifact and broad adversarial review.
+description: Review finished work against its governing Suspec spec or task. Use when checking completed work, diffs, branches, or pull requests for conformance. Do not use for present-state audits without a governing artifact or broad adversarial review.
 ---
 
 # Sus Review
 
 Evidence judges conformance. Humans judge acceptance.
 
-## Contract
+## Method
 
 - Freeze target state and absolute governing paths.
 - Read the companion spec first. Require exactly `status: ready`. A task narrows IDs; it cannot
@@ -19,22 +19,7 @@ Evidence judges conformance. Humans judge acceptance.
   review prose, is the independent reviewer: execute here.
   Otherwise, before creating the artifact, prove the harness can dispatch one fresh independent
   reviewer. If it cannot, stop for human selection. Contaminated context is not independence.
-- Start one artifact with this minimal frontmatter:
-
-  ```yaml
-  ---
-  type: review
-  id: REVIEW-{{slug}}
-  spec: {{spec ID}}
-  reviewer: {{reviewer}}
-  decision: pending
-  ---
-  ```
-
-  Add `task` or `pr` only when present. Put every governing artifact's absolute path and the frozen
-  target state in the body.
-
-## Place
+## Artifact
 
 Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
 repository or working-directory basename. Write there; keep linked sidecars beside it. A collision
@@ -42,7 +27,22 @@ or ambiguous workspace requires human-readable name choices. A blocked write req
 and retry, choose another agent-neutral user directory, or cancel. Never overwrite or fall back to a
 repository, vendor directory, or temporary path.
 
-## Assess
+Start one artifact with this minimal frontmatter:
+
+```yaml
+---
+type: review
+id: REVIEW-{{slug}}
+spec: {{spec ID}}
+reviewer: {{reviewer}}
+decision: pending
+---
+```
+
+Add `task` or `pr` only when present. Put every governing artifact's absolute path and the frozen
+target state in the body.
+
+## Verify
 
 1. Enumerate every scoped requirement and preservation guarantee.
 2. Rerun every applicable verification after the final relevant change. Worker evidence is a claim.
@@ -95,8 +95,14 @@ Before acceptance, fix and verify every material finding or record its owner, ex
 decision, reason, and follow-up in the project's decision channel. Until then, repeat it under `Open
 decisions`. If no project-owned decision channel exists, acceptance with risk stays blocked.
 Non-material notes may expire.
-Hand off absolute paths for the review and every sidecar. After the artifact is fully actioned and
-no downstream step needs it,
-require one human disposition for it and its sidecars: Delete, Leave, or Promote.
+
+## Output
+
+Hand off absolute paths for the review and every sidecar.
+
+## Close
+
+After the artifact is fully actioned and no downstream step needs it, require one human disposition
+for it and its sidecars: Delete, Leave, or Promote.
 Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
 reports survivors.

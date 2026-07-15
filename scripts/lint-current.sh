@@ -124,6 +124,33 @@ validate_skill_frontmatter() {
   ' "$file"
 }
 
+validate_description_anatomy() {
+  printf '%s\n' "$1" | grep -Eq \
+    '^[^.]+\. Use (only )?when [^.]+\. Do not use for [^.]+\.$'
+}
+
+validate_body_anatomy() {
+  awk '
+    BEGIN {
+      rank["Method"] = 1
+      rank["Artifact"] = 2
+      rank["Verify"] = 3
+      rank["Decision"] = 4
+      rank["Output"] = 5
+      rank["Boundaries"] = 6
+      rank["Close"] = 7
+    }
+    /^## / {
+      heading = substr($0, 4)
+      if (!(heading in rank) || rank[heading] <= previous || seen[heading]++) exit 1
+      previous = rank[heading]
+    }
+    END {
+      if (seen["Method"] != 1) exit 1
+    }
+  ' "$1"
+}
+
 validate_link_syntax() {
   file=$1
   if grep -nE ']\[[^]]*\]|^[[:space:]]*\[[^]]+\]:' "$file"; then
@@ -241,10 +268,18 @@ for file in "$ROOT"/skills/*/SKILL.md; do
     exit 1
   }
   description=$(awk '/^description:[[:space:]]+/ { sub(/^description:[[:space:]]+/, ""); print; exit }' "$file")
+  validate_description_anatomy "$description" || {
+    echo "invalid description anatomy: $name" >&2
+    exit 1
+  }
   if printf '%s\n' "$description" | grep -Eqi "(^|[^[:alnum:]-])$name([^[:alnum:]-]|$)"; then
     echo "skill description names itself: $name" >&2
     exit 1
   fi
+  validate_body_anatomy "$file" || {
+    echo "invalid body anatomy: $name" >&2
+    exit 1
+  }
   lines=$(wc -l < "$file" | tr -d '[:space:]')
   if [ "$lines" -gt 500 ]; then
     echo "skill body exceeds 500 lines: $name" >&2
@@ -328,6 +363,9 @@ for file in "$ROOT"/skills/*/SKILL.md; do
 
   case " $artifact_creators " in
     *" $name "*)
+      for heading in '## Artifact' '## Close'; do
+        require_literal "$file" "$heading" "incomplete artifact anatomy in $name"
+      done
       grep -Fq '~/.agents/artifacts/<workspace>/' "$file" || { echo "neutral root missing in $name" >&2; exit 1; }
       for word in absolute repository vendor temporary collision; do
         require_regex "$file" "$word" "incomplete artifact placement in $name"
@@ -341,6 +379,10 @@ for file in "$ROOT"/skills/*/SKILL.md; do
 
   case " $universal_methods " in
     *" $name "*)
+      if grep -Eq '^## (Artifact|Verify|Decision|Close)$' "$file"; then
+        echo "artifact anatomy leaked into universal method: $name" >&2
+        exit 1
+      fi
       if grep -Eq '~/.agents/artifacts/<workspace>/|fully actioned.*sidecars|type:[[:space:]]+(inspection|spec|task|review|inventory|change-plan|audit|research)' "$file"; then
         echo "artifact authorship leaked into universal method: $name" >&2
         exit 1
@@ -407,7 +449,7 @@ require_regex "$triple" 'verification against the final target' 'Triple-check fi
 require_regex "$triple" 'one dispatch wave.*explicit request' 'Triple-check repeat boundary missing'
 
 fork_me="$ROOT/skills/fork-me/SKILL.md"
-require_regex "$fork_me" 'ALWAYS apply when.*unresolved' 'Fork-me activation boundary missing'
+require_regex "$fork_me" 'Use when.*unresolved' 'Fork-me activation boundary missing'
 require_regex "$fork_me" 'at least three materially different options' 'Fork-me option floor missing'
 require_regex "$fork_me" 'recommendation first' 'Fork-me recommendation order missing'
 require_regex "$fork_me" 'reason and cost in one plain sentence' 'Fork-me explanation contract missing'
@@ -416,14 +458,14 @@ require_regex "$fork_me" 'unavailable.*same numbered.*`Other`' 'Fork-me text fal
 require_regex "$fork_me" 'Freeze dependent work until selection' 'Fork-me execution block missing'
 
 bulletproof="$ROOT/skills/bulletproof/SKILL.md"
-require_regex "$bulletproof" 'Verification:' 'Bulletproof verification mode missing'
-require_regex "$bulletproof" 'Implementation proof:' 'Bulletproof implementation-proof mode missing'
+require_literal "$bulletproof" '### Verification' 'Bulletproof verification mode missing'
+require_literal "$bulletproof" '### Implementation Proof' 'Bulletproof implementation-proof mode missing'
 require_regex "$bulletproof" 'Freeze the verification target' 'Bulletproof may edit target'
 require_regex "$bulletproof" 'Supported.*Unsupported.*Unverified.*Blocked' 'Bulletproof assessments missing'
 
 demolition="$ROOT/skills/demolition/SKILL.md"
 grep -Fq 'Advocacy exercise, not evidence.' "$demolition" || { echo "Demolition quarantine banner missing" >&2; exit 1; }
-require_regex "$demolition" 'Apply only when.*explicitly required' 'Demolition activation boundary missing'
+require_regex "$demolition" 'Use only when.*explicitly requests' 'Demolition activation boundary missing'
 require_regex "$demolition" 'Fabricated sources.*test output are disqualifying' 'Demolition fabrication boundary missing'
 
 dissect="$ROOT/skills/dissect/SKILL.md"

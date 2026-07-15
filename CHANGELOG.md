@@ -27,6 +27,8 @@ and re-run to re-fetch. Watch the
 - `promote` remains durable-only; it does not relocate files between transient roots.
 - Only `sus-*` artifact authors create artifacts. Universal methods return through chat, native
   memory, target edits, or durable relocation.
+- Descriptions use one discovery anatomy: job, positive trigger, real near misses. Bodies share one
+  ordered vocabulary and omit empty phases.
 - `fork-me` owns every ambiguity: at least three plain options, recommendation first, native picker
   or numbered text fallback, dependent work blocked until selection.
 - `revolver` derives the complete target-justified stance pool and resolves it sequentially without

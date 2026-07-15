@@ -1,11 +1,13 @@
 ---
 name: dissect
-description: Trace one unfamiliar or dangerous code path to closure. ALWAYS apply when its callers, flow, state, effects, failures, configuration, tests, or coupling remain unproven. Skip contained work and whole-area inventory.
+description: Trace one unfamiliar or dangerous code path to closure. Use when its callers, flow, state, effects, failures, configuration, tests, or coupling remain unproven. Do not use for contained work or whole-area inventory.
 ---
 
 # Dissect
 
 Trace it to bedrock.
+
+## Method
 
 1. Freeze one question, symbol, workflow, or subsystem and repository state.
 2. Find every entry: API, command, route, event, job, callback, registry, generated binding,
@@ -20,8 +22,7 @@ Trace it to bedrock.
 7. Inspect tests, types, schemas, configuration, documentation, generated files, and runtime wiring.
 8. Close every edge with `file:line` evidence. Mark every gap `Unknown` and name missing proof.
 
-Negative claims require the search command and result. Symbol search does not prove reachability.
-Record exact boundary operators.
+## Output
 
 Return only:
 
@@ -35,3 +36,8 @@ Flow: <entry -> decisive branches -> terminal effects>
 
 Evidence: <command; working directory; state identifier; numeric exit; untouched decisive output>
 ```
+
+## Boundaries
+
+Negative claims require the search command and result. Symbol search does not prove reachability.
+Record exact boundary operators.

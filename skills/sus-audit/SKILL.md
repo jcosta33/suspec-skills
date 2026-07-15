@@ -1,29 +1,11 @@
 ---
 name: sus-audit
-description: Audit present code against direct evidence. ALWAYS apply to debt surveys, cleanup assessments, single-implementation benchmarks, current-state quality assessments, and fresh passes over prior audits when no governing spec or task defines conformance. Skip conformance review, rotating adversarial review, and option research.
+description: Audit present code against direct evidence. Use when running debt surveys, cleanup assessments, single-implementation benchmarks, current-state quality assessments, or fresh passes over prior audits without a governing spec or task. Do not use for conformance review, rotating adversarial review, or option research.
 ---
 
 # Sus Audit
 
 Observe. Prove. Prescribe nothing.
-
-## Place
-
-Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
-repository or working-directory basename. Write there with `type: audit` and a unique `AUDIT-` ID.
-A collision or ambiguous workspace requires human-readable name choices. A blocked write requires:
-grant access and retry, choose another agent-neutral user directory, or cancel. Never overwrite or
-fall back to a repository, vendor directory, or temporary path. Keep linked sidecars beside the
-audit.
-
-Start with:
-
-```yaml
----
-type: audit
-id: AUDIT-{{slug}}
----
-```
 
 ## Method
 
@@ -42,10 +24,37 @@ Negative structural claims require a whole-scope search and result. Dynamic beha
 static reading cannot prove timing, concurrency, cleanup, or lifecycle. If no supported risk exists,
 write `None observed in scope` instead of inventing one.
 
+## Artifact
+
+Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
+repository or working-directory basename. Write there with `type: audit` and a unique `AUDIT-` ID.
+A collision or ambiguous workspace requires human-readable name choices. A blocked write requires:
+grant access and retry, choose another agent-neutral user directory, or cancel. Never overwrite or
+fall back to a repository, vendor directory, or temporary path. Keep linked sidecars beside the
+audit.
+
+Start with:
+
+```yaml
+---
+type: audit
+id: AUDIT-{{slug}}
+---
+```
+
+## Output
+
+Write each fact once. Hand off absolute paths for the audit and every sidecar.
+
+## Boundaries
+
 Ambiguous boundaries block the audit.
 
-Strip fixes, target states, requirements, and recommendations. Write each fact once. Hand off
-absolute paths for the audit and every sidecar. After the artifact is fully actioned and no downstream step needs it, require one
-human disposition for it and its sidecars: Delete, Leave, or Promote.
+Strip fixes, target states, requirements, and recommendations.
+
+## Close
+
+After the artifact is fully actioned and no downstream step needs it, require one human disposition
+for it and its sidecars: Delete, Leave, or Promote.
 Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
 reports survivors.

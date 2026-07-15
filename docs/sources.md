@@ -4,6 +4,9 @@ Primary and official sources outrank summaries. A source supports only claims in
 
 ## Skill Format And Context Economy
 
+- **OpenAI Codex skill documentation.** Official discovery model, shared metadata budget,
+  description truncation behavior, invocation policy, and authoring guidance.
+  <https://developers.openai.com/codex/skills>
 - **Open Agent Skills specification.** Defines `SKILL.md`, frontmatter, description limits, layout,
   and progressive disclosure. <https://agentskills.io/specification>
 - **Agent Skills authoring best practices, Anthropic.** Official guidance on concise bodies,
@@ -11,6 +14,12 @@ Primary and official sources outrank summaries. A source supports only claims in
   <https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices>
 - **Optimizing skill descriptions, Agent Skills.** Guidance on imperative, intent-based discovery
   metadata. <https://agentskills.io/skill-creation/optimizing-descriptions>
+- **Anthropic skill-creator.** Official reference workflow for concise bodies, progressive
+  disclosure, description evaluation, and iterative testing.
+  <https://github.com/anthropics/skills/tree/main/skills/skill-creator>
+- **Frontify skills authoring notes.** Practitioner synthesis on activation, body structure, and
+  execution. Useful design hypotheses; its small activation experiment does not establish universal
+  wording or length rules. <https://github.com/Frontify/skills/tree/main/docs>
 - **Claude Code skill activation experiment, Ivan Seleznov.** Open practitioner experiment where
   directive plus bypass-blocking descriptions improved activation across three skills. One unpinned
   Claude Code setup; it does not isolate each clause, test exclusions or length, or prove portability.

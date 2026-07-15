@@ -1,13 +1,13 @@
 ---
 name: sus-spec
-description: Write, revise, or structurally check a verifiable Suspec spec. ALWAYS apply when intent must become requirements or acceptance criteria, or unresolved behavior blocks implementation. Skip direct implementation, small clear work, factual verification, and implementation design.
+description: Write, revise, or structurally check a verifiable Suspec spec. Use when intent must become requirements or acceptance criteria, or unresolved behavior blocks implementation. Do not use for direct implementation, small clear work, factual verification, or implementation design.
 ---
 
 # Sus Spec
 
 A spec is decided intent under test. Nothing else belongs.
 
-## Gate
+## Method
 
 Enter on explicit request or after the human selects a Suspec spec workflow for unresolved intent.
 Direct implementation does not earn a spec.
@@ -22,7 +22,7 @@ Before writing:
 
 Every unresolved choice keeps `status: draft` and blocks dependent work.
 
-## Place
+## Artifact
 
 Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
 repository or working-directory basename. Write there; keep linked sidecars beside it. A collision
@@ -30,7 +30,7 @@ or ambiguous workspace requires human-readable name choices. A blocked write req
 and retry, choose another agent-neutral user directory, or cancel. Never overwrite or fall back to a
 repository, vendor directory, or temporary path.
 
-## Shape
+### Shape
 
 Use this minimal frontmatter shape:
 
@@ -68,7 +68,7 @@ set `format: sol`; use the bundled flush-left `REQ`, `CONSTRAINT`, `INVARIANT`, 
 forms and `VERIFY BY` syntax in [`references/sol-grammar.md`](./references/sol-grammar.md). In either
 format, keep one independently verifiable obligation per requirement or block.
 
-## Check
+## Verify
 
 Check structure. Revise only when requested. Factual verification is separate.
 
@@ -83,8 +83,13 @@ Check structure. Revise only when requested. Factual verification is separate.
    durable memory.
 5. In check-only mode, report exact errors without editing. In write/revise mode, fix them and rerun.
 
-Write each fact once. Hand off absolute paths for the spec and every sidecar. After the artifact is fully actioned and no
-downstream step needs it, require one human disposition for it and its sidecars: Delete, Leave, or
-Promote.
+## Output
+
+Write each fact once. Hand off absolute paths for the spec and every sidecar.
+
+## Close
+
+After the artifact is fully actioned and no downstream step needs it, require one human disposition
+for it and its sidecars: Delete, Leave, or Promote.
 Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
 reports survivors.

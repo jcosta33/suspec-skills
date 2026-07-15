@@ -1,11 +1,13 @@
 ---
 name: triple-check
-description: Run a fast parallel review with exactly three fresh top-tier reviewers across code, diffs, artifacts, plans, or systems. ALWAYS apply when rapid independent scrutiny is required. Skip exhaustive sequential review and single-claim verification.
+description: Run a fast parallel review with exactly three fresh top-tier reviewers across code, diffs, artifacts, plans, or systems. Use when rapid independent scrutiny is required. Do not use for exhaustive sequential review or single-claim verification.
 ---
 
 # Triple-check
 
 Three strong reviewers. One snapshot. One repair.
+
+## Method
 
 1. Freeze the target, governing requirements, and evidence.
 2. Dispatch exactly three fresh top-tier reviewers concurrently. Give each the same frozen snapshot
@@ -20,6 +22,8 @@ Three strong reviewers. One snapshot. One repair.
    - unverified or blocked: obtain the missing evidence or report the exact capability blocker.
 5. After reconciliation, apply every queued fix. Run decisive verification against the final target.
 6. Use one dispatch wave. Repeat only on explicit request.
+
+## Output
 
 Return material fixes and verification, consequential refutations, and unresolved human decisions.
 For each decisive run, include command, working directory, state identifier, numeric exit, and

@@ -1,11 +1,13 @@
 ---
 name: revolver
-description: Run exhaustive multi-angle review and sequential repair across code, diffs, artifacts, plans, or systems. ALWAYS apply when breadth across every target-justified stance is required. Skip fast fixed-panel review and single-claim verification.
+description: Run exhaustive multi-angle review and sequential repair across code, diffs, artifacts, plans, or systems. Use when breadth across every target-justified stance is required. Do not use for fast fixed-panel review or single-claim verification.
 ---
 
 # Revolver
 
 Every justified angle. Every finding dead before the next.
+
+## Method
 
 1. Freeze the target state.
 2. Derive the complete materially distinct stance pool from requirements, trust boundaries, data
@@ -31,9 +33,13 @@ Every justified angle. Every finding dead before the next.
 One cycle is one full pool rotation. Productive means a supported finding was fixed and verified.
 Quiet means no actionable finding survived verification.
 
-Reviewers attack claims, callers, and companion surfaces. They return only actionable findings:
-location, consequence, evidence, minimal fix. The orchestrator fixes; reviewers stay independent.
+## Output
 
 Return material fixes and verification, consequential refutations, and unresolved human decisions.
 For each decisive run, include command, working directory, state identifier, numeric exit, and
 untouched decisive output once.
+
+## Boundaries
+
+Reviewers attack claims, callers, and companion surfaces. They return only actionable findings:
+location, consequence, evidence, minimal fix. The orchestrator fixes; reviewers stay independent.

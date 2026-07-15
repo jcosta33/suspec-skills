@@ -1,18 +1,17 @@
 ---
 name: bulletproof
-description: Fact-check claims against direct evidence. ALWAYS apply when claims need validation, cross-examination, or hardening, and when completed implementation needs decisive command proof. Skip broad risk discovery, requirement conformance, and one-sided advocacy.
+description: Fact-check claims and prove completed implementation against direct evidence. Use when claims need validation, cross-examination, or hardening, or completed work needs decisive command proof. Do not use for broad risk discovery, requirement conformance, or one-sided advocacy.
 ---
 
 # Bulletproof
 
 Trust nothing. Prove everything checkable.
 
-## Modes
+## Method
 
-- **Verification:** crush every claim into `Supported`, `Unsupported`, `Unverified`, or `Blocked`.
-- **Implementation proof:** preserve decisive command facts after code or validation work.
+Run the matching branch. Run both only when claims and completed implementation both need proof.
 
-## Verification
+### Verification
 
 1. Freeze the claim set, target, and state.
 2. Expose every load-bearing assumption.
@@ -21,7 +20,13 @@ Trust nothing. Prove everything checkable.
 5. Run safe checks against absent, stale, or indirect evidence.
 6. Let evidence kill disagreement.
 
-Return one table:
+### Implementation Proof
+
+Preserve decisive command facts after code or validation work.
+
+## Output
+
+For verification, return one table:
 
 ```text
 | ID | Assessment | Evidence |
@@ -37,9 +42,9 @@ Give every identifiable claim one row:
 
 Name the exact gap for `Unverified` and `Blocked`.
 
-## Implementation Proof
-
-Return each decisive run once in chat: command, working directory, state identifier, numeric exit,
+For implementation proof, return each decisive run once in chat: command, working directory, state identifier, numeric exit,
 and untouched decisive output.
+
+## Boundaries
 
 Freeze the verification target. Acceptance and requirement conformance are outside this method.

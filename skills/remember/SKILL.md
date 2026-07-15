@@ -1,11 +1,13 @@
 ---
 name: remember
-description: Preserve verified lessons after work settles. ALWAYS apply when a lesson must survive the session or completed work exposes a durable fact, invariant, defect, decision, or operational constraint. Skip ephemeral observations and unsettled work.
+description: Preserve verified lessons after work settles. Use when a lesson must survive the session or completed work exposes a durable fact, invariant, defect, decision, or operational constraint. Do not use for ephemeral observations or unsettled work.
 ---
 
 # Remember
 
 Save signal. Burn residue.
+
+## Method
 
 1. Classify each candidate as ephemeral, personal durable, team durable, or severe.
 2. Demand evidence, scope, and expiry bounds where behavior can change.
@@ -17,7 +19,12 @@ Save signal. Burn residue.
    destination: decision, issue, test, runbook, or maintained documentation.
 7. Escalate severe correctness, security, privacy, data-loss, and compliance issues.
 
+## Output
+
+Return the confirmed destination or state that nothing was saved. Failed persistence stays blocked.
+
+## Boundaries
+
 Link rather than duplicate an existing team record. Correct or remove disproved personal memory
 automatically when reversible. Correct or remove a team record only with project authority and human
-selection. Read every write, correction, and removal through its native surface. Return the confirmed
-destination or state that nothing was saved. Failed persistence stays blocked.
+selection. Read every write, correction, and removal through its native surface.

@@ -1,13 +1,13 @@
 ---
 name: sus-task
-description: Split a ready Suspec spec into collision-proof task packets. ALWAYS apply when spec-governed work must be divided into independent parallel slices, repository or platform contexts, or dispatchable transformation waves. Skip unspecced work and work with no dispatch boundary.
+description: Split a ready Suspec spec into collision-proof task packets. Use when spec-governed work must be divided into independent parallel slices, repository or platform contexts, or dispatchable transformation waves. Do not use for unspecced work or work with no dispatch boundary.
 ---
 
 # Sus Task
 
 No independence, no split.
 
-## Entry
+## Method
 
 Enter on explicit split request or after the human selects task packets for a Suspec artifact
 workflow.
@@ -22,19 +22,6 @@ Use task packets only for:
 - separately dispatchable transformation waves from a change plan that supplements the spec.
 
 Size proves nothing. One source and one implementer earn no packet.
-
-## Place
-
-Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
-repository or working-directory basename. Write there; keep linked sidecars beside their governing
-packet. A collision or ambiguous workspace requires human-readable name choices. A blocked write
-requires: grant access and retry, choose another agent-neutral user directory, or cancel. Never
-overwrite or fall back to a repository, vendor directory, or temporary path.
-
-Instantiate [`references/task-packet.md`](./references/task-packet.md) once per slice. Carry every
-artifact by absolute path.
-
-## Cut
 
 1. Enumerate every scoped requirement. When a change plan supplements the spec, enumerate its
    preservation guarantees and waves.
@@ -58,8 +45,24 @@ artifact by absolute path.
 
 Missing decisions block the split. Surface them.
 
-Write each fact once. Hand off absolute paths. After the artifacts are fully actioned and no
-downstream step needs them, require one human disposition for them and their sidecars: Delete,
-Leave, or Promote.
+## Artifact
+
+Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
+repository or working-directory basename. Write there; keep linked sidecars beside their governing
+packet. A collision or ambiguous workspace requires human-readable name choices. A blocked write
+requires: grant access and retry, choose another agent-neutral user directory, or cancel. Never
+overwrite or fall back to a repository, vendor directory, or temporary path.
+
+Instantiate [`references/task-packet.md`](./references/task-packet.md) once per slice. Carry every
+artifact by absolute path.
+
+## Output
+
+Write each fact once. Hand off absolute paths.
+
+## Close
+
+After the artifacts are fully actioned and no downstream step needs them, require one human
+disposition for them and their sidecars: Delete, Leave, or Promote.
 Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
 reports survivors.
