@@ -26,6 +26,7 @@ durable current-state map.
 Search callers and string registrations. Run safe checks for dynamic claims. Zero-caller and
 no-match claims require command and result. Every sentence must fit:
 `this exists; it behaves this way; here is the evidence.`
+Trace any unfamiliar or dangerous code path to closure before claiming its behavior.
 
 ## Artifact
 
@@ -47,17 +48,19 @@ id: INV-{{slug}}
 
 ## Output
 
-Write each fact once. Hand off absolute paths for the inventory and every sidecar.
+Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
+structural bloat; write each fact once. Hand off absolute paths for the inventory and every sidecar.
 
 ## Boundaries
 
-Ambiguous scope blocks mapping.
+Force material ambiguity in scope into explicit human selection. Block mapping until selection.
 
 Strip severity, prescriptions, target architecture, and implementation steps.
 
 ## Close
 
 After the artifact is fully actioned and no downstream step needs it, require one human disposition
-for it and its sidecars: Delete, Leave, or Promote.
+for it and its sidecars: Delete, Leave, or Promote. If Promote is selected, move the transient
+working material into project-owned permanence.
 Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
 reports survivors.

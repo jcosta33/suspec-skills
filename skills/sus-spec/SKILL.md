@@ -16,8 +16,9 @@ Before writing:
 
 1. Read project rules, current code, durable decisions, related artifacts, and open issues.
 2. Lock goal, audience, success, boundary, and sources.
-3. Burn down facts. Expose human-owned choices.
-4. Resolve reversible conventions. Freeze on material behavior, public contracts, security,
+3. Burn down facts. When a decision lacks evidence, research it until evidence can carry it.
+4. Force material ambiguity into explicit human selection.
+5. Resolve reversible conventions. Freeze on material behavior, public contracts, security,
    costly tradeoffs, conflicting authority, and irreversible actions.
 
 Every unresolved choice keeps `status: draft` and blocks dependent work.
@@ -85,11 +86,13 @@ Check structure. Revise only when requested. Factual verification is separate.
 
 ## Output
 
-Write each fact once. Hand off absolute paths for the spec and every sidecar.
+Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
+structural bloat; write each fact once. Hand off absolute paths for the spec and every sidecar.
 
 ## Close
 
 After the artifact is fully actioned and no downstream step needs it, require one human disposition
-for it and its sidecars: Delete, Leave, or Promote.
+for it and its sidecars: Delete, Leave, or Promote. If Promote is selected, move the transient
+working material into project-owned permanence.
 Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
 reports survivors.

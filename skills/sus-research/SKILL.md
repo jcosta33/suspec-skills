@@ -12,7 +12,8 @@ One question. Fit evidence. Zero counterfeit certainty.
 Lock the decision, audience or segment, scope, time horizon, and reversal evidence. Map options and
 counter-evidence before chasing the first attractive answer.
 
-Ambiguous scope blocks dependent research.
+Force material ambiguity in scope into explicit human selection. Block dependent research until
+selection.
 
 ### Evidence
 
@@ -72,11 +73,14 @@ question or test that unlocks it. Keep intent and requirements human-owned.
 
 ## Output
 
-Write each fact once. Hand off absolute paths for the research artifact and every sidecar.
+Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
+structural bloat; write each fact once. Hand off absolute paths for the research artifact and every
+sidecar.
 
 ## Close
 
 After the artifact is fully actioned and no downstream step needs it, require one human disposition
-for it and its sidecars: Delete, Leave, or Promote.
+for it and its sidecars: Delete, Leave, or Promote. If Promote is selected, move the transient
+working material into project-owned permanence.
 Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
 reports survivors.

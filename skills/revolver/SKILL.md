@@ -19,11 +19,11 @@ Every justified angle. Every finding dead before the next.
 4. Dispatch one fresh reviewer at a time on the cheapest adequate model. Give it the current target,
    one stance, and no prior reviewer prose.
    If fresh dispatch is unavailable, stop. Self-review is not fresh.
-5. Kill every finding before the next stance:
+5. Fact-check every finding against direct evidence. Kill every finding before the next stance:
    - supported: apply the fix and verify it when settled authority determines the fix; otherwise
      stop as a human decision;
    - refuted: reject it with decisive evidence;
-   - human decision: stop until selected;
+   - human decision: force material ambiguity into explicit human selection; stop until selected;
    - unverified or blocked: name the missing evidence or capability and stop.
 6. Freeze the addressed target for the next stance.
 7. Finish the full pool. After a productive rotation, rebuild the pool against the current target.

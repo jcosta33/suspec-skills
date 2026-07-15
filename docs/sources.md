@@ -12,6 +12,9 @@ Primary and official sources outrank summaries. A source supports only claims in
 - **Agent Skills authoring best practices, Anthropic.** Official guidance on concise bodies,
   progressive disclosure, calibrated instruction freedom, and evaluation.
   <https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices>
+- **Using Agent Skills with the API, Anthropic.** Official confirmation that multiple available
+  skills compose when each becomes relevant; it does not promise deterministic chaining.
+  <https://platform.claude.com/docs/en/build-with-claude/skills-guide>
 - **Optimizing skill descriptions, Agent Skills.** Guidance on imperative, intent-based discovery
   metadata. <https://agentskills.io/skill-creation/optimizing-descriptions>
 - **Anthropic skill-creator.** Official reference workflow for concise bodies, progressive
@@ -20,6 +23,8 @@ Primary and official sources outrank summaries. A source supports only claims in
 - **Frontify skills authoring notes.** Practitioner synthesis on activation, body structure, and
   execution. Useful design hypotheses; its small activation experiment does not establish universal
   wording or length rules. <https://github.com/Frontify/skills/tree/main/docs>
+- **OpenCode Agent Skills.** Official description of on-demand loading from available skill metadata
+  through the native skill tool. <https://opencode.ai/docs/skills>
 - **Claude Code skill activation experiment, Ivan Seleznov.** Open practitioner experiment where
   directive plus bypass-blocking descriptions improved activation across three skills. One unpinned
   Claude Code setup; it does not isolate each clause, test exclusions or length, or prove portability.

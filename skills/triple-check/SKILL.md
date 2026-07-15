@@ -14,11 +14,11 @@ Three strong reviewers. One snapshot. One repair.
    and no peer prose. Each independently derives its attack and reviews the whole target.
    If three fresh concurrent reviewers are unavailable, stop. Self-review is invalid.
 3. Keep reviewers read-only. Demand only location, consequence, evidence, and minimal fix.
-4. Wait for all three. Deduplicate and test every finding:
+4. Wait for all three. Deduplicate and fact-check every finding against direct evidence:
    - supported: queue the fix when settled authority determines it; otherwise stop as a human
      decision;
    - refuted: reject it with evidence;
-   - human decision: stop until selected;
+   - human decision: force material ambiguity into explicit human selection; stop until selected;
    - unverified or blocked: obtain the missing evidence or report the exact capability blocker.
 5. After reconciliation, apply every queued fix. Run decisive verification against the final target.
 6. Use one dispatch wave. Repeat only on explicit request.

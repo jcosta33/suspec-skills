@@ -12,3 +12,16 @@ Installed alone means working alone. Every skill must survive as the only instal
 
 Isolation test: copy one skill directory into an empty catalog, validate metadata and links, then run
 the method without any other Suspec content. A sibling dependency is a broken package boundary.
+
+## Semantic composition
+
+State adjacent work in task language that remains useful alone and matches another description when
+that capability is installed. Never name, require, or assume the companion. This is soft routing,
+not control flow.
+
+Example: a campaign may require `exhaustive multi-angle review and sequential repair across every
+target-justified stance` after each pull request. The review job stands alone; an installed matching
+capability may load.
+
+Test each skill alone and beside every intended companion. Reject accidental activation, circular
+handoffs, and wording added only to game selection.

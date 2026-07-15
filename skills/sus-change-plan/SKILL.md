@@ -11,12 +11,14 @@ Unproven preservation is accidental destruction.
 
 Enter on explicit plan request or after the human selects a Suspec change-plan workflow.
 
-Read project rules, durable decisions, current source, tests, and current-state maps. Reconstruct a
-missing map before wide change. Skip only when the change is isolated, the current map is proven,
-and no behavior-preservation, staged-cutover, or rollback risk exists.
+Read project rules, durable decisions, current source, tests, and current-state maps. When wide change
+lacks a proven map, map the unfamiliar or change-critical area as durable current state before
+planning. Skip only when the change is isolated, the current map is proven, and no
+behavior-preservation, staged-cutover, or rollback risk exists.
 
-Resolve reversible conventions. Ambiguity in behavior, public contracts, security, cost, authority,
-or irreversible action blocks dependent waves.
+Resolve reversible conventions. Force material ambiguity into explicit human selection when it
+concerns behavior, public contracts, security, cost, authority, or irreversible action. Block
+dependent waves until selection.
 
 ## Artifact
 
@@ -76,11 +78,13 @@ plan guarantees, and require each transformation wave to name verification.
 
 ## Output
 
-Write each fact once. Hand off absolute paths for the change plan and every sidecar.
+Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
+structural bloat; write each fact once. Hand off absolute paths for the change plan and every sidecar.
 
 ## Close
 
 After the artifact is fully actioned and no downstream step needs it, require one human disposition
-for it and its sidecars: Delete, Leave, or Promote.
+for it and its sidecars: Delete, Leave, or Promote. If Promote is selected, move the transient
+working material into project-owned permanence.
 Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
 reports survivors.

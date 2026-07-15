@@ -72,6 +72,8 @@ Repeat for every assigned requirement and preservation guarantee.
 - `ready` and `running` may retain pending evidence; `review-ready` and `closed` may not.
 - In Run summary, cite each Verify entry once; never paste its output again.
 - Do not assess your own work.
+- When finished work reaches `review-ready`, review it against its governing spec or task in a fresh
+  independent context.
 
 ## Run order
 

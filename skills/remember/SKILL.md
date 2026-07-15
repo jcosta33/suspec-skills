@@ -15,8 +15,9 @@ Save signal. Burn residue.
 4. Save one personal claim per native memory under a searchable title. Include evidence, scope, and
    what it does not establish.
 5. Without native memory, leave personal-only observations ephemeral.
-6. For a team fact, present concrete project channels and a recommendation. Write only the human-selected
-   destination: decision, issue, test, runbook, or maintained documentation.
+6. For a team fact, present concrete project channels and a recommendation. Force material ambiguity
+   into explicit human selection. Write only the selected destination: decision, issue, test,
+   runbook, or maintained documentation.
 7. Escalate severe correctness, security, privacy, data-loss, and compliance issues.
 
 ## Output

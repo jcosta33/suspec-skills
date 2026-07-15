@@ -6,7 +6,7 @@ Resolve discoverable facts before bothering the human. Agents own reversible con
 intent, material behavior, public contracts, security tradeoffs, costly choices, conflicting
 authority, waivers, irreversible actions, and acceptance.
 
-Material ambiguity blocks the active workflow. When available, `fork-me` owns the picker. Fixed
+Force material ambiguity into explicit human selection. Block dependent work until selection. Fixed
 methods stop on concrete blockers; they do not invent menus.
 
 ## Evidence

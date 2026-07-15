@@ -11,7 +11,8 @@ Observe. Prove. Prescribe nothing.
 
 1. Lock the goal, surface, and exclusions.
 2. Freeze repository state.
-3. Inspect source, callers, tests, configuration, generated surfaces, and runtime wiring.
+3. Inspect source, callers, tests, configuration, generated surfaces, and runtime wiring. Trace any
+   unfamiliar or dangerous code path to closure before assessing it.
 4. Run safe checks for dynamic claims. Record exact commands, exits, and decisive output.
 5. Anchor every observation to `file:line`, search result, or pasted output.
 6. Express each risk as evidence, failure mode, firing condition, and blast radius.
@@ -44,17 +45,20 @@ id: AUDIT-{{slug}}
 
 ## Output
 
-Write each fact once. Hand off absolute paths for the audit and every sidecar.
+Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
+structural bloat; write each fact once. Hand off absolute paths for the audit and every sidecar.
 
 ## Boundaries
 
-Ambiguous boundaries block the audit.
+Force material ambiguity in audit boundaries into explicit human selection. Block the audit until
+selection.
 
 Strip fixes, target states, requirements, and recommendations.
 
 ## Close
 
 After the artifact is fully actioned and no downstream step needs it, require one human disposition
-for it and its sidecars: Delete, Leave, or Promote.
+for it and its sidecars: Delete, Leave, or Promote. If Promote is selected, move the transient
+working material into project-owned permanence.
 Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
 reports survivors.

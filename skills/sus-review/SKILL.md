@@ -45,7 +45,8 @@ target state in the body.
 ## Verify
 
 1. Enumerate every scoped requirement and preservation guarantee.
-2. Rerun every applicable verification after the final relevant change. Worker evidence is a claim.
+2. Prove completed implementation against direct evidence. Rerun every applicable verification after
+   the final relevant change. Worker evidence is a claim.
 3. Read the diff and its callers. Check behavior, scope, preservation, trust boundaries, and
    unrequested changes.
 4. Use this exact coverage shape, with exactly one data row per scoped ID:
@@ -98,11 +99,13 @@ Non-material notes may expire.
 
 ## Output
 
-Hand off absolute paths for the review and every sidecar.
+Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
+structural bloat; write each fact once. Hand off absolute paths for the review and every sidecar.
 
 ## Close
 
 After the artifact is fully actioned and no downstream step needs it, require one human disposition
-for it and its sidecars: Delete, Leave, or Promote.
+for it and its sidecars: Delete, Leave, or Promote. If Promote is selected, move the transient
+working material into project-owned permanence.
 Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
 reports survivors.

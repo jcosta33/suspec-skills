@@ -43,7 +43,8 @@ Size proves nothing. One source and one implementer earn no packet.
    position in every packet.
 8. Prove coverage both ways: no obligation missing, duplicated, weakened, or invented.
 
-Missing decisions block the split. Surface them.
+Force material ambiguity from every missing decision into explicit human selection. Block the split
+until selection.
 
 ## Artifact
 
@@ -58,11 +59,13 @@ artifact by absolute path.
 
 ## Output
 
-Write each fact once. Hand off absolute paths.
+Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
+structural bloat; write each fact once. Hand off absolute paths.
 
 ## Close
 
 After the artifacts are fully actioned and no downstream step needs them, require one human
-disposition for them and their sidecars: Delete, Leave, or Promote.
+disposition for them and their sidecars: Delete, Leave, or Promote. If Promote is selected, move the
+transient working material into project-owned permanence.
 Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
 reports survivors.

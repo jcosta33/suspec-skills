@@ -374,6 +374,10 @@ for file in "$ROOT"/skills/*/SKILL.md; do
       for word in Delete Leave Promote sidecar 'fully actioned' 'downstream step' 'human disposition'; do
         require_regex "$file" "$word" "incomplete lifecycle disposition in $name"
       done
+      require_regex "$file" 'compress and harden the Markdown.*repetition.*softness.*ceremony.*structural bloat' \
+        "artifact compression handoff missing in $name"
+      require_regex "$file" 'If Promote is selected.*move the transient working material into project-owned permanence' \
+        "durable promotion handoff missing in $name"
       ;;
   esac
 
@@ -431,7 +435,9 @@ require_regex "$revolver" 'Finish the full pool' 'Revolver full rotation missing
 require_regex "$revolver" 'Add or remove stances only between rotations' 'Revolver pool timing missing'
 require_regex "$revolver" 'quiet rotation.*three cycles|three cycles.*quiet rotation' 'Revolver stop bounds missing'
 require_regex "$revolver" 'supported: apply the fix and verify' 'Revolver remediation missing'
-require_regex "$revolver" 'human decision: stop until selected' 'Revolver decision stop missing'
+require_regex "$revolver" 'human decision:.*stop until selected' 'Revolver decision stop missing'
+require_regex "$revolver" 'fact-check every finding against direct evidence' 'Revolver fact-check handoff missing'
+require_regex "$revolver" 'force material ambiguity into explicit human selection' 'Revolver decision handoff missing'
 if grep -Eqi 'at least[[:space:]]+[0-9]+.*stances?' "$revolver"; then
   echo 'Revolver numeric stance floor returned' >&2
   exit 1
@@ -447,6 +453,8 @@ require_regex "$triple" 'Wait for all three.*Deduplicate' 'Triple-check reconcil
 require_regex "$triple" 'After reconciliation, apply every queued fix' 'Triple-check repair timing missing'
 require_regex "$triple" 'verification against the final target' 'Triple-check final proof missing'
 require_regex "$triple" 'one dispatch wave.*explicit request' 'Triple-check repeat boundary missing'
+require_regex "$triple" 'fact-check every finding against direct evidence' 'Triple-check fact-check handoff missing'
+require_regex "$triple" 'force material ambiguity into explicit human selection' 'Triple-check decision handoff missing'
 
 fork_me="$ROOT/skills/fork-me/SKILL.md"
 require_regex "$fork_me" 'Use when.*unresolved' 'Fork-me activation boundary missing'
@@ -482,11 +490,14 @@ require_regex "$review" 'Requirement coverage' 'Review coverage missing'
 require_regex "$review" 'Supported.*Unsupported.*Unverified.*Blocked' 'Review assessments missing'
 require_regex "$review" 'Any Blocked row.*Request changes or Defer' 'Review blocked-state choices missing'
 require_regex "$review" 'Never offer plain Accept' 'Review waiver boundary missing'
+require_regex "$review" 'Prove completed implementation against direct evidence' 'Review proof handoff missing'
 
 spec="$ROOT/skills/sus-spec/SKILL.md"
 for literal in 'type: spec' 'status: draft' '## Intent' '## Requirements' 'Verify with:'; do
   require_literal "$spec" "$literal" 'Spec authoring contract drift'
 done
+require_regex "$spec" 'decision lacks evidence.*research it until evidence can carry it' 'Spec research handoff missing'
+require_regex "$spec" 'force material ambiguity into explicit human selection' 'Spec decision handoff missing'
 
 task="$ROOT/skills/sus-task/references/task-packet.md"
 for literal in 'type: task' 'status: ready' 'source:' 'scope:' '## Source' '## Scope' \
@@ -494,6 +505,8 @@ for literal in 'type: task' 'status: ready' 'source:' 'scope:' '## Source' '## S
   '## Run order' 'Starts after:' 'May run with:' '## Run summary'; do
   require_literal "$task" "$literal" 'Task authoring contract drift'
 done
+require_regex "$task" 'finished work reaches `review-ready`.*review it against its governing spec or task.*fresh.*independent context' \
+  'Task review handoff missing'
 
 for literal in 'type: review' 'spec:' 'reviewer:' 'decision: pending' \
   '| ID | Assessment | Evidence |'; do
@@ -504,6 +517,18 @@ change_plan="$ROOT/skills/sus-change-plan/SKILL.md"
 for literal in 'type: change-plan' 'preserves:' 'Baseline' 'Target' 'Preservation guarantees' \
   'Transformation waves' 'Cutover / rollback' 'Task split'; do
   require_literal "$change_plan" "$literal" 'Change-plan authoring contract drift'
+done
+require_regex "$change_plan" 'wide change.*lacks a proven map.*map the unfamiliar or change-critical area as durable current state' \
+  'Change-plan inventory handoff missing'
+
+for path_skill in sus-audit sus-inventory; do
+  require_regex "$ROOT/skills/$path_skill/SKILL.md" 'unfamiliar or dangerous code path to closure' \
+    "Dissection handoff missing in $path_skill"
+done
+
+for decision_skill in remember sus-audit sus-change-plan sus-inventory sus-research sus-task; do
+  require_regex "$ROOT/skills/$decision_skill/SKILL.md" 'force material ambiguity.*explicit human selection' \
+    "Decision handoff missing in $decision_skill"
 done
 
 stale='concise-output|revolver-review|codebase-exploration|promote-artifact|save-findings|empirical-proof|implement-task|market-research|planning-spec|write-spec|spec-check|split-work|review-output|security-review|fix-flaky-test|git-pr|write-audit|write-bug-report|write-change-plan|write-documentation|write-feature|write-fix|write-inventory|write-migration|write-performance|write-prd|write-refactor|write-research|write-rewrite|write-rfc|write-testing'
