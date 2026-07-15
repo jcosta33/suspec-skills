@@ -37,10 +37,13 @@ description: Orchestrate broad software delivery across reusable worktree lanes,
 1. Schedule only dependency-ready, write-disjoint work.
 2. Give every implementation owner the objective, ledger link, repository, lane, branch, exact
    scope, exclusions, dependencies, acceptance conditions, required checks, and pull-request policy.
-3. Open a draft pull request as soon as reviewable code exists. Link the campaign ledger and
-   dependencies. Keep scope, commits, verification, and blockers current. Mark it ready only after
-   implementation checks pass.
-4. Reassign an abandoned lane only after the harness confirms the prior owner stopped and the branch
+3. Open a draft pull request as soon as reviewable code exists. Follow the project template and title
+   convention. Without one, use an imperative title, `Summary`, and `Verification`; add
+   `Dependencies` or `Risks` only when material. Link the campaign ledger and dependencies once.
+4. Rewrite stale body text instead of appending chronology. Cut agent names, transient artifacts,
+   internal review mechanics, head diaries, repeated evidence, and anything a reviewer cannot act
+   on. Mark the pull request ready only after implementation checks pass.
+5. Reassign an abandoned lane only after the harness confirms the prior owner stopped and the branch
    head remains expected. Hand the replacement the lane, branch, pull request, head, checks,
    unresolved comments, and exact blocker.
 
@@ -71,21 +74,25 @@ description: Orchestrate broad software delivery across reusable worktree lanes,
    boundaries, failure modes, users, and operating conditions. Use no numeric floor or filler.
 3. Dispatch one fresh reviewer at a time against the current pull-request head. Give it the code,
    diff, one stance, and no pull-request conversation or prior reviewer prose.
-4. Fact-check every finding as supported, refuted, a human decision, unverified, or blocked. Record
-   one initial repository-native review event per stance with the stance and reviewed head SHA. Put
-   each supported finding in a resolvable line thread where a line exists or a numbered review-body
-   item otherwise. Record a quiet stance or consequential refutation in the same event. An
-   unverified or blocked finding stops the stance.
-5. Message the implementation owner to fix every supported item in the same lane. The owner pushes
-   the repair and replies with proof. The review orchestrator reruns decisive checks, verifies the
-   resolution, resolves line threads, and marks review-body items closed. Record a follow-up review
-   event referencing the stance and prior reviewed SHA. Human decisions block the pull request until
-   selected.
-6. Dispatch the next stance only after every item from the current stance is resolved. Review the new
+4. Fact-check every finding as supported, refuted, a human decision, unverified, or blocked. Kill
+   duplicates, stale findings, and preference dressed as defect. An unverified or blocked finding
+   stops the stance. Route a human decision through the project decision channel.
+5. Publish only supported actionable findings. Batch one stance's surviving findings into one draft
+   review and submit it only when nonempty. Use a line thread where a line exists; use one numbered
+   review-body item otherwise. Quiet stances and refutations stay inside the review loop.
+6. Write each comment as one terse paragraph: defect, consequence, required outcome. Use the
+   project's severity scheme. Without one, label only merge blockers as `[blocking]`. Cut greetings,
+   summaries, praise, headings, speculation, process narration, reviewer identity, stance labels,
+   and solution essays. Include evidence only when the diff or linked check does not prove the claim.
+7. Send the implementation owner the thread links, not a restatement. The owner fixes every supported
+   item in the same lane, pushes, and replies once: `Fixed in <sha>. <decisive proof>.` A disagreement
+   gets one evidence-backed reason. The review orchestrator checks the current head, reruns decisive
+   proof, and resolves the thread. Post no follow-up review event or completion recap.
+8. Dispatch the next stance only after every item from the current stance is resolved. Review the new
    head, not the superseded snapshot.
-7. Finish the full pool. After a productive rotation, rebuild it against the current head. Stop after
+9. Finish the full pool. After a productive rotation, rebuild it against the current head. Stop after
    one quiet rotation. At three productive cycles without one, block the pull request and surface the
-   remaining risk.
+   remaining risk. A quiet rotation produces no comment; request the project-required approval.
 
 ### Merge
 
@@ -96,8 +103,9 @@ description: Orchestrate broad software delivery across reusable worktree lanes,
 2. The implementation owner updates its dependent branch after prerequisites merge using project
    policy. Cross-repository dependencies remain explicit pull-request blockers. Rerun affected checks
    and review.
-3. Recycle the lane only after the pull request merges or closes and the worktree is clean.
-4. With explicit human or project-policy authorization, delete merged local and remote branches and
+3. Follow the project merge strategy. Fold fixup-only review commits before merge when policy allows.
+4. Recycle the lane only after the pull request merges or closes and the worktree is clean.
+5. With explicit human or project-policy authorization, delete merged local and remote branches and
    remove clean worktrees without force once, at campaign shutdown.
 
 ### Close

@@ -327,7 +327,9 @@ for source in \
   'https://github.com/Frontify/skills/blob/main/docs/activation.md' \
   'https://github.com/Frontify/skills/blob/main/docs/body-anatomy.md' \
   'https://github.com/Frontify/skills/blob/main/docs/execution.md' \
-  'https://github.com/Frontify/skills/blob/main/docs/sources.md'; do
+  'https://github.com/Frontify/skills/blob/main/docs/sources.md' \
+  'https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request' \
+  'https://google.github.io/eng-practices/review/reviewer/comments.html'; do
   require_literal "$ROOT/docs/sources.md" "$source" 'source ledger coverage missing'
 done
 require_literal "$ROOT/AGENTS.md" \
@@ -556,17 +558,23 @@ require_regex "$campaign" 'Schedule only dependency-ready, write-disjoint work' 
   'Campaign collision boundary missing'
 require_regex "$campaign" 'cheapest model proven adequate.*repository evaluation.*deterministic oracle.*Escalate the blocked decision.*Return to the cheaper tier' \
   'Campaign adaptive routing missing'
-require_regex "$campaign" 'Open a draft pull request.*Link the campaign ledger.*Mark it ready.*implementation checks pass' \
-  'Campaign pull-request trace missing'
+require_regex "$campaign" 'Open a draft pull request.*project template.*imperative title.*Summary.*Verification.*Dependencies.*Risks.*Link the campaign ledger.*once' \
+  'Campaign pull-request shape missing'
+require_regex "$campaign" 'Rewrite stale body text instead of appending chronology.*Cut agent names.*transient artifacts.*internal review mechanics.*head diaries.*repeated evidence.*reviewer cannot act' \
+  'Campaign pull-request economy missing'
 require_regex "$campaign" 'exhaustive multi-angle review and sequential repair.*every target-justified stance' \
   'Campaign exhaustive review handoff missing'
 require_regex "$campaign" 'one fresh reviewer at a time' \
   'Campaign reviewer sequence missing'
-require_regex "$campaign" 'one initial repository-native review event per.*stance.*reviewed head SHA.*supported finding.*resolvable line thread.*numbered review-body.*quiet stance' \
-  'Campaign native review comments missing'
-require_regex "$campaign" 'Fact-check every finding as supported, refuted, a human decision, unverified, or blocked.*unverified or blocked finding stops the stance' \
+require_regex "$campaign" 'Fact-check every finding as supported, refuted, a human decision, unverified, or blocked.*Kill.*duplicates.*stale findings.*preference dressed as defect.*unverified or blocked finding.*stops the stance' \
   'Campaign finding disposition missing'
-require_regex "$campaign" 'Message the implementation owner to fix.*review orchestrator.*verifies.*resolves line threads.*review-body items closed.*follow-up review.*stance and prior reviewed SHA' \
+require_regex "$campaign" 'Publish only supported actionable findings.*one draft.*review.*submit it only when nonempty' \
+  'Campaign publication boundary missing'
+require_regex "$campaign" 'line thread where a line exists.*numbered.*review-body item.*Quiet stances and refutations stay inside' \
+  'Campaign review placement missing'
+require_regex "$campaign" 'one terse paragraph: defect, consequence, required outcome.*severity scheme.*label only merge blockers.*Cut greetings.*summaries.*process narration.*solution essays' \
+  'Campaign comment economy missing'
+require_regex "$campaign" 'thread links, not a restatement.*replies once.*Fixed in <sha>.*decisive proof.*checks the current head.*resolves the thread.*no follow-up review event or completion recap' \
   'Campaign review ownership missing'
 require_regex "$campaign" 'next stance only after every item from the current stance is resolved' \
   'Campaign stance resolution order missing'
@@ -584,6 +592,10 @@ if grep -Fq 'One command. Many lanes. Nothing off the books.' "$campaign"; then
 fi
 if grep -Eqi 'formal[[:space:]]+request-changes review|reviewer approves' "$campaign"; then
   echo 'Campaign agent merge authority returned' >&2
+  exit 1
+fi
+if grep -Eqi 'review event per stance|Record a quiet stance|follow-up review event referencing' "$campaign"; then
+  echo 'Campaign review ceremony returned' >&2
   exit 1
 fi
 

@@ -90,6 +90,12 @@ Primary and official sources outrank summaries. A source supports only claims in
 - **About pull request reviews, GitHub.** Defines review comments, approvals, change requests,
   conversation resolution, and protected-branch integration.
   <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews>
+- **Commenting on a pull request, GitHub.** Defines line comments, replies, suggestions, and
+  conversation resolution.
+  <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request>
+- **How to write code review comments, Google Engineering Practices.** Supports clear reasoning,
+  actionable guidance, code-focused language, and explicit severity without inflating every comment.
+  <https://google.github.io/eng-practices/review/reviewer/comments.html>
 - **About pull requests, GitHub.** Defines draft and ready-for-review states.
   <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests>
 - **About protected branches, GitHub.** Defines required review, stale-approval dismissal,

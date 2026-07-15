@@ -20,7 +20,8 @@ and re-run to re-fetch. Watch the
   `sus-research`, `sus-review`, `sus-spec`, and `sus-task`. Each skill installs alone; no aliases
   ship.
 - `campaign` runs large goals through fixed reusable worktree lanes, adaptive model routing,
-  project-native pull requests, and sequential independent review with visible comment resolution.
+  concise project-native pull requests, and sequential independent review that publishes only
+  verified actionable findings and resolves them in place.
 - `sus-spec` now distinguishes plain Markdown requirements from flush-left SOL blocks, and
   `sus-task` requires a governing spec, supports all requirement ID classes, and records CI proof
   as `CI: https://...`.
