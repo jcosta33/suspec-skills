@@ -29,7 +29,7 @@ and re-run to re-fetch. Watch the
   memory, target edits, or durable relocation.
 - Descriptions use one discovery anatomy: job, positive trigger, real near misses. Bodies share one
   ordered vocabulary and omit empty phases.
-- Standalone methods use semantic task-language handoffs so installed capabilities can compose
+- Standalone methods expose adjacent work in task language aligned with compatible descriptions,
   without names or dependencies.
 - `fork-me` owns every ambiguity: at least three plain options, recommendation first, native picker
   or numbered text fallback, dependent work blocked until selection.

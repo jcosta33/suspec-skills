@@ -48,8 +48,10 @@ id: INV-{{slug}}
 
 ## Output
 
-Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
-structural bloat; write each fact once. Hand off absolute paths for the inventory and every sidecar.
+Before handoff, compress and harden the Markdown without changing its contract, identifiers,
+verbatim source text, evidence, or behavior. Remove repetition, softness, ceremony, and structural
+bloat; write each fact once. Rerun applicable checks. Hand off absolute paths for the inventory and
+every sidecar.
 
 ## Boundaries
 

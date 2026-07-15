@@ -1,6 +1,6 @@
 ---
 name: bulletproof
-description: Fact-check claims and prove completed implementation against direct evidence. Use when claims need validation, cross-examination, or hardening, or completed work needs decisive command proof. Do not use for broad risk discovery, requirement conformance, or one-sided advocacy.
+description: Fact-check claims and prove completed implementation against direct evidence. Use when claims need validation, cross-examination, or hardening, or completed work needs decisive command proof. Do not use as the owner of broad risk discovery, requirement conformance, or one-sided advocacy.
 ---
 
 # Bulletproof

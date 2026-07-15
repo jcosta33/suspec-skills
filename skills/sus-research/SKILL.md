@@ -1,6 +1,6 @@
 ---
 name: sus-research
-description: Research a decision until evidence can carry it. Use when comparing options, evaluating APIs or products, sizing markets, mapping competitors, studying customers, synthesizing reviews, inspecting UX, or testing positioning. Do not use for settled fact-checking, present-state audits, or intent authoring.
+description: Research a decision until evidence can carry it. Use when comparing options, evaluating APIs or products, sizing markets, mapping competitors, studying customers, synthesizing reviews, inspecting UX, or testing positioning. Do not use as the owner of settled fact-checking, present-state audits, or intent authoring.
 ---
 
 # Sus Research
@@ -73,9 +73,10 @@ question or test that unlocks it. Keep intent and requirements human-owned.
 
 ## Output
 
-Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
-structural bloat; write each fact once. Hand off absolute paths for the research artifact and every
-sidecar.
+Before handoff, compress and harden the Markdown without changing its contract, identifiers,
+verbatim source text, evidence, or behavior. Remove repetition, softness, ceremony, and structural
+bloat; write each fact once. Rerun applicable checks. Hand off absolute paths for the research
+artifact and every sidecar.
 
 ## Close
 

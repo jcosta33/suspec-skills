@@ -16,14 +16,16 @@ Move the document. Leave no broken trail.
    If sensitive content exists, stop with a binary choice: **Sanitize and retry** or **Cancel**.
    Recommend sanitization only when removal preserves the artifact's purpose.
    Change nothing until the human selects.
-4. Present real project-owned destinations. Wait for human selection. Make commit a separate choice.
-   Reject collisions and blocked destinations before mutation.
+4. Present real project-owned destinations. Use Move unless the human explicitly requests both
+   versions; then include Copy. Make commit a separate choice. Reject collisions and blocked
+   destinations before mutation.
 5. Preflight the selected destination, transformed artifact, repaired references, links, format, and
    project checks in isolation. Mutate nothing unless the preflight passes.
-6. Apply the preflighted move and reference repairs. Keep a recovery copy until destination,
-   references, and complete source removal verify. Copy only when the human explicitly needs both
-   versions.
-7. Commit only when selected. Never push implicitly.
+6. Apply the preflighted move or selected copy and reference repairs. Keep a recovery copy until the
+   destination, references, and selected source disposition verify.
+7. Commit only when selected. Verify the commit. Never push implicitly.
+8. After every selected action verifies, delete the recovery copy and verify it is absent. An
+   explicitly selected source copy is durable output, not recovery.
 
 ## Output
 

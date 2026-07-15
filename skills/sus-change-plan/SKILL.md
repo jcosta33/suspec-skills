@@ -78,8 +78,10 @@ plan guarantees, and require each transformation wave to name verification.
 
 ## Output
 
-Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
-structural bloat; write each fact once. Hand off absolute paths for the change plan and every sidecar.
+Before handoff, compress and harden the Markdown without changing its contract, identifiers,
+verbatim source text, evidence, or behavior. Remove repetition, softness, ceremony, and structural
+bloat; write each fact once. Rerun applicable checks. Hand off absolute paths for the change plan
+and every sidecar.
 
 ## Close
 

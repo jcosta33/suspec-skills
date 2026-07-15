@@ -66,14 +66,22 @@ Repeat for every assigned requirement and preservation guarantee.
 ## Agent instructions
 
 - Read this packet, every source above, and repository instructions before editing.
+- Before editing or changing status, compare source IDs, source state, requirement snapshots, scope,
+  and preservation guarantees against current sources. Any mismatch blocks dispatch and requires a
+  re-cut packet.
 - Stop on conflict, ambiguity, or pressure to cross Scope or Do Not Change.
 - Put each final Verify command, numeric exit status, and fenced decisive raw output under its
   `## Verify` entry, or record `CI: https://...` or a justified `n/a` there.
 - `ready` and `running` may retain pending evidence; `review-ready` and `closed` may not.
 - In Run summary, cite each Verify entry once; never paste its output again.
 - Do not assess your own work.
-- When finished work reaches `review-ready`, review it against its governing spec or task in a fresh
-  independent context.
+- At `review-ready`, hand the frozen target to a fresh independent reviewer for read-only review
+  against the canonical source spec. Use this task to narrow source-spec IDs and supply applicable
+  preservation guarantees; the source spec remains canonical for requirement text. The
+  implementation owner applies fixes and requests fresh review.
+- Without a fresh reviewer, keep `status: review-ready`; never close or self-review.
+- Set `status: closed` only after fresh review completes, findings are reconciled, and human
+  acceptance is recorded. Otherwise remain `review-ready`.
 
 ## Run order
 

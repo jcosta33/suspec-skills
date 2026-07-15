@@ -12,8 +12,9 @@ Primary and official sources outrank summaries. A source supports only claims in
 - **Agent Skills authoring best practices, Anthropic.** Official guidance on concise bodies,
   progressive disclosure, calibrated instruction freedom, and evaluation.
   <https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices>
-- **Using Agent Skills with the API, Anthropic.** Official confirmation that multiple available
-  skills compose when each becomes relevant; it does not promise deterministic chaining.
+- **Using Agent Skills with the API, Anthropic.** Official confirmation that multiple skills
+  explicitly supplied in one API request compose for complex workflows. It does not establish
+  implicit cross-skill chaining in local harnesses.
   <https://platform.claude.com/docs/en/build-with-claude/skills-guide>
 - **Optimizing skill descriptions, Agent Skills.** Guidance on imperative, intent-based discovery
   metadata. <https://agentskills.io/skill-creation/optimizing-descriptions>

@@ -1,6 +1,6 @@
 ---
 name: dissect
-description: Trace one unfamiliar or dangerous code path to closure. Use when its callers, flow, state, effects, failures, configuration, tests, or coupling remain unproven. Do not use for contained work or whole-area inventory.
+description: Trace one unfamiliar or dangerous code path to closure. Use when its callers, flow, state, effects, failures, configuration, tests, or coupling remain unproven. Do not use as the owner of contained work or whole-area inventory.
 ---
 
 # Dissect

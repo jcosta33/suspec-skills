@@ -86,8 +86,10 @@ Check structure. Revise only when requested. Factual verification is separate.
 
 ## Output
 
-Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
-structural bloat; write each fact once. Hand off absolute paths for the spec and every sidecar.
+Before handoff, compress and harden the Markdown without changing its contract, identifiers,
+verbatim source text, evidence, or behavior. Remove repetition, softness, ceremony, and structural
+bloat; write each fact once. Rerun applicable checks. Hand off absolute paths for the spec and every
+sidecar.
 
 ## Close
 

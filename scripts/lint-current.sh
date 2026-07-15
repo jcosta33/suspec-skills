@@ -77,6 +77,29 @@ require_literal() {
   }
 }
 
+description_text() {
+  awk '/^description:[[:space:]]+/ { sub(/^description:[[:space:]]+/, ""); print; exit }' "$1"
+}
+
+require_description_regex() {
+  file=$1
+  pattern=$2
+  label=$3
+  description=$(description_text "$file")
+  printf '%s\n' "$description" | grep -Eqi "$pattern" || {
+    echo "$label: $file" >&2
+    exit 1
+  }
+}
+
+section_text() {
+  awk -v heading="## $2" '
+    $0 == heading { inside = 1; next }
+    inside && /^## / { exit }
+    inside { print }
+  ' "$1" | tr '\n' ' '
+}
+
 relative_links() {
   grep -oE ']\([^)]*\)' |
     sed -E 's/^]\((.*)\)$/\1/' |
@@ -126,7 +149,7 @@ validate_skill_frontmatter() {
 
 validate_description_anatomy() {
   printf '%s\n' "$1" | grep -Eq \
-    '^[^.]+\. Use (only )?when [^.]+\. Do not use for [^.]+\.$'
+    '^[^.]+\. Use (only )?when [^.]+\. Do not use (for|as the owner of) [^.]+\.$'
 }
 
 validate_body_anatomy() {
@@ -374,8 +397,16 @@ for file in "$ROOT"/skills/*/SKILL.md; do
       for word in Delete Leave Promote sidecar 'fully actioned' 'downstream step' 'human disposition'; do
         require_regex "$file" "$word" "incomplete lifecycle disposition in $name"
       done
-      require_regex "$file" 'compress and harden the Markdown.*repetition.*softness.*ceremony.*structural bloat' \
-        "artifact compression handoff missing in $name"
+      output_text=$(section_text "$file" Output)
+      printf '%s\n' "$output_text" | grep -Eqi \
+        'compress and harden the Markdown without changing its contract.*identifiers.*verbatim source text.*evidence.*behavior.*repetition.*softness.*ceremony.*structural bloat.*Rerun applicable checks' || {
+        echo "artifact compression handoff missing in $name" >&2
+        exit 1
+      }
+      if printf '%s\n' "$output_text" | grep -Eqi '(do not|never)[^.]*compress and harden'; then
+        echo "artifact compression handoff negated in $name" >&2
+        exit 1
+      fi
       require_regex "$file" 'If Promote is selected.*move the transient working material into project-owned permanence' \
         "durable promotion handoff missing in $name"
       ;;
@@ -394,6 +425,37 @@ for file in "$ROOT"/skills/*/SKILL.md; do
       ;;
   esac
 done
+
+require_description_regex "$ROOT/skills/bulletproof/SKILL.md" \
+  '^Fact-check claims.*prove completed implementation.*direct evidence\. Use when.*claims.*completed work.*\. Do not use as the owner of' \
+  'Bulletproof activation contract missing'
+require_description_regex "$ROOT/skills/disrespec/SKILL.md" \
+  '^Compress and harden supplied Markdown\. Use when.*repetition.*softness.*ceremony.*structural bloat.*\. Do not use for' \
+  'Disrespec activation contract missing'
+require_description_regex "$ROOT/skills/dissect/SKILL.md" \
+  '^Trace one unfamiliar or dangerous code path to closure\. Use when.*callers.*flow.*state.*effects.*failures.*\. Do not use as the owner of' \
+  'Dissect activation contract missing'
+require_description_regex "$ROOT/skills/fork-me/SKILL.md" \
+  '^Force material ambiguity into explicit human selection\. Use when.*unresolved.*\. Do not use for' \
+  'Fork-me activation contract missing'
+require_description_regex "$ROOT/skills/promote/SKILL.md" \
+  '^Move transient working material into project-owned permanence\. Use only when.*durable\. Do not use for' \
+  'Promote activation contract missing'
+require_description_regex "$ROOT/skills/revolver/SKILL.md" \
+  '^Run exhaustive multi-angle review and sequential repair.*\. Use when.*every target-justified stance.*\. Do not use for' \
+  'Revolver activation contract missing'
+require_description_regex "$ROOT/skills/triple-check/SKILL.md" \
+  '^Run a fast parallel review with exactly three fresh top-tier reviewers.*\. Use when.*rapid independent scrutiny.*\. Do not use for' \
+  'Triple-check activation contract missing'
+require_description_regex "$ROOT/skills/sus-inventory/SKILL.md" \
+  '^Map an unfamiliar or change-critical code area as durable current state\. Use when wide change lacks a proven map\. Do not use for' \
+  'Inventory activation contract missing'
+require_description_regex "$ROOT/skills/sus-research/SKILL.md" \
+  '^Research a decision until evidence can carry it\. Use when.*comparing options.*evaluating.*\. Do not use as the owner of' \
+  'Research activation contract missing'
+require_description_regex "$ROOT/skills/sus-review/SKILL.md" \
+  '^Review finished work against its governing Suspec spec.*task when present\. Use when.*completed work.*conformance\. Do not use for' \
+  'Review activation contract missing'
 
 writer_types='sus-spec:spec:SPEC- sus-task:task:TASK- sus-review:review:REVIEW- sus-inventory:inventory:INV- sus-change-plan:change-plan:CHANGE- sus-audit:audit:AUDIT- sus-research:research:RESEARCH-'
 for pair in $writer_types; do
@@ -484,6 +546,39 @@ disrespec="$ROOT/skills/disrespec/SKILL.md"
 require_regex "$disrespec" 'Edit the supplied Markdown in place' 'Disrespec target boundary missing'
 require_regex "$disrespec" 'delete default behavior' 'Disrespec default-behavior economy missing'
 require_regex "$disrespec" 'Replace weak verbs.*hard imperatives' 'Disrespec ruthless-language rule missing'
+disrespec_method=$(section_text "$disrespec" Method)
+for rule in 'canonical sources.*derivative copies' 'Freeze governing contracts' \
+  'one authoritative home' 'Delete derivative duplicates' 'Verify every.*resulting link' \
+  'original recoverable.*contract check passes.*restore.*failure'; do
+  printf '%s\n' "$disrespec_method" | grep -Eqi "$rule" || {
+    echo 'Disrespec method contract missing' >&2
+    exit 1
+  }
+done
+printf '%s\n' "$disrespec_method" | grep -Fqi 'restore and verify it on failure.' || {
+  echo 'Disrespec rollback clause missing' >&2
+  exit 1
+}
+if printf '%s\n' "$disrespec_method" | grep -Eqi '(do not|never)[^.]*restore'; then
+  echo 'Disrespec rollback negated' >&2
+  exit 1
+fi
+
+promote="$ROOT/skills/promote/SKILL.md"
+promote_method=$(section_text "$promote" Method)
+printf '%s\n' "$promote_method" | grep -Eqi \
+  'Use Move unless.*explicitly requests both.*versions.*include Copy.*Apply the preflighted move or selected copy.*Keep a recovery copy until.*selected source disposition verify.*Commit only when selected.*Verify the commit.*After every selected action verifies.*delete the recovery copy.*verify it is absent.*selected source copy is durable output, not recovery' || {
+  echo 'Promote recovery cleanup order missing' >&2
+  exit 1
+}
+promote_boundaries=$(section_text "$promote" Boundaries)
+for rule in 'restore every removed.*source.*repaired reference' 'remove the destination' \
+  'verify rollback' 'Report anything rollback.*could not restore'; do
+  printf '%s\n' "$promote_boundaries" | grep -Eqi "$rule" || {
+    echo 'Promote failure rollback missing' >&2
+    exit 1
+  }
+done
 
 review="$ROOT/skills/sus-review/SKILL.md"
 require_regex "$review" 'Requirement coverage' 'Review coverage missing'
@@ -491,6 +586,29 @@ require_regex "$review" 'Supported.*Unsupported.*Unverified.*Blocked' 'Review as
 require_regex "$review" 'Any Blocked row.*Request changes or Defer' 'Review blocked-state choices missing'
 require_regex "$review" 'Never offer plain Accept' 'Review waiver boundary missing'
 require_regex "$review" 'Prove completed implementation against direct evidence' 'Review proof handoff missing'
+review_method=$(section_text "$review" Method)
+for rule in 'reviewer read-only.*target frozen' \
+  'compare its source ID.*source state.*requirement snapshots.*scope.*preservation.*guarantees.*mismatch blocks review.*re-cut packet' \
+  'prove the harness can dispatch one fresh independent.*reviewer.*If it cannot, stop for human selection'; do
+  printf '%s\n' "$review_method" | grep -Eqi "$rule" || {
+    echo 'Review method authority missing' >&2
+    exit 1
+  }
+done
+if printf '%s\n' "$review_method" | grep -Eqi 'mismatch[^.]*((does not|never) block|only in|proceed)'; then
+  echo 'Review task freshness weakened' >&2
+  exit 1
+fi
+review_decision=$(section_text "$review" Decision)
+printf '%s\n' "$review_decision" | grep -Eqi \
+  'implementation owner fix.*verify.*complete fresh independent review' || {
+  echo 'Review repair authority missing' >&2
+  exit 1
+}
+printf '%s\n' "$review_decision" | grep -Fqi 'Only human selection changes `decision`' || {
+  echo 'Review decision authority missing' >&2
+  exit 1
+}
 
 spec="$ROOT/skills/sus-spec/SKILL.md"
 for literal in 'type: spec' 'status: draft' '## Intent' '## Requirements' 'Verify with:'; do
@@ -505,8 +623,59 @@ for literal in 'type: task' 'status: ready' 'source:' 'scope:' '## Source' '## S
   '## Run order' 'Starts after:' 'May run with:' '## Run summary'; do
   require_literal "$task" "$literal" 'Task authoring contract drift'
 done
-require_regex "$task" 'finished work reaches `review-ready`.*review it against its governing spec or task.*fresh.*independent context' \
-  'Task review handoff missing'
+task_instructions=$(section_text "$task" 'Agent instructions')
+for phrase in 'At `review-ready`.*hand the frozen target to a fresh independent reviewer' \
+  'read-only review.*canonical source spec' 'task to narrow source-spec IDs' \
+  'supply applicable.*preservation.*guarantees' 'source spec remains canonical for requirement text'; do
+  printf '%s\n' "$task_instructions" | grep -Eqi "$phrase" || {
+    echo 'Task review handoff missing' >&2
+    exit 1
+  }
+done
+printf '%s\n' "$task_instructions" | grep -Eqi \
+  'Before editing or changing status.*compare source IDs.*source state.*requirement snapshots.*scope.*preservation.*guarantees.*mismatch blocks dispatch.*re-cut packet' || {
+  echo 'Task dispatch freshness missing' >&2
+  exit 1
+}
+printf '%s\n' "$task_instructions" | grep -Eqi 'implementation owner applies fixes.*requests fresh review' || {
+  echo 'Task review repair authority missing' >&2
+  exit 1
+}
+printf '%s\n' "$task_instructions" | grep -Eqi 'Without a fresh reviewer.*status: review-ready.*never close or self-review' || {
+  echo 'Task review capability fallback missing' >&2
+  exit 1
+}
+printf '%s\n' "$task_instructions" | grep -Eqi \
+  'status: closed.*only after fresh review completes.*findings are reconciled.*human.*acceptance is recorded.*Otherwise remain.*review-ready' || {
+  echo 'Task closure authority missing' >&2
+  exit 1
+}
+if printf '%s\n' "$task_instructions" | grep -Eqi '(do not|never)[^.]*review against the.*canonical source spec'; then
+  echo 'Task review handoff negated' >&2
+  exit 1
+fi
+if printf '%s\n' "$task_instructions" | grep -Eqi '(only in examples|without fresh review|close without.*fresh review)'; then
+  echo 'Task review authority weakened' >&2
+  exit 1
+fi
+
+change_plan="$ROOT/skills/sus-change-plan/SKILL.md"
+change_plan_artifact=$(section_text "$change_plan" Artifact)
+for rule in 'Transformation waves:.*verification.*rollback point' \
+  'Cutover / rollback:.*observable entry, completion, abort, and restoration conditions'; do
+  printf '%s\n' "$change_plan_artifact" | grep -Eqi "$rule" || {
+    echo 'Change-plan rollback contract missing' >&2
+    exit 1
+  }
+done
+change_plan_verify=$(section_text "$change_plan" Verify)
+for rule in 'Preserve everything else' 'resolve every `preserves` ID.*source spec or.*plan guarantees' \
+  'transformation wave.*verification'; do
+  printf '%s\n' "$change_plan_verify" | grep -Eqi "$rule" || {
+    echo 'Change-plan preservation contract missing' >&2
+    exit 1
+  }
+done
 
 for literal in 'type: review' 'spec:' 'reviewer:' 'decision: pending' \
   '| ID | Assessment | Evidence |'; do

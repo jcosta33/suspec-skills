@@ -16,8 +16,7 @@ the method without any other Suspec content. A sibling dependency is a broken pa
 ## Semantic composition
 
 State adjacent work in task language that remains useful alone and matches another description when
-that capability is installed. Never name, require, or assume the companion. This is soft routing,
-not control flow.
+that capability is installed. Never name, require, or assume the companion.
 
 Example: a campaign may require `exhaustive multi-angle review and sequential repair across every
 target-justified stance` after each pull request. The review job stands alone; an installed matching

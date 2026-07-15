@@ -1,6 +1,6 @@
 ---
 name: sus-review
-description: Review finished work against its governing Suspec spec or task. Use when checking completed work, diffs, branches, or pull requests for conformance. Do not use for present-state audits without a governing artifact or broad adversarial review.
+description: Review finished work against its governing Suspec spec, narrowed by its task when present. Use when checking completed work, diffs, branches, or pull requests for conformance. Do not use for present-state audits, broad adversarial review, or work without a governing artifact.
 ---
 
 # Sus Review
@@ -14,7 +14,9 @@ Evidence judges conformance. Humans judge acceptance.
   replace the spec.
 - With a task, read its `scope` and review exactly those source-spec IDs. Without a task, review
   every source-spec requirement.
-- Reject self-review. Freeze the target.
+- With a task, compare its source ID, source state, requirement snapshots, scope, and preservation
+  guarantees against current sources. Any mismatch blocks review and requires a re-cut packet.
+- Reject self-review. Keep the reviewer read-only and the target frozen.
 - A task opened explicitly as the clean-review fallback, with no implementation history or prior
   review prose, is the independent reviewer: execute here.
   Otherwise, before creating the artifact, prove the harness can dispatch one fresh independent
@@ -92,15 +94,18 @@ Only human selection changes `decision` to `accepted`, `changes-requested`, or `
 Add `waivers` only when the human explicitly accepts while waiving named unsupported or unverified
 IDs. `waivers` is an optional string list such as `waivers: [AC-002]`; never write it as a scalar.
 Ordinary acceptance and pending reviews omit `waivers`.
-Before acceptance, fix and verify every material finding or record its owner, explicit accepted-risk
-decision, reason, and follow-up in the project's decision channel. Until then, repeat it under `Open
-decisions`. If no project-owned decision channel exists, acceptance with risk stays blocked.
+Before acceptance, have the implementation owner fix every material finding, verify the change, and
+complete fresh independent review; or record its owner, explicit accepted-risk decision, reason, and
+follow-up in the project's decision channel. Until then, repeat it under `Open decisions`. If no
+project-owned decision channel exists, acceptance with risk stays blocked.
 Non-material notes may expire.
 
 ## Output
 
-Before handoff, compress and harden the Markdown: remove repetition, softness, ceremony, and
-structural bloat; write each fact once. Hand off absolute paths for the review and every sidecar.
+Before handoff, compress and harden the Markdown without changing its contract, identifiers,
+verbatim source text, evidence, or behavior. Remove repetition, softness, ceremony, and structural
+bloat; write each fact once. Rerun applicable checks. Hand off absolute paths for the review and
+every sidecar.
 
 ## Close
 

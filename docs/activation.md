@@ -9,7 +9,8 @@ Use exactly three sentences:
 
 1. Action and target.
 2. `Use when ...`, or `Use only when ...` for explicit-only work.
-3. `Do not use for ...` with genuine near misses.
+3. `Do not use for ...`, or `Do not use as the owner of ...` when valid as subordinate work, with
+   genuine near misses.
 
 Name the work, never the skill. Keep procedure, sequencing, evidence, safety, output, and completion
 rules in the body. Delete `ALWAYS`, `Skip`, dead exclusions, and sibling names.
