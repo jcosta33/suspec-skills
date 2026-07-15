@@ -5,17 +5,15 @@ description: Orchestrate broad software delivery across reusable worktree lanes,
 
 # Campaign
 
-One command. Many lanes. Nothing off the books.
-
 ## Method
 
 ### Frame
 
 1. Read project governance, governing requirements, dependency state, branch protection, CI, and
    release constraints.
-2. Create or select one project-native issue, epic, or milestone as the campaign ledger. Define done,
-   repositories, dependency order, risk classes, branch integration policy, review policy, and
-   ownership there.
+2. Create or select one project-native issue or issue-backed epic as the campaign ledger. Define
+   done, repositories, dependency order, risk classes, branch integration policy, review policy,
+   and ownership there. Use milestones only as grouping metadata.
 3. Prove the parallel boundaries. Shared contracts, generated surfaces, unknown scope, or overlapping
    files force sequencing.
 4. Force material ambiguity into explicit human selection before dependent work starts. Present at
@@ -30,8 +28,8 @@ One command. Many lanes. Nothing off the books.
    per lane. Repartition only when dependency topology changes; moving capacity between repositories
    retires one lane and creates another.
 3. Reuse the worktree after each pull request. Require empty tracked and untracked status; fetch;
-   detach at the accepted remote-base commit; delete the old merged branch under project policy; then
-   create the next branch. Keep ignored dependencies. Force-clean nothing.
+   detach at the accepted remote-base commit; then create the next branch. Keep ignored dependencies.
+   Force-clean nothing.
 4. A branch or worktree has one writer. Never dispatch concurrent owners into either.
 
 ### Dispatch
@@ -73,16 +71,16 @@ One command. Many lanes. Nothing off the books.
    boundaries, failure modes, users, and operating conditions. Use no numeric floor or filler.
 3. Dispatch one fresh reviewer at a time against the current pull-request head. Give it the code,
    diff, one stance, and no pull-request conversation or prior reviewer prose.
-4. Fact-check every finding against direct evidence. Record one repository-native review event per
-   stance with the stance and reviewed head SHA. Submit supported findings through a formal
-   request-changes review by an eligible reviewer identity. Use resolvable line threads where a line
-   exists; track cross-cutting findings as numbered review-body items. Record a quiet stance or
-   consequential refutation in the same event.
+4. Fact-check every finding as supported, refuted, a human decision, unverified, or blocked. Record
+   one initial repository-native review event per stance with the stance and reviewed head SHA. Put
+   each supported finding in a resolvable line thread where a line exists or a numbered review-body
+   item otherwise. Record a quiet stance or consequential refutation in the same event. An
+   unverified or blocked finding stops the stance.
 5. Message the implementation owner to fix every supported item in the same lane. The owner pushes
    the repair and replies with proof. The review orchestrator reruns decisive checks, verifies the
-   resolution, resolves line threads, and marks review-body items closed. The same reviewer approves
-   the repaired head; if unavailable, a fresh eligible reviewer reruns the full stance before
-   approval. Human decisions block the pull request until selected.
+   resolution, resolves line threads, and marks review-body items closed. Record a follow-up review
+   event referencing the stance and prior reviewed SHA. Human decisions block the pull request until
+   selected.
 6. Dispatch the next stance only after every item from the current stance is resolved. Review the new
    head, not the superseded snapshot.
 7. Finish the full pool. After a productive rotation, rebuild it against the current head. Stop after
@@ -99,8 +97,8 @@ One command. Many lanes. Nothing off the books.
    policy. Cross-repository dependencies remain explicit pull-request blockers. Rerun affected checks
    and review.
 3. Recycle the lane only after the pull request merges or closes and the worktree is clean.
-4. Delete merged local and remote branches under project policy. Remove clean worktrees without force
-   once, at campaign shutdown, unless the project deliberately keeps them.
+4. With explicit human or project-policy authorization, delete merged local and remote branches and
+   remove clean worktrees without force once, at campaign shutdown.
 
 ### Close
 
@@ -120,7 +118,7 @@ decisions, residual lanes or branches, durable updates, and decisive final verif
 
 The campaign orchestrator owns scheduling, routing, evidence, reviewer dispatch, and resolution
 checks. Implementation owners own code and review repairs. Humans and project policy own material
-decisions, acceptance, and merge authority.
+decisions, irreversible actions, acceptance, and merge authority.
 
 This method requires isolated worktrees, fresh reviewer dispatch, repository-native pull-request
 discussion, and deterministic checks. Name a missing capability and stop; invisible substitutes

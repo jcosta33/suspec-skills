@@ -491,6 +491,8 @@ for method in $universal_methods; do
 done
 
 campaign="$ROOT/skills/campaign/SKILL.md"
+require_regex "$campaign" 'issue or issue-backed epic as the campaign ledger.*milestones only as grouping metadata' \
+  'Campaign ledger semantics missing'
 require_regex "$campaign" 'global lane budget.*independent width.*machine capacity.*CI.*reviewer capacity.*partition.*fixed per-repository pools' \
   'Campaign lane sizing missing'
 require_regex "$campaign" 'Create each worktree once.*Reuse the worktree after each pull request.*empty tracked and untracked status.*detach.*remote-base commit.*Force-clean nothing' \
@@ -507,9 +509,11 @@ require_regex "$campaign" 'exhaustive multi-angle review and sequential repair.*
   'Campaign exhaustive review handoff missing'
 require_regex "$campaign" 'one fresh reviewer at a time' \
   'Campaign reviewer sequence missing'
-require_regex "$campaign" 'one repository-native review event per.*stance.*reviewed head SHA.*formal[[:space:]]+request-changes review.*eligible reviewer identity.*resolvable line threads.*numbered review-body items.*quiet stance' \
+require_regex "$campaign" 'one initial repository-native review event per.*stance.*reviewed head SHA.*supported finding.*resolvable line thread.*numbered review-body.*quiet stance' \
   'Campaign native review comments missing'
-require_regex "$campaign" 'Message the implementation owner to fix.*review orchestrator.*verifies.*resolves line threads.*review-body items closed.*same reviewer approves.*fresh eligible reviewer reruns the full stance' \
+require_regex "$campaign" 'Fact-check every finding as supported, refuted, a human decision, unverified, or blocked.*unverified or blocked finding stops the stance' \
+  'Campaign finding disposition missing'
+require_regex "$campaign" 'Message the implementation owner to fix.*review orchestrator.*verifies.*resolves line threads.*review-body items closed.*follow-up review.*stance and prior reviewed SHA' \
   'Campaign review ownership missing'
 require_regex "$campaign" 'next stance only after every item from the current stance is resolved' \
   'Campaign stance resolution order missing'
@@ -517,6 +521,18 @@ require_regex "$campaign" 'three productive cycles.*block the pull request' \
   'Campaign review exhaustion block missing'
 require_regex "$campaign" 'reviewed head and base SHAs.*protected.*merge.*queue or by revalidating both SHAs and the tested merge result.*expected-head merge.*head or base drift resets checks and review' \
   'Campaign merge gate missing'
+require_regex "$campaign" 'explicit human or project-policy authorization.*delete merged local and remote branches.*remove clean worktrees without force' \
+  'Campaign cleanup authority missing'
+require_regex "$campaign" 'Humans and project policy own.*irreversible actions.*acceptance.*merge authority' \
+  'Campaign human authority missing'
+if grep -Fq 'One command. Many lanes. Nothing off the books.' "$campaign"; then
+  echo 'Campaign filler returned' >&2
+  exit 1
+fi
+if grep -Eqi 'formal[[:space:]]+request-changes review|reviewer approves' "$campaign"; then
+  echo 'Campaign agent merge authority returned' >&2
+  exit 1
+fi
 
 revolver="$ROOT/skills/revolver/SKILL.md"
 require_regex "$revolver" 'complete materially distinct stance pool' 'Revolver coverage pool missing'

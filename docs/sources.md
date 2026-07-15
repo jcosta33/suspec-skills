@@ -86,6 +86,10 @@ Primary and official sources outrank summaries. A source supports only claims in
   clearance. <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews>
 - **Pull requests REST API, GitHub.** Defines expected-head validation for merge requests.
   <https://docs.github.com/en/rest/pulls/pulls>
+- **GitHub Issues and milestones.** Issues carry work discussion and assignment; milestones group
+  issue and pull-request progress.
+  <https://docs.github.com/en/issues/tracking-your-work-with-issues/learning-about-issues/about-issues>
+  <https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones>
 - **How we built our multi-agent research system, Anthropic.** First-party account of the
   orchestrator-worker pattern, explicit delegation, parallel boundaries, coordination failure, and
   the steep token cost of multi-agent work.
