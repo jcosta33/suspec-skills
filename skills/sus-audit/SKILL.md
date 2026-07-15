@@ -1,6 +1,6 @@
 ---
 name: sus-audit
-description: Audit present code and expose its risk with exact evidence. ALWAYS apply to debt surveys, cleanup assessments, single-implementation benchmarks, present-state quality assessments, and fresh passes over prior audits when no governing spec or task defines conformance. Observe and prove. Strip prescriptions, intended behavior, and unsupported claims. Skip rotating adversarial attacks and option research.
+description: Audit present code against direct evidence. ALWAYS apply to debt surveys, cleanup assessments, single-implementation benchmarks, current-state quality assessments, and fresh passes over prior audits when no governing spec or task defines conformance. Skip conformance review, rotating adversarial review, and option research.
 ---
 
 # Sus Audit

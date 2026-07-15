@@ -1,6 +1,6 @@
 ---
 name: fork-me
-description: Force every material ambiguity into explicit human selection. ALWAYS apply whenever intent, scope, behavior, authority, evidence interpretation, implementation path, tradeoff, waiver, or action remains ambiguous after discoverable facts and reversible conventions are resolved. Stop, recommend one course, and present at least three genuine options in plain language through the harness-native picker or numbered text fallback. Block dependent work until selection.
+description: Force material ambiguity into explicit human selection. ALWAYS apply when intent, scope, behavior, authority, evidence interpretation, implementation path, tradeoff, waiver, or action remains unresolved after discoverable facts and reversible conventions. Skip factual questions and settled choices.
 ---
 
 # Fork Me

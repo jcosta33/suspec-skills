@@ -1,6 +1,6 @@
 ---
 name: dissect
-description: Cut an unfamiliar or dangerous code path open before changing or judging it. ALWAYS apply when callers, flow, state, effects, failures, configuration, tests, or coupling remain unproven. Trace one bounded target to closure. Mark every unknown edge. Skip contained work and whole-area inventory.
+description: Trace one unfamiliar or dangerous code path to closure. ALWAYS apply when its callers, flow, state, effects, failures, configuration, tests, or coupling remain unproven. Skip contained work and whole-area inventory.
 ---
 
 # Dissect

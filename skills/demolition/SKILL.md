@@ -1,6 +1,6 @@
 ---
 name: demolition
-description: Destroy an idea, design, claim, change, or plan through explicit one-sided advocacy. Apply only when attack-at-all-costs advocacy is explicitly required. Speculate freely. Fabricated evidence is forbidden. Attack ideas, never people. Treat nothing produced as evidence without independent verification.
+description: Build the strongest one-sided case against an idea, design, claim, change, or plan. Apply only when attack-at-all-costs advocacy is explicitly required. Skip balanced evaluation, factual verification, and verdict-bearing review.
 ---
 
 # Demolition

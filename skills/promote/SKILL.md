@@ -1,6 +1,6 @@
 ---
 name: promote
-description: Move a transient artifact into project-owned permanence. Apply only when working material must become durable and project-owned. Find real destinations, block sensitive content, move by default, repair references, validate, and commit only when selected.
+description: Move transient working material into project-owned permanence. Apply only when that material must become durable. Skip transient relocation and already-durable material.
 ---
 
 # Promote

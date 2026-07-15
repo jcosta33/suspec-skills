@@ -1,6 +1,6 @@
 ---
 name: sus-review
-description: Put finished work on trial against its governing Suspec spec or task. ALWAYS apply to conformance review of completed work, diffs, branches, and pull requests. Use an independent reviewer, rerun proof, assess every scoped ID, expose waivers, and capture the human decision. Authors cannot review themselves or grant acceptance.
+description: Review finished work against its governing Suspec spec or task. ALWAYS apply to conformance review of completed work, diffs, branches, and pull requests. Skip present-state audits without a governing artifact and broad adversarial review.
 ---
 
 # Sus Review

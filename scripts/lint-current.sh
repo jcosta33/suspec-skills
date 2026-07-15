@@ -407,7 +407,7 @@ require_regex "$triple" 'verification against the final target' 'Triple-check fi
 require_regex "$triple" 'one dispatch wave.*explicit request' 'Triple-check repeat boundary missing'
 
 fork_me="$ROOT/skills/fork-me/SKILL.md"
-require_regex "$fork_me" 'ALWAYS apply whenever.*ambiguous' 'Fork-me activation boundary missing'
+require_regex "$fork_me" 'ALWAYS apply when.*unresolved' 'Fork-me activation boundary missing'
 require_regex "$fork_me" 'at least three materially different options' 'Fork-me option floor missing'
 require_regex "$fork_me" 'recommendation first' 'Fork-me recommendation order missing'
 require_regex "$fork_me" 'reason and cost in one plain sentence' 'Fork-me explanation contract missing'

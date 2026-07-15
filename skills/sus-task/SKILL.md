@@ -1,6 +1,6 @@
 ---
 name: sus-task
-description: Cut a ready Suspec spec into collision-proof task packets. ALWAYS apply when spec-governed work must be divided into independent parallel slices, repository or platform contexts, or dispatchable transformation waves. Assign every requirement exactly once, preserve every applicable guarantee, prove write disjointness, and lock dependency order.
+description: Split a ready Suspec spec into collision-proof task packets. ALWAYS apply when spec-governed work must be divided into independent parallel slices, repository or platform contexts, or dispatchable transformation waves. Skip unspecced work and work with no dispatch boundary.
 ---
 
 # Sus Task

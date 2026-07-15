@@ -1,6 +1,6 @@
 ---
 name: sus-research
-description: Research a decision until evidence can carry it. ALWAYS apply when a decision requires option comparison, API or product evaluation, market sizing, competitor mapping, customer study, review synthesis, UX inspection, or positioning analysis. Match source competence to every claim, preserve uncertainty, and recommend without deciding. Reject fabrication and synthetic market fiction.
+description: Research a decision until evidence can carry it. ALWAYS apply to option comparison, API or product evaluation, market sizing, competitor mapping, customer study, review synthesis, UX inspection, and positioning analysis. Skip settled fact-checking, present-state audits, and intent authoring.
 ---
 
 # Sus Research

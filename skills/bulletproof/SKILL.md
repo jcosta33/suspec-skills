@@ -1,6 +1,6 @@
 ---
 name: bulletproof
-description: Crush unsupported claims with direct evidence. ALWAYS apply when claims need fact-checking, validation, cross-examination, or hardening, and when completed implementation needs decisive command proof. Inspect code, use primary sources, and run non-mutating checks. Return assessments, not confidence theater. Skip broad risk discovery, requirements review, and advocacy.
+description: Fact-check claims against direct evidence. ALWAYS apply when claims need validation, cross-examination, or hardening, and when completed implementation needs decisive command proof. Skip broad risk discovery, requirement conformance, and one-sided advocacy.
 ---
 
 # Bulletproof

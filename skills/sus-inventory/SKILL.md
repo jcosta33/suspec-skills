@@ -1,6 +1,6 @@
 ---
 name: sus-inventory
-description: Reconstruct an unfamiliar or change-critical code area from evidence. ALWAYS apply when wide change needs a durable current-state map before work begins. Map reality without judgment or prescription. Skip direct implementation and small isolated work with a proven map.
+description: Map an unfamiliar or change-critical code area as durable current state. ALWAYS apply before wide change when no proven map exists. Skip direct implementation, narrow path tracing, and small isolated work.
 ---
 
 # Sus Inventory

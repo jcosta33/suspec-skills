@@ -1,6 +1,6 @@
 ---
 name: sus-change-plan
-description: Plan structural change without losing behavior. ALWAYS apply when a refactor, rewrite, migration, upgrade, performance change, schema change, or wide architecture cleanup needs a proven baseline and staged transformation. Enumerate preservation, cut green waves, and lock cutover and rollback. Skip direct implementation. Reject vague "no behavior change" claims.
+description: Plan structural change while preserving behavior. ALWAYS apply when a refactor, rewrite, migration, upgrade, performance change, schema change, or wide architecture cleanup needs a proven baseline and staged transformation. Skip direct implementation and net-new feature design.
 ---
 
 # Sus Change Plan

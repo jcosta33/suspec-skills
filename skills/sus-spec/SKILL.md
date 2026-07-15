@@ -1,6 +1,6 @@
 ---
 name: sus-spec
-description: Forge decided intent into a verifiable Suspec spec. ALWAYS apply when intent must become a new or revised spec, requirements or acceptance criteria need structural checking, or unresolved behavior blocks implementation. Survey reality, stop on ambiguity, and write observable obligations with proof. Skip direct implementation, small clear work, factual verification, and implementation design.
+description: Write, revise, or structurally check a verifiable Suspec spec. ALWAYS apply when intent must become requirements or acceptance criteria, or unresolved behavior blocks implementation. Skip direct implementation, small clear work, factual verification, and implementation design.
 ---
 
 # Sus Spec

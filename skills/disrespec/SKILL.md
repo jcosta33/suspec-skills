@@ -1,6 +1,6 @@
 ---
 name: disrespec
-description: Make supplied Markdown ruthless and economical. ALWAYS apply when asked to compress, sharpen, strip waste, or harden developer instructions, and when repetition, softness, ceremony, or structural bloat obstructs use. Preserve every fact, decision, command, path, identifier, link, quotation, warning, and raw evidence. Skip source code, commit messages, and repository-native pull-request forms.
+description: Compress and harden supplied Markdown. ALWAYS apply when repetition, softness, ceremony, or structural bloat obstructs developer use. Skip source code, commit messages, and repository-native pull-request forms.
 ---
 
 # Disrespec
