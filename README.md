@@ -22,6 +22,7 @@ cancel on mismatch. Remove a retired entry only after the same comparison. Name 
 | Skill                                            | Use                                              |
 | ------------------------------------------------ | ------------------------------------------------ |
 | [`bulletproof`](./skills/bulletproof/SKILL.md)   | actively verify load-bearing claims              |
+| [`campaign`](./skills/campaign/SKILL.md)         | deliver large goals through reusable lanes       |
 | [`demolition`](./skills/demolition/SKILL.md)     | run quarantined one-sided advocacy               |
 | [`dissect`](./skills/dissect/SKILL.md)           | trace a code path and coupling to closure        |
 | [`disrespec`](./skills/disrespec/SKILL.md)       | remove wasted Markdown                           |

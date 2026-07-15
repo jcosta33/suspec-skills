@@ -5,6 +5,7 @@ ROOT=${1:-$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)}
 ROOT=$(CDPATH= cd -- "$ROOT" && pwd)
 
 expected='bulletproof
+campaign
 demolition
 disrespec
 dissect
@@ -281,7 +282,7 @@ for document in "$ROOT/README.md" "$ROOT/AGENTS.md" $(find "$ROOT/docs" "$ROOT/s
 done
 
 artifact_creators='sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task'
-universal_methods='bulletproof demolition disrespec dissect fork-me promote remember revolver triple-check'
+universal_methods='bulletproof campaign demolition disrespec dissect fork-me promote remember revolver triple-check'
 
 for file in "$ROOT"/skills/*/SKILL.md; do
   folder=$(CDPATH= cd -- "$(dirname "$file")" && pwd -P)
@@ -429,6 +430,9 @@ done
 require_description_regex "$ROOT/skills/bulletproof/SKILL.md" \
   '^Fact-check claims.*prove completed implementation.*direct evidence\. Use when.*claims.*completed work.*\. Do not use as the owner of' \
   'Bulletproof activation contract missing'
+require_description_regex "$ROOT/skills/campaign/SKILL.md" \
+  '^Orchestrate broad software delivery across reusable worktree lanes.*multiple pull requests.*adaptive model routing.*independent review\. Use when.*delivery goal.*multiple dependency-aware, write-disjoint implementation streams.*repositories\. Do not use for' \
+  'Campaign activation contract missing'
 require_description_regex "$ROOT/skills/disrespec/SKILL.md" \
   '^Compress and harden supplied Markdown\. Use when.*repetition.*softness.*ceremony.*structural bloat.*\. Do not use for' \
   'Disrespec activation contract missing'
@@ -485,6 +489,34 @@ for method in $universal_methods; do
     exit 1
   }
 done
+
+campaign="$ROOT/skills/campaign/SKILL.md"
+require_regex "$campaign" 'global lane budget.*independent width.*machine capacity.*CI.*reviewer capacity.*partition.*fixed per-repository pools' \
+  'Campaign lane sizing missing'
+require_regex "$campaign" 'Create each worktree once.*Reuse the worktree after each pull request.*empty tracked and untracked status.*detach.*remote-base commit.*Force-clean nothing' \
+  'Campaign worktree reuse missing'
+require_regex "$campaign" 'one active branch and one implementation owner[[:space:]]+per lane' \
+  'Campaign lane ownership missing'
+require_regex "$campaign" 'Schedule only dependency-ready, write-disjoint work' \
+  'Campaign collision boundary missing'
+require_regex "$campaign" 'cheapest model proven adequate.*repository evaluation.*deterministic oracle.*Escalate the blocked decision.*Return to the cheaper tier' \
+  'Campaign adaptive routing missing'
+require_regex "$campaign" 'Open a draft pull request.*Link the campaign ledger.*Mark it ready.*implementation checks pass' \
+  'Campaign pull-request trace missing'
+require_regex "$campaign" 'exhaustive multi-angle review and sequential repair.*every target-justified stance' \
+  'Campaign exhaustive review handoff missing'
+require_regex "$campaign" 'one fresh reviewer at a time' \
+  'Campaign reviewer sequence missing'
+require_regex "$campaign" 'one repository-native review event per.*stance.*reviewed head SHA.*formal[[:space:]]+request-changes review.*eligible reviewer identity.*resolvable line threads.*numbered review-body items.*quiet stance' \
+  'Campaign native review comments missing'
+require_regex "$campaign" 'Message the implementation owner to fix.*review orchestrator.*verifies.*resolves line threads.*review-body items closed.*same reviewer approves.*fresh eligible reviewer reruns the full stance' \
+  'Campaign review ownership missing'
+require_regex "$campaign" 'next stance only after every item from the current stance is resolved' \
+  'Campaign stance resolution order missing'
+require_regex "$campaign" 'three productive cycles.*block the pull request' \
+  'Campaign review exhaustion block missing'
+require_regex "$campaign" 'reviewed head and base SHAs.*protected.*merge.*queue or by revalidating both SHAs and the tested merge result.*expected-head merge.*head or base drift resets checks and review' \
+  'Campaign merge gate missing'
 
 revolver="$ROOT/skills/revolver/SKILL.md"
 require_regex "$revolver" 'complete materially distinct stance pool' 'Revolver coverage pool missing'

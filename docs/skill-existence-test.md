@@ -7,6 +7,7 @@ Suspec adds a unique contract.
 | Skill             | Failure prevented                                              |
 | ----------------- | -------------------------------------------------------------- |
 | `bulletproof`     | load-bearing claims escape active verification                 |
+| `campaign`        | large delivery dissolves into collisions and private review    |
 | `demolition`      | advocacy masquerades as evidence                               |
 | `dissect`         | change proceeds from a partial code-path story                 |
 | `disrespec`       | Markdown wastes context through repetition                     |

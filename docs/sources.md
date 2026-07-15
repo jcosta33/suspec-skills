@@ -68,6 +68,33 @@ Primary and official sources outrank summaries. A source supports only claims in
   JMIR Mental Health 2025. Reports fabricated citations and bibliographic errors, supporting direct
   citation verification. <https://mental.jmir.org/2025/1/e80371>
 
+## Campaign Coordination
+
+- **Git worktree documentation.** Defines linked worktrees, concurrent branch checkout, locking,
+  cleaning, and branch-in-use safeguards. <https://git-scm.com/docs/git-worktree>
+- **Git switch documentation.** Defines branch creation, detached checkout, and dirty-state behavior.
+  <https://git-scm.com/docs/git-switch>
+- **About pull request reviews, GitHub.** Defines review comments, approvals, change requests,
+  conversation resolution, and protected-branch integration.
+  <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews>
+- **About pull requests, GitHub.** Defines draft and ready-for-review states.
+  <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests>
+- **About protected branches, GitHub.** Defines required review, stale-approval dismissal,
+  conversation resolution, and merge queues.
+  <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches>
+- **Approving a pull request with required reviews, GitHub.** Defines approval and change-request
+  clearance. <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews>
+- **Pull requests REST API, GitHub.** Defines expected-head validation for merge requests.
+  <https://docs.github.com/en/rest/pulls/pulls>
+- **How we built our multi-agent research system, Anthropic.** First-party account of the
+  orchestrator-worker pattern, explicit delegation, parallel boundaries, coordination failure, and
+  the steep token cost of multi-agent work.
+  <https://www.anthropic.com/engineering/built-multi-agent-research-system>
+- **FrugalGPT.** Chen, Zaharia, and Zou. Treats model cascades as a cost-quality routing problem.
+  <https://arxiv.org/abs/2305.05176>
+- **RouteLLM.** Ong et al. Evaluates learned routing between weaker and stronger models.
+  <https://arxiv.org/abs/2406.18665>
+
 ## Research Method
 
 - **GRADE handbook.** Defines evidence-certainty levels and explicit downgrade/upgrade factors.

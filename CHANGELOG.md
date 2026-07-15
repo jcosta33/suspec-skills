@@ -15,10 +15,12 @@ and re-run to re-fetch. Watch the
 
 ### Changed
 
-- The catalog surface is `bulletproof`, `demolition`, `dissect`, `disrespec`, `fork-me`, `promote`,
-  `remember`, `revolver`, `triple-check`, `sus-audit`, `sus-change-plan`, `sus-inventory`,
+- The catalog surface is `bulletproof`, `campaign`, `demolition`, `dissect`, `disrespec`, `fork-me`,
+  `promote`, `remember`, `revolver`, `triple-check`, `sus-audit`, `sus-change-plan`, `sus-inventory`,
   `sus-research`, `sus-review`, `sus-spec`, and `sus-task`. Each skill installs alone; no aliases
   ship.
+- `campaign` runs large goals through fixed reusable worktree lanes, adaptive model routing,
+  project-native pull requests, and sequential independent review with visible comment resolution.
 - `sus-spec` now distinguishes plain Markdown requirements from flush-left SOL blocks, and
   `sus-task` requires a governing spec, supports all requirement ID classes, and records CI proof
   as `CI: https://...`.
