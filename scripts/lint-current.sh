@@ -361,21 +361,32 @@ for method in $universal_methods; do
 done
 
 revolver="$ROOT/skills/revolver/SKILL.md"
-require_regex "$revolver" 'at least six materially distinct stances' 'Revolver stance floor missing'
+require_regex "$revolver" 'complete materially distinct stance pool' 'Revolver coverage pool missing'
+require_regex "$revolver" 'Cover every.*material risk' 'Revolver risk coverage missing'
+require_regex "$revolver" 'explicit human constraints.*without asking' 'Revolver pool authority missing'
+require_regex "$revolver" 'no fixed floor or ceiling' 'Revolver adaptive pool missing'
 require_regex "$revolver" 'one fresh reviewer at a time' 'Revolver reviewer sequence missing'
 require_regex "$revolver" '(Kill|address).*finding.*before.*next stance' 'Revolver resolution order missing'
 require_regex "$revolver" 'Finish the full pool' 'Revolver full rotation missing'
+require_regex "$revolver" 'Add or remove stances only between rotations' 'Revolver pool timing missing'
 require_regex "$revolver" 'quiet rotation.*three cycles|three cycles.*quiet rotation' 'Revolver stop bounds missing'
 require_regex "$revolver" 'supported: apply the fix and verify' 'Revolver remediation missing'
 require_regex "$revolver" 'human decision: stop until selected' 'Revolver decision stop missing'
+if grep -Eqi 'at least[[:space:]]+[0-9]+.*stances?' "$revolver"; then
+  echo 'Revolver numeric stance floor returned' >&2
+  exit 1
+fi
 
 triple="$ROOT/skills/triple-check/SKILL.md"
-require_regex "$triple" 'exactly three materially distinct stances' 'Triple-check pass count missing'
-require_regex "$triple" 'fresh top-tier reviewer' 'Triple-check model tier missing'
+require_regex "$triple" 'exactly three fresh top-tier reviewers concurrently' 'Triple-check concurrent trio missing'
+require_regex "$triple" 'same frozen snapshot' 'Triple-check snapshot parity missing'
+require_regex "$triple" 'independently derives.*reviews the whole target' 'Triple-check independent coverage missing'
 require_regex "$triple" 'no peer prose' 'Triple-check independence missing'
-require_regex "$triple" 'supported: apply the fix and run decisive verification' 'Triple-check remediation missing'
-require_regex "$triple" 'unresolved real defect blocks the next pass' 'Triple-check resolution order missing'
-require_regex "$triple" 'Complete exactly three passes' 'Triple-check completion missing'
+require_regex "$triple" 'Keep reviewers read-only' 'Triple-check reviewer mutation leak'
+require_regex "$triple" 'Wait for all three.*Deduplicate' 'Triple-check reconciliation missing'
+require_regex "$triple" 'After reconciliation, apply every queued fix' 'Triple-check repair timing missing'
+require_regex "$triple" 'verification against the final target' 'Triple-check final proof missing'
+require_regex "$triple" 'one dispatch wave.*explicit request' 'Triple-check repeat boundary missing'
 
 fork_me="$ROOT/skills/fork-me/SKILL.md"
 require_regex "$fork_me" 'ALWAYS apply whenever.*ambiguous' 'Fork-me activation boundary missing'

@@ -26,8 +26,8 @@ cancel on mismatch. Remove a retired entry only after the same comparison. Name 
 | [`dissect`](./skills/dissect/SKILL.md)           | trace a code path and coupling to closure        |
 | [`disrespec`](./skills/disrespec/SKILL.md)       | remove wasted Markdown                           |
 | [`fork-me`](./skills/fork-me/SKILL.md)           | force ambiguity into human selection             |
-| [`revolver`](./skills/revolver/SKILL.md)         | resolve broad risk through sequential stances    |
-| [`triple-check`](./skills/triple-check/SKILL.md) | run exactly three independent deep passes        |
+| [`revolver`](./skills/revolver/SKILL.md)         | exhaust broad risk through sequential refinement |
+| [`triple-check`](./skills/triple-check/SKILL.md) | run three concurrent top-tier reviews            |
 | [`promote`](./skills/promote/SKILL.md)           | move a transient artifact into project ownership |
 | [`remember`](./skills/remember/SKILL.md)         | preserve one verified lesson                     |
 

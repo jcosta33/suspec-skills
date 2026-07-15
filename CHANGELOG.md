@@ -29,8 +29,9 @@ and re-run to re-fetch. Watch the
   memory, target edits, or durable relocation.
 - `fork-me` owns every ambiguity: at least three plain options, recommendation first, native picker
   or numbered text fallback, dependent work blocked until selection.
-- `revolver` runs at least six sequential stances. `triple-check` runs exactly three fresh top-tier
-  passes. Both resolve each finding before the next reviewer sees the target.
+- `revolver` derives the complete target-justified stance pool and resolves it sequentially without
+  a numeric floor. `triple-check` runs three blind top-tier reviewers concurrently against one frozen
+  snapshot, then reconciles and repairs once.
 - Every skill now uses ruthless, economical instructions: hard imperatives without filler, default
   behavior, inert negatives, or duplicated mechanics.
 - Released sections remain byte-for-byte historical; current corrections stay under Unreleased.
