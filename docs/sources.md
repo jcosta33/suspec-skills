@@ -16,7 +16,7 @@ Primary and official sources outrank summaries. A source supports only claims in
 
 - **OpenAI Codex skill documentation.** Official discovery model, shared metadata budget,
   description truncation behavior, invocation policy, and authoring guidance.
-  <https://developers.openai.com/codex/skills>
+  <https://learn.chatgpt.com/docs/build-skills>
 - **Open Agent Skills specification.** Defines `SKILL.md`, frontmatter, description limits, layout,
   and progressive disclosure. <https://agentskills.io/specification>
 - **Agent Skills authoring best practices, Anthropic.** Official guidance on concise bodies,

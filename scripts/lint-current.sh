@@ -321,7 +321,7 @@ for heading in '## Maintenance' '## Skill Format And Context Economy' '## Eviden
   require_literal "$ROOT/docs/sources.md" "$heading" 'source ledger section missing'
 done
 for source in \
-  'https://developers.openai.com/codex/skills' \
+  'https://learn.chatgpt.com/docs/build-skills' \
   'https://agentskills.io/specification' \
   'https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices' \
   'https://github.com/Frontify/skills/blob/main/docs/activation.md' \
