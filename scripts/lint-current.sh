@@ -455,7 +455,7 @@ for file in "$ROOT"/skills/*/SKILL.md; do
       done
       output_text=$(section_text "$file" Output)
       printf '%s\n' "$output_text" | grep -Eqi \
-        'compress and harden the Markdown without changing its contract.*identifiers.*verbatim source text.*evidence.*behavior.*repetition.*softness.*ceremony.*structural bloat.*Rerun applicable checks' || {
+        'compress and harden the document without changing its contract.*identifiers.*verbatim source text.*evidence.*behavior.*repetition.*softness.*ceremony.*structural bloat.*Rerun applicable checks' || {
         echo "artifact compression handoff missing in $name" >&2
         exit 1
       }
@@ -489,7 +489,7 @@ require_description_regex "$ROOT/skills/campaign/SKILL.md" \
   '^Orchestrate broad software delivery across reusable worktree lanes.*multiple pull requests.*adaptive model routing.*independent review\. Use when.*delivery goal.*multiple dependency-aware, write-disjoint implementation streams.*repositories\. Do not use for' \
   'Campaign activation contract missing'
 require_description_regex "$ROOT/skills/disrespec/SKILL.md" \
-  '^Compress and harden supplied Markdown\. Use when.*repetition.*softness.*ceremony.*structural bloat.*\. Do not use for' \
+  '^Compress and harden supplied prose\. Use when.*repetition.*softness.*ceremony.*structural bloat.*\. Do not use for' \
   'Disrespec activation contract missing'
 require_description_regex "$ROOT/skills/dissect/SKILL.md" \
   '^Trace one unfamiliar or dangerous code path to closure\. Use when.*callers.*flow.*state.*effects.*failures.*\. Do not use as the owner of' \
@@ -656,7 +656,7 @@ require_regex "$dissect" 'Trace it to bedrock' 'Dissect hard method missing'
 require_regex "$dissect" 'Return only:' 'Dissect bounded return missing'
 
 disrespec="$ROOT/skills/disrespec/SKILL.md"
-require_regex "$disrespec" 'Edit the supplied Markdown in place' 'Disrespec target boundary missing'
+require_regex "$disrespec" 'Edit the supplied prose in place' 'Disrespec target boundary missing'
 require_regex "$disrespec" 'delete default behavior' 'Disrespec default-behavior economy missing'
 require_regex "$disrespec" 'Replace weak verbs.*hard imperatives' 'Disrespec ruthless-language rule missing'
 disrespec_method=$(section_text "$disrespec" Method)

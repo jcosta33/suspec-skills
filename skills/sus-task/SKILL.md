@@ -59,7 +59,7 @@ artifact by absolute path.
 
 ## Output
 
-Before handoff, compress and harden the Markdown without changing its contract, identifiers,
+Before handoff, compress and harden the document without changing its contract, identifiers,
 verbatim source text, evidence, or behavior. Remove repetition, softness, ceremony, and structural
 bloat; write each fact once. Rerun applicable checks. Hand off absolute paths.
 

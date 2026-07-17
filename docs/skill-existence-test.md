@@ -10,7 +10,7 @@ Suspec adds a unique contract.
 | `campaign`        | large delivery dissolves into collisions and private review    |
 | `demolition`      | advocacy masquerades as evidence                               |
 | `dissect`         | change proceeds from a partial code-path story                 |
-| `disrespec`       | Markdown wastes context through repetition                     |
+| `disrespec`       | Prose wastes context through repetition                     |
 | `fork-me`         | ambiguity becomes guessing or open interrogation               |
 | `revolver`        | broad work receives one narrow review frame                    |
 | `triple-check`    | narrow high-risk work receives shallow or correlated review    |
