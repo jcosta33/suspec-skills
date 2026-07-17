@@ -53,7 +53,7 @@ remain bare. Make the `SPEC-` ID unique.
 
 Require non-empty `## Intent` and `## Requirements`. Add optional sections only for unique payload.
 
-In plain Markdown, each requirement:
+Each requirement:
 
 - one stable `### AC-NNN` ID;
 - one independently verifiable obligation;
@@ -64,20 +64,14 @@ In plain Markdown, each requirement:
 Split independently failing obligations. Put consequence first. Name a mechanism only when
 compatibility or public contract makes it observable; state why.
 
-Plain Markdown requirements are the default. When rigid machine-readable clauses earn their cost,
-set `format: sol`; use the bundled flush-left `REQ`, `CONSTRAINT`, `INVARIANT`, or `INTERFACE`
-forms and `VERIFY BY` syntax in [`references/sol-grammar.md`](./references/sol-grammar.md). In either
-format, keep one independently verifiable obligation per requirement or block.
-
 ## Verify
 
 Check structure. Revise only when requested. Factual verification is separate.
 
 1. If the `suspec` executable is available, run `suspec check <absolute-spec-path>`.
 2. Demand valid frontmatter, unique IDs, non-empty Intent, and one obligation per requirement.
-   For plain Markdown, require `### AC-NNN`, one deliberate strength word, and one real
-   `Verify with:` line per requirement. For `format: sol`, require the bundled flush-left block
-   forms and one non-empty `VERIFY BY` line per non-question block.
+   Require `### AC-NNN`, one deliberate strength word, and one real `Verify with:` line per
+   requirement.
 3. Reject placeholders, blocking questions at `status: ready`, broken sources, and vague
    requirements with no same-line observable criterion.
 4. Cut any section that improves neither clarity, scope, execution, verification, review, nor

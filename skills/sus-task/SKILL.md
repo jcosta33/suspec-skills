@@ -28,8 +28,8 @@ Size proves nothing. One source and one implementer earn no packet.
 2. Assign each requirement to exactly one packet. A platform/repository carve-out may repeat one ID
    only when each context independently verifies the whole obligation. Assign each preservation
    guarantee to every packet whose work could violate it.
-3. Copy each assigned requirement block and its `Verify with:` or `VERIFY BY` line verbatim into its
-   packet. Scope may contain `AC-`, `C-`, `I-`, or `IF-` IDs. Name the source spec and include its ID
+3. Copy each assigned requirement block and its `Verify with:` line verbatim into its
+   packet. Name the source spec and include its ID
    in `source`; add a change-plan ID only when used. Keep preservation IDs in `## Preservation scope`,
    never frontmatter `scope`. Stamp the source state identifier. Re-cut after a material source change.
 4. Give each packet one concern, exact scope, frozen boundaries, affected write areas,

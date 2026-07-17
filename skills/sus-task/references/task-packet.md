@@ -18,8 +18,7 @@ status: ready
 
 ### Requirement Snapshot
 
-Copy every scoped requirement block and its `Verify with:` or `VERIFY BY` line verbatim. Scope may
-contain `AC-`, `C-`, `I-`, or `IF-` IDs. The spec remains canonical; a change plan supplies only
+Copy every scoped requirement block and its `Verify with:` line verbatim. The spec remains canonical; a change plan supplies only
 additional source and wave context. Re-cut this packet after a material source change.
 
 ## Scope
