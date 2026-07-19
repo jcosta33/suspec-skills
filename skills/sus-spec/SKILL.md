@@ -12,6 +12,9 @@ A spec is decided intent under test. Nothing else belongs.
 Enter on explicit request or after the human selects a Suspec spec workflow for unresolved intent.
 Direct implementation does not earn a spec.
 
+Keep trivial work as one inline intent sentence when no written contract would change execution or
+review. Write no file.
+
 Before writing:
 
 1. Read project rules, current code, durable decisions, related artifacts, and open issues.
@@ -56,10 +59,12 @@ Require non-empty `## Intent` and `## Requirements`. Add optional sections only 
 Each requirement:
 
 - one stable `### AC-NNN` ID;
-- one independently verifiable obligation;
-- one deliberate `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, or `MAY`;
-- observable behavior; and
-- one concrete `Verify with:` line.
+- one non-empty `- When:` condition, using `always` only for an unconditional invariant;
+- one non-empty `- Then:` observable obligation with exactly one deliberate `MUST`, `MUST NOT`,
+  `SHOULD`, `SHOULD NOT`, or `MAY`; and
+- one concrete `- Verify with:` method.
+
+Use those three items once, in that order. Add no other requirement-body line.
 
 Split independently failing obligations. Put consequence first. Name a mechanism only when
 compatibility or public contract makes it observable; state why.
@@ -68,15 +73,14 @@ compatibility or public contract makes it observable; state why.
 
 Check structure. Revise only when requested. Factual verification is separate.
 
-1. If the `suspec` executable is available, run `suspec check <absolute-spec-path>`.
-2. Demand valid frontmatter, unique IDs, non-empty Intent, and one obligation per requirement.
-   Require `### AC-NNN`, one deliberate strength word, and one real `Verify with:` line per
-   requirement.
-3. Reject placeholders, blocking questions at `status: ready`, broken sources, and vague
+1. Demand valid frontmatter, unique IDs, non-empty Intent, and one obligation per requirement.
+   Require the exact three-item block, exactly one strength word in `Then`, and a real verification
+   method.
+2. Reject placeholders, blocking questions at `status: ready`, broken sources, and vague
    requirements with no same-line observable criterion.
-4. Cut any section that improves neither clarity, scope, execution, verification, review, nor
+3. Cut any section that improves neither clarity, scope, execution, verification, review, nor
    durable memory.
-5. In check-only mode, report exact errors without editing. In write/revise mode, fix them and rerun.
+4. In check-only mode, report exact errors without editing. In write/revise mode, fix them and rerun.
 
 ## Output
 

@@ -72,8 +72,7 @@ Use frontmatter `kind` to name the transformation. Reuse full governing requirem
   samples, statistic, target, and regression ceilings.
 - Use schema coexistence only when consumers cannot cut over atomically.
 
-If the `suspec` executable is available, run `suspec check <absolute-change-plan-path>`. Otherwise,
-verify the frontmatter and required sections, resolve every `preserves` ID against the source spec or
+Verify the frontmatter and required sections, resolve every `preserves` ID against the source spec or
 plan guarantees, and require each transformation wave to name verification.
 
 ## Output

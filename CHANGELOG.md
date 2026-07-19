@@ -22,9 +22,8 @@ and re-run to re-fetch. Watch the
 - `campaign` runs large goals through fixed reusable worktree lanes, adaptive model routing,
   concise project-native pull requests, and sequential independent review that publishes only
   verified actionable findings and resolves them in place.
-- `sus-spec` now distinguishes plain Markdown requirements from flush-left SOL blocks, and
-  `sus-task` requires a governing spec, supports all requirement ID classes, and records CI proof
-  as `CI: https://...`.
+- `sus-spec` emits one enriched Markdown requirement block: `When`, `Then`, and `Verify with`.
+  `sus-task` requires a governing spec and records CI proof as `CI: https://...`.
 - Ordinary Suspec artifacts use `~/.agents/artifacts/<workspace>/` so local agents share one
   transient file without repository changes, copies, or symlinks. Full-path handoffs remain.
 - `promote` remains durable-only; it does not relocate files between transient roots.
@@ -43,6 +42,10 @@ and re-run to re-fetch. Watch the
   behavior, inert negatives, or duplicated mechanics.
 - Descriptions now contain selection metadata only: action, target, semantic triggers, and real near
   misses. They never name themselves or leak body instructions.
+- Artifact skills stay checker-agnostic. Ambient MCP discovery or explicit user invocation reaches
+  the optional deterministic checker without bloating method bodies.
+- Written specs use the `0.23.0` requirement shape. C028 enforces the three-item block; C004 requires
+  exactly one strength word in `Then`.
 - Catalog design docs are now a gated contract, and externally grounded method changes must update
   the bounded source ledger in the same change.
 - Released sections remain byte-for-byte historical; current corrections stay under Unreleased.
