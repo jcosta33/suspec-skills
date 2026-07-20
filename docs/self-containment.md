@@ -18,9 +18,8 @@ the method without any other Suspec content. A sibling dependency is a broken pa
 State adjacent work in task language that remains useful alone and matches another description when
 that capability is installed. Never name, require, or assume the companion.
 
-Example: a campaign may require `exhaustive multi-angle review and sequential repair across every
-target-justified stance` after each pull request. The review job stands alone; an installed matching
-capability may load.
+Example: a campaign may require `exhaustive multi-angle review and sequential repair across a fixed
+target-justified stance pool`. The job stands alone; an installed matching capability may load.
 
 Test each skill alone and beside every intended companion. Reject accidental activation, circular
 handoffs, and wording added only to game selection.

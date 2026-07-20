@@ -11,7 +11,7 @@ Ambiguity is a fork. Expose it.
 
 1. Burn down discoverable facts and reversible conventions.
 2. State one unresolved choice and what it blocks.
-3. Present at least three materially different options.
+3. Present three materially different options by default, two when genuinely binary.
 4. Put the recommendation first.
 5. Explain each option's reason and cost in one plain sentence.
 6. Use the harness-native picker and its `Other` option. If unavailable, render the same numbered

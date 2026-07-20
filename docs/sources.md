@@ -96,8 +96,30 @@ Primary and official sources outrank summaries. A source supports only claims in
 - **How to write code review comments, Google Engineering Practices.** Supports clear reasoning,
   actionable guidance, code-focused language, and explicit severity without inflating every comment.
   <https://google.github.io/eng-practices/review/reviewer/comments.html>
+- **Small CLs, Google Engineering Practices.** Supports one self-contained change, early splitting,
+  reviewable size, and separate refactors.
+  <https://google.github.io/eng-practices/review/developer/small-cls.html>
+- **Choice overload meta-analyses.** Scheibehenne, Greifeneder, and Todd, JCR 2010; Chernev,
+  Bockenholt, and Goodman, JCP 2015. Option count has no universal effect or measured optimum;
+  complexity, difficulty, uncertainty, and goals matter.
+  <https://doi.org/10.1086/651235> <https://doi.org/10.1016/j.jcps.2014.08.002>
+- **The effects of change decomposition on code review.** di Biase et al., PeerJ Computer Science
+  2019. Controlled experiment: coherent decomposition reduced false-positive findings but did not
+  increase defects found. <https://doi.org/10.7717/peerj-cs.193>
+- **Characteristics of Useful Code Reviews.** Bosu, Greiler, and Bird, MSR 2015. Across 1.5 million
+  Microsoft review comments, changes touching more files received a lower proportion of useful
+  comments. <https://doi.org/10.1109/MSR.2015.21>
+- **Primers or reminders?** Spadini, Calikli, and Bacchelli, ICSE 2020. Controlled experiment with 85
+  developers: visible prior comments prompted similar uncommon findings without suppressing other
+  bug detection. <https://doi.org/10.1145/3377811.3380385>
+- **The Promise and Reality of Continuous Integration Caching.** Ghaleb, da Costa, and Zou,
+  arXiv:2601.19146. Preliminary CI evidence: caching can cut build time, but stale artifacts remain
+  common. It does not directly measure local worktree dependencies. <https://arxiv.org/abs/2601.19146>
 - **About pull requests, GitHub.** Defines draft and ready-for-review states.
   <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests>
+- **Pull-request review summary update, GitHub.** A request-changes review needs no summary when its
+  inline comments already carry the findings.
+  <https://github.blog/changelog/2026-02-19-access-all-pull-request-comments-without-leaving-the-new-files-changed-page/>
 - **About protected branches, GitHub.** Defines required review, stale-approval dismissal,
   conversation resolution, and merge queues.
   <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches>

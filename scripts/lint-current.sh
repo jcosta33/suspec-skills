@@ -548,9 +548,11 @@ done
 campaign="$ROOT/skills/campaign/SKILL.md"
 require_regex "$campaign" 'issue or issue-backed epic as the campaign ledger.*milestones only as grouping metadata' \
   'Campaign ledger semantics missing'
+require_regex "$campaign" 'three genuine options by default.*two when genuinely binary.*recommendation first' \
+  'Campaign ambiguity shape missing'
 require_regex "$campaign" 'global lane budget.*independent width.*machine capacity.*CI.*reviewer capacity.*partition.*fixed per-repository pools' \
   'Campaign lane sizing missing'
-require_regex "$campaign" 'Create each worktree once.*Reuse the worktree after each pull request.*empty tracked and untracked status.*detach.*remote-base commit.*Force-clean nothing' \
+require_regex "$campaign" 'Create each worktree once.*Reuse the worktree after each pull request.*empty tracked and untracked status.*detach.*remote-base commit.*ignored dependencies.*lockfile and toolchain identity.*refresh them when either changes.*Force-clean nothing' \
   'Campaign worktree reuse missing'
 require_regex "$campaign" 'one active branch and one implementation owner[[:space:]]+per lane' \
   'Campaign lane ownership missing'
@@ -560,32 +562,52 @@ require_regex "$campaign" 'cheapest model proven adequate.*repository evaluation
   'Campaign adaptive routing missing'
 require_regex "$campaign" 'Open a draft pull request.*project template.*imperative title.*Summary.*Verification.*Dependencies.*Risks.*Link the campaign ledger.*once' \
   'Campaign pull-request shape missing'
+require_regex "$campaign" 'one independently reviewable concern.*declared dependency.*order' \
+  'Campaign pull-request dependency shape missing'
+require_regex "$campaign" '500 reviewable changed.*15 handwritten source files' \
+  'Campaign pull-request size guard missing'
+require_regex "$campaign" '15 handwritten source files.*explicit human approval' \
+  'Campaign pull-request size override missing'
 require_regex "$campaign" 'Rewrite stale body text instead of appending chronology.*Cut agent names.*transient artifacts.*internal review mechanics.*head diaries.*repeated evidence.*reviewer cannot act' \
   'Campaign pull-request economy missing'
-require_regex "$campaign" 'exhaustive multi-angle review and sequential repair.*every target-justified stance' \
+require_regex "$campaign" 'exhaustive multi-angle review and sequential repair.*fixed target-justified stance pool' \
   'Campaign exhaustive review handoff missing'
-require_regex "$campaign" 'one fresh reviewer at a time' \
+require_regex "$campaign" 'smallest pool.*unique risk.*Three is the default.*More than five requires.*human approval.*split the pull request' \
+  'Campaign stance budget missing'
+require_regex "$campaign" 'Freeze the pool for one rotation.*creates or exposes.*previously unknown risk.*Never rebuild the pool.*because a finding was fixed' \
+  'Campaign stance circuit breaker missing'
+require_regex "$campaign" 'one fresh reviewer at a time.*governing requirements.*accepted decisions.*no pull-request conversation or.*prior reviewer prose' \
   'Campaign reviewer sequence missing'
 require_regex "$campaign" 'Fact-check every finding as supported, refuted, a human decision, unverified, or blocked.*Kill.*duplicates.*stale findings.*preference dressed as defect.*unverified or blocked finding.*stops the stance' \
   'Campaign finding disposition missing'
-require_regex "$campaign" 'Publish only supported actionable findings.*one draft.*review.*submit it only when nonempty' \
+require_regex "$campaign" 'Keep the method private.*Publish only supported actionable findings' \
   'Campaign publication boundary missing'
-require_regex "$campaign" 'line thread where a line exists.*numbered.*review-body item.*Quiet stances and refutations stay inside' \
+require_regex "$campaign" 'one pending review.*submit only when.*nonempty.*no summary' \
+  'Campaign nonempty review boundary missing'
+require_regex "$campaign" 'local defect.*narrowest changed line.*file comment.*file-wide defect' \
   'Campaign review placement missing'
+require_regex "$campaign" 'review-body item.*cross-cutting defect.*one.*repair and owner' \
+  'Campaign broad-defect placement missing'
+require_regex "$campaign" 'Quiet stances and refutations produce nothing' \
+  'Campaign quiet review publication missing'
 require_regex "$campaign" 'one terse paragraph: defect, consequence, required outcome.*severity scheme.*label only merge blockers.*Cut greetings.*summaries.*process narration.*solution essays' \
   'Campaign comment economy missing'
 require_regex "$campaign" 'thread links, not a restatement.*replies once.*Fixed in <sha>.*decisive proof.*checks the current head.*resolves the thread.*no follow-up review event or completion recap' \
   'Campaign review ownership missing'
 require_regex "$campaign" 'next stance only after every item from the current stance is resolved' \
   'Campaign stance resolution order missing'
-require_regex "$campaign" 'three productive cycles.*block the pull request' \
-  'Campaign review exhaustion block missing'
-require_regex "$campaign" 'reviewed head and base SHAs.*protected.*merge.*queue or by revalidating both SHAs and the tested merge result.*expected-head merge.*head or base drift resets checks and review' \
+require_regex "$campaign" 'Finish the frozen pool once.*Run no quiet rotation.*ceremonial' \
+  'Campaign review completion missing'
+require_regex "$campaign" 'reviewed head and base SHAs.*merge immediately.*ledger-authorized mode.*protected merge queue.*revalidate both SHAs.*expected-head merge.*drift resets affected checks and review.*Never.*authorized mergeable pull request open' \
   'Campaign merge gate missing'
 require_regex "$campaign" 'explicit human or project-policy authorization.*delete merged local and remote branches.*remove clean worktrees without force' \
   'Campaign cleanup authority missing'
 require_regex "$campaign" 'Humans and project policy own.*irreversible actions.*acceptance.*merge authority' \
   'Campaign human authority missing'
+require_regex "$campaign" 'verification of acceptance.*every merged SHA' \
+  'Campaign merged-state proof missing'
+require_regex "$campaign" 'requires separate worktrees' \
+  'Campaign worktree boundary missing'
 if grep -Fq 'One command. Many lanes. Nothing off the books.' "$campaign"; then
   echo 'Campaign filler returned' >&2
   exit 1
@@ -596,6 +618,10 @@ if grep -Eqi 'formal[[:space:]]+request-changes review|reviewer approves' "$camp
 fi
 if grep -Eqi 'review event per stance|Record a quiet stance|follow-up review event referencing' "$campaign"; then
   echo 'Campaign review ceremony returned' >&2
+  exit 1
+fi
+if grep -Eqi 'independently mergeable concern|isolated worktrees' "$campaign"; then
+  echo 'Campaign stale delivery boundary returned' >&2
   exit 1
 fi
 
@@ -633,7 +659,7 @@ require_regex "$triple" 'force material ambiguity into explicit human selection'
 
 fork_me="$ROOT/skills/fork-me/SKILL.md"
 require_regex "$fork_me" 'Use when.*unresolved' 'Fork-me activation boundary missing'
-require_regex "$fork_me" 'at least three materially different options' 'Fork-me option floor missing'
+require_regex "$fork_me" 'three materially different options by default.*two when genuinely binary' 'Fork-me option shape missing'
 require_regex "$fork_me" 'recommendation first' 'Fork-me recommendation order missing'
 require_regex "$fork_me" 'reason and cost in one plain sentence' 'Fork-me explanation contract missing'
 require_regex "$fork_me" 'harness-native picker.*`Other`' 'Fork-me picker contract missing'

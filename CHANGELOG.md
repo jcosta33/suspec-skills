@@ -19,9 +19,9 @@ and re-run to re-fetch. Watch the
   `promote`, `remember`, `revolver`, `triple-check`, `sus-audit`, `sus-change-plan`, `sus-inventory`,
   `sus-research`, `sus-review`, `sus-spec`, and `sus-task`. Each skill installs alone; no aliases
   ship.
-- `campaign` runs large goals through fixed reusable worktree lanes, adaptive model routing,
-  concise project-native pull requests, and sequential independent review that publishes only
-  verified actionable findings and resolves them in place.
+- `campaign` runs large goals through reusable worktree lanes, independently reviewable pull
+  requests, bounded sequential review, scoped comments, and merged-SHA verification. Numeric size
+  and stance limits are circuit breakers, not quality claims.
 - `sus-spec` emits one enriched Markdown requirement block: `When`, `Then`, and `Verify with`.
   `sus-task` requires a governing spec and records CI proof as `CI: https://...`.
 - Ordinary Suspec artifacts use `~/.agents/artifacts/<workspace>/` so local agents share one
@@ -33,8 +33,9 @@ and re-run to re-fetch. Watch the
   ordered vocabulary and omit empty phases.
 - Standalone methods expose adjacent work in task language aligned with compatible descriptions,
   without names or dependencies.
-- `fork-me` owns every ambiguity: at least three plain options, recommendation first, native picker
-  or numbered text fallback, dependent work blocked until selection.
+- `fork-me` owns every ambiguity: three plain options by default, two when genuinely binary,
+  recommendation first, native picker or numbered text fallback, dependent work blocked until
+  selection.
 - `revolver` derives the complete target-justified stance pool and resolves it sequentially without
   a numeric floor. `triple-check` runs three blind top-tier reviewers concurrently against one frozen
   snapshot, then reconciles and repairs once.
