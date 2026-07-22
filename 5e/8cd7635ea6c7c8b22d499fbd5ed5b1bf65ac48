@@ -1,0 +1,31 @@
+scripts/lint-current.sh
+  s_0a3429e31e555d::t_361a4cbc4f6b57 443-448,689-693
+  s_0a3429e31e555d::t_e46fe07277decc 679-680
+docs/body-anatomy.md
+  s_0a3429e31e555d::t_361a4cbc4f6b57 20-23
+docs/execution.md
+  s_0a3429e31e555d::t_361a4cbc4f6b57 28-31
+skills/dissect/SKILL.md
+  s_0a3429e31e555d::t_361a4cbc4f6b57 27,29-33,38-41
+skills/bulletproof/SKILL.md
+  s_0a3429e31e555d::t_361a4cbc4f6b57 29
+  s_0a3429e31e555d::t_e46fe07277decc 43-44
+CHANGELOG.md
+  s_0a3429e31e555d::t_361a4cbc4f6b57 44-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "5e8cd7635ea6c7c8b22d499fbd5ed5b1bf65ac48",
+  "prompts": {},
+  "sessions": {
+    "s_0a3429e31e555d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1568-8dda-7540-97a5-9da760eadac4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
