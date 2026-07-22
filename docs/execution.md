@@ -25,6 +25,10 @@ When an artifact is the deliverable, return its absolute link without reciting i
 blockers, failed creation, incomplete verification, or irreversible confirmation.
 Name the next consumer. When none remains, the current consumer owns close.
 
+When chat is the deliverable, render its structure. Use prose, headings, bold labels, lists, and
+tables. Never fence the whole report. Fence only literal code or untouched raw evidence. A brief
+summary may follow when it adds orientation without repeating the report.
+
 ## Close
 
 After the final consumer finishes and no downstream step needs a non-empty transient artifact set,

@@ -24,18 +24,21 @@ Trace it to bedrock.
 
 ## Output
 
-Return only:
+Return the report as rendered Markdown.
 
-```text
-Question: <one sentence>
-State: <stable snapshot>
-Flow: <entry -> decisive branches -> terminal effects>
+**Question:** <one sentence>
+
+**State:** <stable snapshot>
+
+**Flow:** <entry -> decisive branches -> terminal effects>
 
 | Path:line | Proven edge, state, effect, or boundary | Unknown |
 | --- | --- | --- |
 
-Evidence: <command; working directory; state identifier; numeric exit; untouched decisive output>
-```
+### Evidence
+
+For each decisive run, give the command, working directory, state identifier, numeric exit, and
+untouched decisive output. A brief plain-language summary may follow the report.
 
 ## Boundaries
 

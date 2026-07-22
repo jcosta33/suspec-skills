@@ -440,6 +440,12 @@ for file in "$ROOT"/skills/*/SKILL.md; do
     exit 1
   fi
 
+  output_text=$(section_text "$file" Output)
+  if printf '%s\n' "$output_text" | grep -Fq '```'; then
+    echo "fenced chat output in $name" >&2
+    exit 1
+  fi
+
   case " $artifact_creators " in
     *" $name "*)
       for heading in '## Artifact' '## Close'; do
@@ -453,7 +459,6 @@ for file in "$ROOT"/skills/*/SKILL.md; do
       for word in Delete Leave Promote sidecar 'fully actioned' 'downstream step' 'human disposition'; do
         require_regex "$file" "$word" "incomplete lifecycle disposition in $name"
       done
-      output_text=$(section_text "$file" Output)
       printf '%s\n' "$output_text" | grep -Eqi \
         'compress and harden the document without changing its contract.*identifiers.*verbatim source text.*evidence.*behavior.*repetition.*softness.*ceremony.*structural bloat.*Rerun applicable checks' || {
         echo "artifact compression handoff missing in $name" >&2
@@ -671,6 +676,8 @@ require_literal "$bulletproof" '### Verification' 'Bulletproof verification mode
 require_literal "$bulletproof" '### Implementation Proof' 'Bulletproof implementation-proof mode missing'
 require_regex "$bulletproof" 'Freeze the verification target' 'Bulletproof may edit target'
 require_regex "$bulletproof" 'Supported.*Unsupported.*Unverified.*Blocked' 'Bulletproof assessments missing'
+require_regex "$bulletproof" 'rendered Markdown table' 'Bulletproof rendered return missing'
+require_regex "$bulletproof" 'ID.*Assessment.*Evidence' 'Bulletproof evidence table missing'
 
 demolition="$ROOT/skills/demolition/SKILL.md"
 grep -Fq 'Advocacy exercise, not evidence.' "$demolition" || { echo "Demolition quarantine banner missing" >&2; exit 1; }
@@ -679,7 +686,11 @@ require_regex "$demolition" 'Fabricated sources.*test output are disqualifying' 
 
 dissect="$ROOT/skills/dissect/SKILL.md"
 require_regex "$dissect" 'Trace it to bedrock' 'Dissect hard method missing'
-require_regex "$dissect" 'Return only:' 'Dissect bounded return missing'
+require_regex "$dissect" 'Return the report as rendered Markdown' 'Dissect rendered return missing'
+require_regex "$dissect" '\*\*Question:\*\*.*\*\*State:\*\*.*\*\*Flow:\*\*' 'Dissect report labels missing'
+require_regex "$dissect" 'Path:line.*Proven edge, state, effect, or boundary.*Unknown' 'Dissect evidence table missing'
+require_regex "$dissect" 'Evidence.*command.*working directory.*state identifier.*numeric exit.*untouched decisive output' 'Dissect command evidence missing'
+require_regex "$dissect" 'brief plain-language summary may follow' 'Dissect summary allowance missing'
 
 disrespec="$ROOT/skills/disrespec/SKILL.md"
 require_regex "$disrespec" 'Edit the supplied prose in place' 'Disrespec target boundary missing'

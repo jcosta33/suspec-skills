@@ -26,12 +26,10 @@ Preserve decisive command facts after code or validation work.
 
 ## Output
 
-For verification, return one table:
+For verification, return one rendered Markdown table:
 
-```text
 | ID | Assessment | Evidence |
 | --- | --- | --- |
-```
 
 Give every identifiable claim one row:
 
@@ -42,8 +40,8 @@ Give every identifiable claim one row:
 
 Name the exact gap for `Unverified` and `Blocked`.
 
-For implementation proof, return each decisive run once in chat: command, working directory, state identifier, numeric exit,
-and untouched decisive output.
+For implementation proof, return each decisive run once in chat: command, working directory, state
+identifier, numeric exit, and untouched decisive output.
 
 ## Boundaries
 

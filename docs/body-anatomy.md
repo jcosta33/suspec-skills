@@ -17,6 +17,10 @@ Use this order:
 `Method` is mandatory. Omit every other section without payload. Never rename phases or repeat the
 description.
 
+Render structured chat with Markdown headings, bold labels, lists, and tables. Never fence a report,
+table, or prose handoff. Fence only literal code or untouched raw evidence. Artifact templates may
+show fenced source because the destination is a file.
+
 - Keep only instructions that change execution.
 - Use hard verbs.
 - Delete encouragement, scene-setting, default behavior, repeated rationale, and conclusions.

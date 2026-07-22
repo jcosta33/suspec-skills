@@ -41,6 +41,8 @@ and re-run to re-fetch. Watch the
   snapshot, then reconciles and repairs once.
 - Every skill now uses ruthless, economical instructions: hard imperatives without filler, default
   behavior, inert negatives, or duplicated mechanics.
+- Structured chat renders as Markdown. Reports, tables, and prose handoffs never sit inside fences;
+  fences remain for literal code, untouched raw evidence, and artifact templates.
 - Descriptions now contain selection metadata only: action, target, semantic triggers, and real near
   misses. They never name themselves or leak body instructions.
 - Artifact skills stay checker-agnostic. Ambient MCP discovery or explicit user invocation reaches
