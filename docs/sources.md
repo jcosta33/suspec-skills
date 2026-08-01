@@ -16,7 +16,7 @@ Primary and official sources outrank summaries. A source supports only claims in
 
 - **OpenAI Codex skill documentation.** Official discovery model, shared metadata budget,
   description truncation behavior, invocation policy, and authoring guidance.
-  <https://learn.chatgpt.com/docs/build-skills>
+  <https://developers.openai.com/codex/skills>
 - **Open Agent Skills specification.** Defines `SKILL.md`, frontmatter, description limits, layout,
   and progressive disclosure. <https://agentskills.io/specification>
 - **Agent Skills authoring best practices, Anthropic.** Official guidance on concise bodies,
@@ -50,6 +50,37 @@ Primary and official sources outrank summaries. A source supports only claims in
 - **Effective context engineering for AI agents, Anthropic.** Treats context as finite and favors
   just-in-time retrieval and compact external state.
   <https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents>
+- **The new rules of context engineering for Claude 5 generation models, Anthropic.** Reports
+  major internal prompt reduction without disclosed benchmark detail; supports testing less
+  prescriptive control, not universal deletion.
+  <https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models>
+- **Harness engineering, OpenAI.** Treats human attention and context as scarce; uses repository
+  knowledge as a map and mechanical tests for architecture.
+  <https://openai.com/index/harness-engineering/>
+- **Inside our in-house data agent, OpenAI.** Reports selection failures from overlapping tools and
+  lower robustness from highly prescriptive prompts.
+  <https://openai.com/index/inside-our-in-house-data-agent/>
+- **Architecting an efficient context-aware multi-agent framework, Google.** Separates durable state
+  from compiled agent context and loads large objects by handle.
+  <https://developers.googleblog.com/architecting-efficient-context-aware-multi-agent-framework-for-production/>
+- **Tool-space interference in the MCP era, Microsoft Research.** Survey of 1,470 MCP servers;
+  supports distinct tools, concise outputs, dynamic discovery, and model-client testing.
+  <https://www.microsoft.com/en-us/research/blog/tool-space-interference-in-the-mcp-era-designing-for-agent-compatibility-at-scale/>
+- **Context Rot, Chroma Research.** Controlled tests across 18 models find increasing unreliability
+  with longer context and distractors. Inspectable industry study, not peer-reviewed.
+  <https://www.trychroma.com/research/context-rot>
+- **Towards a Science of Scaling Agent Systems, Google Research.** Cross-model controlled study:
+  multi-agent gains depend on parallelizable task structure and can reverse on sequential work.
+  Preprint. <https://arxiv.org/abs/2512.08296>
+- **An Empirical Study on Prompt Compression for Large Language Models.** Six methods across thirteen
+  datasets find task-dependent effects. Preprint; compression is no universal quality score.
+  <https://arxiv.org/abs/2505.00019>
+- **ConInstruct.** AAAI 2026 conflict benchmark: strong models often detect conflicts but rarely
+  notify the user or seek clarification.
+  <https://ojs.aaai.org/index.php/AAAI/article/view/40356>
+- **Control Illusion.** AAAI 2026: six leading models show persistent failures under conflicting
+  instruction hierarchies.
+  <https://ojs.aaai.org/index.php/AAAI/article/view/40339>
 - **Curse of Instructions: Large Language Models Cannot Follow Multiple Instructions at Once.**
   Harada et al., ICLR 2025. Measures collapsing joint compliance as instruction count grows.
   <https://openreview.net/forum?id=R6q67CDBCH>

@@ -1,13 +1,18 @@
 # Execution
 
-## Decisions
+## Questions
 
-Resolve discoverable facts before bothering the human. Agents own reversible conventions. Humans own
-intent, material behavior, public contracts, security tradeoffs, costly choices, conflicting
-authority, waivers, irreversible actions, and acceptance.
+Exhaust discoverable facts and reversible conventions. If the agent still needs to ask the user
+anything, stop dependent work and present explicit choices: three genuine options by default, two
+when binary, recommendation first, one plain tradeoff each, and Other. Use the native picker when
+available; otherwise render numbered choices plus Other.
 
-Force material ambiguity into explicit human selection. Block dependent work until selection. Fixed
-methods stop on concrete blockers; they do not invent menus.
+Never emit a bare agent-originated question. Answer user-originated factual questions directly.
+
+## Authority
+
+Agents own reversible conventions. Humans own intent, material behavior, public contracts, security
+tradeoffs, costly choices, conflicting authority, waivers, irreversible actions, and acceptance.
 
 ## Evidence
 
@@ -16,22 +21,19 @@ identifier, exit status, and decisive raw output. Map source evidence to identit
 locator, and decisive excerpt. Keep short output once. Move dominating output into anchored receipts.
 Never paraphrase proof or reuse it after relevant edits.
 
-A critical gate with no observable trace is an assertion. Require decisive output when omission could
-masquerade as completion. Do not manufacture ceremony for work already visible.
+A critical gate with no observable trace is an assertion. Demand decisive output only when omission
+could masquerade as completion.
 
 ## Handoff
 
-When an artifact is the deliverable, return its absolute link without reciting it in chat. Explain
-blockers, failed creation, incomplete verification, or irreversible confirmation.
-Name the next consumer. When none remains, the current consumer owns close.
+When an artifact is the deliverable, return its absolute link without reciting it. Explain blockers,
+failed creation, incomplete verification, or irreversible confirmation.
 
-When chat is the deliverable, render its structure. Use prose, headings, bold labels, lists, and
-tables. Never fence the whole report. Fence only literal code or untouched raw evidence. A brief
-summary may follow when it adds orientation without repeating the report.
+When chat is the deliverable, render it. Never fence the whole report. Add a brief summary only when
+it improves orientation without repetition.
 
 ## Close
 
 After the final consumer finishes and no downstream step needs a non-empty transient artifact set,
 require one human choice: Delete, Leave, or Promote. Include sidecars; exclude durable and
-repository-native inputs. Never choose from silence. Trash is still state.
-Delete selection confirms removal. Verify every selected path is absent; failure blocks close.
+repository-native inputs. Delete means verify every selected path is absent.

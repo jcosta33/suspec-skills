@@ -29,22 +29,23 @@ and re-run to re-fetch. Watch the
 - `promote` remains durable-only; it does not relocate files between transient roots.
 - Only `sus-*` artifact authors create artifacts. Universal methods return through chat, native
   memory, target edits, or durable relocation.
-- Descriptions use one discovery anatomy: job, positive trigger, real near misses. Bodies share one
-  ordered vocabulary and omit empty phases.
-- Standalone methods expose adjacent work in task language aligned with compatible descriptions,
-  without names or dependencies.
-- `fork-me` owns every ambiguity: three plain options by default, two when genuinely binary,
-  recommendation first, native picker or numbered text fallback, dependent work blocked until
-  selection.
+- Descriptions select by meaning: action, target, trigger, and nearest exclusions where needed. They
+  never self-name or carry procedure. No sentence count, stock order, or universal body shape
+  survives.
+- Static gates enforce static contracts. Behavioral cases cover activation, isolation, composition,
+  question handling, artifact ownership, and method regressions across supported harnesses.
+- Conditional procedures load from direct one-level bundled references. Every installed skill still
+  works alone.
+- `fork-me` owns every agent-originated question after facts and conventions are exhausted: three
+  options by default, two for a genuine binary, recommendation first, native picker or numbered text
+  fallback, and dependent work blocked until selection.
 - `revolver` derives the complete target-justified stance pool and resolves it sequentially without
   a numeric floor. `triple-check` runs three blind top-tier reviewers concurrently against one frozen
   snapshot, then reconciles and repairs once.
-- Every skill now uses ruthless, economical instructions: hard imperatives without filler, default
-  behavior, inert negatives, or duplicated mechanics.
+- Skills keep only execution-changing invariants, dangerous edges, contracts, stops, conditional
+  procedures, and demonstrated failure guards.
 - Structured chat renders as Markdown. Reports, tables, and prose handoffs never sit inside fences;
   fences remain for literal code, untouched raw evidence, and artifact templates.
-- Descriptions now contain selection metadata only: action, target, semantic triggers, and real near
-  misses. They never name themselves or leak body instructions.
 - Artifact skills stay checker-agnostic. Ambient MCP discovery or explicit user invocation reaches
   the optional deterministic checker without bloating method bodies.
 - Written specs use the `0.23.0` requirement shape. C028 enforces the three-item block; C004 requires

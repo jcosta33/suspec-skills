@@ -1,20 +1,19 @@
 # Activation
 
-A skill description spends context. Make it earn rent.
+A description is preload tax. Make it earn selection.
 
-Front-load the work. Harnesses preload descriptions, Codex may truncate them, and explicit invocation
-already solved discovery.
+Carry only:
 
-Use exactly three sentences:
+- the action and target;
+- the real trigger in task language; and
+- the nearest genuine exclusions when they prevent collision.
 
-1. Action and target.
-2. `Use when ...`, or `Use only when ...` for explicit-only work.
-3. `Do not use for ...`, or `Do not use as the owner of ...` when valid as subordinate work, with
-   genuine near misses.
+Use any sentence count that says this cleanly. Name the work, never the skill. Keep procedure,
+evidence, safety, output, and completion rules in the body.
 
-Name the work, never the skill. Keep procedure, sequencing, evidence, safety, output, and completion
-rules in the body. Delete `ALWAYS`, `Skip`, dead exclusions, and sibling names.
+Every agent-originated question is a selection job. Its owner must say that plainly enough to load
+before the agent asks. User-originated factual questions are answers, not selections.
 
-Test direct, implicit, near-miss, and wasteful-loading prompts on every harness-model combination you
-claim to support. Test intended semantic handoffs with the source skill explicit and the companion
-unnamed. Treat results as local evidence, not a law of language models.
+Test direct, implicit, near-miss, isolated, and intended-composition cases on every harness-model
+pair you claim to support. Record the exact harness, version, model, date, repetitions, trace, cost,
+and result. Local evidence is not a language-model law.

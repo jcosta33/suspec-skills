@@ -1,25 +1,22 @@
 # Self-containment
 
-Installed alone means working alone. Every skill must survive as the only installed Suspec skill.
+Installed alone means working alone.
 
-- Carry load-bearing instructions in its `SKILL.md` or bundled references.
+- Carry every load-bearing instruction in the skill directory.
 - Depend on no sibling, external decision record, shared boilerplate, repository file, alias, or
   hidden convention.
-- Route adjacent work by task type.
-- Use roles and absolute paths.
-- Keep references inside the skill directory and link them directly.
-- State placement and close only in artifact authors.
+- Use roles, task language, and absolute runtime paths.
+- Keep bundled references one level deep and link them directly from the body.
+- Give every reference an explicit load condition.
+- Keep placement and lifecycle rules inside artifact authors.
 
-Isolation test: copy one skill directory into an empty catalog, validate metadata and links, then run
-the method without any other Suspec content. A sibling dependency is a broken package boundary.
+Isolation proof installs one skill into an empty catalog, validates metadata and links, then executes
+its direct and near-miss cases without other Suspec content.
 
 ## Semantic composition
 
-State adjacent work in task language that remains useful alone and matches another description when
-that capability is installed. Never name, require, or assume the companion.
+State adjacent work in language that remains executable alone and can match another installed
+description. Never name, require, or assume the companion.
 
-Example: a campaign may require `exhaustive multi-angle review and sequential repair across a fixed
-target-justified stance pool`. The job stands alone; an installed matching capability may load.
-
-Test each skill alone and beside every intended companion. Reject accidental activation, circular
-handoffs, and wording added only to game selection.
+Test each intended handoff alone and together. Reject accidental activation, circular routing, and
+phrasing added only to game selection.

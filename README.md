@@ -26,7 +26,7 @@ cancel on mismatch. Remove a retired entry only after the same comparison. Name 
 | [`demolition`](./skills/demolition/SKILL.md)     | run quarantined one-sided advocacy               |
 | [`dissect`](./skills/dissect/SKILL.md)           | trace a code path and coupling to closure        |
 | [`disrespec`](./skills/disrespec/SKILL.md)       | remove wasted prose                              |
-| [`fork-me`](./skills/fork-me/SKILL.md)           | force ambiguity into human selection             |
+| [`fork-me`](./skills/fork-me/SKILL.md)           | structure every agent-originated question        |
 | [`revolver`](./skills/revolver/SKILL.md)         | exhaust broad risk through sequential refinement |
 | [`triple-check`](./skills/triple-check/SKILL.md) | run three concurrent top-tier reviews            |
 | [`promote`](./skills/promote/SKILL.md)           | move a transient artifact into project ownership |

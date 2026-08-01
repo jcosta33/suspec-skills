@@ -6,11 +6,12 @@ This repository owns:
   promotion, and memory methods;
 - authors for Suspec artifact types;
 - references required by one skill;
-- catalog design evidence.
+- catalog design evidence; and
+- catalog behavior cases and sanitized evaluation results.
 
 It does not own implementation, debugging, testing, security, Git hosting, documentation, custom
 agents, orchestration runtimes, project policy, runtime checks, MCP, storage, registries, cleanup,
-hooks, executables, or network clients.
+hooks, model services, or network clients.
 
-The catalog conditions agents. Project governance and native harness features stay authoritative; the
-catalog does not impersonate either one or a runtime.
+The catalog conditions agents. Project governance and native harness features stay authoritative.
+Evaluation observes them; it does not replace them.
