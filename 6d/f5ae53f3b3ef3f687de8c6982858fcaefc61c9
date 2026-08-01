@@ -1,0 +1,33 @@
+docs/README.md
+  s_66d4924c65dcd2::t_2a6c1c96206cdf 3,5-14
+docs/activation.md
+  s_66d4924c65dcd2::t_e41fd93e07424f 3,5,7-9,11-12,14-15,17-19
+docs/body-anatomy.md
+  s_66d4924c65dcd2::t_1f2611797e2089 3-29
+docs/execution.md
+  s_66d4924c65dcd2::t_9f4684ae5bf072 3,5-8,10-15,24-25,29-30,32-33,39
+docs/scope.md
+  s_66d4924c65dcd2::t_1d484c4bb8bc71 9-10,14,16-17
+docs/self-containment.md
+  s_66d4924c65dcd2::t_61fa948857a529 3,5,8-11,13-14,18-19,21-22
+docs/skill-existence-test.md
+  s_66d4924c65dcd2::t_3d8866649d84d3 3-5,7-22,24-25,27-28
+scripts/test-lint-current.sh
+  s_66d4924c65dcd2::t_bdacefae5797d8 1-83
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.19",
+  "base_commit_sha": "6df5ae53f3b3ef3f687de8c6982858fcaefc61c9",
+  "prompts": {},
+  "sessions": {
+    "s_66d4924c65dcd2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dad7ceb6-cb31-44b9-91db-bb71a71cbc38",
+        "model": "claude-opus-5"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
