@@ -1,0 +1,64 @@
+skills/campaign/references/delivery-lanes.md
+  s_0a3429e31e555d::t_2a39c3e0ba7806 12-20,22,24-25,37-38
+skills/sus-review/SKILL.md
+  s_0a3429e31e555d::t_7bd95c82513536 10-13,96-97
+scripts/test-lint-current.sh
+  s_0a3429e31e555d::t_4cd61f027744e5 11,76
+docs/sources.md
+  s_0a3429e31e555d::t_14b3fc02a42355 11-12
+  s_0a3429e31e555d::t_4cd61f027744e5 169-188
+skills/sus-task/SKILL.md
+  s_0a3429e31e555d::t_2a39c3e0ba7806 39-42
+  s_0a3429e31e555d::t_7bd95c82513536 18-21
+skills/remember/SKILL.md
+  s_0a3429e31e555d::t_7bd95c82513536 10-13
+skills/sus-change-plan/SKILL.md
+  s_0a3429e31e555d::t_7bd95c82513536 10-13
+CHANGELOG.md
+  s_0a3429e31e555d::t_4cd61f027744e5 35-36,42-46
+skills/campaign/SKILL.md
+  s_0a3429e31e555d::t_2a39c3e0ba7806 10-11,15-18,44-45
+skills/campaign/references/pull-requests-review-and-merge.md
+  s_0a3429e31e555d::t_2a39c3e0ba7806 3-12,53-54,68-69
+docs/self-containment.md
+  s_0a3429e31e555d::t_14b3fc02a42355 13-14,21-22
+skills/promote/SKILL.md
+  s_0a3429e31e555d::t_7bd95c82513536 10-13
+docs/activation.md
+  s_0a3429e31e555d::t_4cd61f027744e5 17-18
+skills/sus-task/references/task-packet.md
+  s_0a3429e31e555d::t_2a39c3e0ba7806 24-34,82-83,123
+docs/scope.md
+  s_0a3429e31e555d::t_14b3fc02a42355 10
+skills/sus-inventory/SKILL.md
+  s_0a3429e31e555d::t_7bd95c82513536 10-13
+scripts/lint-current.sh
+  s_0a3429e31e555d::t_4cd61f027744e5 248,461,475
+docs/skill-existence-test.md
+  s_0a3429e31e555d::t_4cd61f027744e5 27
+skills/sus-audit/SKILL.md
+  s_0a3429e31e555d::t_7bd95c82513536 10-13
+skills/fork-me/SKILL.md
+  s_0a3429e31e555d::t_2a39c3e0ba7806 3,8,11-15,17-18
+skills/sus-research/SKILL.md
+  s_0a3429e31e555d::t_7bd95c82513536 10-13
+skills/sus-spec/SKILL.md
+  s_0a3429e31e555d::t_7bd95c82513536 18-21,28-29
+  s_0a3429e31e555d::t_2a39c3e0ba7806 3,27,30-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "e70155ec82806c506439b7534b9a6c58848039bc",
+  "prompts": {},
+  "sessions": {
+    "s_0a3429e31e555d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1568-8dda-7540-97a5-9da760eadac4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
