@@ -41,6 +41,13 @@ expect_failure() {
     missing-frontmatter)
       rewrite_without 'type: spec' "$fixture/skills/sus-spec/SKILL.md"
       ;;
+    invalid-description-yaml)
+      awk '
+        /^description:/ { print "description: Invalid: YAML"; next }
+        { print }
+      ' "$fixture/skills/fork-me/SKILL.md" > "$fixture/skills/fork-me/SKILL.md.tmp"
+      mv "$fixture/skills/fork-me/SKILL.md.tmp" "$fixture/skills/fork-me/SKILL.md"
+      ;;
     fenced-chat)
       awk '
         { print }
@@ -73,7 +80,7 @@ expect_failure() {
 }
 
 for mutation in missing-skill non-markdown-payload escaping-link artifact-leak missing-frontmatter \
-  fenced-chat stale-name broken-link symlink quarantine-drift; do
+  invalid-description-yaml fenced-chat stale-name broken-link symlink quarantine-drift; do
   expect_failure "$mutation"
 done
 

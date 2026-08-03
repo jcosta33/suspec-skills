@@ -87,7 +87,7 @@ validate_skill_frontmatter() {
         sub(/[[:space:]]+#.*/, "", value)
         gsub(/^[[:space:]]+|[[:space:]]+$/, "", value)
         lower = tolower(value)
-        if (length(value) > 1024 || value !~ /^[[:alpha:]]/ || lower ~ /^(null|true|false|yes|no|on|off)$/) exit 1
+        if (length(value) > 1024 || value !~ /^[[:alpha:]]/ || value ~ /:[[:space:]]/ || lower ~ /^(null|true|false|yes|no|on|off)$/) exit 1
         descriptions += 1
         next
       }

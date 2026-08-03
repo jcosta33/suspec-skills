@@ -31,7 +31,7 @@ and re-run to re-fetch. Watch the
   memory, target edits, or durable relocation.
 - Descriptions select by meaning: action, target, trigger, and nearest exclusions where needed. They
   never self-name or carry procedure. No sentence count, stock order, or universal body shape
-  survives.
+  survives. Plain scalars that YAML would split at an unquoted colon are rejected.
 - Static gates enforce static contracts. Skill behavior changes only after a witnessed Suspec
   failure or bounded external finding; synthetic prompt matrices are gone.
 - Conditional procedures load from direct one-level bundled references. Every installed skill still
