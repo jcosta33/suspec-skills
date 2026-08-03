@@ -8,7 +8,7 @@ trap 'rm -rf "$TMP"' EXIT HUP INT TERM
 copy_repo() {
   target=$1
   mkdir -p "$target"
-  for path in README.md AGENTS.md CHANGELOG.md docs skills scripts evals .github; do
+  for path in README.md AGENTS.md CHANGELOG.md docs skills scripts .github; do
     test ! -e "$ROOT/$path" || cp -R "$ROOT/$path" "$target/$path"
   done
 }
@@ -60,9 +60,6 @@ expect_failure() {
     quarantine-drift)
       rewrite_without '`Advocacy exercise, not evidence.`' "$fixture/skills/demolition/SKILL.md"
       ;;
-    invalid-eval)
-      printf '\n' >> "$fixture/evals/cases.tsv"
-      ;;
     *)
       echo "unknown mutation: $mutation" >&2
       exit 1
@@ -76,7 +73,7 @@ expect_failure() {
 }
 
 for mutation in missing-skill non-markdown-payload escaping-link artifact-leak missing-frontmatter \
-  fenced-chat stale-name broken-link symlink quarantine-drift invalid-eval; do
+  fenced-chat stale-name broken-link symlink quarantine-drift; do
   expect_failure "$mutation"
 done
 

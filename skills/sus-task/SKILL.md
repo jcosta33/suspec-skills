@@ -15,6 +15,10 @@ workflow.
 Require exactly `status: ready`. Read the spec and every named source. A change plan may add wave
 context; it cannot replace the spec. Any blocking decision kills dispatch.
 
+Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
+Put the recommendation first, offer three genuine options by default or two when binary, and state
+one plain reason and cost each.
+
 Use task packets only for:
 
 - independently dispatchable parallel slices;
@@ -32,9 +36,10 @@ Size proves nothing. One source and one implementer earn no packet.
    packet. Name the source spec and include its ID
    in `source`; add a change-plan ID only when used. Keep preservation IDs in `## Preservation scope`,
    never frontmatter `scope`. Stamp the source state identifier. Re-cut after a material source change.
-4. Give each packet one concern, exact scope, frozen boundaries, affected write areas,
-   one Verify entry per requirement and preservation guarantee, and agent instructions. `## Verify`
-   is the only home for pasted evidence;
+4. Give each packet one concern, exact scope, frozen boundaries, affected write areas, the strongest
+   available acceptance oracle, one Verify entry per requirement and preservation guarantee, and
+   agent instructions. For defective behavior, include the original-state failing command, expected
+   reason, state, and decisive output. `## Verify` is the only home for final pasted evidence;
    `## Run summary` cites those entries without duplicating output.
 5. Compare every pair of affected areas. Unknown scope conflicts with everything.
 6. Parallelize only when neither packet depends on the other, reads or writes the other's files,

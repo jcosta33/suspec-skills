@@ -11,4 +11,3 @@ A bigger catalog is not a better catalog. These rules decide what earns context 
 | [Existence test](skill-existence-test.md) | distinct utility |
 | [Scope](scope.md) | repository boundaries |
 | [Sources](sources.md) | evidence, limits, and maintenance |
-| [Evaluations](../evals/README.md) | observable catalog behavior |

@@ -10,13 +10,13 @@ Installed alone means working alone.
 - Give every reference an explicit load condition.
 - Keep placement and lifecycle rules inside artifact authors.
 
-Isolation proof installs one skill into an empty catalog, validates metadata and links, then executes
-its direct and near-miss cases without other Suspec content.
+Isolation proof installs one skill into an empty catalog and validates metadata, links, payload, and
+standalone procedure without other Suspec content.
 
 ## Semantic composition
 
 State adjacent work in language that remains executable alone and can match another installed
 description. Never name, require, or assume the companion.
 
-Test each intended handoff alone and together. Reject accidental activation, circular routing, and
-phrasing added only to game selection.
+Keep each handoff useful with either skill absent. Reject circular routing and phrasing added only to
+game selection.

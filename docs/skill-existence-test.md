@@ -24,5 +24,4 @@ familiar work unless Suspec adds a unique contract.
 | `sus-audit` | present risk mixes with unsupported prescription |
 | `sus-research` | sources exceed competence and uncertainty becomes decision |
 
-Re-run direct, near-miss, isolated, and method-regression cases when a skill overlaps, becomes native,
-or loses its distinct failure.
+Reconsider a skill when real work shows overlap, native replacement, or loss of its distinct failure.

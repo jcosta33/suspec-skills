@@ -7,6 +7,10 @@ description: Plan structural change while preserving behavior. Use when a refact
 
 Unproven preservation is accidental destruction.
 
+Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
+Put the recommendation first, offer three genuine options by default or two when binary, and state
+one plain reason and cost each.
+
 ## Method
 
 Enter on explicit plan request or after the human selects a Suspec change-plan workflow.

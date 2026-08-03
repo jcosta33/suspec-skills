@@ -1,5 +1,15 @@
 # Pull requests, review, and merge
 
+## Oracle
+
+1. Define the highest-fidelity observable check before changing behavior when one can be known.
+2. For a bug, reproduce the original failure and expected reason before editing.
+3. Trust a new regression test only when it fails on the original defect, passes on the repair,
+   exercises production behavior, and invents no requirement. Never weaken an oracle to admit a
+   patch.
+4. Carry command, working directory, commit, environment when material, exit status, and decisive
+   output. Re-run after relevant code, input, environment, command, or requirement changes.
+
 ## Pull requests
 
 1. Keep one independently reviewable concern per pull request and merge in dependency order. Split
@@ -40,7 +50,8 @@
 9. Send the owner thread links. The owner fixes, pushes, and replies once:
    `Fixed in <sha>. <decisive proof>.`
    A disagreement gets one evidence-backed reason. Verify current head, rerun proof, and resolve.
-   Post no completion recap.
+   Re-review the finding and corrective diff. Restart broad inspection only when the repair changes a
+   contract, trust boundary, failure mode, or requirement. Post no completion recap.
 10. Start the next stance only after every current item resolves. Review the new head.
 11. Finish the pool once. Run no quiet rotation or ceremonial pass.
 
@@ -54,5 +65,5 @@
    explicit blockers. Rerun affected checks and review.
 4. Follow project merge strategy. Fold fixup-only commits when policy allows.
 5. Recycle a lane only after merge or closure and a clean worktree.
-6. Delete merged branches and remove clean worktrees without force only under explicit human or
-   project-policy authority at campaign shutdown.
+6. Delete merged branches and remove only campaign-created clean worktrees without force under
+   project or human authority. Preserve foreign, unknown, and dirty lanes.

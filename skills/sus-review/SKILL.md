@@ -7,6 +7,10 @@ description: Review finished work against its governing Suspec spec, narrowed by
 
 Evidence judges conformance. Humans judge acceptance.
 
+Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
+Put the recommendation first, offer three genuine options by default or two when binary, and state
+one plain reason and cost each.
+
 ## Method
 
 - Freeze target state and absolute governing paths.
@@ -89,7 +93,8 @@ After assessment, present a state-aware native picker:
 - Any other unresolved material finding: Accept with a named risk decision, Request changes, or
   Defer. Never offer plain Accept. Preservation findings never enter this branch.
 
-If the picker is unavailable, leave `decision: pending` and report the capability blocker.
+Without a picker, render the same numbered choices plus `Other`. Keep `decision: pending` until the
+human selects a valid review state.
 Only human selection changes `decision` to `accepted`, `changes-requested`, or `deferred`.
 Add `waivers` only when the human explicitly accepts while waiving named unsupported or unverified
 IDs. `waivers` is an optional string list such as `waivers: [AC-002]`; never write it as a scalar.

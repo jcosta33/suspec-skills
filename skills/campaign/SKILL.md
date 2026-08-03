@@ -7,13 +7,15 @@ description: Orchestrate multi-pull-request software delivery across reusable wo
 
 Project systems own history. Owners own code. The orchestrator owns flow.
 
-1. Read project governance, governing requirements, dependency state, branch protection, CI, and
-   release constraints.
+1. Read project governance, governing requirements, dependency state, branch protection, CI,
+   release constraints, current worktree, and existing native worktrees.
 2. Create or select one project-native issue or issue-backed epic as the ledger.
 3. Prove write-disjoint, dependency-ready parallelism. Sequence shared contracts, generated
    surfaces, unknown scope, and overlapping files.
-4. Exhaust discoverable facts and reversible conventions. If any agent-originated question remains,
-   require explicit human selection before dependent work.
+4. Exhaust discoverable facts and reversible conventions. If any user response remains required,
+   stop dependent work and use the native picker: recommendation first, three genuine options by
+   default, two when binary, plain tradeoffs, and `Other`. Without a picker, render numbered choices
+   plus `Other`.
 5. Before allocating worktrees or dispatching implementation, load
    [Delivery lanes](./references/delivery-lanes.md).
 6. Before selecting a model, load [Model routing](./references/model-routing.md).
@@ -39,4 +41,5 @@ Implementation owners edit and repair. Humans and project policy own material de
 irreversible actions, acceptance, and merge authority.
 
 Separate worktrees, fresh reviewers, repository-native pull-request discussion, and deterministic
-checks are mandatory. Missing capability stops the campaign.
+checks are mandatory. Implementation on `main` requires project or human authority. Missing
+capability stops the campaign.

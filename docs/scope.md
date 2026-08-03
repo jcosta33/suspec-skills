@@ -7,11 +7,10 @@ This repository owns:
 - authors for Suspec artifact types;
 - references required by one skill;
 - catalog design evidence; and
-- catalog behavior cases and sanitized evaluation results.
+- witnessed Suspec failures that justify behavioral control.
 
 It does not own implementation, debugging, testing, security, Git hosting, documentation, custom
 agents, orchestration runtimes, project policy, runtime checks, MCP, storage, registries, cleanup,
 hooks, model services, or network clients.
 
 The catalog conditions agents. Project governance and native harness features stay authoritative.
-Evaluation observes them; it does not replace them.

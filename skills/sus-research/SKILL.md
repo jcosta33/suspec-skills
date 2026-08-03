@@ -7,6 +7,10 @@ description: Research a decision until evidence can carry it. Use when comparing
 
 One question. Fit evidence. Zero counterfeit certainty.
 
+Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
+Put the recommendation first, offer three genuine options by default or two when binary, and state
+one plain reason and cost each.
+
 ## Method
 
 Lock the decision, audience or segment, scope, time horizon, and reversal evidence. Map options and

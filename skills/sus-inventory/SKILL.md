@@ -7,6 +7,10 @@ description: Map an unfamiliar or change-critical code area as durable current s
 
 Map reality. Invent nothing. Prescribe nothing.
 
+Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
+Put the recommendation first, offer three genuine options by default or two when binary, and state
+one plain reason and cost each.
+
 ## Method
 
 Enter on explicit inventory request or after the human selects a Suspec inventory workflow for a

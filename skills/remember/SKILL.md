@@ -7,6 +7,10 @@ description: Preserve verified lessons after work settles. Use when a lesson mus
 
 Save signal. Burn residue.
 
+Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
+Put the recommendation first, offer three genuine options by default or two when binary, and state
+one plain reason and cost each.
+
 ## Method
 
 1. Classify each candidate as ephemeral, personal durable, team durable, or severe.

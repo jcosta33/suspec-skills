@@ -7,6 +7,10 @@ description: Audit present code against direct evidence. Use when running debt s
 
 Observe. Prove. Prescribe nothing.
 
+Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
+Put the recommendation first, offer three genuine options by default or two when binary, and state
+one plain reason and cost each.
+
 ## Method
 
 1. Lock the goal, surface, and exclusions.

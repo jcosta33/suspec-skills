@@ -32,13 +32,18 @@ and re-run to re-fetch. Watch the
 - Descriptions select by meaning: action, target, trigger, and nearest exclusions where needed. They
   never self-name or carry procedure. No sentence count, stock order, or universal body shape
   survives.
-- Static gates enforce static contracts. Behavioral cases cover activation, isolation, composition,
-  question handling, artifact ownership, and method regressions across supported harnesses.
+- Static gates enforce static contracts. Skill behavior changes only after a witnessed Suspec
+  failure or bounded external finding; synthetic prompt matrices are gone.
 - Conditional procedures load from direct one-level bundled references. Every installed skill still
   works alone.
 - `fork-me` owns every agent-originated question after facts and conventions are exhausted: three
   options by default, two for a genuine binary, recommendation first, native picker or numbered text
   fallback, and dependent work blocked until selection.
+- `sus-spec` resolves consequential design approaches before requirements. Clear reversible work
+  stays direct.
+- `campaign` detects native worktrees, requires main-branch authority, records lane provenance,
+  preserves foreign lanes, and carries an executable acceptance oracle through implementation and
+  scoped re-review.
 - `revolver` derives the complete target-justified stance pool and resolves it sequentially without
   a numeric floor. `triple-check` runs three blind top-tier reviewers concurrently against one frozen
   snapshot, then reconciles and repairs once.

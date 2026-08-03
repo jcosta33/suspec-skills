@@ -21,6 +21,17 @@ status: ready
 Copy every scoped requirement block and its `Verify with:` line verbatim. The spec remains canonical; a change plan supplies only
 additional source and wave context. Re-cut this packet after a material source change.
 
+### Acceptance oracle
+
+- Check: `{{highest-fidelity observable command or procedure}}`
+- Expected behavior: {{approved acceptance condition}}
+- Original state: `{{commit or stable snapshot}}`
+- Baseline failure: {{command, numeric exit status, and decisive output; use n/a when no defect is being repaired}}
+
+Do not weaken, replace, or delete this oracle to admit the patch. A new regression test must fail for
+the expected reason on the original state, pass on the repair, exercise production behavior, and
+invent no requirement.
+
 ## Scope
 
 List assigned requirement IDs only. The snapshot above owns their text.
@@ -68,6 +79,8 @@ Repeat for every assigned requirement and preservation guarantee.
 - Before editing or changing status, compare source IDs, source state, requirement snapshots, scope,
   and preservation guarantees against current sources. Any mismatch blocks dispatch and requires a
   re-cut packet.
+- Before repairing defective behavior, reproduce the recorded baseline failure on the original
+  state. A different result blocks implementation.
 - Stop on conflict, ambiguity, or pressure to cross Scope or Do Not Change.
 - Put each final Verify command, numeric exit status, and fenced decisive raw output under its
   `## Verify` entry, or record `CI: https://...` or a justified `n/a` there.
@@ -107,5 +120,6 @@ Repeat for every assigned requirement and preservation guarantee.
 
 - [ ] Every changed file is in Affected Areas or listed as an exception.
 - [ ] Every scoped requirement and preservation ID has fresh final evidence.
+- [ ] The acceptance oracle remained authoritative and the original failure was reproduced when required.
 - [ ] Findings and blockers are recorded.
 - [ ] No self-assessment or acceptance was issued.

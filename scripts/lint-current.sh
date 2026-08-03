@@ -236,10 +236,6 @@ test "$actual_docs" = "$expected_docs" || {
   exit 1
 }
 
-for path in "$ROOT/evals/README.md" "$ROOT/evals/cases.tsv" "$ROOT/evals/results/README.md"; do
-  test -f "$path" || { echo "evaluation surface missing: $path" >&2; exit 1; }
-done
-
 if find "$ROOT/skills" -type f ! -name '*.md' | grep -q .; then
   echo "skill payload contains a non-Markdown file" >&2
   exit 1
@@ -249,7 +245,7 @@ if find "$ROOT/skills" -type l | grep -q .; then
   exit 1
 fi
 
-for document in "$ROOT/README.md" "$ROOT/AGENTS.md" $(find "$ROOT/docs" "$ROOT/skills" "$ROOT/evals" -type f -name '*.md'); do
+for document in "$ROOT/README.md" "$ROOT/AGENTS.md" $(find "$ROOT/docs" "$ROOT/skills" -type f -name '*.md'); do
   validate_link_syntax "$document" || exit 1
   directory=$(dirname "$document")
   relative_links < "$document" | while IFS= read -r ref; do
@@ -462,7 +458,7 @@ for literal in 'type: change-plan' 'preserves:' 'Baseline' 'Target' 'Preservatio
 done
 
 stale='concise-output|revolver-review|codebase-exploration|promote-artifact|save-findings|empirical-proof|implement-task|market-research|planning-spec|write-spec|spec-check|split-work|review-output|security-review|fix-flaky-test|git-pr|write-audit|write-bug-report|write-change-plan|write-documentation|write-feature|write-fix|write-inventory|write-migration|write-performance|write-prd|write-refactor|write-research|write-rewrite|write-rfc|write-testing'
-if grep -RniE "(^|[^[:alnum:]-])($stale)([^[:alnum:]-]|$)" "$ROOT/README.md" "$ROOT/AGENTS.md" "$ROOT/.github" "$ROOT/docs" "$ROOT/skills" "$ROOT/evals"; then
+if grep -RniE "(^|[^[:alnum:]-])($stale)([^[:alnum:]-]|$)" "$ROOT/README.md" "$ROOT/AGENTS.md" "$ROOT/.github" "$ROOT/docs" "$ROOT/skills"; then
   echo "stale current method name" >&2
   exit 1
 fi
@@ -476,10 +472,9 @@ if printf '%s\n' "$unreleased" | grep -Ei 'suspec-agents|canonical agent|Codex p
   echo "retired custom-agent guidance in current changelog" >&2
   exit 1
 fi
-if grep -RniE 'suspec-agents|canonical agent|Codex projection|agents/suspec-' "$ROOT/README.md" "$ROOT/AGENTS.md" "$ROOT/.github" "$ROOT/docs" "$ROOT/skills" "$ROOT/evals"; then
+if grep -RniE 'suspec-agents|canonical agent|Codex projection|agents/suspec-' "$ROOT/README.md" "$ROOT/AGENTS.md" "$ROOT/.github" "$ROOT/docs" "$ROOT/skills"; then
   echo "retired custom-agent guidance survives" >&2
   exit 1
 fi
 
-sh "$ROOT/scripts/lint-evals.sh" "$ROOT"
 echo "lint-current: OK"

@@ -21,7 +21,6 @@ siblings is broken.
 ## Verify
 
 ```bash
-sh scripts/lint-evals.sh
 sh scripts/lint-current.sh
 sh scripts/test-lint-current.sh
 sh scripts/lint-released-changelog.sh

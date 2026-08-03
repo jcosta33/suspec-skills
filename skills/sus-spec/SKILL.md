@@ -1,6 +1,6 @@
 ---
 name: sus-spec
-description: Write, revise, or structurally check a verifiable Suspec spec. Use when intent must become requirements or acceptance criteria, or unresolved behavior blocks implementation. Do not use for direct implementation, small clear work, factual verification, or implementation design.
+description: Write, revise, or structurally check a verifiable Suspec spec. Use when intent or consequential open behavior must become requirements and acceptance criteria before implementation. Do not use for direct implementation, small clear work, factual verification, or detailed implementation planning.
 ---
 
 # Sus Spec
@@ -15,14 +15,20 @@ Direct implementation does not earn a spec.
 Keep trivial work as one inline intent sentence when no written contract would change execution or
 review. Write no file.
 
+Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
+Put the recommendation first, offer three genuine options by default or two when binary, and state
+one plain reason and cost each.
+
 Before writing:
 
 1. Read project rules, current code, durable decisions, related artifacts, and open issues.
 2. Lock goal, audience, success, boundary, and sources.
 3. Burn down facts. When a decision lacks evidence, research it until evidence can carry it.
-4. Force material ambiguity into explicit human selection.
-5. Resolve reversible conventions. Freeze on material behavior, public contracts, security,
-   costly tradeoffs, conflicting authority, and irreversible actions.
+4. Resolve reversible conventions.
+5. When consequential behavior remains open, present distinct viable approaches and resolve
+   dependent choices in order.
+6. Convert selected behavior into intent and executable requirements. Freeze on material behavior,
+   public contracts, security, costly tradeoffs, conflicting authority, and irreversible actions.
 
 Every unresolved choice keeps `status: draft` and blocks dependent work.
 

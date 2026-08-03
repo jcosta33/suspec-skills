@@ -9,16 +9,20 @@
 
 ## Pool
 
-1. Size one global lane budget from proven independent width, machine capacity, CI throughput, and
-   reviewer capacity. Partition fixed pools by repository.
-2. Create each worktree once at a stable path. Keep one active branch and one implementation owner
-   per lane. Repartition only when dependency topology changes; retire one lane before creating its
-   replacement.
-3. Reuse a lane only after tracked and untracked state is empty. Fetch, detach at the accepted remote
+1. Inspect the current path, branch, tracked and untracked state, and `git worktree list`. Classify
+   every existing lane by path, branch, origin, owner, and state. Never nest or duplicate a suitable
+   native lane.
+2. Size one global lane budget from proven independent width, machine capacity, CI throughput, and
+   reviewer capacity. Partition fixed pools by repository. When cost or count is material, present
+   the recommendation and genuine alternatives for human selection.
+3. Reuse suitable project or harness lanes. Create each campaign lane once at a stable path. Keep one
+   active branch and one implementation owner per lane. Record its provenance in the ledger.
+4. Reuse a lane only after tracked and untracked state is empty. Fetch, detach at the accepted remote
    base, then create the next branch.
-4. Reuse ignored dependencies only while lockfile and toolchain identities match. Refresh on change.
+5. Reuse ignored dependencies only while lockfile and toolchain identities match. Refresh on change.
    Force-clean nothing.
-5. One branch and worktree have one writer.
+6. One branch and worktree have one writer. Implementation on `main` requires project or human
+   authority.
 
 ## Dispatch
 
@@ -30,3 +34,5 @@
 4. The owner edits, tests, commits, pushes, and repairs review. The orchestrator tracks dependencies,
    evidence, CI, and ownership; it never hijacks the owner's branch.
 5. Record blockers on the pull request or ledger. Resolve, replace the owner, or stop dependent work.
+6. Clean only campaign-created lanes, after merge or closure, under project or human authority.
+   Preserve dirty, unknown, and externally owned worktrees.

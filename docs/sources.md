@@ -8,8 +8,8 @@ Primary and official sources outrank summaries. A source supports only claims in
 - State what each source supports and where its authority ends.
 - Lead with primary research, specifications, and official vendor documentation.
 - Label secondary and practitioner material as bounded hypotheses.
-- Record harness, model, version, and date for local activation or composition evidence. Never
-  generalize one setup into a portable guarantee.
+- Bound field reports by harness, model, version, and date. Never generalize one setup into a
+  portable guarantee.
 - Remove a source when its claim leaves or the source no longer supports it.
 
 ## Skill Format And Context Economy
@@ -166,6 +166,26 @@ Primary and official sources outrank summaries. A source supports only claims in
   orchestrator-worker pattern, explicit delegation, parallel boundaries, coordination failure, and
   the steep token cost of multi-agent work.
   <https://www.anthropic.com/engineering/built-multi-agent-research-system>
+- **Superpowers repository and release notes.** First-party practice reports on design alignment,
+  project worktrees, compact dispatch, bounded review, scoped re-review, falsifiable tests, and
+  removal of recap prose. Useful implementation evidence; not a controlled external study.
+  <https://github.com/obra/superpowers>
+  <https://github.com/obra/superpowers/blob/main/RELEASE-NOTES.md>
+- **Realizing quality improvement through test driven development.** Nagappan et al., Empirical
+  Software Engineering 2008. Four industrial teams reported lower defect density with higher initial
+  development time; small observational cases do not establish a universal procedure.
+  <https://www.microsoft.com/en-us/research/wp-content/uploads/2009/10/Realizing-Quality-Improvement-Through-Test-Driven-Development-Results-and-Experiences-of-Four-Industrial-Teams-nagappan_tdd.pdf>
+- **SWT-Bench.** Mündler et al., NeurIPS 2024. Distinguishes fail-before/pass-after bug reproduction
+  tests from irrelevant or merely covering generated tests.
+  <https://proceedings.neurips.cc/paper_files/paper/2024/hash/94f093b41fc2666376fb1f667fe282f3-Abstract-Conference.html>
+- **TDFlow.** Han et al., EACL 2026. Reports 94.3% on SWE-Bench Verified with human-written tests and
+  68.0% with generated tests; oracle generation, not test execution, was the bottleneck. The setup
+  exposes tests unavailable in ordinary issue resolution.
+  <https://aclanthology.org/2026.eacl-long.70/>
+- **Rethinking the Value of Agent-Generated Tests.** Chen et al., arXiv:2602.07900. A six-model
+  observational study and four-model prompt intervention found more generated tests did not
+  significantly change final outcomes. Preliminary.
+  <https://arxiv.org/abs/2602.07900>
 - **FrugalGPT.** Chen, Zaharia, and Zou. Treats model cascades as a cost-quality routing problem.
   <https://arxiv.org/abs/2305.05176>
 - **RouteLLM.** Ong et al. Evaluates learned routing between weaker and stronger models.
