@@ -1,0 +1,25 @@
+scripts/lint-current.sh
+  s_0a3429e31e555d::t_67be8a926a6a4f 90
+scripts/test-lint-current.sh
+  s_0a3429e31e555d::t_67be8a926a6a4f 44-50,83
+CHANGELOG.md
+  s_0a3429e31e555d::t_6d982894a8fe97 34
+skills/fork-me/SKILL.md
+  s_0a3429e31e555d::t_67be8a926a6a4f 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "b99897b7b6d6f41311a17ae3a758863d60ddfafc",
+  "prompts": {},
+  "sessions": {
+    "s_0a3429e31e555d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1568-8dda-7540-97a5-9da760eadac4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
