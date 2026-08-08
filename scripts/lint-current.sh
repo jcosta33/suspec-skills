@@ -483,11 +483,11 @@ if printf '%s\n' "$unreleased" | grep -Ei "(^|[^[:alnum:]-])($stale)([^[:alnum:]
   exit 1
 fi
 if printf '%s\n' "$unreleased" | grep -Ei 'suspec-agents|canonical agent|Codex projection|agents/suspec-'; then
-  echo "retired custom-agent guidance in current changelog" >&2
+  echo "forbidden custom-agent guidance in current changelog" >&2
   exit 1
 fi
 if grep -RniE 'suspec-agents|canonical agent|Codex projection|agents/suspec-' "$ROOT/README.md" "$ROOT/AGENTS.md" "$ROOT/.github" "$ROOT/docs" "$ROOT/skills"; then
-  echo "retired custom-agent guidance survives" >&2
+  echo "forbidden custom-agent guidance survives" >&2
   exit 1
 fi
 

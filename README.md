@@ -15,7 +15,8 @@ npx skills add https://github.com/jcosta33/suspec-skills/tree/<commit> -g -a cod
 
 The last form pins a commit. Re-running `add` updates present entries but does not prune removed
 names. Inspect `overwrites:` before confirming. Compare any existing folder with the source tree;
-cancel on mismatch. Remove a retired entry only after the same comparison. Name alone proves nothing.
+cancel on mismatch. Remove an installed entry absent from the source only after the same comparison.
+Name alone proves nothing.
 
 This installs workflows, not Suspec's optional global economy policy. The unpublished CLI owns that
 explicit setup.
