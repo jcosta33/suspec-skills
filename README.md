@@ -17,6 +17,9 @@ The last form pins a commit. Re-running `add` updates present entries but does n
 names. Inspect `overwrites:` before confirming. Compare any existing folder with the source tree;
 cancel on mismatch. Remove a retired entry only after the same comparison. Name alone proves nothing.
 
+This installs workflows, not Suspec's optional global economy policy. The unpublished CLI owns that
+explicit setup.
+
 ## Universal methods
 
 | Skill                                            | Use                                              |
@@ -45,8 +48,8 @@ cancel on mismatch. Remove a retired entry only after the same comparison. Name 
 | [`sus-research`](./skills/sus-research/SKILL.md)       | decision-informing evidence                |
 
 Only `sus-*` skills create Suspec artifacts. Universal methods do work, not paperwork. Artifact
-authors use absolute paths under
-`~/.agents/artifacts/<workspace>/` and close exhausted sets through Delete, Leave, or Promote.
+authors write under `~/.agents/artifacts/<workspace>/`, hand off clickable links with absolute
+destinations, and close exhausted sets through Delete, Leave, or Promote.
 
 Each skill carries its own load-bearing rules. Agents assess and recommend; humans own intent,
 waivers, irreversible actions, and acceptance. Catalog design and evidence live under

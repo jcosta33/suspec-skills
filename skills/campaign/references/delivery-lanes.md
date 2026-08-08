@@ -29,10 +29,12 @@
 1. Schedule only dependency-ready, write-disjoint work.
 2. Give the owner objective, ledger, repository, lane, branch, scope, exclusions, dependencies,
    acceptance conditions, checks, and pull-request policy.
-3. Reassign an abandoned lane only after the prior owner stops and the branch head remains expected.
+3. Require only status, changed paths, branch, pull request, head, decisive checks, and blockers in
+   the owner's return. No progress diary or recap; the ledger and pull request own history.
+4. Reassign an abandoned lane only after the prior owner stops and the branch head remains expected.
    Hand over lane, branch, pull request, head, checks, unresolved comments, and blocker.
-4. The owner edits, tests, commits, pushes, and repairs review. The orchestrator tracks dependencies,
+5. The owner edits, tests, commits, pushes, and repairs review. The orchestrator tracks dependencies,
    evidence, CI, and ownership; it never hijacks the owner's branch.
-5. Record blockers on the pull request or ledger. Resolve, replace the owner, or stop dependent work.
-6. Clean only campaign-created lanes, after merge or closure, under project or human authority.
+6. Record blockers on the pull request or ledger. Resolve, replace the owner, or stop dependent work.
+7. Clean only campaign-created lanes, after merge or closure, under project or human authority.
    Preserve dirty, unknown, and externally owned worktrees.

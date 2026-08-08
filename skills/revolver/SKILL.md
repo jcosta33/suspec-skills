@@ -37,7 +37,7 @@ Quiet means no actionable finding survived verification.
 
 Return material fixes and verification, consequential refutations, and unresolved human decisions.
 For each decisive run, include command, working directory, state identifier, numeric exit, and
-untouched decisive output once.
+the smallest untouched decisive output excerpt once.
 
 ## Boundaries
 

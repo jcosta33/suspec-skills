@@ -18,15 +18,16 @@ tradeoffs, costly choices, conflicting authority, waivers, irreversible actions,
 
 No fresh proof, no completion claim. Map executable checks to command, working directory, state
 identifier, exit status, and decisive raw output. Map source evidence to identity, version or date,
-locator, and decisive excerpt. Keep short output once. Move dominating output into anchored receipts.
-Never paraphrase proof or reuse it after relevant edits.
+locator, and the smallest untouched decisive excerpt. Full output stays in the native tool record or
+an artifact-owned anchored receipt. Never paraphrase proof or reuse it after relevant edits.
 
 A critical gate with no observable trace is an assertion. Demand decisive output only when omission
 could masquerade as completion.
 
 ## Handoff
 
-When an artifact is the deliverable, return its absolute link without reciting it. Explain blockers,
+When an artifact is the deliverable, return only clickable Markdown links without reciting it. Use
+compact `~/.agents/...` labels and fully expanded absolute destinations. Explain only blockers,
 failed creation, incomplete verification, or irreversible confirmation.
 
 When chat is the deliverable, render it. Never fence the whole report. Add a brief summary only when

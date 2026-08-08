@@ -38,7 +38,8 @@ Return the report as rendered Markdown.
 ### Evidence
 
 For each decisive run, give the command, working directory, state identifier, numeric exit, and
-untouched decisive output. A brief plain-language summary may follow the report.
+the smallest untouched decisive output excerpt. A brief plain-language summary may follow only when
+the report cannot orient the reader by itself.
 
 ## Boundaries
 

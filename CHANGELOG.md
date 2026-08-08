@@ -25,7 +25,11 @@ and re-run to re-fetch. Watch the
 - `sus-spec` emits one enriched Markdown requirement block: `When`, `Then`, and `Verify with`.
   `sus-task` requires a governing spec and records CI proof as `CI: https://...`.
 - Ordinary Suspec artifacts use `~/.agents/artifacts/<workspace>/` so local agents share one
-  transient file without repository changes, copies, or symlinks. Full-path handoffs remain.
+  transient file without repository changes, copies, or symlinks. Handoff links keep absolute
+  destinations.
+- Artifact authors now return only clickable artifact links after successful creation. Universal
+  methods keep evidence to the smallest untouched decisive excerpt; campaign workers return state,
+  proof, and blockers without a progress diary.
 - `promote` remains durable-only; it does not relocate files between transient roots.
 - Only `sus-*` artifact authors create artifacts. Universal methods return through chat, native
   memory, target edits, or durable relocation.

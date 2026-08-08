@@ -67,6 +67,16 @@ expect_failure() {
     quarantine-drift)
       rewrite_without '`Advocacy exercise, not evidence.`' "$fixture/skills/demolition/SKILL.md"
       ;;
+    handoff-drift)
+      sed 's/clickable Markdown links/clickable paths/' "$fixture/skills/sus-spec/SKILL.md" \
+        > "$fixture/skills/sus-spec/SKILL.md.tmp"
+      mv "$fixture/skills/sus-spec/SKILL.md.tmp" "$fixture/skills/sus-spec/SKILL.md"
+      ;;
+    evidence-economy-drift)
+      sed 's/smallest untouched decisive output excerpt/untouched decisive output/' \
+        "$fixture/skills/revolver/SKILL.md" > "$fixture/skills/revolver/SKILL.md.tmp"
+      mv "$fixture/skills/revolver/SKILL.md.tmp" "$fixture/skills/revolver/SKILL.md"
+      ;;
     *)
       echo "unknown mutation: $mutation" >&2
       exit 1
@@ -80,7 +90,8 @@ expect_failure() {
 }
 
 for mutation in missing-skill non-markdown-payload escaping-link artifact-leak missing-frontmatter \
-  invalid-description-yaml fenced-chat stale-name broken-link symlink quarantine-drift; do
+  invalid-description-yaml fenced-chat stale-name broken-link symlink quarantine-drift handoff-drift \
+  evidence-economy-drift; do
   expect_failure "$mutation"
 done
 

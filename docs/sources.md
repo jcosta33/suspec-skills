@@ -54,6 +54,15 @@ Primary and official sources outrank summaries. A source supports only claims in
   major internal prompt reduction without disclosed benchmark detail; supports testing less
   prescriptive control, not universal deletion.
   <https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models>
+- **Latest model prompting guidance, OpenAI.** Reports directional internal coding-agent gains from
+  leaner prompts, including lower token use and cost; requires validation on representative work.
+  <https://developers.openai.com/api/docs/guides/latest-model>
+- **Advanced tool use, Anthropic.** Shows how tool definitions and intermediate results can dominate
+  context; its internal token reductions are workload-specific.
+  <https://www.anthropic.com/engineering/advanced-tool-use>
+- **Eval-driven development, Airbnb.** Recommends controls derived from real failures, deterministic
+  checks first, and human ownership of disputed quality.
+  <https://airbnb.tech/ai-ml/eval-driven-development-lessons-from-evaluating-genai-at-scale/>
 - **Harness engineering, OpenAI.** Treats human attention and context as scarce; uses repository
   knowledge as a map and mechanical tests for architecture.
   <https://openai.com/index/harness-engineering/>

@@ -41,7 +41,7 @@ Give every identifiable claim one row:
 Name the exact gap for `Unverified` and `Blocked`.
 
 For implementation proof, return each decisive run once in chat: command, working directory, state
-identifier, numeric exit, and untouched decisive output.
+identifier, numeric exit, and the smallest untouched decisive output excerpt.
 
 ## Boundaries
 

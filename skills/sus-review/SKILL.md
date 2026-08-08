@@ -109,8 +109,10 @@ Non-material notes may expire.
 
 Before handoff, compress and harden the document without changing its contract, identifiers,
 verbatim source text, evidence, or behavior. Remove repetition, softness, ceremony, and structural
-bloat; write each fact once. Rerun applicable checks. Hand off absolute paths for the review and
-every sidecar.
+bloat; write each fact once. Rerun applicable checks. After successful creation, return only
+clickable Markdown links for the review and every sidecar. Use compact `~/.agents/...` labels and
+fully expanded absolute destinations. Explain only a blocker, failed creation, incomplete
+verification, or irreversible-action confirmation.
 
 ## Close
 

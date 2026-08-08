@@ -381,6 +381,10 @@ for file in "$ROOT"/skills/*/SKILL.md; do
         require_regex "$file" "$word" "incomplete artifact placement in $name"
       done
       require_regex "$file" '(unwritable|blocked writes?)' "blocked-write handling missing in $name"
+      require_regex "$file" 'return only' "artifact handoff contract missing in $name"
+      require_regex "$file" 'clickable Markdown links' "artifact handoff contract missing in $name"
+      require_regex "$file" 'fully[[:space:]]+expanded absolute destinations' \
+        "artifact handoff contract missing in $name"
       for word in Delete Leave Promote sidecar 'fully actioned' 'downstream step' 'human disposition'; do
         require_regex "$file" "$word" "lifecycle disposition missing in $name"
       done
@@ -399,6 +403,16 @@ for file in "$ROOT"/skills/*/SKILL.md; do
       fi
       ;;
   esac
+done
+
+for method in bulletproof dissect revolver triple-check; do
+  require_literal "$ROOT/skills/$method/SKILL.md" 'smallest untouched decisive output excerpt' \
+    "decisive evidence economy missing in $method"
+done
+
+for phrase in 'status, changed paths' 'No progress diary or recap'; do
+  require_literal "$ROOT/skills/campaign/references/delivery-lanes.md" "$phrase" \
+    'campaign worker result contract drift'
 done
 
 writer_types='sus-spec:spec:SPEC- sus-task:task:TASK- sus-review:review:REVIEW- sus-inventory:inventory:INV- sus-change-plan:change-plan:CHANGE- sus-audit:audit:AUDIT- sus-research:research:RESEARCH-'
