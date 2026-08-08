@@ -18,8 +18,8 @@ names. Inspect `overwrites:` before confirming. Compare any existing folder with
 cancel on mismatch. Remove an installed entry absent from the source only after the same comparison.
 Name alone proves nothing.
 
-This installs workflows, not Suspec's optional global economy policy. The unpublished CLI owns that
-explicit setup.
+This installs workflows, not Suspec's optional global economy policy. The CLI owns that explicit
+setup.
 
 ## Universal methods
 
