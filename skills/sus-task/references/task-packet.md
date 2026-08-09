@@ -18,8 +18,8 @@ status: ready
 
 ### Requirement Snapshot
 
-Copy every scoped requirement block and its `Verify with:` line verbatim. The spec remains canonical; a change plan supplies only
-additional source and wave context. Re-cut this packet after a material source change.
+Copy every scoped requirement block and its `Verify with:` line verbatim. The spec remains
+canonical; a change plan supplies only wave context.
 
 ### Acceptance oracle
 
@@ -82,9 +82,6 @@ Repeat for every assigned requirement and preservation guarantee.
 - Before repairing defective behavior, reproduce the recorded baseline failure on the original
   state. A different result blocks implementation.
 - Stop on conflict, ambiguity, or pressure to cross Scope or Do Not Change.
-- Put each final Verify command, numeric exit status, and fenced decisive raw output under its
-  `## Verify` entry, or record `CI: https://...` or a justified `n/a` there.
-- `ready` and `running` may retain pending evidence; `review-ready` and `closed` may not.
 - In Run summary, cite each Verify entry once; never paste its output again.
 - Do not assess your own work.
 - At `review-ready`, hand the frozen target to a fresh independent reviewer for read-only review

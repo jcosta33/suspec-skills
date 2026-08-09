@@ -7,9 +7,9 @@ description: Audit present code against direct evidence. Use when running debt s
 
 Observe. Prove. Prescribe nothing.
 
-Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
-Put the recommendation first, offer three genuine options by default or two when binary, and state
-one plain reason and cost each.
+Ask required questions through the native picker, or numbered choices plus `Other`. Put the
+recommendation first; offer three genuine options, two if binary; give each one plain reason and
+cost.
 
 ## Method
 
@@ -31,12 +31,11 @@ write `None observed in scope` instead of inventing one.
 
 ## Artifact
 
-Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
-repository or working-directory basename. Write there with `type: audit` and a unique `AUDIT-` ID.
-A collision or ambiguous workspace requires human-readable name choices. A blocked write requires:
-grant access and retry, choose another agent-neutral user directory, or cancel. Never overwrite or
-fall back to a repository, vendor directory, or temporary path. Keep linked sidecars beside the
-audit.
+Resolve `~/.agents/artifacts/<workspace>/` to an absolute path; derive `<workspace>` from the
+repository or working-directory basename. Write there with `type: audit`, a unique `AUDIT-` ID, and
+linked sidecars beside the audit. On collision or ambiguous workspace, present human-readable name
+choices. On a blocked write, offer grant and retry, another agent-neutral user directory, or cancel.
+Never overwrite or fall back to a repository, vendor directory, or temporary path.
 
 Write local source references relative to the artifact. Use absolute paths only for runtime handoff.
 
@@ -51,10 +50,9 @@ id: AUDIT-{{slug}}
 
 ## Output
 
-Before handoff, compress and harden the document without changing its contract, identifiers,
-verbatim source text, evidence, or behavior. Remove repetition, softness, ceremony, and structural
-bloat; write each fact once. Rerun applicable checks. After successful creation, return only
-clickable Markdown links for the audit and every sidecar. Use compact `~/.agents/...` labels and
+Before handoff, cut repetition, softness, ceremony, and structural bloat without changing contracts,
+identifiers, verbatim source text, evidence, or behavior. Rerun applicable checks. Return only
+clickable Markdown links for the audit and every sidecar, with compact `~/.agents/...` labels and
 fully expanded absolute destinations. Explain only a blocker, failed creation, incomplete
 verification, or irreversible-action confirmation.
 
@@ -67,8 +65,6 @@ Strip fixes, target states, requirements, and recommendations.
 
 ## Close
 
-After the artifact is fully actioned and no downstream step needs it, require one human disposition
-for it and its sidecars: Delete, Leave, or Promote. If Promote is selected, move the transient
-working material into project-owned permanence.
-Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
-reports survivors.
+Once fully actioned and no downstream step needs it, require one human disposition for the artifact
+and its sidecars: Delete, Leave, or Promote. Promote moves transient material into project-owned
+permanence. Delete every selected path and verify absence; survivors block close.

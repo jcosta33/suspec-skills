@@ -15,9 +15,9 @@ workflow.
 Require exactly `status: ready`. Read the spec and every named source. A change plan may add wave
 context; it cannot replace the spec. Any blocking decision kills dispatch.
 
-Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
-Put the recommendation first, offer three genuine options by default or two when binary, and state
-one plain reason and cost each.
+Ask required questions through the native picker, or numbered choices plus `Other`. Put the
+recommendation first; offer three genuine options, two if binary; give each one plain reason and
+cost.
 
 Use task packets only for:
 
@@ -53,11 +53,11 @@ until selection.
 
 ## Artifact
 
-Resolve `~/.agents/artifacts/<workspace>/` to an absolute path. Derive `<workspace>` from the
-repository or working-directory basename. Write there; keep linked sidecars beside their governing
-packet. A collision or ambiguous workspace requires human-readable name choices. A blocked write
-requires: grant access and retry, choose another agent-neutral user directory, or cancel. Never
-overwrite or fall back to a repository, vendor directory, or temporary path.
+Resolve `~/.agents/artifacts/<workspace>/` to an absolute path; derive `<workspace>` from the
+repository or working-directory basename. Write there with linked sidecars beside their governing
+packet. On collision or ambiguous workspace, present human-readable name choices. On a blocked
+write, offer grant and retry, another agent-neutral user directory, or cancel. Never overwrite or
+fall back to a repository, vendor directory, or temporary path.
 
 Write local source references relative to the artifact. Use absolute paths only for runtime handoff.
 
@@ -66,17 +66,14 @@ artifact by absolute path.
 
 ## Output
 
-Before handoff, compress and harden the document without changing its contract, identifiers,
-verbatim source text, evidence, or behavior. Remove repetition, softness, ceremony, and structural
-bloat; write each fact once. Rerun applicable checks. After successful creation, return only
-clickable Markdown links for every task and sidecar. Use compact `~/.agents/...` labels and fully
+Before handoff, cut repetition, softness, ceremony, and structural bloat without changing contracts,
+identifiers, verbatim source text, evidence, or behavior. Rerun applicable checks. Return only
+clickable Markdown links for every task and sidecar, with compact `~/.agents/...` labels and fully
 expanded absolute destinations. Explain only a blocker, failed creation, incomplete verification,
 or irreversible-action confirmation.
 
 ## Close
 
-After the artifacts are fully actioned and no downstream step needs them, require one human
-disposition for them and their sidecars: Delete, Leave, or Promote. If Promote is selected, move the
-transient working material into project-owned permanence.
-Delete selection confirms removal. Verify every selected path is absent; failure blocks close and
-reports survivors.
+Once fully actioned and no downstream step needs them, require one human disposition for the
+artifacts and sidecars: Delete, Leave, or Promote. Promote moves transient material into
+project-owned permanence. Delete every selected path and verify absence; survivors block close.

@@ -7,9 +7,9 @@ description: Preserve verified lessons after work settles. Use when a lesson mus
 
 Save signal. Burn residue.
 
-Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
-Put the recommendation first, offer three genuine options by default or two when binary, and state
-one plain reason and cost each.
+Ask required questions through the native picker, or numbered choices plus `Other`. Put the
+recommendation first; offer three genuine options, two if binary; give each one plain reason and
+cost.
 
 ## Method
 
@@ -26,7 +26,7 @@ one plain reason and cost each.
 
 ## Output
 
-Return the confirmed destination or state that nothing was saved. Failed persistence stays blocked.
+Return the confirmed destination or state that nothing was saved. Failed persistence blocks.
 
 ## Boundaries
 

@@ -7,9 +7,9 @@ description: Move transient working material into project-owned permanence. Use 
 
 Move the document. Leave no broken trail.
 
-Any required user response uses the native picker; otherwise render numbered choices plus `Other`.
-Put the recommendation first, offer three genuine options by default or two when binary, and state
-one plain reason and cost each.
+Ask required questions through the native picker, or numbered choices plus `Other`. Put the
+recommendation first; offer three genuine options, two if binary; give each one plain reason and
+cost.
 
 ## Method
 
@@ -33,7 +33,7 @@ one plain reason and cost each.
 
 ## Output
 
-Return the durable absolute path or the blocker.
+Return the durable absolute path or blocker.
 
 ## Boundaries
 
