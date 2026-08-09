@@ -10,14 +10,14 @@ Project systems own history. Owners own code. The orchestrator owns flow.
 1. Read project governance, governing requirements, dependency state, branch protection, CI,
    release constraints, current worktree, and existing native worktrees.
 2. Create or select one project-native issue or issue-backed epic as the ledger.
-3. Prove write-disjoint, dependency-ready parallelism. Sequence shared contracts, generated
+3. Load [Delivery lanes](./references/delivery-lanes.md). Complete its capability preflight before
+   allocating a worktree or dispatching implementation. Missing control stops dependent autonomy.
+4. Prove write-disjoint, dependency-ready parallelism. Sequence shared contracts, generated
    surfaces, unknown scope, and overlapping files.
-4. Exhaust discoverable facts and reversible conventions. If any user response remains required,
+5. Exhaust discoverable facts and reversible conventions. If any user response remains required,
    stop dependent work and use the native picker: recommendation first, three genuine options by
    default, two when binary, plain tradeoffs, and `Other`. Without a picker, render numbered choices
    plus `Other`.
-5. Before allocating worktrees or dispatching implementation, load
-   [Delivery lanes](./references/delivery-lanes.md).
 6. Before selecting a model, load [Model routing](./references/model-routing.md).
 7. Before opening the first pull request, load
    [Pull requests, review, and merge](./references/pull-requests-review-and-merge.md).
@@ -40,6 +40,7 @@ The orchestrator schedules, routes, tracks evidence, dispatches reviewers, and v
 Implementation owners edit and repair. Humans and project policy own material decisions,
 irreversible actions, acceptance, and merge authority.
 
-Separate worktrees, fresh reviewers, repository-native pull-request discussion, and deterministic
-checks are mandatory. Implementation on `main` requires project or human authority. Missing
-capability stops the campaign.
+Skill instructions are advisory. Project commands provide deterministic local enforcement. Harness
+permissions or a trusted project actor provide isolated authority. Separate worktrees, fresh
+reviewers, repository-native pull-request discussion, and deterministic checks remain mandatory.
+Implementation on `main` requires project or human authority.

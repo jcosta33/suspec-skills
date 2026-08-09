@@ -77,6 +77,25 @@ expect_failure() {
         "$fixture/skills/revolver/SKILL.md" > "$fixture/skills/revolver/SKILL.md.tmp"
       mv "$fixture/skills/revolver/SKILL.md.tmp" "$fixture/skills/revolver/SKILL.md"
       ;;
+    source-reference-drift)
+      rewrite_without \
+        'Write local source references relative to the artifact. Use absolute paths only for runtime handoff.' \
+        "$fixture/skills/sus-audit/SKILL.md"
+      ;;
+    campaign-local-proof-drift)
+      sed '/Hosted status checks are optional; exact-state local command evidence is valid\./d' \
+        "$fixture/skills/campaign/references/delivery-lanes.md" \
+        > "$fixture/skills/campaign/references/delivery-lanes.md.tmp"
+      mv "$fixture/skills/campaign/references/delivery-lanes.md.tmp" \
+        "$fixture/skills/campaign/references/delivery-lanes.md"
+      ;;
+    campaign-authority-drift)
+      sed '/cannot choose proof scope, attest it, review the result, and authorize/d' \
+        "$fixture/skills/campaign/references/pull-requests-review-and-merge.md" \
+        > "$fixture/skills/campaign/references/pull-requests-review-and-merge.md.tmp"
+      mv "$fixture/skills/campaign/references/pull-requests-review-and-merge.md.tmp" \
+        "$fixture/skills/campaign/references/pull-requests-review-and-merge.md"
+      ;;
     *)
       echo "unknown mutation: $mutation" >&2
       exit 1
@@ -91,8 +110,32 @@ expect_failure() {
 
 for mutation in missing-skill non-markdown-payload escaping-link artifact-leak missing-frontmatter \
   invalid-description-yaml fenced-chat stale-name broken-link symlink quarantine-drift handoff-drift \
-  evidence-economy-drift; do
+  evidence-economy-drift source-reference-drift campaign-local-proof-drift campaign-authority-drift; do
   expect_failure "$mutation"
 done
+
+index=0
+while IFS= read -r capability; do
+  index=$((index + 1))
+  fixture="$TMP/campaign-capability-$index"
+  copy_repo "$fixture"
+  sed "/| $capability |/d" "$fixture/skills/campaign/references/delivery-lanes.md" \
+    > "$fixture/skills/campaign/references/delivery-lanes.md.tmp"
+  mv "$fixture/skills/campaign/references/delivery-lanes.md.tmp" \
+    "$fixture/skills/campaign/references/delivery-lanes.md"
+  if sh "$fixture/scripts/lint-current.sh" "$fixture" >/dev/null 2>&1; then
+    echo "missing campaign capability survived: $capability" >&2
+    exit 1
+  fi
+done <<'EOF'
+Lane ownership
+Proportionate verification
+Heavyweight admission
+Pull-request shape and size
+Bounded review
+Exact-state proof
+Merge admission
+Cleanup
+EOF
 
 echo "test-lint-current: OK"

@@ -40,6 +40,8 @@ or ambiguous workspace requires human-readable name choices. A blocked write req
 and retry, choose another agent-neutral user directory, or cancel. Never overwrite or fall back to a
 repository, vendor directory, or temporary path.
 
+Write local source references relative to the artifact. Use absolute paths only for runtime handoff.
+
 ### Shape
 
 Use this minimal frontmatter shape:
@@ -53,12 +55,12 @@ status: draft
 owner: {{owner}}
 sources:
   - ISSUE-123
-  - /absolute/path/to/source.md
+  - ../../path/to/source.md
 ---
 ```
 
-Keep `sources` a list. Use absolute paths or paths relative to the spec; tracker and decision IDs
-remain bare. Make the `SPEC-` ID unique.
+Keep `sources` a list. Local paths are relative to the spec; tracker and decision IDs remain bare.
+Make the `SPEC-` ID unique.
 
 Require non-empty `## Intent` and `## Requirements`. Add optional sections only for unique payload.
 

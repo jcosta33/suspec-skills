@@ -59,6 +59,8 @@ packet. A collision or ambiguous workspace requires human-readable name choices.
 requires: grant access and retry, choose another agent-neutral user directory, or cancel. Never
 overwrite or fall back to a repository, vendor directory, or temporary path.
 
+Write local source references relative to the artifact. Use absolute paths only for runtime handoff.
+
 Instantiate [`references/task-packet.md`](./references/task-packet.md) once per slice. Carry every
 artifact by absolute path.
 

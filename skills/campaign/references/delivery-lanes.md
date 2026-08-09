@@ -1,5 +1,29 @@
 # Delivery lanes
 
+## Capability preflight
+
+Before any lane allocation or worker dispatch, record each capability's owner, class, mechanism, and
+negative proof in the project ledger. Advisory prose does not satisfy deterministic local enforcement
+or isolated authority. A worker-controlled command that can be bypassed provides neither.
+
+| Capability | Required proof | Class |
+| --- | --- | --- |
+| Lane ownership | A project command rejects allocation, reuse, release, or cleanup unless path, branch, owner, origin, head, cleanliness, dependency identity, and terminal state match. | Deterministic local |
+| Proportionate verification | Project policy maps changed scope and risk to commands and binds their receipts to exact state. | Deterministic local |
+| Heavyweight admission | One machine-wide boundary bounds commands, workers, failures, CPU, memory, and concurrency across every lane. | Isolated authority |
+| Pull-request shape and size | A project command rejects template violations, bulk output, process narration, and work beyond declared reviewable limits before publication. | Deterministic local |
+| Bounded review | Project state freezes review breadth, exact head, comment scope, repair order, and closure before merge. | Deterministic local |
+| Exact-state proof | Project receipts bind command, working directory, commit, material environment, exit, and decisive output; stale inputs invalidate them. | Deterministic local |
+| Merge admission | Normal workers lack independent merge authority; a project-owned or human actor validates current proof, review, and approval. | Isolated authority |
+| Cleanup | A trusted command can remove only campaign-owned, clean, terminal lanes and branches. | Isolated authority |
+
+Run the project's preflight and prove each capability fails when its mechanism is removed or stale.
+Hosted status checks are optional; exact-state local command evidence is valid.
+
+If any capability is absent, stop dependent autonomy and present three choices: supply or repair the
+control, let a human execute every affected transition, or cancel. Never weaken the class, invent
+proof, or fall back silently.
+
 ## Ledger
 
 1. Use one project-native issue or issue-backed epic. Record done, repositories, dependency order,

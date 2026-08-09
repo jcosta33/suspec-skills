@@ -9,6 +9,7 @@
    patch.
 4. Carry command, working directory, commit, environment when material, exit status, and decisive
    output. Re-run after relevant code, input, environment, command, or requirement changes.
+5. Accept project-approved exact-state local proof. Hosted status checks are optional.
 
 ## Pull requests
 
@@ -55,15 +56,21 @@
 10. Start the next stance only after every current item resolves. Review the new head.
 11. Finish the pool once. Run no quiet rotation or ceremonial pass.
 
+The implementation owner cannot choose proof scope, attest it, review the result, and authorize
+merge. When one worker holds those powers, unattended merge is blocked until an independent project
+or human authority validates the transition.
+
 ## Merge
 
-1. Record reviewed head and base SHAs. Once review, CI, approvals, and conversations pass, merge
+1. Reconcile governing artifacts with implemented behavior. Reject stale authority and duplicate
+   policy memory before merge.
+2. Record reviewed head and base SHAs. Once review, required local or hosted checks, approvals, and conversations pass, merge
    immediately under the ledger-authorized mode.
-2. Use a protected queue or revalidate both SHAs and the tested merge result. Drift resets affected
+3. Use a protected queue or revalidate both SHAs and the tested merge result. Drift resets affected
    checks and review.
-3. Update dependent branches after prerequisites merge. Keep cross-repository dependencies as
+4. Update dependent branches after prerequisites merge. Keep cross-repository dependencies as
    explicit blockers. Rerun affected checks and review.
-4. Follow project merge strategy. Fold fixup-only commits when policy allows.
-5. Recycle a lane only after merge or closure and a clean worktree.
-6. Delete merged branches and remove only campaign-created clean worktrees without force under
+5. Follow project merge strategy. Fold fixup-only commits when policy allows.
+6. Recycle a lane only after merge or closure and a clean worktree.
+7. Delete merged branches and remove only campaign-created clean worktrees without force under
    project or human authority. Preserve foreign, unknown, and dirty lanes.

@@ -38,6 +38,8 @@ grant access and retry, choose another agent-neutral user directory, or cancel. 
 fall back to a repository, vendor directory, or temporary path. Keep linked sidecars beside the
 audit.
 
+Write local source references relative to the artifact. Use absolute paths only for runtime handoff.
+
 Start with:
 
 ```yaml

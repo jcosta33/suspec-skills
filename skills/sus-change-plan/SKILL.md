@@ -33,6 +33,8 @@ human-readable name choices. A blocked write requires: grant access and retry, c
 agent-neutral user directory, or cancel. Never overwrite or fall back to a repository, vendor
 directory, or temporary path.
 
+Write local source references relative to the artifact. Use absolute paths only for runtime handoff.
+
 ### Shape
 
 Use this minimal frontmatter shape:

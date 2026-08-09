@@ -13,4 +13,5 @@ It does not own implementation, debugging, testing, security, Git hosting, docum
 agents, orchestration runtimes, project policy, runtime checks, MCP, storage, registries, cleanup,
 hooks, model services, or network clients.
 
-The catalog conditions agents. Project governance and native harness features stay authoritative.
+The catalog conditions agents and defines campaign capability requirements. Projects enforce
+delivery transitions. Native harnesses isolate authority.

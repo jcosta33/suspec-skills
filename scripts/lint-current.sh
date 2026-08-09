@@ -385,6 +385,9 @@ for file in "$ROOT"/skills/*/SKILL.md; do
       require_regex "$file" 'clickable Markdown links' "artifact handoff contract missing in $name"
       require_regex "$file" 'fully[[:space:]]+expanded absolute destinations' \
         "artifact handoff contract missing in $name"
+      require_literal "$file" \
+        'Write local source references relative to the artifact. Use absolute paths only for runtime handoff.' \
+        "artifact source-path contract missing in $name"
       for word in Delete Leave Promote sidecar 'fully actioned' 'downstream step' 'human disposition'; do
         require_regex "$file" "$word" "lifecycle disposition missing in $name"
       done
@@ -413,6 +416,48 @@ done
 for phrase in 'status, changed paths' 'No progress diary or recap'; do
   require_literal "$ROOT/skills/campaign/references/delivery-lanes.md" "$phrase" \
     'campaign worker result contract drift'
+done
+
+campaign_lanes="$ROOT/skills/campaign/references/delivery-lanes.md"
+while IFS= read -r capability; do
+  require_literal "$campaign_lanes" "| $capability |" "campaign capability missing"
+done <<'EOF'
+Lane ownership
+Proportionate verification
+Heavyweight admission
+Pull-request shape and size
+Bounded review
+Exact-state proof
+Merge admission
+Cleanup
+EOF
+for literal in \
+  'Advisory prose does not satisfy deterministic local enforcement' \
+  'or isolated authority.' \
+  "Run the project's preflight and prove each capability fails when its mechanism is removed or stale." \
+  'Hosted status checks are optional; exact-state local command evidence is valid.' \
+  'supply or repair the' \
+  'let a human execute every affected transition' \
+  'or cancel'; do
+  require_literal "$campaign_lanes" "$literal" 'campaign preflight contract drift'
+done
+
+campaign="$ROOT/skills/campaign/SKILL.md"
+for literal in \
+  'Complete its capability preflight before' \
+  'Skill instructions are advisory.' \
+  'Project commands provide deterministic local enforcement.' \
+  'trusted project actor provide isolated authority.'; do
+  require_literal "$campaign" "$literal" 'campaign control-strength contract drift'
+done
+
+campaign_review="$ROOT/skills/campaign/references/pull-requests-review-and-merge.md"
+for literal in \
+  'Hosted status checks are optional.' \
+  'cannot choose proof scope, attest it, review the result, and authorize' \
+  'Reconcile governing artifacts with implemented behavior.' \
+  'Reject stale authority and duplicate'; do
+  require_literal "$campaign_review" "$literal" 'campaign review authority drift'
 done
 
 writer_types='sus-spec:spec:SPEC- sus-task:task:TASK- sus-review:review:REVIEW- sus-inventory:inventory:INV- sus-change-plan:change-plan:CHANGE- sus-audit:audit:AUDIT- sus-research:research:RESEARCH-'

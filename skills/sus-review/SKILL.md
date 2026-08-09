@@ -33,6 +33,8 @@ or ambiguous workspace requires human-readable name choices. A blocked write req
 and retry, choose another agent-neutral user directory, or cancel. Never overwrite or fall back to a
 repository, vendor directory, or temporary path.
 
+Write local source references relative to the artifact. Use absolute paths only for runtime handoff.
+
 Start one artifact with this minimal frontmatter:
 
 ```yaml
