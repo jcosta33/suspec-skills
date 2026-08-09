@@ -1,0 +1,59 @@
+skills/sus-task/SKILL.md
+  s_0a3429e31e555d::t_65548bd2e2a08e 62-63
+skills/campaign/SKILL.md
+  s_0a3429e31e555d::t_7ede984f979fb4 13-15,17,43-46
+skills/sus-audit/SKILL.md
+  s_0a3429e31e555d::t_65548bd2e2a08e 41-42
+docs/skill-existence-test.md
+  s_0a3429e31e555d::t_7ede984f979fb4 10
+skills/campaign/references/pull-requests-review-and-merge.md
+  s_0a3429e31e555d::t_7ede984f979fb4 12,59-62,65-67,69,71,73-75
+skills/sus-change-plan/SKILL.md
+  s_0a3429e31e555d::t_65548bd2e2a08e 36-37
+docs/scope.md
+  s_0a3429e31e555d::t_7ede984f979fb4 16-17
+skills/sus-spec/SKILL.md
+  s_0a3429e31e555d::t_65548bd2e2a08e 43-44,58,62-63
+README.md
+  s_0a3429e31e555d::t_7ede984f979fb4 29
+skills/campaign/references/delivery-lanes.md
+  s_0a3429e31e555d::t_7ede984f979fb4 3-26
+skills/sus-inventory/SKILL.md
+  s_0a3429e31e555d::t_65548bd2e2a08e 44-45
+scripts/test-lint-current.sh
+  s_0a3429e31e555d::t_89de30d57f2212 80-98,113,117-139
+  s_14f2bbc9f385dd::t_5ad66e30128c17 140
+skills/sus-research/SKILL.md
+  s_0a3429e31e555d::t_65548bd2e2a08e 51-52
+scripts/lint-current.sh
+  s_0a3429e31e555d::t_1c7b5fd1423e92 450
+  s_0a3429e31e555d::t_89de30d57f2212 388-390,421-434,437-449,451-461
+  s_0a3429e31e555d::t_bac80490f2b286 435-436
+  s_14f2bbc9f385dd::t_5bb94e4860bf0c 462
+skills/sus-review/SKILL.md
+  s_0a3429e31e555d::t_65548bd2e2a08e 36-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "903b86c4b58807b4c09338b9b17db3df8ac98164",
+  "prompts": {},
+  "sessions": {
+    "s_0a3429e31e555d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1568-8dda-7540-97a5-9da760eadac4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    },
+    "s_14f2bbc9f385dd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f9a61a1d-66b3-4146-938d-a04f45f4b060",
+        "model": "claude-opus-5"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
