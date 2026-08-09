@@ -82,6 +82,20 @@ expect_failure() {
         'Write local source references relative to the artifact. Use absolute paths only for runtime handoff.' \
         "$fixture/skills/sus-audit/SKILL.md"
       ;;
+    source-reference-example-drift)
+      sed 's|../../path/to/source.md|/absolute/path/to/source.md|' \
+        "$fixture/skills/sus-spec/SKILL.md" > "$fixture/skills/sus-spec/SKILL.md.tmp"
+      mv "$fixture/skills/sus-spec/SKILL.md.tmp" "$fixture/skills/sus-spec/SKILL.md"
+      ;;
+    source-reference-quoted-drift)
+      sed 's|../../path/to/source.md|"/absolute/path/to/source.md"|' \
+        "$fixture/skills/sus-spec/SKILL.md" > "$fixture/skills/sus-spec/SKILL.md.tmp"
+      mv "$fixture/skills/sus-spec/SKILL.md.tmp" "$fixture/skills/sus-spec/SKILL.md"
+      ;;
+    source-reference-inline-drift)
+      printf '\n```yaml\nsources: ["/absolute/path/to/source.md"]\n```\n' \
+        >> "$fixture/skills/sus-spec/SKILL.md"
+      ;;
     campaign-local-proof-drift)
       sed '/Hosted status checks are optional; exact-state local command evidence is valid\./d' \
         "$fixture/skills/campaign/references/delivery-lanes.md" \
@@ -96,6 +110,39 @@ expect_failure() {
       mv "$fixture/skills/campaign/references/pull-requests-review-and-merge.md.tmp" \
         "$fixture/skills/campaign/references/pull-requests-review-and-merge.md"
       ;;
+    campaign-capability-proof-drift)
+      sed 's/A project command rejects dirty state or stale or incomplete receipts/Receipts may exist/' \
+        "$fixture/skills/campaign/references/delivery-lanes.md" \
+        > "$fixture/skills/campaign/references/delivery-lanes.md.tmp"
+      mv "$fixture/skills/campaign/references/delivery-lanes.md.tmp" \
+        "$fixture/skills/campaign/references/delivery-lanes.md"
+      ;;
+    campaign-capability-class-drift)
+      sed '/| Heavyweight admission |/s/Isolated authority/Advisory/' \
+        "$fixture/skills/campaign/references/delivery-lanes.md" \
+        > "$fixture/skills/campaign/references/delivery-lanes.md.tmp"
+      mv "$fixture/skills/campaign/references/delivery-lanes.md.tmp" \
+        "$fixture/skills/campaign/references/delivery-lanes.md"
+      ;;
+    campaign-heavyweight-bounds-drift)
+      sed 's/admits only bounded commands/admits commands/' \
+        "$fixture/skills/campaign/references/delivery-lanes.md" \
+        > "$fixture/skills/campaign/references/delivery-lanes.md.tmp"
+      mv "$fixture/skills/campaign/references/delivery-lanes.md.tmp" \
+        "$fixture/skills/campaign/references/delivery-lanes.md"
+      ;;
+    campaign-human-merge-drift)
+      sed 's/only an authorized human accepts/an authorized human accepts/' \
+        "$fixture/skills/campaign/references/delivery-lanes.md" \
+        > "$fixture/skills/campaign/references/delivery-lanes.md.tmp"
+      mv "$fixture/skills/campaign/references/delivery-lanes.md.tmp" \
+        "$fixture/skills/campaign/references/delivery-lanes.md"
+      ;;
+    campaign-human-ownership-drift)
+      sed 's/Humans own/Humans review/' "$fixture/skills/campaign/SKILL.md" \
+        > "$fixture/skills/campaign/SKILL.md.tmp"
+      mv "$fixture/skills/campaign/SKILL.md.tmp" "$fixture/skills/campaign/SKILL.md"
+      ;;
     *)
       echo "unknown mutation: $mutation" >&2
       exit 1
@@ -108,9 +155,15 @@ expect_failure() {
   fi
 }
 
+sh "$ROOT/scripts/lint-current.sh" "$ROOT" >/dev/null
+
 for mutation in missing-skill non-markdown-payload escaping-link artifact-leak missing-frontmatter \
   invalid-description-yaml fenced-chat stale-name broken-link symlink quarantine-drift handoff-drift \
-  evidence-economy-drift source-reference-drift campaign-local-proof-drift campaign-authority-drift; do
+  evidence-economy-drift source-reference-drift source-reference-example-drift \
+  source-reference-quoted-drift source-reference-inline-drift \
+  campaign-local-proof-drift campaign-authority-drift campaign-capability-proof-drift \
+  campaign-capability-class-drift campaign-heavyweight-bounds-drift \
+  campaign-human-merge-drift campaign-human-ownership-drift; do
   expect_failure "$mutation"
 done
 

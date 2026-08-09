@@ -3,19 +3,26 @@
 ## Capability preflight
 
 Before any lane allocation or worker dispatch, record each capability's owner, class, mechanism, and
-negative proof in the project ledger. Advisory prose does not satisfy deterministic local enforcement
-or isolated authority. A worker-controlled command that can be bypassed provides neither.
+negative proof in the project ledger. Advisory prose does not enforce. Deterministic local proof
+requires a project-owned rejecting command. Isolated authority requires a worker-inaccessible
+boundary.
+
+Bind the preflight receipt to current control revisions, harness authority, host-resource
+configuration, repository state, and expiry. Revalidate it before allocation, dispatch, publication,
+each review stance, merge, and cleanup. Each project transition command atomically validates the
+receipt and transition. Drift revokes affected dispatch, stops affected workers, and triggers the
+missing-capability fallback.
 
 | Capability | Required proof | Class |
 | --- | --- | --- |
-| Lane ownership | A project command rejects allocation, reuse, release, or cleanup unless path, branch, owner, origin, head, cleanliness, dependency identity, and terminal state match. | Deterministic local |
-| Proportionate verification | Project policy maps changed scope and risk to commands and binds their receipts to exact state. | Deterministic local |
-| Heavyweight admission | One machine-wide boundary bounds commands, workers, failures, CPU, memory, and concurrency across every lane. | Isolated authority |
+| Lane ownership | A project command rejects allocation, reuse, or release unless path, branch, owner, origin, head, cleanliness, dependency identity, and terminal state match. | Deterministic local |
+| Proportionate verification | A project command rejects proof unless project policy maps changed scope and risk to commands and binds their receipts to exact state. | Deterministic local |
+| Heavyweight admission | Project-owned resource and operation envelopes classify launches; one worker-inaccessible machine-wide authority admits only bounded commands, workers, failures, CPU, memory, and concurrency across every lane. | Isolated authority |
 | Pull-request shape and size | A project command rejects template violations, bulk output, process narration, and work beyond declared reviewable limits before publication. | Deterministic local |
-| Bounded review | Project state freezes review breadth, exact head, comment scope, repair order, and closure before merge. | Deterministic local |
-| Exact-state proof | Project receipts bind command, working directory, commit, material environment, exit, and decisive output; stale inputs invalidate them. | Deterministic local |
-| Merge admission | Normal workers lack independent merge authority; a project-owned or human actor validates current proof, review, and approval. | Isolated authority |
-| Cleanup | A trusted command can remove only campaign-owned, clean, terminal lanes and branches. | Isolated authority |
+| Bounded review | A project command rejects each stance unless project state binds the frozen pool, unique risks, current head, and human approval above five; merge also requires comment scope, repair order, and closure. | Deterministic local |
+| Exact-state proof | A project command rejects dirty state or stale or incomplete receipts and requires command, working directory, commit, clean tracked and untracked state, material input and environment identity, exit, and decisive output. | Deterministic local |
+| Merge admission | Harness permissions keep merge credentials outside workers; only an authorized human accepts current proof, review, approval, governing-artifact revision, and duplicate-memory check before the independent project gate merges. | Isolated authority |
+| Cleanup | Harness permissions keep cleanup authority outside workers; a human-authorized project command removes only campaign-owned, clean, terminal lanes and branches. | Isolated authority |
 
 Run the project's preflight and prove each capability fails when its mechanism is removed or stale.
 Hosted status checks are optional; exact-state local command evidence is valid.
@@ -59,6 +66,8 @@ proof, or fall back silently.
    Hand over lane, branch, pull request, head, checks, unresolved comments, and blocker.
 5. The owner edits, tests, commits, pushes, and repairs review. The orchestrator tracks dependencies,
    evidence, CI, and ownership; it never hijacks the owner's branch.
-6. Record blockers on the pull request or ledger. Resolve, replace the owner, or stop dependent work.
-7. Clean only campaign-created lanes, after merge or closure, under project or human authority.
-   Preserve dirty, unknown, and externally owned worktrees.
+6. Route every heavyweight command, retry, and review check through the machine-wide admission
+   boundary. Unadmitted execution stops the affected lane.
+7. Record blockers on the pull request or ledger. Resolve, replace the owner, or stop dependent work.
+8. Clean only campaign-created lanes after merge or closure through a human-authorized project
+   command. Preserve dirty, unknown, and externally owned worktrees.

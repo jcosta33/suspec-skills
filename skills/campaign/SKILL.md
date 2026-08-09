@@ -37,10 +37,10 @@ merged SHA.
 ## Authority
 
 The orchestrator schedules, routes, tracks evidence, dispatches reviewers, and verifies resolution.
-Implementation owners edit and repair. Humans and project policy own material decisions,
-irreversible actions, acceptance, and merge authority.
+Implementation owners edit and repair. Project systems enforce delivery transitions. Humans own
+material decisions, irreversible actions, acceptance, and merge authority.
 
-Skill instructions are advisory. Project commands provide deterministic local enforcement. Harness
-permissions or a trusted project actor provide isolated authority. Separate worktrees, fresh
+Skill instructions are advisory. Project commands provide deterministic local enforcement.
+Harness permissions provide isolated authority. Separate worktrees, fresh
 reviewers, repository-native pull-request discussion, and deterministic checks remain mandatory.
 Implementation on `main` requires project or human authority.

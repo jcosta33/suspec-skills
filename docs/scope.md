@@ -6,12 +6,11 @@ This repository owns:
   promotion, and memory methods;
 - authors for Suspec artifact types;
 - references required by one skill;
-- catalog design evidence; and
-- witnessed Suspec failures that justify behavioral control.
+- catalog design evidence from witnessed failures.
 
-It does not own implementation, debugging, testing, security, Git hosting, documentation, custom
-agents, orchestration runtimes, project policy, runtime checks, MCP, storage, registries, cleanup,
-hooks, model services, or network clients.
+It does not own downstream implementation, debugging, testing, security, Git hosting, product
+documentation, custom agents, orchestration runtimes, project policy, runtime checks, MCP, storage,
+registries, cleanup, hooks, model services, or network clients.
 
 The catalog conditions agents and defines campaign capability requirements. Projects enforce
-delivery transitions. Native harnesses isolate authority.
+delivery transitions and own executable regressions. Native harnesses isolate authority.

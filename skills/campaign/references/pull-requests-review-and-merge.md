@@ -7,8 +7,8 @@
 3. Trust a new regression test only when it fails on the original defect, passes on the repair,
    exercises production behavior, and invents no requirement. Never weaken an oracle to admit a
    patch.
-4. Carry command, working directory, commit, environment when material, exit status, and decisive
-   output. Re-run after relevant code, input, environment, command, or requirement changes.
+4. Carry command, working directory, commit, clean tracked and untracked state, material input and
+   environment identity, exit status, and decisive output. Re-run after any of them changes.
 5. Accept project-approved exact-state local proof. Hosted status checks are optional.
 
 ## Pull requests
@@ -27,15 +27,19 @@
 
 ## Review
 
-1. Run exhaustive multi-angle review and sequential repair after implementation checks pass. Merged
+1. Run bounded risk-derived review and sequential repair after implementation checks pass. Merged
    code is the product; review is a gate.
-2. Derive the smallest fixed pool covering the change's material risks. A stance earns a slot only
-   for a unique risk. Three is the default. More than five requires human approval. Split the pull
-   request when five cannot cover it. Freeze the pool before review.
+2. Derive the smallest fixed pool covering the change's material risks. Give the pool and each stance
+   immutable IDs. A stance earns a slot only for a unique risk. Three is the default. More than five
+   requires human approval. Split the pull request when five cannot cover it. Freeze the pool before
+   review.
 3. Add a stance only when repair creates or exposes a material trust boundary, public contract,
    failure mode, or previously unknown risk. Never rebuild the pool because a finding was fixed.
-4. Send one fresh reviewer at a time the current head, code, diff, governing requirements, accepted
-   decisions, and one stance. Hide pull-request conversation and prior reviewer prose.
+4. Before each stance, require a project command to validate pool identity, stance membership, no
+   duplicate dispatch, unique risks, current head, and human approval above five. Pool expansion
+   requires a new human-approved receipt. Then send one fresh reviewer the current head, code, diff,
+   governing requirements, accepted decisions, and one stance. Hide pull-request conversation and
+   prior reviewer prose.
 5. Verify every finding as supported, refuted, a human decision, unverified, or blocked. Remove
    duplicates, stale findings, and preference dressed as defect. Unverified or blocked stops the
    stance. A human decision stops dependent work for explicit selection.
@@ -62,15 +66,18 @@ or human authority validates the transition.
 
 ## Merge
 
-1. Reconcile governing artifacts with implemented behavior. Reject stale authority and duplicate
-   policy memory before merge.
-2. Record reviewed head and base SHAs. Once review, required local or hosted checks, approvals, and conversations pass, merge
-   immediately under the ledger-authorized mode.
+1. Reconcile governing artifacts with implemented behavior. The independent merge gate requires a
+   current receipt naming every compared artifact and revision, comparison result, ledger, pull
+   request, reviewed head and base SHAs, memory destination, duplicate result, and decisive output.
+2. Record reviewed head and base SHAs. Once review, required local or hosted checks, approvals, and
+   conversations pass, an authorized human accepts the reviewed state. Merge immediately through the
+   independent project gate. Ledger entries and worker-authored approvals never authorize merge.
 3. Use a protected queue or revalidate both SHAs and the tested merge result. Drift resets affected
    checks and review.
 4. Update dependent branches after prerequisites merge. Keep cross-repository dependencies as
    explicit blockers. Rerun affected checks and review.
 5. Follow project merge strategy. Fold fixup-only commits when policy allows.
 6. Recycle a lane only after merge or closure and a clean worktree.
-7. Delete merged branches and remove only campaign-created clean worktrees without force under
-   project or human authority. Preserve foreign, unknown, and dirty lanes.
+7. Delete only recorded campaign-owned merged branches and remove only campaign-created clean
+   worktrees without force through a human-authorized project command. Preserve every other branch
+   and every foreign, unknown, or dirty lane.

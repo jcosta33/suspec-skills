@@ -44,6 +44,98 @@ require_literal() {
   }
 }
 
+reject_absolute_source_examples() {
+  file=$1
+  awk '
+    function trim(value) {
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "", value)
+      return value
+    }
+    function absolute(value, first) {
+      value = trim(value)
+      first = substr(value, 1, 1)
+      if (first == "\"" || first == single_quote) value = substr(value, 2)
+      return value ~ /^\// || value ~ /^~\//
+    }
+    function list_has_absolute(value, count, cursor, item) {
+      gsub(/^[[:space:]]*\[[[:space:]]*|[[:space:]]*\][[:space:]]*$/, "", value)
+      count = split(value, items, ",")
+      for (cursor = 1; cursor <= count; cursor += 1) {
+        item = items[cursor]
+        if (absolute(item)) return 1
+      }
+      return 0
+    }
+    BEGIN { single_quote = sprintf("%c", 39) }
+    /^[[:space:]]*sources:[[:space:]]*\[/ {
+      value = $0
+      sub(/^[[:space:]]*sources:[[:space:]]*/, "", value)
+      if (list_has_absolute(value)) exit 1
+      next
+    }
+    /^[[:space:]]*sources:[[:space:]]*$/ { sources = 1; next }
+    sources && /^[[:space:]]*-[[:space:]]+/ {
+      value = $0
+      sub(/^[[:space:]]*-[[:space:]]+/, "", value)
+      if (absolute(value)) exit 1
+      next
+    }
+    sources { sources = 0 }
+  ' "$file" || {
+    echo "absolute local source example: $file" >&2
+    exit 1
+  }
+}
+
+validate_campaign_capabilities() {
+  file=$1
+  awk -F '[|]' '
+    function trim(value) {
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "", value)
+      return value
+    }
+    BEGIN {
+      expected["Lane ownership"] = "Deterministic local"
+      expected["Proportionate verification"] = "Deterministic local"
+      expected["Heavyweight admission"] = "Isolated authority"
+      expected["Pull-request shape and size"] = "Deterministic local"
+      expected["Bounded review"] = "Deterministic local"
+      expected["Exact-state proof"] = "Deterministic local"
+      expected["Merge admission"] = "Isolated authority"
+      expected["Cleanup"] = "Isolated authority"
+      required["Lane ownership"] = "path,branch,owner,origin,head,cleanliness,dependency identity,terminal state"
+      required["Proportionate verification"] = "scope,risk,commands,receipts,exact state"
+      required["Heavyweight admission"] = "worker-inaccessible,only bounded,commands,workers,failures,cpu,memory,concurrency,lane"
+      required["Pull-request shape and size"] = "template,bulk output,process narration,reviewable limits"
+      required["Bounded review"] = "frozen pool,unique risks,current head,human approval,comment scope,repair order,closure"
+      required["Exact-state proof"] = "dirty state,receipts,command,working directory,commit,tracked and untracked state,input,environment,exit,output"
+      required["Merge admission"] = "credentials,outside workers,only an authorized human,proof,review,approval,artifact revision,duplicate-memory,project gate"
+      required["Cleanup"] = "outside workers,human-authorized,campaign-owned,clean,terminal"
+    }
+    /^\|/ {
+      capability = trim($2)
+      if (!(capability in expected)) next
+      proof = trim($3)
+      class = trim($4)
+      seen[capability] += 1
+      if (seen[capability] != 1 || class != expected[capability]) exit 1
+      if (class == "Deterministic local" && proof !~ /^A project command rejects /) exit 1
+      if (class == "Isolated authority" && proof !~ /(worker-inaccessible|outside workers)/) exit 1
+      normalized = tolower(proof)
+      count = split(required[capability], terms, ",")
+      for (term_index = 1; term_index <= count; term_index += 1) {
+        if (index(normalized, terms[term_index]) == 0) exit 1
+      }
+    }
+    END {
+      for (capability in expected) if (seen[capability] != 1) exit 1
+    }
+  ' "$file" || {
+    echo "campaign capability contract drift: $file" >&2
+    exit 1
+  }
+}
+
 section_text() {
   awk -v heading="## $2" '
     $0 == heading { inside = 1; next }
@@ -385,9 +477,16 @@ for file in "$ROOT"/skills/*/SKILL.md; do
       require_regex "$file" 'clickable Markdown links' "artifact handoff contract missing in $name"
       require_regex "$file" 'fully[[:space:]]+expanded absolute destinations' \
         "artifact handoff contract missing in $name"
-      require_literal "$file" \
-        'Write local source references relative to the artifact. Use absolute paths only for runtime handoff.' \
-        "artifact source-path contract missing in $name"
+      require_regex "$file" 'local source references?.{0,40}relative to the artifact' \
+        "relative source-path contract missing in $name"
+      require_regex "$file" 'absolute paths?.{0,40}(runtime )?handoff' \
+        "absolute handoff-path contract missing in $name"
+      find "$folder" -type f -name '*.md' | while IFS= read -r payload; do
+        reject_absolute_source_examples "$payload"
+      done || {
+        echo "absolute local source example in $name" >&2
+        exit 1
+      }
       for word in Delete Leave Promote sidecar 'fully actioned' 'downstream step' 'human disposition'; do
         require_regex "$file" "$word" "lifecycle disposition missing in $name"
       done
@@ -419,21 +518,11 @@ for phrase in 'status, changed paths' 'No progress diary or recap'; do
 done
 
 campaign_lanes="$ROOT/skills/campaign/references/delivery-lanes.md"
-while IFS= read -r capability; do
-  require_literal "$campaign_lanes" "| $capability |" "campaign capability missing"
-done <<'EOF'
-Lane ownership
-Proportionate verification
-Heavyweight admission
-Pull-request shape and size
-Bounded review
-Exact-state proof
-Merge admission
-Cleanup
-EOF
+validate_campaign_capabilities "$campaign_lanes"
 for literal in \
-  'Advisory prose does not satisfy deterministic local enforcement' \
-  'or isolated authority.' \
+  'Advisory prose does not enforce.' \
+  'requires a project-owned rejecting command.' \
+  'requires a worker-inaccessible' \
   "Run the project's preflight and prove each capability fails when its mechanism is removed or stale." \
   'Hosted status checks are optional; exact-state local command evidence is valid.' \
   'supply or repair the' \
@@ -447,7 +536,8 @@ for literal in \
   'Complete its capability preflight before' \
   'Skill instructions are advisory.' \
   'Project commands provide deterministic local enforcement.' \
-  'trusted project actor provide isolated authority.'; do
+  'Harness permissions provide isolated authority.' \
+  'Humans own'; do
   require_literal "$campaign" "$literal" 'campaign control-strength contract drift'
 done
 
@@ -456,9 +546,11 @@ for literal in \
   'Hosted status checks are optional.' \
   'cannot choose proof scope, attest it, review the result, and authorize' \
   'Reconcile governing artifacts with implemented behavior.' \
-  'Reject stale authority and duplicate'; do
+  'Ledger entries and worker-authored approvals never authorize merge.'; do
   require_literal "$campaign_review" "$literal" 'campaign review authority drift'
 done
+require_regex "$campaign_review" 'current receipt.{0,80}artifact.{0,30}revision' \
+  'campaign reconciliation receipt drift'
 
 writer_types='sus-spec:spec:SPEC- sus-task:task:TASK- sus-review:review:REVIEW- sus-inventory:inventory:INV- sus-change-plan:change-plan:CHANGE- sus-audit:audit:AUDIT- sus-research:research:RESEARCH-'
 for pair in $writer_types; do
