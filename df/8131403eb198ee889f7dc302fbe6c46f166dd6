@@ -1,0 +1,46 @@
+skills/campaign/SKILL.md
+  s_0a3429e31e555d::t_656be02fada220 40-41
+  s_0a3429e31e555d::t_2f38fc2b5fa744 43-44
+skills/campaign/references/delivery-lanes.md
+  s_0a3429e31e555d::t_656be02fada220 6-8,19
+  s_0a3429e31e555d::t_ca756564211341 10-11,24,69-72
+  s_0a3429e31e555d::t_0a8a403da573e4 12-14,18,20,22
+  s_0a3429e31e555d::t_e878ca696b1a21 25,73
+  s_0a3429e31e555d::t_25e10c6e48d713 23
+  s_0a3429e31e555d::t_6c3fd6978380db 9
+scripts/lint-current.sh
+  s_0a3429e31e555d::t_b7b8aad73f5058 50-59,61-62,65-75,80,106-107,109-111,113,124-128,480-483,549
+  s_0a3429e31e555d::t_c38dc1093e7fed 60,63-64
+  s_0a3429e31e555d::t_57f85a71618f07 108,112,539-540,552-553
+  s_0a3429e31e555d::t_dd27446170ce9d 484-486
+  s_0a3429e31e555d::t_5defbff4277ec3 47-49,76-79,81-105,114-123,129-138,487-489,521
+  s_0a3429e31e555d::t_656be02fada220 523-525
+docs/scope.md
+  s_0a3429e31e555d::t_66cb834011c0e2 11-13
+  s_0a3429e31e555d::t_16585daf83a287 9,16
+skills/campaign/references/pull-requests-review-and-merge.md
+  s_0a3429e31e555d::t_0a8a403da573e4 32-35,38-40,70-71,81-83
+  s_0a3429e31e555d::t_ca756564211341 41-42,69
+  s_0a3429e31e555d::t_25e10c6e48d713 10-11,30
+  s_0a3429e31e555d::t_e878ca696b1a21 72-74
+scripts/test-lint-current.sh
+  s_0a3429e31e555d::t_57f85a71618f07 90-98,122-128,133-145,158,163,165-166
+  s_0a3429e31e555d::t_5defbff4277ec3 85-89,113-121,129-132,162,164
+  s_0a3429e31e555d::t_339a17bdbfcb1a 159
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "df8131403eb198ee889f7dc302fbe6c46f166dd6",
+  "prompts": {},
+  "sessions": {
+    "s_0a3429e31e555d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1568-8dda-7540-97a5-9da760eadac4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
