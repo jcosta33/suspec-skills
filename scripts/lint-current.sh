@@ -5,7 +5,6 @@ ROOT=${1:-$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)}
 ROOT=$(CDPATH= cd -- "$ROOT" && pwd)
 
 expected='bulletproof
-campaign
 demolition
 disrespec
 dissect
@@ -14,6 +13,7 @@ promote
 remember
 revolver
 sus-audit
+sus-campaign
 sus-change-plan
 sus-inventory
 sus-research
@@ -21,8 +21,8 @@ sus-review
 sus-spec
 sus-task
 triple-check'
-artifact_creators='sus-audit sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task'
-universal_methods='bulletproof campaign demolition disrespec dissect fork-me promote remember revolver triple-check'
+artifact_creators='sus-audit sus-campaign sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task'
+universal_methods='bulletproof demolition disrespec dissect fork-me promote remember revolver triple-check'
 
 require_regex() {
   file=$1
@@ -362,7 +362,11 @@ for source in \
   'https://developers.googleblog.com/architecting-efficient-context-aware-multi-agent-framework-for-production/' \
   'https://www.microsoft.com/en-us/research/blog/tool-space-interference-in-the-mcp-era-designing-for-agent-compatibility-at-scale/' \
   'https://ojs.aaai.org/index.php/AAAI/article/view/40356' \
-  'https://ojs.aaai.org/index.php/AAAI/article/view/40339'; do
+  'https://ojs.aaai.org/index.php/AAAI/article/view/40339' \
+  'https://learn.chatgpt.com/use-cases/follow-goals' \
+  'https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents' \
+  'https://www.microsoft.com/en-us/research/articles/magentic-one-a-generalist-multi-agent-system-for-solving-complex-tasks/' \
+  'https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues'; do
   require_literal "$ROOT/docs/sources.md" "$source" 'source ledger coverage missing'
 done
 
@@ -499,7 +503,7 @@ for file in "$ROOT"/skills/*/SKILL.md; do
         echo "artifact contract leaked into universal method: $name" >&2
         exit 1
       fi
-      if grep -Eq '~/.agents/artifacts/<workspace>/|type:[[:space:]]+(spec|task|review|inventory|change-plan|audit|research)' "$file"; then
+      if grep -Eq '~/.agents/artifacts/<workspace>/|type:[[:space:]]+(spec|task|review|inventory|change-plan|audit|research|campaign)' "$file"; then
         echo "artifact authorship leaked into universal method: $name" >&2
         exit 1
       fi
@@ -513,11 +517,11 @@ for method in bulletproof dissect revolver triple-check; do
 done
 
 for phrase in 'status, changed paths' 'No progress diary or recap'; do
-  require_literal "$ROOT/skills/campaign/references/delivery-lanes.md" "$phrase" \
+  require_literal "$ROOT/skills/sus-campaign/references/delivery-lanes.md" "$phrase" \
     'campaign worker result contract drift'
 done
 
-campaign_lanes="$ROOT/skills/campaign/references/delivery-lanes.md"
+campaign_lanes="$ROOT/skills/sus-campaign/references/delivery-lanes.md"
 validate_campaign_capabilities "$campaign_lanes"
 for literal in \
   'Advisory prose does not enforce.' \
@@ -531,9 +535,12 @@ for literal in \
   require_literal "$campaign_lanes" "$literal" 'campaign preflight contract drift'
 done
 
-campaign="$ROOT/skills/campaign/SKILL.md"
+campaign="$ROOT/skills/sus-campaign/SKILL.md"
 for literal in \
   'Complete its capability preflight before' \
+  'Every pickup must run the same loop:' \
+  'Put no task-list checkbox' \
+  'project-native ledger' \
   'Skill instructions are advisory.' \
   'Project commands provide deterministic local enforcement.' \
   'Harness permissions provide isolated authority.' \
@@ -541,7 +548,7 @@ for literal in \
   require_literal "$campaign" "$literal" 'campaign control-strength contract drift'
 done
 
-campaign_review="$ROOT/skills/campaign/references/pull-requests-review-and-merge.md"
+campaign_review="$ROOT/skills/sus-campaign/references/pull-requests-review-and-merge.md"
 for literal in \
   'Hosted status checks are optional.' \
   'cannot choose proof scope, attest it, review the result, and authorize' \
@@ -552,7 +559,7 @@ done
 require_regex "$campaign_review" 'current receipt.{0,80}artifact.{0,30}revision' \
   'campaign reconciliation receipt drift'
 
-writer_types='sus-spec:spec:SPEC- sus-task:task:TASK- sus-review:review:REVIEW- sus-inventory:inventory:INV- sus-change-plan:change-plan:CHANGE- sus-audit:audit:AUDIT- sus-research:research:RESEARCH-'
+writer_types='sus-spec:spec:SPEC- sus-task:task:TASK- sus-review:review:REVIEW- sus-inventory:inventory:INV- sus-change-plan:change-plan:CHANGE- sus-audit:audit:AUDIT- sus-research:research:RESEARCH- sus-campaign:campaign:CAMPAIGN-'
 for pair in $writer_types; do
   writer=${pair%%:*}
   declaration=${pair#*:}

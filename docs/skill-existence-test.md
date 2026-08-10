@@ -7,7 +7,6 @@ familiar work unless Suspec adds a unique contract.
 | Skill | Failure prevented |
 | --- | --- |
 | `bulletproof` | load-bearing claims escape active verification |
-| `campaign` | large delivery starts without enforceable ownership, proof, resource, review, merge, or cleanup controls |
 | `demolition` | advocacy masquerades as evidence |
 | `dissect` | change proceeds from a partial code-path story |
 | `disrespec` | prose wastes context through repetition |
@@ -23,5 +22,6 @@ familiar work unless Suspec adds a unique contract.
 | `sus-change-plan` | structural work lacks preservation, cutover, or rollback proof |
 | `sus-audit` | present risk mixes with unsupported prescription |
 | `sus-research` | sources exceed competence and uncertainty becomes decision |
+| `sus-campaign` | long delivery runs from a stale snapshot or starts without enforceable ownership, proof, resource, review, merge, or cleanup controls |
 
 Reconsider a skill when real work shows overlap, native replacement, or loss of its distinct failure.

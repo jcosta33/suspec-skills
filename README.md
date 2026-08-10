@@ -26,7 +26,6 @@ setup.
 | Skill                                            | Use                                              |
 | ------------------------------------------------ | ------------------------------------------------ |
 | [`bulletproof`](./skills/bulletproof/SKILL.md)   | actively verify load-bearing claims              |
-| [`campaign`](./skills/campaign/SKILL.md)         | gate large delivery through native controls      |
 | [`demolition`](./skills/demolition/SKILL.md)     | run quarantined one-sided advocacy               |
 | [`dissect`](./skills/dissect/SKILL.md)           | trace a code path and coupling to closure        |
 | [`disrespec`](./skills/disrespec/SKILL.md)       | remove wasted prose                              |
@@ -47,6 +46,7 @@ setup.
 | [`sus-change-plan`](./skills/sus-change-plan/SKILL.md) | preservation, waves, cutover, rollback     |
 | [`sus-audit`](./skills/sus-audit/SKILL.md)             | evidenced present-state risks              |
 | [`sus-research`](./skills/sus-research/SKILL.md)       | decision-informing evidence                |
+| [`sus-campaign`](./skills/sus-campaign/SKILL.md)       | restartable multi-pull-request goal        |
 
 Only `sus-*` skills create Suspec artifacts. Universal methods do work, not paperwork. Artifact
 authors write under `~/.agents/artifacts/<workspace>/`, hand off clickable links with absolute

@@ -123,6 +123,20 @@ Primary and official sources outrank summaries. A source supports only claims in
 
 ## Campaign Coordination
 
+- **Follow a goal, OpenAI.** Defines a durable coding goal by one objective, a verifiable stopping
+  condition, source pointers, progress proof, checkpoints, and compact status. Warns against loose
+  backlogs and accumulated one-off instructions.
+  <https://learn.chatgpt.com/use-cases/follow-goals>
+- **Effective harnesses for long-running agents, Anthropic.** Reports one-shot implementation,
+  undocumented partial work, and premature completion across fresh contexts; uses incremental work
+  and structured continuity artifacts. First-party experiment, not a universal file contract.
+  <https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents>
+- **Magentic-One, Microsoft Research.** Separates stable task planning from mutable progress
+  tracking in a two-ledger orchestrator and replans on stalls.
+  <https://www.microsoft.com/en-us/research/articles/magentic-one-a-generalist-multi-agent-system-for-solving-complex-tasks/>
+- **Adding sub-issues, GitHub.** Defines project-native hierarchical work relationships and progress
+  across repositories. <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues>
+
 - **Git worktree documentation.** Defines linked worktrees, concurrent branch checkout, locking,
   cleaning, and branch-in-use safeguards. <https://git-scm.com/docs/git-worktree>
 - **Git switch documentation.** Defines branch creation, detached checkout, and dirty-state behavior.
