@@ -1,0 +1,33 @@
+README.md
+  s_0a3429e31e555d::t_a4a43094519a74 49
+docs/skill-existence-test.md
+  s_0a3429e31e555d::t_a4a43094519a74 25
+scripts/lint-current.sh
+  s_0a3429e31e555d::t_e353463fe9d060 16,24-25,365-369,506,520,524,538,541-543,551,562
+docs/sources.md
+  s_0a3429e31e555d::t_a4a43094519a74 126-139
+docs/scope.md
+  s_0a3429e31e555d::t_a4a43094519a74 5-6,15-17
+scripts/test-lint-current.sh
+  s_0a3429e31e555d::t_55ffbed29a009c 136-139
+  s_0a3429e31e555d::t_e353463fe9d060 39,101-104,108-111,115-118,122-125,129-132,142-144,175-178
+skills/sus-campaign/SKILL.md
+  s_0a3429e31e555d::t_268c6522927426 36-37
+  s_0a3429e31e555d::t_a4a43094519a74 1-35,38-107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "3be105e17fa9b12c1248c9fc08e224f9e8ef395c",
+  "prompts": {},
+  "sessions": {
+    "s_0a3429e31e555d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1568-8dda-7540-97a5-9da760eadac4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
