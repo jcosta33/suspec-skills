@@ -1,0 +1,35 @@
+skills/sus-campaign/SKILL.md
+  s_0a3429e31e555d::t_274b22d6f59856 21-22,36-38,68-69,91-95
+scripts/test-lint-current.sh
+  s_0a3429e31e555d::t_9a2dc676995edf 121
+  s_0a3429e31e555d::t_673912974ea12b 107,113-114,127,135-139,164-165
+  s_0a3429e31e555d::t_c4bd01440732d8 100,128
+docs/sources.md
+  s_0a3429e31e555d::t_274b22d6f59856 154,182-183
+scripts/lint-current.sh
+  s_0a3429e31e555d::t_673912974ea12b 477-482,485,490-491,495-497,504-506,510-514
+  s_0a3429e31e555d::t_6f29528e57bf5f 483-484
+  s_0a3429e31e555d::t_46643aed558d55 507
+skills/sus-campaign/references/delivery-lanes.md
+  s_0a3429e31e555d::t_274b22d6f59856 3,5-7,9-11,13-14,16-18,20-22,26-28,35-42,50-58
+skills/sus-campaign/references/pull-requests-review-and-merge.md
+  s_0a3429e31e555d::t_274b22d6f59856 5,7-12,17-19,22-25,29-44,48-54,57-58
+docs/skill-existence-test.md
+  s_0a3429e31e555d::t_274b22d6f59856 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "3639f3ebbee48b91a00225f6127889573e52d642",
+  "prompts": {},
+  "sessions": {
+    "s_0a3429e31e555d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1568-8dda-7540-97a5-9da760eadac4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
