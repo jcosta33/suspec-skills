@@ -22,6 +22,6 @@ familiar work unless Suspec adds a unique contract.
 | `sus-change-plan` | structural work lacks preservation, cutover, or rollback proof |
 | `sus-audit` | present risk mixes with unsupported prescription |
 | `sus-research` | sources exceed competence and uncertainty becomes decision |
-| `sus-campaign` | long delivery runs from a stale snapshot or starts without enforceable ownership, proof, resource, review, merge, or cleanup controls |
+| `sus-campaign` | long delivery runs from a stale snapshot, unowned transitions, or inflated control claims |
 
 Reconsider a skill when real work shows overlap, native replacement, or loss of its distinct failure.

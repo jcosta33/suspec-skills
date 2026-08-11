@@ -1,59 +1,45 @@
 # Delivery lanes
 
-## Capability preflight
+## Authority preflight
 
-Before any lane allocation or worker dispatch, record each capability's owner, class, mechanism, and
-negative proof in the project ledger. Advisory prose does not enforce. Deterministic local proof
-requires a project-owned rejecting command. Isolated authority requires a worker-inaccessible
-boundary.
+Map only operations the campaign will use: lane allocation, verification, heavyweight execution,
+publication, review, merge, and cleanup. For each, record its owner, strength, mechanism, and failure
+behavior in the project ledger.
 
-Bind the preflight receipt to current control revisions, harness authority, host-resource
-configuration, repository state, and expiry. Revalidate it before allocation, dispatch, publication,
-each review stance, merge, and cleanup. Each project transition command atomically validates the
-receipt and transition. Drift revokes affected dispatch, stops affected workers, and triggers the
-missing-capability fallback.
+- **Advisory:** instructions coordinate willing agents. Claim no rejection or containment.
+- **Deterministic local:** a project-owned command rejects the invalid transition.
+- **Isolated authority:** protected state, resources, or credentials stay outside worker reach.
 
-| Capability | Required proof | Class |
-| --- | --- | --- |
-| Lane ownership | A project command rejects allocation, reuse, or release unless path, branch, owner, origin, head, cleanliness, dependency identity, and terminal state match. | Deterministic local |
-| Proportionate verification | A project command rejects proof unless project policy maps changed scope and risk to commands and binds their receipts to exact state. | Deterministic local |
-| Heavyweight admission | Project-owned resource and operation envelopes classify launches; one worker-inaccessible machine-wide authority admits only bounded commands, workers, failures, CPU, memory, and concurrency across every lane. | Isolated authority |
-| Pull-request shape and size | A project command rejects template violations, bulk output, process narration, and work beyond declared reviewable limits before publication. | Deterministic local |
-| Bounded review | A project command rejects each stance unless project state binds the frozen pool, unique risks, current head, and human approval above five; merge also requires comment scope, repair order, and closure. | Deterministic local |
-| Exact-state proof | A project command rejects dirty state or stale or incomplete receipts and requires command, working directory, commit, clean tracked and untracked state, material input and environment identity, exit, and decisive output. | Deterministic local |
-| Merge admission | Harness permissions keep merge credentials outside workers; only an authorized human accepts current proof, review, approval, governing-artifact revision, and duplicate-memory check before the independent project gate merges. | Isolated authority |
-| Cleanup | Harness permissions keep cleanup authority outside workers; a human-authorized project command removes only campaign-owned, clean, terminal lanes and branches. | Isolated authority |
+Match strength to the accepted claim. Drift resistance may remain advisory or deterministic. A
+claim that a worker cannot bypass a boundary requires isolation.
 
-Run the project's preflight and prove each capability fails when its mechanism is removed or stale.
-Hosted status checks are optional; exact-state local command evidence is valid.
+Missing authority blocks only the dependent operation. Independent work continues. One named
+trusted owner may bootstrap a missing control while parallel dispatch and the guarded transition
+remain blocked. State the temporary limit; invent no proof.
 
-If any capability is absent, stop dependent autonomy and present three choices: supply or repair the
-control, let a human execute every affected transition, or cancel. Never weaken the class, invent
-proof, or fall back silently.
+Revalidate an operation's authority when its mechanism, owner, relevant repository state, or
+harness permissions change. Hosted status checks are optional; project-approved local proof is
+valid.
 
 ## Ledger
 
-1. Use one project-native issue or issue-backed epic. Record done, repositories, dependency order,
-   risk classes, branch integration, review policy, merge mode, and ownership. Milestones only group.
+1. Use one project-native issue or issue-backed epic. Record work, repositories, dependencies,
+   assignments, pull requests, status, operating authorities, and accepted exceptions. Milestones
+   only group.
 2. Prove parallel boundaries. Shared contracts, generated surfaces, unknown scope, and overlapping
    files force sequencing.
 
 ## Pool
 
 1. Inspect the current path, branch, tracked and untracked state, and `git worktree list`. Classify
-   every existing lane by path, branch, origin, owner, and state. Never nest or duplicate a suitable
-   native lane.
-2. Size one global lane budget from proven independent width, machine capacity, CI throughput, and
-   reviewer capacity. Partition fixed pools by repository. When cost or count is material, present
-   the recommendation and genuine alternatives for human selection.
-3. Reuse suitable project or harness lanes. Create each campaign lane once at a stable path. Keep one
-   active branch and one implementation owner per lane. Record its provenance in the ledger.
-4. Reuse a lane only after tracked and untracked state is empty. Fetch, detach at the accepted remote
-   base, then create the next branch.
-5. Reuse ignored dependencies only while lockfile and toolchain identities match. Refresh on change.
-   Force-clean nothing.
-6. One branch and worktree have one writer. Implementation on `main` requires project or human
-   authority.
+   existing lanes by path, branch, owner, origin, and state. Never seize an unknown or active lane.
+2. Size capacity from proven independent work, machine limits, verification cost, and reviewer
+   capacity. More lanes are not progress.
+3. Reuse suitable project or harness lanes. Keep one active branch and one implementation owner per
+   lane. Record ownership in the native ledger.
+4. Reuse only a clean released lane. Refresh ignored dependencies when lockfile or toolchain identity
+   changes. Force-clean nothing.
+5. Implementation on `main` requires named project or owner authority.
 
 ## Dispatch
 
@@ -61,13 +47,12 @@ proof, or fall back silently.
 2. Give the owner objective, ledger, repository, lane, branch, scope, exclusions, dependencies,
    acceptance conditions, checks, and pull-request policy.
 3. Require only status, changed paths, branch, pull request, head, decisive checks, and blockers in
-   the owner's return. No progress diary or recap; the ledger and pull request own history.
-4. Reassign an abandoned lane only after the prior owner stops and the branch head remains expected.
-   Hand over lane, branch, pull request, head, checks, unresolved comments, and blocker.
-5. The owner edits, tests, commits, pushes, and repairs review. The orchestrator tracks dependencies,
-   evidence, CI, and ownership; it never hijacks the owner's branch.
-6. Route every heavyweight command, retry, and review check through the machine-wide admission
-   boundary. Unadmitted execution stops the affected lane.
-7. Record blockers on the pull request or ledger. Resolve, replace the owner, or stop dependent work.
-8. Clean only campaign-created lanes after merge or closure through a human-authorized project
-   command. Preserve dirty, unknown, and externally owned worktrees.
+   the owner's return. No progress diary or recap.
+4. Reassign only after the prior owner stops and the branch head remains expected.
+5. The owner edits, tests, commits, pushes, and repairs review. The orchestrator coordinates and
+   verifies; it does not hijack another owner's branch.
+6. Route heavyweight work through its named resource owner. Without one, keep execution sequential
+   and obtain explicit authority before launch.
+7. Record blockers in the pull request or ledger.
+8. Clean only campaign-owned, clean, terminal lanes through the named cleanup owner or mechanism.
+   Preserve dirty, foreign, unknown, shared, and active state.

@@ -87,55 +87,6 @@ reject_absolute_source_examples() {
   }
 }
 
-validate_campaign_capabilities() {
-  file=$1
-  awk -F '[|]' '
-    function trim(value) {
-      gsub(/^[[:space:]]+|[[:space:]]+$/, "", value)
-      return value
-    }
-    BEGIN {
-      expected["Lane ownership"] = "Deterministic local"
-      expected["Proportionate verification"] = "Deterministic local"
-      expected["Heavyweight admission"] = "Isolated authority"
-      expected["Pull-request shape and size"] = "Deterministic local"
-      expected["Bounded review"] = "Deterministic local"
-      expected["Exact-state proof"] = "Deterministic local"
-      expected["Merge admission"] = "Isolated authority"
-      expected["Cleanup"] = "Isolated authority"
-      required["Lane ownership"] = "path,branch,owner,origin,head,cleanliness,dependency identity,terminal state"
-      required["Proportionate verification"] = "scope,risk,commands,receipts,exact state"
-      required["Heavyweight admission"] = "worker-inaccessible,only bounded,commands,workers,failures,cpu,memory,concurrency,lane"
-      required["Pull-request shape and size"] = "template,bulk output,process narration,reviewable limits"
-      required["Bounded review"] = "frozen pool,unique risks,current head,human approval,comment scope,repair order,closure"
-      required["Exact-state proof"] = "dirty state,receipts,command,working directory,commit,tracked and untracked state,input,environment,exit,output"
-      required["Merge admission"] = "credentials,outside workers,only an authorized human,proof,review,approval,artifact revision,duplicate-memory,project gate"
-      required["Cleanup"] = "outside workers,human-authorized,campaign-owned,clean,terminal"
-    }
-    /^\|/ {
-      capability = trim($2)
-      if (!(capability in expected)) next
-      proof = trim($3)
-      class = trim($4)
-      seen[capability] += 1
-      if (seen[capability] != 1 || class != expected[capability]) exit 1
-      if (class == "Deterministic local" && proof !~ /^A project command rejects /) exit 1
-      if (class == "Isolated authority" && proof !~ /(worker-inaccessible|outside workers)/) exit 1
-      normalized = tolower(proof)
-      count = split(required[capability], terms, ",")
-      for (term_index = 1; term_index <= count; term_index += 1) {
-        if (index(normalized, terms[term_index]) == 0) exit 1
-      }
-    }
-    END {
-      for (capability in expected) if (seen[capability] != 1) exit 1
-    }
-  ' "$file" || {
-    echo "campaign capability contract drift: $file" >&2
-    exit 1
-  }
-}
-
 section_text() {
   awk -v heading="## $2" '
     $0 == heading { inside = 1; next }
@@ -522,42 +473,45 @@ for phrase in 'status, changed paths' 'No progress diary or recap'; do
 done
 
 campaign_lanes="$ROOT/skills/sus-campaign/references/delivery-lanes.md"
-validate_campaign_capabilities "$campaign_lanes"
 for literal in \
-  'Advisory prose does not enforce.' \
-  'requires a project-owned rejecting command.' \
-  'requires a worker-inaccessible' \
-  "Run the project's preflight and prove each capability fails when its mechanism is removed or stale." \
-  'Hosted status checks are optional; exact-state local command evidence is valid.' \
-  'supply or repair the' \
-  'let a human execute every affected transition' \
-  'or cancel'; do
-  require_literal "$campaign_lanes" "$literal" 'campaign preflight contract drift'
+  'Map only operations the campaign will use:' \
+  '**Advisory:**' \
+  '**Deterministic local:**' \
+  '**Isolated authority:**' \
+  'claim that a worker cannot bypass a boundary requires isolation.' \
+  'Missing authority blocks only the dependent operation.' \
+  'trusted owner may bootstrap a missing control' \
+  'Hosted status checks are optional;'; do
+  require_literal "$campaign_lanes" "$literal" 'campaign authority preflight drift'
 done
 
 campaign="$ROOT/skills/sus-campaign/SKILL.md"
 for literal in \
-  'Complete its capability preflight before' \
+  'Run its operation-scoped authority preflight.' \
+  'A missing mechanism blocks only the transition it governs.' \
   'Every pickup must run the same loop:' \
   'Put no task-list checkbox' \
   'project-native ledger' \
-  'Skill instructions are advisory.' \
-  'Project commands provide deterministic local enforcement.' \
-  'Harness permissions provide isolated authority.' \
-  'Humans own'; do
+  'Instructions advise. Project commands reject. Isolation removes authority.' \
+  'Humans own' \
+  'They may delegate execution'; do
   require_literal "$campaign" "$literal" 'campaign control-strength contract drift'
 done
 
 campaign_review="$ROOT/skills/sus-campaign/references/pull-requests-review-and-merge.md"
 for literal in \
   'Hosted status checks are optional.' \
-  'cannot choose proof scope, attest it, review the result, and authorize' \
-  'Reconcile governing artifacts with implemented behavior.' \
-  'Ledger entries and worker-authored approvals never authorize merge.'; do
+  'Suspec supplies no reviewer or stance count.' \
+  'cannot accept its own work.' \
+  'The owner may delegate merge execution' \
+  'cannot bypass the authority.'; do
   require_literal "$campaign_review" "$literal" 'campaign review authority drift'
 done
-require_regex "$campaign_review" 'current receipt.{0,80}artifact.{0,30}revision' \
-  'campaign reconciliation receipt drift'
+if grep -Eq '500 reviewable|15 handwritten|above five|current receipt|only an authorized human accepts' \
+  "$campaign_lanes" "$campaign_review"; then
+  echo 'obsolete campaign control plane survived' >&2
+  exit 1
+fi
 
 writer_types='sus-spec:spec:SPEC- sus-task:task:TASK- sus-review:review:REVIEW- sus-inventory:inventory:INV- sus-change-plan:change-plan:CHANGE- sus-audit:audit:AUDIT- sus-research:research:RESEARCH- sus-campaign:campaign:CAMPAIGN-'
 for pair in $writer_types; do

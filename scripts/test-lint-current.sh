@@ -97,46 +97,46 @@ expect_failure() {
         >> "$fixture/skills/sus-spec/SKILL.md"
       ;;
     campaign-local-proof-drift)
-      sed '/Hosted status checks are optional; exact-state local command evidence is valid\./d' \
+      sed '/Hosted status checks are optional;/d' \
         "$fixture/skills/sus-campaign/references/delivery-lanes.md" \
         > "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp"
       mv "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp" \
         "$fixture/skills/sus-campaign/references/delivery-lanes.md"
       ;;
     campaign-authority-drift)
-      sed '/cannot choose proof scope, attest it, review the result, and authorize/d' \
+      sed '/cannot accept its own work\./d' \
         "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md" \
         > "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md.tmp"
       mv "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md.tmp" \
         "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md"
       ;;
-    campaign-capability-proof-drift)
-      sed 's/A project command rejects dirty state or stale or incomplete receipts/Receipts may exist/' \
+    campaign-operation-scope-drift)
+      sed 's/Map only operations the campaign will use:/Map every possible operation:/' \
         "$fixture/skills/sus-campaign/references/delivery-lanes.md" \
         > "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp"
       mv "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp" \
         "$fixture/skills/sus-campaign/references/delivery-lanes.md"
       ;;
     campaign-capability-class-drift)
-      sed '/| Heavyweight admission |/s/Isolated authority/Advisory/' \
+      sed 's/\*\*Deterministic local:\*\*/\*\*Advisory:\*\*/' \
         "$fixture/skills/sus-campaign/references/delivery-lanes.md" \
         > "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp"
       mv "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp" \
         "$fixture/skills/sus-campaign/references/delivery-lanes.md"
       ;;
-    campaign-heavyweight-bounds-drift)
-      sed 's/admits only bounded commands/admits commands/' \
+    campaign-bootstrap-drift)
+      sed '/trusted owner may bootstrap a missing control/d' \
         "$fixture/skills/sus-campaign/references/delivery-lanes.md" \
         > "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp"
       mv "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp" \
         "$fixture/skills/sus-campaign/references/delivery-lanes.md"
       ;;
     campaign-human-merge-drift)
-      sed 's/only an authorized human accepts/an authorized human accepts/' \
-        "$fixture/skills/sus-campaign/references/delivery-lanes.md" \
-        > "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp"
-      mv "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp" \
-        "$fixture/skills/sus-campaign/references/delivery-lanes.md"
+      sed 's/The owner may delegate merge execution/The owner may not delegate merge execution/' \
+        "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md" \
+        > "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md.tmp"
+      mv "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md.tmp" \
+        "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md"
       ;;
     campaign-human-ownership-drift)
       sed 's/Humans own/Humans review/' "$fixture/skills/sus-campaign/SKILL.md" \
@@ -161,34 +161,10 @@ for mutation in missing-skill non-markdown-payload escaping-link artifact-leak m
   invalid-description-yaml fenced-chat stale-name broken-link symlink quarantine-drift handoff-drift \
   evidence-economy-drift source-reference-drift source-reference-example-drift \
   source-reference-quoted-drift source-reference-inline-drift \
-  campaign-local-proof-drift campaign-authority-drift campaign-capability-proof-drift \
-  campaign-capability-class-drift campaign-heavyweight-bounds-drift \
+  campaign-local-proof-drift campaign-authority-drift campaign-operation-scope-drift \
+  campaign-capability-class-drift campaign-bootstrap-drift \
   campaign-human-merge-drift campaign-human-ownership-drift; do
   expect_failure "$mutation"
 done
-
-index=0
-while IFS= read -r capability; do
-  index=$((index + 1))
-  fixture="$TMP/campaign-capability-$index"
-  copy_repo "$fixture"
-  sed "/| $capability |/d" "$fixture/skills/sus-campaign/references/delivery-lanes.md" \
-    > "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp"
-  mv "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp" \
-    "$fixture/skills/sus-campaign/references/delivery-lanes.md"
-  if sh "$fixture/scripts/lint-current.sh" "$fixture" >/dev/null 2>&1; then
-    echo "missing campaign capability survived: $capability" >&2
-    exit 1
-  fi
-done <<'EOF'
-Lane ownership
-Proportionate verification
-Heavyweight admission
-Pull-request shape and size
-Bounded review
-Exact-state proof
-Merge admission
-Cleanup
-EOF
 
 echo "test-lint-current: OK"

@@ -18,8 +18,8 @@ Select one project-native issue, epic, or equivalent ledger. It owns work items,
 assignments, pull requests, and status. The campaign points to it; it never mirrors its mutable
 state.
 
-Load [Delivery lanes](./references/delivery-lanes.md). Complete its capability preflight before
-declaring the campaign ready. Missing control blocks dependent autonomy.
+Load [Delivery lanes](./references/delivery-lanes.md). Run its operation-scoped authority preflight.
+A missing mechanism blocks only the transition it governs.
 
 Load [Model routing](./references/model-routing.md) before assigning model classes. Load
 [Pull requests, review, and merge](./references/pull-requests-review-and-merge.md) before declaring
@@ -33,9 +33,9 @@ security, cost, authority, waiver, or irreversible choice, use the native picker
 first, three genuine options by default, two when binary, plain tradeoffs, and `Other`. Keep the
 campaign `draft` until every blocking choice is resolved.
 
-Skill instructions are advisory. Project commands provide deterministic local enforcement.
-Harness permissions provide isolated authority. Humans own intent, material decisions, irreversible acts,
-acceptance, and merge authority.
+Instructions advise. Project commands reject. Isolation removes authority. Claim only what the
+mechanism proves. Humans own intent, material decisions, waivers, irreversible authority, and
+acceptance. They may delegate execution to a named orchestrator or project mechanism.
 
 ## Artifact
 
@@ -65,8 +65,8 @@ Write exactly these required sections:
 
 - **Objective:** one durable outcome.
 - **Completion contract:** observable conditions that prove the whole campaign done.
-- **Authorities:** governing artifacts, ledger, project commands, merge owner, resource owner, and
-  cleanup owner.
+- **Authorities:** governing artifacts, ledger, and owners and mechanisms for every intended
+  delivery transition.
 - **Operating loop:** reread, reconcile, select, execute, verify, record, repeat.
 - **Stops:** completion or named human decisions that block dependent work.
 
@@ -88,9 +88,11 @@ Put no task-list checkbox, current count, branch SHA, lane occupancy, pull-reque
 session identity, first-run step, or handoff diary in the campaign. Point to the live owner.
 
 Use `status: ready` only when every authority is reachable from the target execution environment,
-every blocking choice is resolved, and capability preflight passes. A local harness receives the
-fully expanded absolute campaign path. A harness without path access receives the same artifact
-body after its authorities become reachable there.
+every blocking choice is resolved, and every intended operation names an honest owner, strength,
+mechanism, and failure behavior. A named stop may guard a later unavailable transition without
+blocking independent work. A local harness receives the fully expanded absolute campaign path. A
+harness without path access receives the same artifact body after its authorities become reachable
+there.
 
 ## Output
 

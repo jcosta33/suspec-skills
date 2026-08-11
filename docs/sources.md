@@ -151,7 +151,7 @@ Primary and official sources outrank summaries. A source supports only claims in
   actionable guidance, code-focused language, and explicit severity without inflating every comment.
   <https://google.github.io/eng-practices/review/reviewer/comments.html>
 - **Small CLs, Google Engineering Practices.** Supports one self-contained change, early splitting,
-  reviewable size, and separate refactors.
+  reviewable size, and separate refactors while rejecting a universal numeric limit.
   <https://google.github.io/eng-practices/review/developer/small-cls.html>
 - **Choice overload meta-analyses.** Scheibehenne, Greifeneder, and Todd, JCR 2010; Chernev,
   Bockenholt, and Goodman, JCP 2015. Option count has no universal effect or measured optimum;
@@ -179,7 +179,8 @@ Primary and official sources outrank summaries. A source supports only claims in
   <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches>
 - **Approving a pull request with required reviews, GitHub.** Defines approval and change-request
   clearance. <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews>
-- **Pull requests REST API, GitHub.** Defines expected-head validation for merge requests.
+- **Pull requests REST API, GitHub.** Defines expected-head validation for merge requests and the
+  write permission required to merge; hard separation therefore requires a credential boundary.
   <https://docs.github.com/en/rest/pulls/pulls>
 - **GitHub Issues and milestones.** Issues carry work discussion and assignment; milestones group
   issue and pull-request progress.
