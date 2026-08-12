@@ -57,6 +57,21 @@ Primary and official sources outrank summaries. A source supports only claims in
 - **Latest model prompting guidance, OpenAI.** Reports directional internal coding-agent gains from
   leaner prompts, including lower token use and cost; requires validation on representative work.
   <https://developers.openai.com/api/docs/guides/latest-model>
+- **What Should Agents Say? Action-state Communication for Efficient Multi-Agent Systems.** Huang,
+  Wu, and Zhang, 2026. Reports a stronger performance-cost tradeoff from compact action-state-result
+  handoffs across evaluated multi-agent systems and coding harnesses. Recent preprint; results remain
+  model- and harness-specific. <https://arxiv.org/abs/2606.05304>
+- **Experience-Driven Early Termination for Cost-Efficient Software Engineering Agents.** Guo et al.,
+  2026. Reports lower cost with negligible aggregate resolution loss from stopping unproductive
+  iterations using retrieved execution experience. Recent benchmark result; transfer is conditional.
+  <https://arxiv.org/abs/2601.05777>
+- **Same Task, Different Work: Prompt-Induced Waste in Coding Agents.** Weinberger and Hozez, 2026.
+  Reports greater reasoning and verification without measured success gains from unbounded certainty
+  and multi-approach prompts in 4,644 valid runs. Recent preregistered preprint.
+  <https://arxiv.org/abs/2608.01347>
+- **Token Reduction Is Not Cost Reduction.** Weinberger and Hozez, 2026. Reports that removing raw
+  tool-output tokens could increase billed cost and that lossy compression damaged exact edit
+  anchors. Recent provider- and harness-specific preprint. <https://arxiv.org/abs/2607.12161>
 - **Advanced tool use, Anthropic.** Shows how tool definitions and intermediate results can dominate
   context; its internal token reductions are workload-specific.
   <https://www.anthropic.com/engineering/advanced-tool-use>

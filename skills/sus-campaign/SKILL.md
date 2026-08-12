@@ -67,7 +67,8 @@ Write exactly these required sections:
 - **Completion contract:** observable conditions that prove the whole campaign done.
 - **Authorities:** governing artifacts, ledger, and owners and mechanisms for every intended
   delivery transition.
-- **Operating loop:** reread, reconcile, select, execute, verify, record, repeat.
+- **Operating loop:** reread, reconcile, select, execute, verify, record, repeat. Repeat an action
+  only after relevant state changed, the previous attempt failed, or independent proof requires it.
 - **Stops:** completion or named human decisions that block dependent work.
 
 Add `Constraints`, `Non-goals`, or `Workstreams` only when they carry information. Workstreams may
@@ -83,6 +84,9 @@ Every pickup must run the same loop:
 5. Execute through project implementation, verification, review, and integration gates.
 6. Record durable progress in the project-native ledger.
 7. Repeat until the completion contract passes or a named human decision blocks progress.
+
+Worker and phase handoffs state only the action, current state, result, decisive evidence,
+unresolved condition, and next owner or action.
 
 Put no task-list checkbox, current count, branch SHA, lane occupancy, pull-request snapshot,
 session identity, first-run step, or handoff diary in the campaign. Point to the live owner.
