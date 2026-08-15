@@ -1,0 +1,21 @@
+CHANGELOG.md
+  s_0a3429e31e555d::t_bd5b4afc4ff4cc 19-21
+skills/sus-panel/SKILL.md
+  s_0a3429e31e555d::t_bd5b4afc4ff4cc 15-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "762c9ae902c6b89374360728ec8a00d9a70558a0",
+  "prompts": {},
+  "sessions": {
+    "s_0a3429e31e555d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1568-8dda-7540-97a5-9da760eadac4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
