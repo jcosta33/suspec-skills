@@ -12,8 +12,9 @@ Independent first. Evidence next. One recommendation. No committee theater.
 1. Lock one question, fixed evidence packet, constraints, decision owner, and reversal condition.
 2. Honor a user-specified participant count. Otherwise choose the smallest panel that covers every
    material perspective. Never fill seats for symmetry.
-3. Use the cheapest capable models unless the user requests otherwise. Give each fresh participant
-   one distinct, decision-relevant perspective. Hide peer analyses until every initial response lands.
+3. Use the cheapest capable models unless the user requests otherwise. Launch fresh participants
+   concurrently, give each one distinct decision-relevant perspective, and hide peer analyses until
+   every initial response lands.
 4. Require each analysis to name its recommendation, evidence, costs, failure modes, unknowns, and
    what would reverse it.
 5. Verify load-bearing factual claims against direct evidence. Agreement proves nothing.
