@@ -1,0 +1,52 @@
+scripts/test-lint-current.sh
+  s_0a3429e31e555d::t_24077c6581efbe 35-38,150-154,169,175
+  s_0a3429e31e555d::t_edc7b3fcdd77a3 105-108,112-115,119-122,126-129,133-136,140-143
+docs/sources.md
+  s_0a3429e31e555d::t_557196042b7b58 20-21,23,31-32
+skills/sus-task/SKILL.md
+  s_0a3429e31e555d::t_d8563cba3b74dc 64-81,83-86,89,93-95,97-98,103-107
+  s_0a3429e31e555d::t_78262d28f7c2d8 82,87-88,90-92,96,99-102
+AGENTS.md
+  s_0a3429e31e555d::t_557196042b7b58 8
+docs/self-containment.md
+  s_0a3429e31e555d::t_557196042b7b58 5,9,12
+docs/body-anatomy.md
+  s_0a3429e31e555d::t_557196042b7b58 21-22
+skills/sus-research/SKILL.md
+  s_0a3429e31e555d::t_b001d830330346 34-80,85-89
+  s_ab5443e65c7fba::t_cdf6c5f1e85fb9 90
+scripts/lint-current.sh
+  s_0a3429e31e555d::t_1890db5af0d54c 498,501-504
+  s_0a3429e31e555d::t_97bf04cdda9112 489
+  s_0a3429e31e555d::t_de58bfb3007646 348-349,355,460,462,475,494,496-497,499-500,506,522,544
+skills/sus-campaign/SKILL.md
+  s_0a3429e31e555d::t_d4a6b762466893 32-33
+  s_0a3429e31e555d::t_fd6490b6bb0914 34-35
+  s_0a3429e31e555d::t_98f0fdf91259e4 21,23-31,36-107
+docs/README.md
+  s_0a3429e31e555d::t_557196042b7b58 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "fb2eb42a47d0dc88754ef4566c58a9458133832c",
+  "prompts": {},
+  "sessions": {
+    "s_0a3429e31e555d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1568-8dda-7540-97a5-9da760eadac4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    },
+    "s_ab5443e65c7fba": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f2307a45-7e7b-4756-b1d2-9aaee184f227",
+        "model": "claude-fable-5"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
