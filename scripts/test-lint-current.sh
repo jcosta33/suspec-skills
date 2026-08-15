@@ -32,6 +32,10 @@ expect_failure() {
     non-markdown-payload)
       : > "$fixture/skills/bulletproof/payload.bin"
       ;;
+    appendix-payload)
+      mkdir -p "$fixture/skills/bulletproof/references"
+      printf 'hidden control\n' > "$fixture/skills/bulletproof/references/control.md"
+      ;;
     escaping-link)
       printf '\n[escape](../demolition/SKILL.md)\n' >> "$fixture/skills/bulletproof/SKILL.md"
       ;;
@@ -98,49 +102,54 @@ expect_failure() {
       ;;
     campaign-local-proof-drift)
       sed '/Hosted status checks are optional;/d' \
-        "$fixture/skills/sus-campaign/references/delivery-lanes.md" \
-        > "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp"
-      mv "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp" \
-        "$fixture/skills/sus-campaign/references/delivery-lanes.md"
+        "$fixture/skills/sus-campaign/SKILL.md" \
+        > "$fixture/skills/sus-campaign/SKILL.md.tmp"
+      mv "$fixture/skills/sus-campaign/SKILL.md.tmp" \
+        "$fixture/skills/sus-campaign/SKILL.md"
       ;;
     campaign-authority-drift)
       sed '/cannot accept its own work\./d' \
-        "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md" \
-        > "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md.tmp"
-      mv "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md.tmp" \
-        "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md"
+        "$fixture/skills/sus-campaign/SKILL.md" \
+        > "$fixture/skills/sus-campaign/SKILL.md.tmp"
+      mv "$fixture/skills/sus-campaign/SKILL.md.tmp" \
+        "$fixture/skills/sus-campaign/SKILL.md"
       ;;
     campaign-operation-scope-drift)
       sed 's/Map only operations the campaign will use:/Map every possible operation:/' \
-        "$fixture/skills/sus-campaign/references/delivery-lanes.md" \
-        > "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp"
-      mv "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp" \
-        "$fixture/skills/sus-campaign/references/delivery-lanes.md"
+        "$fixture/skills/sus-campaign/SKILL.md" \
+        > "$fixture/skills/sus-campaign/SKILL.md.tmp"
+      mv "$fixture/skills/sus-campaign/SKILL.md.tmp" \
+        "$fixture/skills/sus-campaign/SKILL.md"
       ;;
     campaign-capability-class-drift)
       sed 's/\*\*Deterministic local:\*\*/\*\*Advisory:\*\*/' \
-        "$fixture/skills/sus-campaign/references/delivery-lanes.md" \
-        > "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp"
-      mv "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp" \
-        "$fixture/skills/sus-campaign/references/delivery-lanes.md"
+        "$fixture/skills/sus-campaign/SKILL.md" \
+        > "$fixture/skills/sus-campaign/SKILL.md.tmp"
+      mv "$fixture/skills/sus-campaign/SKILL.md.tmp" \
+        "$fixture/skills/sus-campaign/SKILL.md"
       ;;
     campaign-bootstrap-drift)
       sed '/trusted owner may bootstrap a missing control/d' \
-        "$fixture/skills/sus-campaign/references/delivery-lanes.md" \
-        > "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp"
-      mv "$fixture/skills/sus-campaign/references/delivery-lanes.md.tmp" \
-        "$fixture/skills/sus-campaign/references/delivery-lanes.md"
+        "$fixture/skills/sus-campaign/SKILL.md" \
+        > "$fixture/skills/sus-campaign/SKILL.md.tmp"
+      mv "$fixture/skills/sus-campaign/SKILL.md.tmp" \
+        "$fixture/skills/sus-campaign/SKILL.md"
       ;;
     campaign-human-merge-drift)
       sed 's/The owner may delegate merge execution/The owner may not delegate merge execution/' \
-        "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md" \
-        > "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md.tmp"
-      mv "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md.tmp" \
-        "$fixture/skills/sus-campaign/references/pull-requests-review-and-merge.md"
+        "$fixture/skills/sus-campaign/SKILL.md" \
+        > "$fixture/skills/sus-campaign/SKILL.md.tmp"
+      mv "$fixture/skills/sus-campaign/SKILL.md.tmp" \
+        "$fixture/skills/sus-campaign/SKILL.md"
       ;;
     campaign-human-ownership-drift)
       sed 's/Humans own/Humans review/' "$fixture/skills/sus-campaign/SKILL.md" \
         > "$fixture/skills/sus-campaign/SKILL.md.tmp"
+      mv "$fixture/skills/sus-campaign/SKILL.md.tmp" "$fixture/skills/sus-campaign/SKILL.md"
+      ;;
+    campaign-model-routing-drift)
+      sed 's/Choose reviewers from the criticality of their stance\./Choose reviewers by availability./' \
+        "$fixture/skills/sus-campaign/SKILL.md" > "$fixture/skills/sus-campaign/SKILL.md.tmp"
       mv "$fixture/skills/sus-campaign/SKILL.md.tmp" "$fixture/skills/sus-campaign/SKILL.md"
       ;;
     *)
@@ -157,13 +166,13 @@ expect_failure() {
 
 sh "$ROOT/scripts/lint-current.sh" "$ROOT" >/dev/null
 
-for mutation in missing-skill non-markdown-payload escaping-link artifact-leak missing-frontmatter \
+for mutation in missing-skill non-markdown-payload appendix-payload escaping-link artifact-leak missing-frontmatter \
   invalid-description-yaml fenced-chat stale-name broken-link symlink quarantine-drift handoff-drift \
   evidence-economy-drift source-reference-drift source-reference-example-drift \
   source-reference-quoted-drift source-reference-inline-drift \
   campaign-local-proof-drift campaign-authority-drift campaign-operation-scope-drift \
   campaign-capability-class-drift campaign-bootstrap-drift \
-  campaign-human-merge-drift campaign-human-ownership-drift; do
+  campaign-human-merge-drift campaign-human-ownership-drift campaign-model-routing-drift; do
   expect_failure "$mutation"
 done
 

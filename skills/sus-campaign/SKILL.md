@@ -18,12 +18,93 @@ Select one project-native issue, epic, or equivalent ledger. It owns work items,
 assignments, pull requests, and status. The campaign points to it; it never mirrors its mutable
 state.
 
-Load [Delivery lanes](./references/delivery-lanes.md). Run its operation-scoped authority preflight.
-A missing mechanism blocks only the transition it governs.
+### Authority
 
-Load [Model routing](./references/model-routing.md) before assigning model classes. Load
-[Pull requests, review, and merge](./references/pull-requests-review-and-merge.md) before declaring
-delivery authorities complete.
+Map only operations the campaign will use: lane allocation, verification, heavyweight execution,
+publication, review, merge, and cleanup. Record each owner, strength, mechanism, and failure in the
+ledger.
+
+- **Advisory:** instructions coordinate willing agents. Claim no rejection or containment.
+- **Deterministic local:** a project command rejects an invalid transition.
+- **Isolated authority:** workers cannot reach protected state, resources, or credentials.
+
+Match strength to the claim. A claim that a worker cannot bypass a boundary requires isolation.
+Missing authority blocks only the dependent operation. Independent work continues.
+A trusted owner may bootstrap a missing control while its guarded transition stays blocked.
+Revalidate when its owner, mechanism, permissions, or relevant state changes.
+Hosted status checks are optional; project-approved local proof is valid.
+
+### Lanes
+
+Inspect the path, branch, tracked and untracked state, and `git worktree list`. Classify every lane
+by path, branch, owner, origin, and state. Never seize an active or unknown lane.
+
+Size capacity from proven independent work, machine limits, verification cost, and reviewer
+capacity. Reuse only a clean released lane. Keep one branch and one implementation owner per lane.
+Refresh ignored dependencies after lockfile or toolchain drift. Force-clean nothing. Implementation
+on `main` requires named project or owner authority.
+
+### Dispatch
+
+Dispatch only dependency-ready, write-disjoint work. Give each owner the objective, ledger,
+repository, lane, branch, scope, exclusions, dependencies, acceptance conditions, checks, and
+pull-request policy. Require only status, changed paths, branch, pull request, head, decisive checks,
+and blockers. No progress diary or recap.
+
+The implementation owner edits, tests, commits, pushes, and repairs review. The orchestrator
+coordinates and verifies; it does not hijack another owner's branch. Reassign only after the owner
+stops and the branch head remains expected. Route heavyweight work through its named resource
+owner; without one, run sequentially. Record blockers in the pull request or ledger.
+
+Choose implementation models from task complexity and ambiguity. Use an economy tier only for
+bounded mechanical work with a decisive oracle, a standard tier for ordinary contained work, and
+the strongest tier for architecture, security, migrations, cross-repository judgment, conflicting
+evidence, or unresolved ambiguity.
+
+Choose reviewers from the criticality of their stance. Use an economy tier for narrow low-risk
+checks, a standard tier for behavioral and integration risk, and the strongest tier for security,
+safety, data loss, irreversible change, or disputed severe findings. Escalate the blocked or
+disputed step, then return to the cheaper adequate tier. Route from evidence, scope, risk,
+reversibility, repeated failure, and reviewer disagreement. Ignore self-confidence.
+
+### Delivery
+
+Define the strongest observable check before changing behavior. For a bug, reproduce the original
+failure and expected reason before editing. Trust a regression only when it fails on the defect,
+passes on the repair, exercises production behavior, and invents no requirement. Record command,
+working directory, state, exit, and decisive output. Re-run after material drift.
+
+Keep one independently reviewable concern per pull request and merge in dependency order. Split
+mixed behavior, refactors, and migrations before implementation. Repository size policy wins;
+without one, split when reviewability degrades unless the concern is indivisible. Suspec supplies no
+line or file threshold.
+
+Open a draft when reviewable code exists. Follow repository title and body conventions. Without
+them, use an imperative title, Summary, and Verification; add Dependencies or Risks only when
+material. Link the ledger once. Remove agent names, internal review mechanics, process diaries,
+repeated evidence, and anything no reviewer can act on. Mark ready only after required checks pass.
+
+Derive the smallest review set covering material risks. Suspec supplies no reviewer or stance count.
+Give each reviewer the current head, diff, requirements, accepted decisions, and one distinct risk.
+Hide prior reviewer prose unless resolving its finding. Verify findings. Publish only supported,
+actionable defects: changed-line threads for local defects, file comments for file-wide defects, and
+one short review item for cross-cutting defects. Each finding states defect, consequence, and
+required outcome. Omit greetings, praise, process, identities, stance labels, speculation, and
+solution essays.
+
+The implementation owner cannot accept its own work. It fixes, pushes, and replies with the repaired
+head and decisive proof; a distinct reviewer or named review authority validates the repair.
+Resolve current findings before another sequential reviewer. Restart broad review only after a
+contract, trust boundary, failure mode, or requirement changes. Stop when material risks are
+covered. Run no quiet rotation, quota, or completion recap.
+
+Immediately before merge, reconcile governing artifacts, head, base, proof, review state, and open
+conversations. The owner may delegate merge execution to a named orchestrator, project command,
+protected queue, or human. Bind merge to the expected head. Do not claim independence unless the
+worker cannot bypass the authority. Drift resets affected checks and review. Revalidate dependent
+branches after prerequisites merge. Follow repository merge strategy. Recycle a lane only after
+merge or closure and a clean worktree. Delete only campaign-owned merged branches and clean
+campaign-created worktrees through the named cleanup owner; preserve everything else.
 
 Prove write-disjoint, dependency-ready parallelism. Sequence shared contracts, generated surfaces,
 unknown scope, and overlapping files.

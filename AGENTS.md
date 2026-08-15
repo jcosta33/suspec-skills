@@ -5,8 +5,7 @@ siblings is broken.
 
 ## Edit contract
 
-- Keep one skill in `skills/<name>/SKILL.md`; bundle only on-demand Markdown under its
-  `references/`.
+- Keep each skill complete in `skills/<name>/SKILL.md`. Ship no appendix payloads.
 - Keep frontmatter `name` and directive `description`.
 - Preserve standalone operation and Markdown-only payloads.
 - Use untitled inline Markdown links with simple destinations. Reference-style, angle-wrapped,

@@ -18,9 +18,8 @@ methods carry none by ritual.
 Use hard verbs. Delete encouragement, scene-setting, default behavior, repeated rationale,
 announcement labels, ceremonial negatives, and conclusions. State each fact once.
 
-Move long phase-specific detail into direct, one-level bundled references. Keep references inside
-the skill directory and load each only when its phase begins. Do not split short, always-needed
-control merely to look modular.
+Keep the complete procedure in `SKILL.md`. Condense long detail; never hide required control in an
+appendix another read can skip.
 
 Render chat with Markdown headings, labels, lists, and tables. Fence only literal code, untouched raw
 evidence, or an artifact template.

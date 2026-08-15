@@ -61,8 +61,50 @@ fall back to a repository, vendor directory, or temporary path.
 
 Write local source references relative to the artifact. Use absolute paths only for runtime handoff.
 
-Instantiate [`references/task-packet.md`](./references/task-packet.md) once per slice. Carry every
-artifact by absolute path.
+Write one packet per slice. Carry every artifact by absolute path.
+
+Start each packet with:
+
+```yaml
+---
+type: task
+id: "TASK-{{slug}}"
+source:
+  - "{{spec-id}}"
+  - "{{change-plan-id; omit when none}}"
+scope: ["{{requirement-id}}"]
+status: ready
+---
+```
+
+Use `# Task: {{title}}` and these sections:
+
+- `## Source`: absolute spec and optional change-plan paths, IDs, source state, every scoped
+  requirement block and `Verify with:` line verbatim, and the strongest acceptance oracle. For a
+  defect, record the original state, failing command, numeric exit, expected reason, and decisive
+  output. The regression must fail on the defect, pass on the repair, exercise production behavior,
+  and invent no requirement.
+- `## Scope`: assigned requirement IDs only.
+- `## Preservation scope`: omit without a change plan; otherwise copy every preservation guarantee
+  the packet could violate with its exact check.
+- `## Do not change`: excluded paths, contracts, and behavior.
+- `## Affected areas`: every permitted write path.
+- `## Verify`: one entry per requirement and preservation guarantee. Record exact command, absolute
+  working directory, state, numeric exit, and fenced decisive raw output; a CI link or justified
+  `n/a` may replace command evidence. `ready` and `running` may retain pending evidence;
+  `review-ready` and `closed` may not.
+- `## Agent instructions`: reread sources and repository rules; block on source, scope, snapshot, or
+  preservation drift; reproduce a recorded defect before repair; stop before crossing scope; cite
+  Verify entries without repeating output; never assess or accept the owner's work.
+- `## Run order`: complete order, this packet, `Starts after:`, and `May run with:` proven
+  write-disjoint peers.
+- `## Findings`: unresolved defects or `None`.
+- `## Run summary`: status, changed files, Verify references, scope drift, and blocked questions. No
+  duplicated evidence.
+
+At `review-ready`, freeze the target for a fresh independent reviewer against the canonical spec.
+The implementation owner applies fixes and requests fresh review. Without independent review, stay
+`review-ready`. Close only after findings are reconciled and human acceptance is recorded.
 
 ## Output
 

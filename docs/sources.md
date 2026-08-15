@@ -17,10 +17,10 @@ Primary and official sources outrank summaries. A source supports only claims in
 - **OpenAI Codex skill documentation.** Official discovery model, shared metadata budget,
   description truncation behavior, invocation policy, and authoring guidance.
   <https://developers.openai.com/codex/skills>
-- **Open Agent Skills specification.** Defines `SKILL.md`, frontmatter, description limits, layout,
-  and progressive disclosure. <https://agentskills.io/specification>
+- **Open Agent Skills specification.** Defines `SKILL.md`, frontmatter, description limits, and
+  layout. <https://agentskills.io/specification>
 - **Agent Skills authoring best practices, Anthropic.** Official guidance on concise bodies,
-  progressive disclosure, calibrated instruction freedom, and evaluation.
+  calibrated instruction freedom, and evaluation.
   <https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices>
 - **Using Agent Skills with the API, Anthropic.** Official confirmation that multiple skills
   explicitly supplied in one API request compose for complex workflows. It does not establish
@@ -28,8 +28,8 @@ Primary and official sources outrank summaries. A source supports only claims in
   <https://platform.claude.com/docs/en/build-with-claude/skills-guide>
 - **Optimizing skill descriptions, Agent Skills.** Guidance on imperative, intent-based discovery
   metadata. <https://agentskills.io/skill-creation/optimizing-descriptions>
-- **Anthropic skill-creator.** Official reference workflow for concise bodies, progressive
-  disclosure, description evaluation, and iterative testing.
+- **Anthropic skill-creator.** Official reference workflow for concise bodies, description
+  evaluation, and iterative testing.
   <https://github.com/anthropics/skills/tree/main/skills/skill-creator>
 - **Frontify skills authoring notes.** Practitioner synthesis on
   [activation](https://github.com/Frontify/skills/blob/main/docs/activation.md),

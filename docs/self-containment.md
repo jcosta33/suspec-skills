@@ -2,15 +2,14 @@
 
 Installed alone means working alone.
 
-- Carry every load-bearing instruction in the skill directory.
+- Carry every load-bearing instruction in `SKILL.md`.
 - Depend on no sibling, external decision record, shared boilerplate, repository file, alias, or
   hidden convention.
 - Use roles, task language, and absolute runtime paths.
-- Keep bundled references one level deep and link them directly from the body.
-- Give every reference an explicit load condition.
+- Ship no appendix payloads.
 - Keep placement and lifecycle rules inside artifact authors.
 
-Isolation proof installs one skill into an empty catalog and validates metadata, links, payload, and
+Isolation proof installs one `SKILL.md` into an empty catalog and validates its metadata and
 standalone procedure without other Suspec content.
 
 ## Semantic composition

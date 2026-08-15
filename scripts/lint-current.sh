@@ -345,20 +345,14 @@ for file in "$ROOT"/skills/*/SKILL.md; do
     exit 1
   fi
   find "$folder" -mindepth 1 -type d -print | while IFS= read -r path; do
-    relative=${path#"$folder"/}
-    case "$relative" in
-      references|references/*) ;;
-      *)
-        echo "unexpected skill payload directory: $path" >&2
-        exit 1
-        ;;
-    esac
+    echo "unexpected skill payload directory: $path" >&2
+    exit 1
   done
 
   find "$folder" -mindepth 1 -type f -print | while IFS= read -r path; do
     relative=${path#"$folder"/}
     case "$relative" in
-      SKILL.md|references/*.md) ;;
+      SKILL.md) ;;
       *)
         echo "unexpected skill payload file: $path" >&2
         exit 1
@@ -392,14 +386,6 @@ for file in "$ROOT"/skills/*/SKILL.md; do
       echo "external skill dependency in $name: $document" >&2
       exit 1
     fi
-    case "${document#"$folder"/}" in
-      references/*)
-        if relative_links < "$document" | grep -q .; then
-          echo "nested bundled reference in $name: $document" >&2
-          exit 1
-        fi
-        ;;
-    esac
     for other in $expected; do
       [ "$other" = "$name" ] && continue
       if [ "$other" = settle ]; then
@@ -415,15 +401,6 @@ for file in "$ROOT"/skills/*/SKILL.md; do
       fi
     done
   done
-
-  if test -d "$folder/references"; then
-    find "$folder/references" -type f -name '*.md' -exec basename {} \; | while IFS= read -r ref; do
-      grep -Fq "(./references/$ref)" "$file" || {
-        echo "unreachable bundled reference in $name: $ref" >&2
-        exit 1
-      }
-    done
-  fi
 
   output_text=$(section_text "$file" Output)
   if printf '%s\n' "$output_text" | grep -Fq '```'; then
@@ -480,12 +457,12 @@ for method in bulletproof dissect revolver triple-check; do
     "decisive evidence economy missing in $method"
 done
 
+campaign="$ROOT/skills/sus-campaign/SKILL.md"
 for phrase in 'status, changed paths' 'No progress diary or recap'; do
-  require_literal "$ROOT/skills/sus-campaign/references/delivery-lanes.md" "$phrase" \
+  require_literal "$campaign" "$phrase" \
     'campaign worker result contract drift'
 done
 
-campaign_lanes="$ROOT/skills/sus-campaign/references/delivery-lanes.md"
 for literal in \
   'Map only operations the campaign will use:' \
   '**Advisory:**' \
@@ -495,13 +472,10 @@ for literal in \
   'Missing authority blocks only the dependent operation.' \
   'trusted owner may bootstrap a missing control' \
   'Hosted status checks are optional;'; do
-  require_literal "$campaign_lanes" "$literal" 'campaign authority preflight drift'
+  require_literal "$campaign" "$literal" 'campaign authority preflight drift'
 done
 
-campaign="$ROOT/skills/sus-campaign/SKILL.md"
 for literal in \
-  'Run its operation-scoped authority preflight.' \
-  'A missing mechanism blocks only the transition it governs.' \
   'Every pickup must run the same loop:' \
   'Put no task-list checkbox' \
   'project-native ledger' \
@@ -511,17 +485,25 @@ for literal in \
   require_literal "$campaign" "$literal" 'campaign control-strength contract drift'
 done
 
-campaign_review="$ROOT/skills/sus-campaign/references/pull-requests-review-and-merge.md"
 for literal in \
-  'Hosted status checks are optional.' \
+  'Hosted status checks are optional;' \
   'Suspec supplies no reviewer or stance count.' \
   'cannot accept its own work.' \
   'The owner may delegate merge execution' \
   'cannot bypass the authority.'; do
-  require_literal "$campaign_review" "$literal" 'campaign review authority drift'
+  require_literal "$campaign" "$literal" 'campaign review authority drift'
 done
+for literal in \
+  'Choose implementation models from task complexity and ambiguity.' \
+  'Choose reviewers from the criticality of their stance.'; do
+  require_literal "$campaign" "$literal" 'campaign model routing drift'
+done
+require_regex "$campaign" 'economy tier only.{0,50}bounded mechanical work.{0,50}decisive oracle' \
+  'campaign implementation model routing drift'
+require_regex "$campaign" 'economy tier.{0,30}narrow low-risk checks' \
+  'campaign review model routing drift'
 if grep -Eq '500 reviewable|15 handwritten|above five|current receipt|only an authorized human accepts' \
-  "$campaign_lanes" "$campaign_review"; then
+  "$campaign"; then
   echo 'obsolete campaign control plane survived' >&2
   exit 1
 fi
@@ -537,11 +519,7 @@ for pair in $writer_types; do
     echo "artifact type ownership drift in $writer: $actual_types" >&2
     exit 1
   }
-  if [ "$writer" = sus-task ]; then
-    frontmatter_source="$ROOT/skills/sus-task/references/task-packet.md"
-  else
-    frontmatter_source="$ROOT/skills/$writer/SKILL.md"
-  fi
+  frontmatter_source="$ROOT/skills/$writer/SKILL.md"
   validate_artifact_frontmatter "$frontmatter_source" "$expected_type" "$expected_prefix" || {
     echo "artifact frontmatter contract drift in $writer" >&2
     exit 1
@@ -563,7 +541,7 @@ for literal in 'type: spec' 'status: draft' '## Intent' '## Requirements' 'Verif
   require_literal "$spec" "$literal" 'Spec authoring contract drift'
 done
 
-task="$ROOT/skills/sus-task/references/task-packet.md"
+task="$ROOT/skills/sus-task/SKILL.md"
 for literal in 'type: task' 'status: ready' 'source:' 'scope:' '## Source' '## Scope' \
   '## Do not change' '## Affected areas' '## Verify' '## Agent instructions' '## Findings' \
   '## Run order' 'Starts after:' 'May run with:' '## Run summary'; do
