@@ -1,0 +1,35 @@
+scripts/lint-current.sh
+  s_0a3429e31e555d::t_0c38f87bb47ac3 15,20,26-27,305,319-322,405-411,470,529
+docs/scope.md
+  s_0a3429e31e555d::t_0c38f87bb47ac3 5-6
+skills/sus-panel/SKILL.md
+  s_0a3429e31e555d::t_0c38f87bb47ac3 1-68
+docs/sources.md
+  s_0a3429e31e555d::t_0c38f87bb47ac3 139-156
+skills/settle/SKILL.md
+  s_0a3429e31e555d::t_0c38f87bb47ac3 1-27
+README.md
+  s_0a3429e31e555d::t_0c38f87bb47ac3 37,51
+docs/execution.md
+  s_0a3429e31e555d::t_0c38f87bb47ac3 14-16
+docs/skill-existence-test.md
+  s_0a3429e31e555d::t_0c38f87bb47ac3 18,27
+CHANGELOG.md
+  s_0a3429e31e555d::t_0c38f87bb47ac3 18-20,46,58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "86aa2248f95a86a23d33488c42edb9e22fe3c58e",
+  "prompts": {},
+  "sessions": {
+    "s_0a3429e31e555d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1568-8dda-7540-97a5-9da760eadac4",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
