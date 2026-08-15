@@ -15,6 +15,7 @@ familiar work unless Suspec adds a unique contract.
 | `triple-check` | narrow high-risk work receives shallow or correlated review |
 | `promote` | transient content enters permanence unsanitized or broken |
 | `remember` | verified lessons vanish or create a parallel memory store |
+| `settle` | solvable technical ambiguity reaches the user or becomes an arbitrary choice |
 | `sus-spec` | undecided intent becomes unverifiable implementation |
 | `sus-task` | parallel packets collide, duplicate, or drop scope |
 | `sus-review` | authors accept their work or evidence gaps disappear |
@@ -23,5 +24,6 @@ familiar work unless Suspec adds a unique contract.
 | `sus-audit` | present risk mixes with unsupported prescription |
 | `sus-research` | sources exceed competence and uncertainty becomes decision |
 | `sus-campaign` | long delivery runs from a stale snapshot, unowned transitions, or inflated control claims |
+| `sus-panel` | consequential alternatives collapse into one unchallenged recommendation |
 
 Reconsider a skill when real work shows overlap, native replacement, or loss of its distinct failure.

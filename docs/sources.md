@@ -136,6 +136,24 @@ Primary and official sources outrank summaries. A source supports only claims in
   JMIR Mental Health 2025. Reports fabricated citations and bibliographic errors, supporting direct
   citation verification. <https://mental.jmir.org/2025/1/e80371>
 
+## Technical Decisions And Panels
+
+- **CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing.** Gou et al.,
+  ICLR 2024. External tool feedback improves correction; unsupported self-reflection does not become
+  evidence. <https://openreview.net/forum?id=Sx038qxjek>
+- **Improving Factuality and Reasoning in Language Models through Multiagent Debate.** Du et al.,
+  ICML 2024. Demonstrates gains from bounded debate on evaluated reasoning tasks; it does not prove
+  that more participants or rounds always help. <https://proceedings.mlr.press/v235/du24e.html>
+- **Voting or Consensus? Decision-Making in Multi-Agent Debate.** Findings of ACL 2025. Decision
+  strategy is task-dependent; no universal aggregation rule wins. Agreement remains a synthesis
+  input, not proof. <https://aclanthology.org/2025.findings-acl.606/>
+- **Stay Focused: Problem Drift in Multi-Agent Debate.** Findings of EACL 2026. Longer interaction
+  can move discussion away from the original problem. Supports one fixed packet and bounded
+  follow-up. <https://aclanthology.org/2026.findings-eacl.268/>
+- **LLM-Blender.** Jiang et al., ACL 2023. Separating candidate comparison from final synthesis can
+  outperform direct generation on evaluated tasks. It does not establish a universal panel size.
+  <https://aclanthology.org/2023.acl-long.792/>
+
 ## Campaign Coordination
 
 - **Follow a goal, OpenAI.** Defines a durable coding goal by one objective, a verifiable stopping

@@ -15,11 +15,9 @@ and re-run to re-fetch. Watch the
 
 ### Changed
 
-- The catalog surface is `bulletproof`, `campaign`, `demolition`, `dissect`, `disrespec`, `fork-me`,
-  `promote`, `remember`, `revolver`, `triple-check`, `sus-audit`, `sus-change-plan`, `sus-inventory`,
-  `sus-research`, `sus-review`, `sus-spec`, and `sus-task`. Each skill installs alone; no aliases
-  ship.
-- `campaign` runs large goals through reusable worktree lanes, independently reviewable pull
+- The catalog surface adds `settle` for evidence-driven technical decisions and `sus-panel` for
+  durable independent deliberation. Each skill installs alone; no aliases ship.
+- `sus-campaign` runs large goals through reusable worktree lanes, independently reviewable pull
   requests, bounded sequential review, scoped comments, and merged-SHA verification. Numeric size
   and stance limits are circuit breakers, not quality claims.
 - `sus-spec` emits one enriched Markdown requirement block: `When`, `Then`, and `Verify with`.
@@ -45,7 +43,7 @@ and re-run to re-fetch. Watch the
   fallback, and dependent work blocked until selection.
 - `sus-spec` resolves consequential design approaches before requirements. Clear reversible work
   stays direct.
-- `campaign` detects native worktrees, requires main-branch authority, records lane provenance,
+- `sus-campaign` detects native worktrees, requires main-branch authority, records lane provenance,
   preserves foreign lanes, and carries an executable acceptance oracle through implementation and
   scoped re-review.
 - `revolver` derives the complete target-justified stance pool and resolves it sequentially without
@@ -57,7 +55,7 @@ and re-run to re-fetch. Watch the
   fences remain for literal code, untouched raw evidence, and artifact templates.
 - Artifact skills stay checker-agnostic. Ambient MCP discovery or explicit user invocation reaches
   the optional deterministic checker without bloating method bodies.
-- Written specs use the `0.23.0` requirement shape. C028 enforces the three-item block; C004 requires
+- Written specs use the `0.25.0` contract. C028 enforces the three-item block; C004 requires
   exactly one strength word in `Then`.
 - Catalog design docs are now a gated contract, and externally grounded method changes must update
   the bounded source ledger in the same change.

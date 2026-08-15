@@ -34,6 +34,7 @@ setup.
 | [`triple-check`](./skills/triple-check/SKILL.md) | run three concurrent top-tier reviews            |
 | [`promote`](./skills/promote/SKILL.md)           | move a transient artifact into project ownership |
 | [`remember`](./skills/remember/SKILL.md)         | preserve one verified lesson                     |
+| [`settle`](./skills/settle/SKILL.md)             | resolve technical ambiguity from evidence        |
 
 ## Artifact authors
 
@@ -47,6 +48,7 @@ setup.
 | [`sus-audit`](./skills/sus-audit/SKILL.md)             | evidenced present-state risks              |
 | [`sus-research`](./skills/sus-research/SKILL.md)       | decision-informing evidence                |
 | [`sus-campaign`](./skills/sus-campaign/SKILL.md)       | restartable multi-pull-request goal        |
+| [`sus-panel`](./skills/sus-panel/SKILL.md)             | bounded independent recommendation         |
 
 Only `sus-*` skills create Suspec artifacts. Universal methods do work, not paperwork. Artifact
 authors write under `~/.agents/artifacts/<workspace>/`, hand off clickable links with absolute

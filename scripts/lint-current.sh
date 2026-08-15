@@ -12,17 +12,19 @@ fork-me
 promote
 remember
 revolver
+settle
 sus-audit
 sus-campaign
 sus-change-plan
 sus-inventory
+sus-panel
 sus-research
 sus-review
 sus-spec
 sus-task
 triple-check'
-artifact_creators='sus-audit sus-campaign sus-change-plan sus-inventory sus-research sus-review sus-spec sus-task'
-universal_methods='bulletproof demolition disrespec dissect fork-me promote remember revolver triple-check'
+artifact_creators='sus-audit sus-campaign sus-change-plan sus-inventory sus-panel sus-research sus-review sus-spec sus-task'
+universal_methods='bulletproof demolition disrespec dissect fork-me promote remember revolver settle triple-check'
 
 require_regex() {
   file=$1
@@ -300,7 +302,7 @@ for document in "$ROOT/README.md" "$ROOT/AGENTS.md" $(find "$ROOT/docs" "$ROOT/s
 done
 
 for heading in '## Maintenance' '## Skill Format And Context Economy' '## Evidence And Inspection' \
-  '## Campaign Coordination' '## Research Method'; do
+  '## Technical Decisions And Panels' '## Campaign Coordination' '## Research Method'; do
   require_literal "$ROOT/docs/sources.md" "$heading" 'source ledger section missing'
 done
 for source in \
@@ -314,6 +316,10 @@ for source in \
   'https://www.microsoft.com/en-us/research/blog/tool-space-interference-in-the-mcp-era-designing-for-agent-compatibility-at-scale/' \
   'https://ojs.aaai.org/index.php/AAAI/article/view/40356' \
   'https://ojs.aaai.org/index.php/AAAI/article/view/40339' \
+  'https://proceedings.mlr.press/v235/du24e.html' \
+  'https://aclanthology.org/2025.findings-acl.606/' \
+  'https://aclanthology.org/2026.findings-eacl.268/' \
+  'https://aclanthology.org/2023.acl-long.792/' \
   'https://learn.chatgpt.com/use-cases/follow-goals' \
   'https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents' \
   'https://www.microsoft.com/en-us/research/articles/magentic-one-a-generalist-multi-agent-system-for-solving-complex-tasks/' \
@@ -396,6 +402,13 @@ for file in "$ROOT"/skills/*/SKILL.md; do
     esac
     for other in $expected; do
       [ "$other" = "$name" ] && continue
+      if [ "$other" = settle ]; then
+        if grep -nEi '(`settle`|/settle|settle skill|skill settle)' "$document"; then
+          echo "sibling skill named in $name: $other ($document)" >&2
+          exit 1
+        fi
+        continue
+      fi
       if grep -nE "(^|[^[:alnum:]-])$other([^[:alnum:]-]|$)" "$document"; then
         echo "sibling skill named in $name: $other ($document)" >&2
         exit 1
@@ -454,7 +467,7 @@ for file in "$ROOT"/skills/*/SKILL.md; do
         echo "artifact contract leaked into universal method: $name" >&2
         exit 1
       fi
-      if grep -Eq '~/.agents/artifacts/<workspace>/|type:[[:space:]]+(spec|task|review|inventory|change-plan|audit|research|campaign)' "$file"; then
+      if grep -Eq '~/.agents/artifacts/<workspace>/|type:[[:space:]]+(spec|task|review|inventory|change-plan|audit|research|campaign|panel)' "$file"; then
         echo "artifact authorship leaked into universal method: $name" >&2
         exit 1
       fi
@@ -513,7 +526,7 @@ if grep -Eq '500 reviewable|15 handwritten|above five|current receipt|only an au
   exit 1
 fi
 
-writer_types='sus-spec:spec:SPEC- sus-task:task:TASK- sus-review:review:REVIEW- sus-inventory:inventory:INV- sus-change-plan:change-plan:CHANGE- sus-audit:audit:AUDIT- sus-research:research:RESEARCH- sus-campaign:campaign:CAMPAIGN-'
+writer_types='sus-spec:spec:SPEC- sus-task:task:TASK- sus-review:review:REVIEW- sus-inventory:inventory:INV- sus-change-plan:change-plan:CHANGE- sus-audit:audit:AUDIT- sus-research:research:RESEARCH- sus-campaign:campaign:CAMPAIGN- sus-panel:panel:PANEL-'
 for pair in $writer_types; do
   writer=${pair%%:*}
   declaration=${pair#*:}

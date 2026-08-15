@@ -11,8 +11,9 @@ Never emit a bare agent-originated question. Answer user-originated factual ques
 
 ## Authority
 
-Agents own reversible conventions. Humans own intent, material behavior, public contracts, security
-tradeoffs, costly choices, conflicting authority, waivers, irreversible actions, and acceptance.
+Agents own technical and procedural choices settled by evidence and project authority. Humans own
+intent, material behavior, public contracts, security tradeoffs, costly choices, conflicting
+authority, waivers, irreversible actions, and acceptance.
 
 ## Evidence
 

@@ -2,8 +2,8 @@
 
 This repository owns:
 
-- universal verification, attack, dissection, compression, ambiguity, promotion, and memory
-  methods;
+- universal verification, attack, dissection, compression, ambiguity, technical resolution,
+  promotion, and memory methods;
 - authors for Suspec artifact types;
 - references required by one skill;
 - catalog design evidence from witnessed failures.
