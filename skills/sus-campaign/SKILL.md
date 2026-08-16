@@ -16,7 +16,8 @@ Lock one objective and one verifiable stopping condition. Reject unrelated backl
 
 Select one project-native issue, epic, or equivalent ledger. It owns work items, dependencies,
 assignments, pull requests, and status. The campaign points to it; it never mirrors its mutable
-state.
+state. Make the ledger self-contained for its audience. Translate stable requirements into it;
+never expose transient or local-only artifact names, paths, or links.
 
 ### Authority
 
