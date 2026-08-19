@@ -1,0 +1,18 @@
+CHANGELOG.md
+  h_1228e573df1f42 18-20
+evals/README.md
+  h_1228e573df1f42 1-5
+evals/results/.gitignore
+  h_1228e573df1f42 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "dd9af586a10a73b0946c9c856d2a23be66937a71",
+  "prompts": {},
+  "humans": {
+    "h_1228e573df1f42": {
+      "author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
