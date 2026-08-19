@@ -1,0 +1,39 @@
+skills/drill/SKILL.md
+  s_8598c794e118cb::t_366e29b6a781f4 1-31
+CHANGELOG.md
+  s_8598c794e118cb::t_366b79c80ea017 11,63,69-86
+README.md
+  s_8598c794e118cb::t_1219a8660b7500 17-18,32
+VERSION
+  s_8598c794e118cb::t_9cc2cc00a611b3 1
+docs/skill-existence-test.md
+  s_8598c794e118cb::t_e2557689a1d746 12
+docs/sources.md
+  s_8598c794e118cb::t_16a14617b7e394 282-284
+scripts/lint-current.sh
+  s_8598c794e118cb::t_6b0c82b781562a 11,26-27,511
+scripts/lint-released-changelog.sh
+  s_8598c794e118cb::t_127000c17e3040 6
+skills/sus-campaign/SKILL.md
+  s_8598c794e118cb::t_460a890c7ff43d 3
+skills/sus-change-plan/SKILL.md
+  s_8598c794e118cb::t_013215982a1620 3
+skills/sus-panel/SKILL.md
+  s_8598c794e118cb::t_c2428a4b4e5294 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "052745c4a1a079bd606c7f8c5a353d9f70a44407",
+  "prompts": {},
+  "sessions": {
+    "s_8598c794e118cb": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "15ca1455-5482-4084-88d1-8dd47611278d",
+        "model": "grok-4.6"
+      },
+      "human_author": "José Costa <j.costa.3394@gmail.com>"
+    }
+  }
+}
