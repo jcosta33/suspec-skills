@@ -1,6 +1,6 @@
 ---
 name: sus-panel
-description: Produce a durable recommendation from independent analysis of legitimate alternatives. Use when a consequential technical, architectural, operational, or product choice needs several perspectives before a decision. Do not use when direct evidence settles the choice, the user already decided, or the work needs factual research instead of deliberation.
+description: Produce a durable recommendation from independent analysis of legitimate alternatives. Use when a consequential technical, architectural, operational, or product choice needs several perspectives before a decision. Do not use when direct evidence settles the choice, the user has stated a decision in the thread, or the work needs factual research instead of deliberation.
 ---
 
 # Sus Panel

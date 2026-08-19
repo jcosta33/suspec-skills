@@ -1,6 +1,6 @@
 ---
 name: sus-change-plan
-description: Plan structural change while preserving behavior. Use when a refactor, rewrite, migration, upgrade, performance change, schema change, or wide architecture cleanup needs a proven baseline and staged transformation. Do not use for direct implementation or net-new feature design.
+description: Plan structural change while preserving behavior. Use when a refactor, rewrite, migration, upgrade, performance change, schema change, or wide architecture cleanup needs a proven baseline and staged transformation. Do not use for direct implementation, net-new feature design, or a single-seam lock-and-write.
 ---
 
 # Sus Change Plan

@@ -279,6 +279,9 @@ Primary and official sources outrank summaries. A source supports only claims in
   <https://github.com/vercel-labs/skills>
 - **agentskills/agentskills.** Hosts the open specification and reference validator.
   <https://github.com/agentskills/agentskills>
+- **sgruetter top-down.** Practitioner skill for top-down lock-before-write. Bounded inspiration for
+  `drill`: keep the level order; do not adopt `CONTEXT.md` or the original's product-feature flavor.
+  MIT. <https://github.com/sgruetter/skills/tree/main/skills/top-down>
 - **oil-oil/codex-explore-skill.** Design reference for delegated codebase reconnaissance and
   compact key-file maps. <https://github.com/oil-oil/codex-explore-skill>
 - **shannonbay/setup-structure-index.** Design reference for reusable codebase structure maps.

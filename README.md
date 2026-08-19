@@ -14,7 +14,8 @@ npx skills add https://github.com/jcosta33/suspec-skills/tree/<commit> -g -a cod
 ```
 
 The last form pins a commit. Re-running `add` updates present entries but does not prune removed
-names. Inspect `overwrites:` before confirming. Compare any existing folder with the source tree;
+names. After 5.0.0, `npx skills remove -g -a <agent> sus-review`, then re-add the family for `drill`.
+Inspect `overwrites:` before confirming. Compare any existing folder with the source tree;
 cancel on mismatch. Remove an installed entry absent from the source only after the same comparison.
 Name alone proves nothing.
 
@@ -28,6 +29,7 @@ setup.
 | [`bulletproof`](./skills/bulletproof/SKILL.md)   | actively verify load-bearing claims              |
 | [`demolition`](./skills/demolition/SKILL.md)     | run quarantined one-sided advocacy               |
 | [`dissect`](./skills/dissect/SKILL.md)           | trace a code path and coupling to closure        |
+| [`drill`](./skills/drill/SKILL.md)               | lock language, obligation, place, slice before write |
 | [`disrespec`](./skills/disrespec/SKILL.md)       | remove wasted prose                              |
 | [`fork-me`](./skills/fork-me/SKILL.md)           | structure every agent-originated question        |
 | [`revolver`](./skills/revolver/SKILL.md)         | exhaust broad risk through sequential refinement |
@@ -42,7 +44,6 @@ setup.
 | ------------------------------------------------------ | ------------------------------------------ |
 | [`sus-spec`](./skills/sus-spec/SKILL.md)               | intent and verifiable requirements         |
 | [`sus-task`](./skills/sus-task/SKILL.md)               | collision-safe spec slices                 |
-| [`sus-review`](./skills/sus-review/SKILL.md)           | independent assessments and human decision |
 | [`sus-inventory`](./skills/sus-inventory/SKILL.md)     | evidenced current-state map                |
 | [`sus-change-plan`](./skills/sus-change-plan/SKILL.md) | preservation, waves, cutover, rollback     |
 | [`sus-audit`](./skills/sus-audit/SKILL.md)             | evidenced present-state risks              |

@@ -9,6 +9,7 @@ familiar work unless Suspec adds a unique contract.
 | `bulletproof` | load-bearing claims escape active verification |
 | `demolition` | advocacy masquerades as evidence |
 | `dissect` | change proceeds from a partial code-path story |
+| `drill` | mixing levels, implementing before place is locked, asking a lower question while a higher lock is open, or writing a plan instead of the next seam |
 | `disrespec` | prose wastes context through repetition |
 | `fork-me` | agents guess or ask bare questions |
 | `revolver` | broad work receives one narrow review frame |
@@ -18,7 +19,6 @@ familiar work unless Suspec adds a unique contract.
 | `settle` | solvable technical ambiguity reaches the user or becomes an arbitrary choice |
 | `sus-spec` | undecided intent becomes unverifiable implementation |
 | `sus-task` | parallel packets collide, duplicate, or drop scope |
-| `sus-review` | authors accept their work or evidence gaps disappear |
 | `sus-inventory` | structural work starts without a current map |
 | `sus-change-plan` | structural work lacks preservation, cutover, or rollback proof |
 | `sus-audit` | present risk mixes with unsupported prescription |

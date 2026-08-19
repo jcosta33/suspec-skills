@@ -8,6 +8,7 @@ expected='bulletproof
 demolition
 disrespec
 dissect
+drill
 fork-me
 promote
 remember
@@ -19,12 +20,11 @@ sus-change-plan
 sus-inventory
 sus-panel
 sus-research
-sus-review
 sus-spec
 sus-task
 triple-check'
-artifact_creators='sus-audit sus-campaign sus-change-plan sus-inventory sus-panel sus-research sus-review sus-spec sus-task'
-universal_methods='bulletproof demolition disrespec dissect fork-me promote remember revolver settle triple-check'
+artifact_creators='sus-audit sus-campaign sus-change-plan sus-inventory sus-panel sus-research sus-spec sus-task'
+universal_methods='bulletproof demolition disrespec dissect drill fork-me promote remember revolver settle triple-check'
 
 require_regex() {
   file=$1
@@ -508,7 +508,7 @@ if grep -Eq '500 reviewable|15 handwritten|above five|current receipt|only an au
   exit 1
 fi
 
-writer_types='sus-spec:spec:SPEC- sus-task:task:TASK- sus-review:review:REVIEW- sus-inventory:inventory:INV- sus-change-plan:change-plan:CHANGE- sus-audit:audit:AUDIT- sus-research:research:RESEARCH- sus-campaign:campaign:CAMPAIGN- sus-panel:panel:PANEL-'
+writer_types='sus-spec:spec:SPEC- sus-task:task:TASK- sus-inventory:inventory:INV- sus-change-plan:change-plan:CHANGE- sus-audit:audit:AUDIT- sus-research:research:RESEARCH- sus-campaign:campaign:CAMPAIGN- sus-panel:panel:PANEL-'
 for pair in $writer_types; do
   writer=${pair%%:*}
   declaration=${pair#*:}
@@ -546,12 +546,6 @@ for literal in 'type: task' 'status: ready' 'source:' 'scope:' '## Source' '## S
   '## Do not change' '## Affected areas' '## Verify' '## Agent instructions' '## Findings' \
   '## Run order' 'Starts after:' 'May run with:' '## Run summary'; do
   require_literal "$task" "$literal" 'Task authoring contract drift'
-done
-
-review="$ROOT/skills/sus-review/SKILL.md"
-for literal in 'type: review' 'spec:' 'reviewer:' 'decision: pending' \
-  '| ID | Assessment | Evidence |'; do
-  require_literal "$review" "$literal" 'Review authoring contract drift'
 done
 
 change_plan="$ROOT/skills/sus-change-plan/SKILL.md"

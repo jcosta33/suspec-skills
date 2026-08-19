@@ -3,7 +3,7 @@ set -eu
 
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 file="$ROOT/CHANGELOG.md"
-expected=bb28151be77b84872076b94b7c9f47470b5f66be47e1d1db749650c3a468c1cd
+expected=f2fceb8ddfe8627a0785041e20460dc2c5e078ea27383102fed9007594b48f7e
 base=${SUSPEC_SKILLS_HISTORY_BASE:-}
 
 case "$base" in

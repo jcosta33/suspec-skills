@@ -8,7 +8,7 @@ renames a skill or breaks a skill's contract, **minor** adds a skill or non-brea
 
 The catalog is pull-updatable — install it for your runner (for example,
 `npx skills add jcosta33/suspec-skills -g -a codex`), pin to a tag or commit for stability,
-and re-run to re-fetch. Watch the
+and re-run to re-fetch. Re-running `add` does not prune removed names. Watch the
 [releases](https://github.com/jcosta33/suspec-skills/releases) and re-pull when a bump matters.
 
 ## [Unreleased]
@@ -60,11 +60,29 @@ and re-run to re-fetch. Watch the
   fences remain for literal code, untouched raw evidence, and artifact templates.
 - Artifact skills stay checker-agnostic. Ambient MCP discovery or explicit user invocation reaches
   the optional deterministic checker without bloating method bodies.
-- Written specs use the `0.25.0` contract. C028 enforces the three-item block; C004 requires
+- Written specs use the `0.26.0` contract. C028 enforces the three-item block; C004 requires
   exactly one strength word in `Then`.
 - Catalog design docs are now a gated contract, and externally grounded method changes must update
   the bounded source ledger in the same change.
 - Released sections remain byte-for-byte historical; current corrections stay under Unreleased.
+
+## [5.0.0] - 2026-08-19
+
+### Removed
+
+- `sus-review`. Independent review stays native. The packet is gone.
+
+### Added
+
+- `drill` locks Language → Obligation → Place → Slice. No Suspec artifact.
+  Escalate to `sus-change-plan` when staged waves and rollback must outlive the session.
+
+### Changed
+
+- `sus-change-plan` excludes a single-seam lock-and-write.
+- `sus-campaign` excludes one-pull-request goals and requests that ask only for a plan artifact.
+- `sus-panel` skip trigger requires a stated decision, not inferred intent.
+- Cutover: `npx skills add` does not prune. Remove `sus-review` explicitly. Family re-add for `drill`.
 
 ## [4.0.0] - 2026-07-10
 

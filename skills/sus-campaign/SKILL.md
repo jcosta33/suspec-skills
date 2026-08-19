@@ -1,6 +1,6 @@
 ---
 name: sus-campaign
-description: Write or revise a restartable goal contract for one multi-pull-request delivery campaign. Use when one durable objective needs dependency-aware, write-disjoint streams, a project-native progress ledger, and enforceable delivery gates. Do not use for planning-only, contained, sequential, single-pull-request, or review-only work.
+description: Write or revise a restartable goal contract for one multi-pull-request delivery campaign. Use when one durable objective needs dependency-aware, write-disjoint streams, a project-native progress ledger, and enforceable delivery gates. Do not use when the goal completes in one pull request, or when the user asks only for a plan artifact.
 ---
 
 # Sus Campaign
