@@ -15,6 +15,9 @@ and re-run to re-fetch. Watch the
 
 ### Changed
 
+- `evals/README.md` states that eval transcripts are local-only; the catalog keep-or-drop
+  test remains `docs/skill-existence-test.md`.
+
 - The catalog surface adds `settle` for evidence-driven technical decisions and `sus-panel` for
   durable independent deliberation. Panel participants run the blind first pass concurrently; the
   user sets the count or the orchestrator chooses the smallest sufficient panel. Each skill installs
